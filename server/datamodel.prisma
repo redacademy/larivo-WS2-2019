@@ -1,4 +1,51 @@
 type User {
   id: ID! @id
+  userName: String! @unique
+  email: String! @unique
+  password: String!
+  bio: String!
+  guest: Boolean! @default(value: false)
+  following: [User!]! @relation(name: "User")
+  followers: [User!]! @relation(name: "User")
+}
+
+type Story {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  title: String! 
+  content: String!  
+  readTime: String!
+  hashtags: [Hashtag!]!
+  likes: [Like!]!
+  loves: [Love!]!
+  neutrals: [Neutral!]!
+  sads: [Sad!]!
+  claps: [Clap!]!
+  isPublished: Boolean! @default(value: false)
+}
+
+type Hashtag {
+  id: ID! @id
   name: String!
 }
+
+type Like {
+  id: ID! @id
+}
+
+type Love {
+  id: ID! @id
+}
+
+type Neutral {
+  id: ID! @id
+}
+
+type Sad {
+  id: ID! @id
+}
+
+type Clap {
+  id: ID! @id
+}
+
