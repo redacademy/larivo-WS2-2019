@@ -3,7 +3,35 @@ module.exports = {
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-/* GraphQL */ `type AggregateUser {
+/* GraphQL */ `type AggregateClap {
+  count: Int!
+}
+
+type AggregateHashtag {
+  count: Int!
+}
+
+type AggregateLike {
+  count: Int!
+}
+
+type AggregateLove {
+  count: Int!
+}
+
+type AggregateNeutral {
+  count: Int!
+}
+
+type AggregateSad {
+  count: Int!
+}
+
+type AggregateStory {
+  count: Int!
+}
+
+type AggregateUser {
   count: Int!
 }
 
@@ -11,105 +39,151 @@ type BatchPayload {
   count: Long!
 }
 
-scalar Long
-
-type Mutation {
-  createUser(data: UserCreateInput!): User!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
-}
-
-enum MutationType {
-  CREATED
-  UPDATED
-  DELETED
-}
-
-interface Node {
+type Clap {
   id: ID!
 }
 
-type PageInfo {
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
-  endCursor: String
+type ClapConnection {
+  pageInfo: PageInfo!
+  edges: [ClapEdge]!
+  aggregate: AggregateClap!
 }
 
-type Query {
-  user(where: UserWhereUniqueInput!): User
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  node(id: ID!): Node
+input ClapCreateInput {
+  id: ID
 }
 
-type Subscription {
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+input ClapCreateManyInput {
+  create: [ClapCreateInput!]
+  connect: [ClapWhereUniqueInput!]
 }
 
-type User {
+type ClapEdge {
+  node: Clap!
+  cursor: String!
+}
+
+enum ClapOrderByInput {
+  id_ASC
+  id_DESC
+}
+
+type ClapPreviousValues {
+  id: ID!
+}
+
+input ClapScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [ClapScalarWhereInput!]
+  OR: [ClapScalarWhereInput!]
+  NOT: [ClapScalarWhereInput!]
+}
+
+type ClapSubscriptionPayload {
+  mutation: MutationType!
+  node: Clap
+  updatedFields: [String!]
+  previousValues: ClapPreviousValues
+}
+
+input ClapSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ClapWhereInput
+  AND: [ClapSubscriptionWhereInput!]
+  OR: [ClapSubscriptionWhereInput!]
+  NOT: [ClapSubscriptionWhereInput!]
+}
+
+input ClapUpdateManyInput {
+  create: [ClapCreateInput!]
+  delete: [ClapWhereUniqueInput!]
+  connect: [ClapWhereUniqueInput!]
+  set: [ClapWhereUniqueInput!]
+  disconnect: [ClapWhereUniqueInput!]
+  deleteMany: [ClapScalarWhereInput!]
+}
+
+input ClapWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [ClapWhereInput!]
+  OR: [ClapWhereInput!]
+  NOT: [ClapWhereInput!]
+}
+
+input ClapWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+type Hashtag {
   id: ID!
   name: String!
 }
 
-type UserConnection {
+type HashtagConnection {
   pageInfo: PageInfo!
-  edges: [UserEdge]!
-  aggregate: AggregateUser!
+  edges: [HashtagEdge]!
+  aggregate: AggregateHashtag!
 }
 
-input UserCreateInput {
+input HashtagCreateInput {
   id: ID
   name: String!
 }
 
-type UserEdge {
-  node: User!
+input HashtagCreateManyInput {
+  create: [HashtagCreateInput!]
+  connect: [HashtagWhereUniqueInput!]
+}
+
+type HashtagEdge {
+  node: Hashtag!
   cursor: String!
 }
 
-enum UserOrderByInput {
+enum HashtagOrderByInput {
   id_ASC
   id_DESC
   name_ASC
   name_DESC
 }
 
-type UserPreviousValues {
+type HashtagPreviousValues {
   id: ID!
   name: String!
 }
 
-type UserSubscriptionPayload {
-  mutation: MutationType!
-  node: User
-  updatedFields: [String!]
-  previousValues: UserPreviousValues
-}
-
-input UserSubscriptionWhereInput {
-  mutation_in: [MutationType!]
-  updatedFields_contains: String
-  updatedFields_contains_every: [String!]
-  updatedFields_contains_some: [String!]
-  node: UserWhereInput
-  AND: [UserSubscriptionWhereInput!]
-  OR: [UserSubscriptionWhereInput!]
-  NOT: [UserSubscriptionWhereInput!]
-}
-
-input UserUpdateInput {
-  name: String
-}
-
-input UserUpdateManyMutationInput {
-  name: String
-}
-
-input UserWhereInput {
+input HashtagScalarWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -138,6 +212,1174 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  AND: [HashtagScalarWhereInput!]
+  OR: [HashtagScalarWhereInput!]
+  NOT: [HashtagScalarWhereInput!]
+}
+
+type HashtagSubscriptionPayload {
+  mutation: MutationType!
+  node: Hashtag
+  updatedFields: [String!]
+  previousValues: HashtagPreviousValues
+}
+
+input HashtagSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: HashtagWhereInput
+  AND: [HashtagSubscriptionWhereInput!]
+  OR: [HashtagSubscriptionWhereInput!]
+  NOT: [HashtagSubscriptionWhereInput!]
+}
+
+input HashtagUpdateDataInput {
+  name: String
+}
+
+input HashtagUpdateInput {
+  name: String
+}
+
+input HashtagUpdateManyDataInput {
+  name: String
+}
+
+input HashtagUpdateManyInput {
+  create: [HashtagCreateInput!]
+  update: [HashtagUpdateWithWhereUniqueNestedInput!]
+  upsert: [HashtagUpsertWithWhereUniqueNestedInput!]
+  delete: [HashtagWhereUniqueInput!]
+  connect: [HashtagWhereUniqueInput!]
+  set: [HashtagWhereUniqueInput!]
+  disconnect: [HashtagWhereUniqueInput!]
+  deleteMany: [HashtagScalarWhereInput!]
+  updateMany: [HashtagUpdateManyWithWhereNestedInput!]
+}
+
+input HashtagUpdateManyMutationInput {
+  name: String
+}
+
+input HashtagUpdateManyWithWhereNestedInput {
+  where: HashtagScalarWhereInput!
+  data: HashtagUpdateManyDataInput!
+}
+
+input HashtagUpdateWithWhereUniqueNestedInput {
+  where: HashtagWhereUniqueInput!
+  data: HashtagUpdateDataInput!
+}
+
+input HashtagUpsertWithWhereUniqueNestedInput {
+  where: HashtagWhereUniqueInput!
+  update: HashtagUpdateDataInput!
+  create: HashtagCreateInput!
+}
+
+input HashtagWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [HashtagWhereInput!]
+  OR: [HashtagWhereInput!]
+  NOT: [HashtagWhereInput!]
+}
+
+input HashtagWhereUniqueInput {
+  id: ID
+}
+
+type Like {
+  id: ID!
+}
+
+type LikeConnection {
+  pageInfo: PageInfo!
+  edges: [LikeEdge]!
+  aggregate: AggregateLike!
+}
+
+input LikeCreateInput {
+  id: ID
+}
+
+input LikeCreateManyInput {
+  create: [LikeCreateInput!]
+  connect: [LikeWhereUniqueInput!]
+}
+
+type LikeEdge {
+  node: Like!
+  cursor: String!
+}
+
+enum LikeOrderByInput {
+  id_ASC
+  id_DESC
+}
+
+type LikePreviousValues {
+  id: ID!
+}
+
+input LikeScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [LikeScalarWhereInput!]
+  OR: [LikeScalarWhereInput!]
+  NOT: [LikeScalarWhereInput!]
+}
+
+type LikeSubscriptionPayload {
+  mutation: MutationType!
+  node: Like
+  updatedFields: [String!]
+  previousValues: LikePreviousValues
+}
+
+input LikeSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: LikeWhereInput
+  AND: [LikeSubscriptionWhereInput!]
+  OR: [LikeSubscriptionWhereInput!]
+  NOT: [LikeSubscriptionWhereInput!]
+}
+
+input LikeUpdateManyInput {
+  create: [LikeCreateInput!]
+  delete: [LikeWhereUniqueInput!]
+  connect: [LikeWhereUniqueInput!]
+  set: [LikeWhereUniqueInput!]
+  disconnect: [LikeWhereUniqueInput!]
+  deleteMany: [LikeScalarWhereInput!]
+}
+
+input LikeWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [LikeWhereInput!]
+  OR: [LikeWhereInput!]
+  NOT: [LikeWhereInput!]
+}
+
+input LikeWhereUniqueInput {
+  id: ID
+}
+
+scalar Long
+
+type Love {
+  id: ID!
+}
+
+type LoveConnection {
+  pageInfo: PageInfo!
+  edges: [LoveEdge]!
+  aggregate: AggregateLove!
+}
+
+input LoveCreateInput {
+  id: ID
+}
+
+input LoveCreateManyInput {
+  create: [LoveCreateInput!]
+  connect: [LoveWhereUniqueInput!]
+}
+
+type LoveEdge {
+  node: Love!
+  cursor: String!
+}
+
+enum LoveOrderByInput {
+  id_ASC
+  id_DESC
+}
+
+type LovePreviousValues {
+  id: ID!
+}
+
+input LoveScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [LoveScalarWhereInput!]
+  OR: [LoveScalarWhereInput!]
+  NOT: [LoveScalarWhereInput!]
+}
+
+type LoveSubscriptionPayload {
+  mutation: MutationType!
+  node: Love
+  updatedFields: [String!]
+  previousValues: LovePreviousValues
+}
+
+input LoveSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: LoveWhereInput
+  AND: [LoveSubscriptionWhereInput!]
+  OR: [LoveSubscriptionWhereInput!]
+  NOT: [LoveSubscriptionWhereInput!]
+}
+
+input LoveUpdateManyInput {
+  create: [LoveCreateInput!]
+  delete: [LoveWhereUniqueInput!]
+  connect: [LoveWhereUniqueInput!]
+  set: [LoveWhereUniqueInput!]
+  disconnect: [LoveWhereUniqueInput!]
+  deleteMany: [LoveScalarWhereInput!]
+}
+
+input LoveWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [LoveWhereInput!]
+  OR: [LoveWhereInput!]
+  NOT: [LoveWhereInput!]
+}
+
+input LoveWhereUniqueInput {
+  id: ID
+}
+
+type Mutation {
+  createClap(data: ClapCreateInput!): Clap!
+  deleteClap(where: ClapWhereUniqueInput!): Clap
+  deleteManyClaps(where: ClapWhereInput): BatchPayload!
+  createHashtag(data: HashtagCreateInput!): Hashtag!
+  updateHashtag(data: HashtagUpdateInput!, where: HashtagWhereUniqueInput!): Hashtag
+  updateManyHashtags(data: HashtagUpdateManyMutationInput!, where: HashtagWhereInput): BatchPayload!
+  upsertHashtag(where: HashtagWhereUniqueInput!, create: HashtagCreateInput!, update: HashtagUpdateInput!): Hashtag!
+  deleteHashtag(where: HashtagWhereUniqueInput!): Hashtag
+  deleteManyHashtags(where: HashtagWhereInput): BatchPayload!
+  createLike(data: LikeCreateInput!): Like!
+  deleteLike(where: LikeWhereUniqueInput!): Like
+  deleteManyLikes(where: LikeWhereInput): BatchPayload!
+  createLove(data: LoveCreateInput!): Love!
+  deleteLove(where: LoveWhereUniqueInput!): Love
+  deleteManyLoves(where: LoveWhereInput): BatchPayload!
+  createNeutral(data: NeutralCreateInput!): Neutral!
+  deleteNeutral(where: NeutralWhereUniqueInput!): Neutral
+  deleteManyNeutrals(where: NeutralWhereInput): BatchPayload!
+  createSad(data: SadCreateInput!): Sad!
+  deleteSad(where: SadWhereUniqueInput!): Sad
+  deleteManySads(where: SadWhereInput): BatchPayload!
+  createStory(data: StoryCreateInput!): Story!
+  updateStory(data: StoryUpdateInput!, where: StoryWhereUniqueInput!): Story
+  updateManyStories(data: StoryUpdateManyMutationInput!, where: StoryWhereInput): BatchPayload!
+  upsertStory(where: StoryWhereUniqueInput!, create: StoryCreateInput!, update: StoryUpdateInput!): Story!
+  deleteStory(where: StoryWhereUniqueInput!): Story
+  deleteManyStories(where: StoryWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+type Neutral {
+  id: ID!
+}
+
+type NeutralConnection {
+  pageInfo: PageInfo!
+  edges: [NeutralEdge]!
+  aggregate: AggregateNeutral!
+}
+
+input NeutralCreateInput {
+  id: ID
+}
+
+input NeutralCreateManyInput {
+  create: [NeutralCreateInput!]
+  connect: [NeutralWhereUniqueInput!]
+}
+
+type NeutralEdge {
+  node: Neutral!
+  cursor: String!
+}
+
+enum NeutralOrderByInput {
+  id_ASC
+  id_DESC
+}
+
+type NeutralPreviousValues {
+  id: ID!
+}
+
+input NeutralScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [NeutralScalarWhereInput!]
+  OR: [NeutralScalarWhereInput!]
+  NOT: [NeutralScalarWhereInput!]
+}
+
+type NeutralSubscriptionPayload {
+  mutation: MutationType!
+  node: Neutral
+  updatedFields: [String!]
+  previousValues: NeutralPreviousValues
+}
+
+input NeutralSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: NeutralWhereInput
+  AND: [NeutralSubscriptionWhereInput!]
+  OR: [NeutralSubscriptionWhereInput!]
+  NOT: [NeutralSubscriptionWhereInput!]
+}
+
+input NeutralUpdateManyInput {
+  create: [NeutralCreateInput!]
+  delete: [NeutralWhereUniqueInput!]
+  connect: [NeutralWhereUniqueInput!]
+  set: [NeutralWhereUniqueInput!]
+  disconnect: [NeutralWhereUniqueInput!]
+  deleteMany: [NeutralScalarWhereInput!]
+}
+
+input NeutralWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [NeutralWhereInput!]
+  OR: [NeutralWhereInput!]
+  NOT: [NeutralWhereInput!]
+}
+
+input NeutralWhereUniqueInput {
+  id: ID
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  clap(where: ClapWhereUniqueInput!): Clap
+  claps(where: ClapWhereInput, orderBy: ClapOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Clap]!
+  clapsConnection(where: ClapWhereInput, orderBy: ClapOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ClapConnection!
+  hashtag(where: HashtagWhereUniqueInput!): Hashtag
+  hashtags(where: HashtagWhereInput, orderBy: HashtagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hashtag]!
+  hashtagsConnection(where: HashtagWhereInput, orderBy: HashtagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HashtagConnection!
+  like(where: LikeWhereUniqueInput!): Like
+  likes(where: LikeWhereInput, orderBy: LikeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Like]!
+  likesConnection(where: LikeWhereInput, orderBy: LikeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LikeConnection!
+  love(where: LoveWhereUniqueInput!): Love
+  loves(where: LoveWhereInput, orderBy: LoveOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Love]!
+  lovesConnection(where: LoveWhereInput, orderBy: LoveOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LoveConnection!
+  neutral(where: NeutralWhereUniqueInput!): Neutral
+  neutrals(where: NeutralWhereInput, orderBy: NeutralOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Neutral]!
+  neutralsConnection(where: NeutralWhereInput, orderBy: NeutralOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NeutralConnection!
+  sad(where: SadWhereUniqueInput!): Sad
+  sads(where: SadWhereInput, orderBy: SadOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Sad]!
+  sadsConnection(where: SadWhereInput, orderBy: SadOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SadConnection!
+  story(where: StoryWhereUniqueInput!): Story
+  stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story]!
+  storiesConnection(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StoryConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  node(id: ID!): Node
+}
+
+type Sad {
+  id: ID!
+}
+
+type SadConnection {
+  pageInfo: PageInfo!
+  edges: [SadEdge]!
+  aggregate: AggregateSad!
+}
+
+input SadCreateInput {
+  id: ID
+}
+
+input SadCreateManyInput {
+  create: [SadCreateInput!]
+  connect: [SadWhereUniqueInput!]
+}
+
+type SadEdge {
+  node: Sad!
+  cursor: String!
+}
+
+enum SadOrderByInput {
+  id_ASC
+  id_DESC
+}
+
+type SadPreviousValues {
+  id: ID!
+}
+
+input SadScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [SadScalarWhereInput!]
+  OR: [SadScalarWhereInput!]
+  NOT: [SadScalarWhereInput!]
+}
+
+type SadSubscriptionPayload {
+  mutation: MutationType!
+  node: Sad
+  updatedFields: [String!]
+  previousValues: SadPreviousValues
+}
+
+input SadSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SadWhereInput
+  AND: [SadSubscriptionWhereInput!]
+  OR: [SadSubscriptionWhereInput!]
+  NOT: [SadSubscriptionWhereInput!]
+}
+
+input SadUpdateManyInput {
+  create: [SadCreateInput!]
+  delete: [SadWhereUniqueInput!]
+  connect: [SadWhereUniqueInput!]
+  set: [SadWhereUniqueInput!]
+  disconnect: [SadWhereUniqueInput!]
+  deleteMany: [SadScalarWhereInput!]
+}
+
+input SadWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [SadWhereInput!]
+  OR: [SadWhereInput!]
+  NOT: [SadWhereInput!]
+}
+
+input SadWhereUniqueInput {
+  id: ID
+}
+
+type Story {
+  id: ID!
+  createdAt: DateTime!
+  title: String!
+  content: String!
+  readTime: String!
+  hashtags(where: HashtagWhereInput, orderBy: HashtagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hashtag!]
+  likes(where: LikeWhereInput, orderBy: LikeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Like!]
+  loves(where: LoveWhereInput, orderBy: LoveOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Love!]
+  neutrals(where: NeutralWhereInput, orderBy: NeutralOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Neutral!]
+  sads(where: SadWhereInput, orderBy: SadOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Sad!]
+  claps(where: ClapWhereInput, orderBy: ClapOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Clap!]
+  isPublished: Boolean!
+}
+
+type StoryConnection {
+  pageInfo: PageInfo!
+  edges: [StoryEdge]!
+  aggregate: AggregateStory!
+}
+
+input StoryCreateInput {
+  id: ID
+  title: String!
+  content: String!
+  readTime: String!
+  hashtags: HashtagCreateManyInput
+  likes: LikeCreateManyInput
+  loves: LoveCreateManyInput
+  neutrals: NeutralCreateManyInput
+  sads: SadCreateManyInput
+  claps: ClapCreateManyInput
+  isPublished: Boolean
+}
+
+type StoryEdge {
+  node: Story!
+  cursor: String!
+}
+
+enum StoryOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  title_ASC
+  title_DESC
+  content_ASC
+  content_DESC
+  readTime_ASC
+  readTime_DESC
+  isPublished_ASC
+  isPublished_DESC
+}
+
+type StoryPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  title: String!
+  content: String!
+  readTime: String!
+  isPublished: Boolean!
+}
+
+type StorySubscriptionPayload {
+  mutation: MutationType!
+  node: Story
+  updatedFields: [String!]
+  previousValues: StoryPreviousValues
+}
+
+input StorySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: StoryWhereInput
+  AND: [StorySubscriptionWhereInput!]
+  OR: [StorySubscriptionWhereInput!]
+  NOT: [StorySubscriptionWhereInput!]
+}
+
+input StoryUpdateInput {
+  title: String
+  content: String
+  readTime: String
+  hashtags: HashtagUpdateManyInput
+  likes: LikeUpdateManyInput
+  loves: LoveUpdateManyInput
+  neutrals: NeutralUpdateManyInput
+  sads: SadUpdateManyInput
+  claps: ClapUpdateManyInput
+  isPublished: Boolean
+}
+
+input StoryUpdateManyMutationInput {
+  title: String
+  content: String
+  readTime: String
+  isPublished: Boolean
+}
+
+input StoryWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  readTime: String
+  readTime_not: String
+  readTime_in: [String!]
+  readTime_not_in: [String!]
+  readTime_lt: String
+  readTime_lte: String
+  readTime_gt: String
+  readTime_gte: String
+  readTime_contains: String
+  readTime_not_contains: String
+  readTime_starts_with: String
+  readTime_not_starts_with: String
+  readTime_ends_with: String
+  readTime_not_ends_with: String
+  hashtags_every: HashtagWhereInput
+  hashtags_some: HashtagWhereInput
+  hashtags_none: HashtagWhereInput
+  likes_every: LikeWhereInput
+  likes_some: LikeWhereInput
+  likes_none: LikeWhereInput
+  loves_every: LoveWhereInput
+  loves_some: LoveWhereInput
+  loves_none: LoveWhereInput
+  neutrals_every: NeutralWhereInput
+  neutrals_some: NeutralWhereInput
+  neutrals_none: NeutralWhereInput
+  sads_every: SadWhereInput
+  sads_some: SadWhereInput
+  sads_none: SadWhereInput
+  claps_every: ClapWhereInput
+  claps_some: ClapWhereInput
+  claps_none: ClapWhereInput
+  isPublished: Boolean
+  isPublished_not: Boolean
+  AND: [StoryWhereInput!]
+  OR: [StoryWhereInput!]
+  NOT: [StoryWhereInput!]
+}
+
+input StoryWhereUniqueInput {
+  id: ID
+}
+
+type Subscription {
+  clap(where: ClapSubscriptionWhereInput): ClapSubscriptionPayload
+  hashtag(where: HashtagSubscriptionWhereInput): HashtagSubscriptionPayload
+  like(where: LikeSubscriptionWhereInput): LikeSubscriptionPayload
+  love(where: LoveSubscriptionWhereInput): LoveSubscriptionPayload
+  neutral(where: NeutralSubscriptionWhereInput): NeutralSubscriptionPayload
+  sad(where: SadSubscriptionWhereInput): SadSubscriptionPayload
+  story(where: StorySubscriptionWhereInput): StorySubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type User {
+  id: ID!
+  userName: String!
+  email: String!
+  password: String!
+  bio: String!
+  guest: Boolean!
+  following(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  followers(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  id: ID
+  userName: String!
+  email: String!
+  password: String!
+  bio: String!
+  guest: Boolean
+  following: UserCreateManyWithoutFollowersInput
+  followers: UserCreateManyWithoutFollowingInput
+}
+
+input UserCreateManyWithoutFollowersInput {
+  create: [UserCreateWithoutFollowersInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateManyWithoutFollowingInput {
+  create: [UserCreateWithoutFollowingInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateWithoutFollowersInput {
+  id: ID
+  userName: String!
+  email: String!
+  password: String!
+  bio: String!
+  guest: Boolean
+  following: UserCreateManyWithoutFollowersInput
+}
+
+input UserCreateWithoutFollowingInput {
+  id: ID
+  userName: String!
+  email: String!
+  password: String!
+  bio: String!
+  guest: Boolean
+  followers: UserCreateManyWithoutFollowingInput
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  userName_ASC
+  userName_DESC
+  email_ASC
+  email_DESC
+  password_ASC
+  password_DESC
+  bio_ASC
+  bio_DESC
+  guest_ASC
+  guest_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  userName: String!
+  email: String!
+  password: String!
+  bio: String!
+  guest: Boolean!
+}
+
+input UserScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  userName: String
+  userName_not: String
+  userName_in: [String!]
+  userName_not_in: [String!]
+  userName_lt: String
+  userName_lte: String
+  userName_gt: String
+  userName_gte: String
+  userName_contains: String
+  userName_not_contains: String
+  userName_starts_with: String
+  userName_not_starts_with: String
+  userName_ends_with: String
+  userName_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  bio: String
+  bio_not: String
+  bio_in: [String!]
+  bio_not_in: [String!]
+  bio_lt: String
+  bio_lte: String
+  bio_gt: String
+  bio_gte: String
+  bio_contains: String
+  bio_not_contains: String
+  bio_starts_with: String
+  bio_not_starts_with: String
+  bio_ends_with: String
+  bio_not_ends_with: String
+  guest: Boolean
+  guest_not: Boolean
+  AND: [UserScalarWhereInput!]
+  OR: [UserScalarWhereInput!]
+  NOT: [UserScalarWhereInput!]
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
+}
+
+input UserUpdateInput {
+  userName: String
+  email: String
+  password: String
+  bio: String
+  guest: Boolean
+  following: UserUpdateManyWithoutFollowersInput
+  followers: UserUpdateManyWithoutFollowingInput
+}
+
+input UserUpdateManyDataInput {
+  userName: String
+  email: String
+  password: String
+  bio: String
+  guest: Boolean
+}
+
+input UserUpdateManyMutationInput {
+  userName: String
+  email: String
+  password: String
+  bio: String
+  guest: Boolean
+}
+
+input UserUpdateManyWithoutFollowersInput {
+  create: [UserCreateWithoutFollowersInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutFollowersInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutFollowersInput!]
+  deleteMany: [UserScalarWhereInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+}
+
+input UserUpdateManyWithoutFollowingInput {
+  create: [UserCreateWithoutFollowingInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutFollowingInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutFollowingInput!]
+  deleteMany: [UserScalarWhereInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+}
+
+input UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput!
+  data: UserUpdateManyDataInput!
+}
+
+input UserUpdateWithoutFollowersDataInput {
+  userName: String
+  email: String
+  password: String
+  bio: String
+  guest: Boolean
+  following: UserUpdateManyWithoutFollowersInput
+}
+
+input UserUpdateWithoutFollowingDataInput {
+  userName: String
+  email: String
+  password: String
+  bio: String
+  guest: Boolean
+  followers: UserUpdateManyWithoutFollowingInput
+}
+
+input UserUpdateWithWhereUniqueWithoutFollowersInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutFollowersDataInput!
+}
+
+input UserUpdateWithWhereUniqueWithoutFollowingInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutFollowingDataInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutFollowersInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutFollowersDataInput!
+  create: UserCreateWithoutFollowersInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutFollowingInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutFollowingDataInput!
+  create: UserCreateWithoutFollowingInput!
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  userName: String
+  userName_not: String
+  userName_in: [String!]
+  userName_not_in: [String!]
+  userName_lt: String
+  userName_lte: String
+  userName_gt: String
+  userName_gte: String
+  userName_contains: String
+  userName_not_contains: String
+  userName_starts_with: String
+  userName_not_starts_with: String
+  userName_ends_with: String
+  userName_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  bio: String
+  bio_not: String
+  bio_in: [String!]
+  bio_not_in: [String!]
+  bio_lt: String
+  bio_lte: String
+  bio_gt: String
+  bio_gte: String
+  bio_contains: String
+  bio_not_contains: String
+  bio_starts_with: String
+  bio_not_starts_with: String
+  bio_ends_with: String
+  bio_not_ends_with: String
+  guest: Boolean
+  guest_not: Boolean
+  following_every: UserWhereInput
+  following_some: UserWhereInput
+  following_none: UserWhereInput
+  followers_every: UserWhereInput
+  followers_some: UserWhereInput
+  followers_none: UserWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
@@ -145,6 +1387,8 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  userName: String
+  email: String
 }
 `
       }
