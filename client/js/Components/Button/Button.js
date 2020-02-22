@@ -5,12 +5,12 @@ import styles from './styles'
 const Button = () => {
   return (
     <TouchableOpacity
-      style={styles.button}
+      style={styles.button1}
       onPress={() => {
         alert('Button pressed')
       }}
     >
-      <Text style={styles.text}>Button</Text>
+      <Text style={styles.text}>Continue As Guest</Text>
     </TouchableOpacity>
   )
 }
