@@ -1,11 +1,11 @@
 import React from 'react'
-import {Text, SafeAreaView} from 'react-native'
+import {Navigation} from './navigation'
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Text>Larivo</Text>
-    </SafeAreaView>
+    <>
+      <Navigation />
+    </>
   )
 }
 
