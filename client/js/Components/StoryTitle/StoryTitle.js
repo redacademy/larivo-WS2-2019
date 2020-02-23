@@ -2,9 +2,9 @@ import React from 'react'
 import {Text, SafeAreaView, View} from 'react-native'
 import styles from './styles'
 
-const StoryTitles = () => (
+const StoryTitles = ({children}) => (
   <SafeAreaView>
-    <Text style={styles.textTitle}>Im the title</Text>
+    <Text style={styles.textTitle}>{children}</Text>
   </SafeAreaView>
 )
 
