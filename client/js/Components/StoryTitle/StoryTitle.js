@@ -4,7 +4,7 @@ import styles from './styles'
 
 const StoryTitles = () => (
   <SafeAreaView>
-    <Text style={styles.textTitle}>im the title</Text>
+    <Text style={styles.textTitle}>Im the title</Text>
   </SafeAreaView>
 )
 
