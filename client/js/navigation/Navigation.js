@@ -2,6 +2,7 @@ import React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {
+  Login,
   Home,
   BookMark,
   StoryForm,
@@ -14,7 +15,12 @@ const Tab = createBottomTabNavigator()
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Home">
+      <Tab.Navigator initialRouteName="Login">
+      <Tab.Screen
+          name="Login"
+          component={Login}
+          options={{title: 'Login'}}
+        />
         <Tab.Screen
           name="Home"
           component={Home}

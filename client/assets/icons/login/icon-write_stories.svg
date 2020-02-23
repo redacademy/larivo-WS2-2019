@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="111px" height="127px" viewBox="0 0 111 127" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Write Stories Icon@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M99.5,20.8633838 L92.0505505,14.4707681 L84.6101055,23.2304672 L82.7742273,25.3920412 L82.7742273,17.6311385 L82.7742273,2.16470328 C82.7742273,1.09456439 81.9113751,0.227272727 80.846714,0.227272727 L8.42751328,0.227272727 C7.3628522,0.227272727 6.5,1.09456439 6.5,2.16470328 L6.5,113.289842 C6.5,114.359981 7.3628522,115.227273 8.42751328,115.227273 L80.846714,115.227273 C81.9113751,115.227273 82.7742273,114.359981 82.7742273,113.289842 L82.7742273,48.8147727 L82.7742273,40.556069 L92.0595551,29.6236153 L99.5,20.8633838 Z" id="path-1"></path>
+        <filter x="-8.1%" y="-6.5%" width="122.6%" height="118.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="3" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="03-Onboarding-Three-15" transform="translate(-135.000000, -93.000000)">
+            <g id="Write-Stories-Icon" transform="translate(137.500000, 96.000000)">
+                <g id="Book">
+                    <g id="Fill-1">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#03DAC4" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M82.9195213,48.5424468 L82.9195213,112.957872 C82.9195213,114.027021 82.0530319,114.893511 80.983883,114.893511 L8.25941489,114.893511 C7.19026596,114.893511 6.3237766,114.027021 6.3237766,112.957872 L6.3237766,1.93553191 C6.3237766,0.866382979 7.19026596,-0.000106382979 8.25941489,-0.000106382979 L80.983883,-0.000106382979 C82.0530319,-0.000106382979 82.9195213,0.866382979 82.9195213,1.93553191 L82.9195213,17.3876596" id="Stroke-3" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <line x1="0" y1="10.3775532" x2="10.9117021" y2="10.3775532" id="Stroke-5" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></line>
+                    <line x1="0" y1="23.5806383" x2="10.9117021" y2="23.5806383" id="Stroke-7" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></line>
+                    <line x1="0" y1="36.7834574" x2="10.9117021" y2="36.7834574" id="Stroke-9" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></line>
+                    <line x1="0" y1="49.9862766" x2="10.9117021" y2="49.9862766" id="Stroke-11" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></line>
+                    <line x1="0" y1="63.1890957" x2="10.9117021" y2="63.1890957" id="Stroke-13" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></line>
+                    <line x1="0" y1="76.3919149" x2="10.9117021" y2="76.3919149" id="Stroke-15" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></line>
+                    <line x1="0" y1="89.5952128" x2="10.9117021" y2="89.5952128" id="Stroke-17" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></line>
+                    <line x1="0" y1="102.798032" x2="10.9117021" y2="102.798032" id="Stroke-19" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></line>
+                    <path d="M70.6023936,15.4333511 C52.7816489,13.9285638 36.0156915,14.0163298 20.3029255,15.6966489" id="Stroke-21" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></path>
+                    <path d="M70.6023936,26.6035638 C52.7816489,25.0987766 36.0156915,25.1865426 20.3029255,26.8668617" id="Stroke-23" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></path>
+                    <path d="M65.4333511,37.3800532 C49.5312234,36.3013298 34.4876064,36.5204787 20.3030319,38.0369681" id="Stroke-25" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></path>
+                    <path d="M56.4505319,48.0754787 C43.8382979,47.6015426 31.7888298,47.9792021 20.3031915,49.2073936" id="Stroke-27" stroke="#FF844E" stroke-width="3.5" stroke-linecap="round"></path>
+                    <path d="M46.6137234,59.0485638 C37.5376596,59.0294149 28.7674468,59.4725 20.3030851,60.3778191" id="Stroke-29" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></path>
+                    <path d="M37.3821277,70.3621277 C31.5571277,70.5578723 25.8640426,70.9530851 20.3034043,71.547766" id="Stroke-31" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></path>
+                    <path d="M65.0520745,70.8649468 C64.8557979,70.8521809 64.6600532,70.838883 64.4648404,70.8266489" id="Stroke-33" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></path>
+                    <path d="M70.6023936,71.2841489 C68.7406915,71.127234 66.8901596,70.9873404 65.0518617,70.865" id="Stroke-35" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></path>
+                    <path d="M29.3711702,81.9328723 C26.3105319,82.1371277 23.2876596,82.3988298 20.3030851,82.7185106" id="Stroke-37" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></path>
+                    <path d="M70.6023936,82.4543617 C65.2571809,82.002766 60.0066489,81.6947872 54.8513298,81.5304255" id="Stroke-39" stroke="#F1FFFE" stroke-width="3.5" stroke-linecap="round"></path>
+                </g>
+                <g id="Pencil" transform="translate(31.793617, 14.230213)" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5">
+                    <polygon id="Stroke-43" points="11.1715426 72.8584043 3.69069149 66.4711702 52.9694149 8.74882979 60.4507979 15.1355319"></polygon>
+                    <polygon id="Stroke-45" points="-5.29354338e-13 78.3662766 -5.29354338e-13 78.3662766 3.69042553 66.4684043 11.1712766 72.8556383"></polygon>
+                    <polygon id="Stroke-47" points="67.9222872 6.38670213 60.4414362 -1.16351373e-13 52.9696277 8.75159574 60.4504787 15.1388298"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

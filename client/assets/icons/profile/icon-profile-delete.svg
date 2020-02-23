@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="20px" viewBox="0 0 16 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon / Profile / Delete@3x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icon-/-Profile-/-Delete" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M1.37360591,4.925 L14.6263941,4.925 L13.3278227,20.075 L2.67217733,20.075 L1.37360591,4.925 Z" id="Rectangle" stroke="#1E6A62" stroke-width="1.15" stroke-linejoin="round"></path>
+        <line x1="4.75" y1="8" x2="5.5" y2="17" id="Line-Copy" stroke="#1E6A62" stroke-width="1.15" stroke-linecap="round"></line>
+        <line x1="11.25" y1="8" x2="10.75" y2="17" id="Line-Copy-2" stroke="#1E6A62" stroke-width="1.15" stroke-linecap="round"></line>
+        <line x1="8" y1="8" x2="8" y2="17" id="Line" stroke="#1E6A62" stroke-width="1.15" stroke-linecap="round"></line>
+        <line x1="5.5" y1="0.5" x2="10.5" y2="0.5" id="Line-3" stroke="#1E6A62" stroke-width="1.15" stroke-linecap="round"></line>
+        <line x1="0" y1="2.5" x2="16" y2="2.5" id="Line-3-Copy" stroke="#1E6A62" stroke-width="1.15" stroke-linecap="round"></line>
+    </g>
+</svg>

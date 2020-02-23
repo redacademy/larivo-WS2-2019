@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="118px" height="115px" viewBox="0 0 118 115" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Larivo Logo@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M52,0 C80.718807,0 104,21.0408826 104,46.9961267 C104,72.9513707 80.718807,93.9922533 52,93.9922533 C45.7129808,93.9922533 39.686556,92.9838814 34.1079305,91.136328 L18.5535558,102 L18.5526341,82.9816474 C7.20909328,74.3607395 0,61.4393067 0,46.9961267 C0,21.0408826 23.281193,0 52,0 Z M51.7999301,27.0381537 C48.9188851,19.9866794 40.8029276,16.579866 33.6722937,19.4287637 L33.6722937,19.4287637 L33.3732034,19.5522117 C26.7513537,22.3736243 23.4360664,29.7162228 25.6375488,36.4308339 L25.6375488,36.4308339 L28.9319933,48.589475 L28.9293111,48.5910201 L36.137448,75.1938125 L75.0977096,64.8702172 L75.085507,64.8266603 C79.7550188,63.6066927 83.651569,60.0154243 84.9912129,55.0713931 C86.9816321,47.7252206 82.5732047,40.1742815 75.1446763,38.205831 L75.1446763,38.205831 L74.8350489,38.1274696 C72.0863209,37.4643541 69.3203926,37.6602042 66.8331929,38.5460602 L66.8331929,38.5460602 L55.8329933,41.461475 L52.2414886,28.2042422 L52.2184854,28.2100756 C52.0978288,27.8171677 51.958457,27.4261854 51.7999301,27.0381537 Z" id="path-1"></path>
+        <filter x="-9.1%" y="-9.3%" width="122.1%" height="122.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01-Onboarding-One-5" transform="translate(-130.000000, -109.000000)">
+            <g id="Larivo-Logo" transform="translate(135.000000, 114.000000)">
+                <rect id="Rectangle" fill="#03DAC4" fill-rule="evenodd" x="0" y="0" width="104" height="102"></rect>
+                <g>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#F1FFFE" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

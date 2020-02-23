@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon/Resources/Text [Lsrge]@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="9" y="6.5" width="18.5" height="23.5"></rect>
+        <filter x="-10.8%" y="-8.5%" width="121.6%" height="117.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="1" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.4 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Icon/Resources/Text-[Lsrge]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#1E6A62" x="0" y="0" width="37" height="37" rx="6"></rect>
+        <g id="Rectangle">
+            <use fill="#F1FFFE" fill-rule="evenodd" xlink:href="#path-1"></use>
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+        </g>
+        <line x1="13" y1="12.5" x2="23.5" y2="12.5" id="Line-2" stroke="#1E6A62" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="13" y1="18.5" x2="23.5" y2="18.5" id="Line-2-Copy" stroke="#1E6A62" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="13" y1="24.5" x2="23.5" y2="24.5" id="Line-2-Copy-2" stroke="#1E6A62" stroke-width="2" stroke-linecap="square"></line>
+    </g>
+</svg>

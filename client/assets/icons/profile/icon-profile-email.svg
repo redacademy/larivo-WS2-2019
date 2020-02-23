@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="11px" viewBox="0 0 14 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon / Profile / Email@3x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icon-/-Profile-/-Email" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#1E6A62" x="0.5" y="0.5" width="13" height="10" rx="1"></rect>
+        <line x1="1" y1="1" x2="7.05173327" y2="5.84138662" id="Line" stroke="#1E6A62" stroke-linecap="round"></line>
+        <line x1="6.91434839" y1="1" x2="12.9660817" y2="5.84138662" id="Line" stroke="#1E6A62" stroke-linecap="round" transform="translate(9.940215, 3.420693) scale(-1, 1) translate(-9.940215, -3.420693) "></line>
+    </g>
+</svg>

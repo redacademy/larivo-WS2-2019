@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon/Resources/Video [Small]@3x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icon/Resources/Video-[Small]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#1E6A62" x="0" y="0" width="37" height="37" rx="6"></rect>
+        <polygon id="Triangle" fill="#F1FFFE" transform="translate(20.000000, 18.500000) rotate(90.000000) translate(-20.000000, -18.500000) " points="20 10 29 27 11 27"></polygon>
+    </g>
+</svg>

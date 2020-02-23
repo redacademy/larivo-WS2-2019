@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="22px" viewBox="0 0 23 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #03DAC4;">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon / Toolbar / Home [Active]@3x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icon-/-Toolbar-/-Home-[Active]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#03DAC4" x="0" y="0" width="23" height="22"></rect>
+        <path d="M21.1014179,10.30058 L21.1014179,22.875 L13.2320865,22.875 L13.2320865,15.5292267 C13.2320865,14.4430109 12.4612041,13.5945583 11.5543114,13.5945583 C10.6474609,13.5945583 9.87658307,14.4430167 9.87658307,15.5292267 L9.87658307,22.875 L1.89862892,22.875 L1.89862892,10.30058 L-2.44785949,10.30058 L11.4996562,-1.13134821 L25.4479675,10.30058 L21.1014179,10.30058 Z" id="Home-Icon" stroke="#F1FFFE" stroke-width="1.75" fill-opacity="0.6" fill="#F1FFFE" stroke-linejoin="round"></path>
+    </g>
+</svg>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="13px" viewBox="0 0 16 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon / Profile / Grid View@3x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icon-/-Profile-/-Grid-View" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#1E6A62" stroke-width="1.5" x="0.75" y="0.75" width="14.5" height="11.5" rx="3"></rect>
+        <line x1="1.5" y1="6.5" x2="14.5" y2="6.5" id="Line-2" stroke="#1E6A62" stroke-linecap="square"></line>
+        <line x1="8" y1="0.5" x2="8" y2="11.5" id="Line" stroke="#1E6A62" stroke-linecap="square"></line>
+    </g>
+</svg>

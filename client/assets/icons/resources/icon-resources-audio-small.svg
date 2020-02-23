@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon/Resources/Audio [Small]@3x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icon/Resources/Audio-[Small]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#1E6A62" x="0" y="0" width="37" height="37" rx="6"></rect>
+        <polygon id="Stroke-1" fill="#F1FFFE" points="11.8102014 13.8212333 8 13.8212333 8 23.1788327 11.8102014 23.1788327 19 28 19 23.1788327 19 13.8212333 19 9"></polygon>
+        <path d="M22,15 C24.25,19.2214348 22,23 22,23" id="Stroke-3" stroke="#F1FFFE" stroke-width="1.5"></path>
+        <path d="M25,12 C29.5,18.8597937 25,25 25,25" id="Stroke-5" stroke="#F1FFFE" stroke-width="1.5"></path>
+    </g>
+</svg>
