@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #03DAC4;">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon / Reactions / Sad [Active]@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="9.5" cy="9.5" r="9.5"></circle>
+        <filter x="-13.2%" y="-13.2%" width="136.8%" height="136.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Icon-/-Reactions-/-Sad-[Active]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#03DAC4" x="0" y="0" width="19" height="19"></rect>
+        <g id="Oval">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use fill="#F1FFFE" fill-rule="evenodd" xlink:href="#path-1"></use>
+        </g>
+        <circle id="Oval" fill="#FF844E" cx="5.80555556" cy="6.86111111" r="1.58333333"></circle>
+        <circle id="Oval-Copy" fill="#FF844E" cx="13.1944444" cy="6.86111111" r="1.58333333"></circle>
+        <path d="M6.86111111,13.6739798 C7.56328912,12.4984584 10.8820338,12.1551341 12.1388889,13.7222222" id="Stroke-8" stroke="#FF844E" stroke-width="1.58333333" stroke-linecap="round"></path>
+    </g>
+</svg>

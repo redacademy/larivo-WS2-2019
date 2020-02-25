@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon/Resources/Audio [Large]@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="11.8102014 13.8212333 8 13.8212333 8 23.1788327 11.8102014 23.1788327 19 28 19 23.1788327 19 13.8212333 19 9"></polygon>
+        <filter x="-18.2%" y="-10.5%" width="136.4%" height="121.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="1" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Icon/Resources/Audio-[Large]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#1E6A62" x="0" y="0" width="37" height="37" rx="6"></rect>
+        <g id="Stroke-1">
+            <use fill="#F1FFFE" fill-rule="evenodd" xlink:href="#path-1"></use>
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+        </g>
+        <path d="M22,15 C24.25,19.2214348 22,23 22,23" id="Stroke-3" stroke="#F1FFFE" stroke-width="1.5"></path>
+        <path d="M25,12 C29.5,18.8597937 25,25 25,25" id="Stroke-5" stroke="#F1FFFE" stroke-width="1.5"></path>
+    </g>
+</svg>

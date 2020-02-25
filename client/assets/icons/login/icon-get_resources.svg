@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="112px" height="97px" viewBox="0 0 112 97" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Get Resources Icon@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M102.465543,66.87448 L93.0253881,60.0759375 L93.0253881,7.74687514 C93.0253881,3.94778839 89.9458254,0.868225635 86.1472183,0.868225635 L7.26676076,0.868225635 C3.46815368,0.868225635 0.388590932,3.94778839 0.388590932,7.74687514 L0.388590932,80.743545 C0.388590932,84.5421521 3.46815368,87.6217149 7.26676076,87.6217149 L86.1472183,87.6217149 C89.9458254,87.6217149 93.0253881,84.5421521 93.0253881,80.743545 L93.0253881,66.9920022 L99.1965057,71.4592869 L102.465543,66.87448 Z" id="path-1"></path>
+        <filter x="-6.4%" y="-7.5%" width="116.7%" height="119.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="04-Onboarding-Four-6" transform="translate(-132.000000, -121.000000)">
+            <g id="Get-Resources-Icon" transform="translate(135.000000, 123.000000)">
+                <g id="Fill-1">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#03DAC4" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="Magnifying-Glass" transform="translate(48.356810, 26.747585)" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.67676768">
+                    <path d="M30.0388801,3.88029703 C38.5805895,9.9713076 40.5669554,21.8333804 34.4759448,30.3750897 C28.3849343,38.916799 16.5228615,40.903165 7.98163184,34.8121544 C-0.560077487,28.7216235 -2.54692311,16.8590711 3.54456713,8.31736175 C9.63509801,-0.223867903 21.4971708,-2.21071353 30.0388801,3.88029703 Z" id="Stroke-30"></path>
+                    <polygon id="Stroke-32" points="54.108733 40.652147 50.8396956 45.236954 32.9561662 32.4845902 36.2256833 27.8997832"></polygon>
+                </g>
+                <g id="Website" transform="translate(0.000000, 0.410608)" stroke-width="3.5">
+                    <path d="M93.025532,73.6553701 L93.025532,80.3330326 C93.025532,84.1316397 89.9459693,87.2112024 86.1473622,87.2112024 L7.26690466,87.2112024 C3.46781791,87.2112024 0.388255154,84.1316397 0.388255154,80.3330326 L0.388255154,7.33636271 C0.388255154,3.53727596 3.46781791,0.457713205 7.26690466,0.457713205 L86.1473622,0.457713205 C89.9459693,0.457713205 93.025532,3.53727596 93.025532,7.33636271 L93.025532,52.9047775" id="Stroke-3" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <line x1="0.388494996" y1="14.3960445" x2="93.0257719" y2="14.3960445" id="Stroke-5" stroke="#F1FFFE"></line>
+                    <line x1="7.37152345" y1="7.62378857" x2="12.5520963" y2="7.62378857" id="Stroke-7" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="18.0048891" y1="7.62378857" x2="23.1854619" y2="7.62378857" id="Stroke-9" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="28.6382067" y1="7.62378857" x2="33.8187796" y2="7.62378857" id="Stroke-11" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="58.7024621" y1="34.9024787" x2="74.6715779" y2="34.9024787" id="Stroke-13" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="40.5408127" y1="34.9024787" x2="45.2680854" y2="34.9024787" id="Stroke-15" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="54.0695909" y1="46.0949144" x2="74.6714819" y2="46.0949144" id="Stroke-17" stroke="#FF844E" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="40.5408127" y1="46.0949144" x2="42.9042092" y2="46.0949144" id="Stroke-19" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="60.9308279" y1="57.2875901" x2="74.6718177" y2="57.2875901" id="Stroke-21" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="40.5408127" y1="57.2875901" x2="46.2471178" y2="57.2875901" id="Stroke-23" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="40.5408127" y1="68.4800258" x2="57.094182" y2="68.4800258" id="Stroke-25" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <polygon id="Stroke-27" stroke="#F1FFFE" stroke-linecap="round" stroke-linejoin="round" points="9.96157004 68.4799779 31.2283013 68.4799779 31.2283013 34.9021909 9.96157004 34.9021909"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

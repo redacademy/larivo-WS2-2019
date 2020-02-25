@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon / Resources / Event [No Shadow]@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9,6 L9,3" id="path-1"></path>
+        <filter x="-450.0%" y="-112.5%" width="1200.0%" height="375.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="1" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="1" dy="1" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.33 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M28,6 L28,3" id="path-3"></path>
+        <filter x="-450.0%" y="-112.5%" width="1200.0%" height="375.0%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="1" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="1" dy="1" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.33 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Icon-/-Resources-/-Event-[No-Shadow]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#1E6A62" x="0" y="0" width="37" height="37" rx="6"></rect>
+        <line x1="1.28369537e-16" y1="10" x2="37" y2="10" id="Line-2" stroke="#F1FFFE"></line>
+        <g id="Line-5" stroke-linecap="round">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use stroke="#F1FFFE" stroke-width="2" xlink:href="#path-1"></use>
+        </g>
+        <g id="Line-5-Copy" stroke-linecap="round">
+            <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+            <use stroke="#F1FFFE" stroke-width="2" xlink:href="#path-3"></use>
+        </g>
+        <rect id="Rectangle" fill="#F1FFFE" x="5.5" y="15.5" width="6" height="6"></rect>
+        <rect id="Rectangle-Copy-3" fill="#F1FFFE" x="5.5" y="25.5" width="6" height="6"></rect>
+        <rect id="Rectangle-Copy" fill="#F1FFFE" x="15.5" y="15.5" width="6" height="6"></rect>
+        <rect id="Rectangle-Copy-4" fill="#F1FFFE" x="15.5" y="25.5" width="6" height="6"></rect>
+        <rect id="Rectangle-Copy-2" fill="#F1FFFE" x="25.5" y="15.5" width="6" height="6"></rect>
+        <rect id="Rectangle-Copy-5" fill="#F1FFFE" x="25.5" y="25.5" width="6" height="6"></rect>
+    </g>
+</svg>

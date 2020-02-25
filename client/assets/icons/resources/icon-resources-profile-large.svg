@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon / Resources / Profile@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M18.5000088,9 C21.2982866,9 23.5666755,11.2271098 23.5666755,13.9744657 C23.5666755,16.2601113 21.9966547,18.1856786 19.8576648,18.7683327 C24.461316,19.4142309 28,23.3013638 28,28 L28,28 L9,28 C9,23.3013638 12.538684,19.4142309 17.1422137,18.7674216 C15.0033629,18.1856786 13.4333421,16.2601113 13.4333421,13.9744657 C13.4333421,11.2271098 15.701731,9 18.5000088,9 Z" id="path-1"></path>
+        <filter x="-7.9%" y="-7.9%" width="115.8%" height="115.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="1" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="1" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.4 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Icon-/-Resources-/-Profile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#1E6A62" x="0" y="0" width="37" height="37" rx="6"></rect>
+        <g id="Combined-Shape">
+            <use fill="#F1FFFE" fill-rule="evenodd" xlink:href="#path-1"></use>
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

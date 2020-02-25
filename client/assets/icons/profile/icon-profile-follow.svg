@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="16px" viewBox="0 0 54 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon/Profile/Follow@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="54" height="16" rx="8"></rect>
+        <filter x="-7.4%" y="-25.0%" width="118.5%" height="162.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Icon/Profile/Follow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Rectangle">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use fill="#F1FFFE" fill-rule="evenodd" xlink:href="#path-1"></use>
+        </g>
+        <text id="Follow" font-family="SFProText-Regular, SF Pro Text" font-size="13" font-weight="normal" letter-spacing="-0.66" fill="#1E6A62">
+            <tspan x="9.89748047" y="14.5">Follow</tspan>
+        </text>
+    </g>
+</svg>
