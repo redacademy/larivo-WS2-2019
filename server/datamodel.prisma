@@ -15,12 +15,12 @@ type Story {
   title: String! 
   content: String!  
   readTime: String!
-  hashtags: [Hashtag!]!
-  likes: [Like!]!
-  loves: [Love!]!
-  neutrals: [Neutral!]!
-  sads: [Sad!]!
-  claps: [Clap!]!
+  hashtags: [User!]! @relation(name: "User")
+  likes: [User!]! @relation(name: "User")
+  loves: [User!]! @relation(name: "User")
+  neutrals: [User!]! @relation(name: "User")
+  sads: [User!]! @relation(name: "User")
+  claps: [User!]! @relation(name: "User")
   isPublished: Boolean! @default(value: false)
 }
 
@@ -29,23 +29,4 @@ type Hashtag {
   name: String!
 }
 
-type Like {
-  id: ID! @id
-}
-
-type Love {
-  id: ID! @id
-}
-
-type Neutral {
-  id: ID! @id
-}
-
-type Sad {
-  id: ID! @id
-}
-
-type Clap {
-  id: ID! @id
-}
 
