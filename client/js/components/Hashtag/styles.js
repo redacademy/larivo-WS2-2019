@@ -6,14 +6,15 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.3)',
     alignItems: 'center',
     justifyContent: 'center',
-    maxWidth: 90,
-    height: 25,
+
     backgroundColor: '#ffff',
     borderRadius: 50,
   },
   hashtagsText: {
     color: '#1e6a62',
     fontWeight: '500',
+    paddingVertical: 5,
+    paddingHorizontal: 8,
   },
 })
 
