@@ -5,7 +5,7 @@ import styles from './styles'
 const NameInitials = ({children}) => (
   <TouchableOpacity>
     <View style={styles.initialBox}>
-      <Text style={styles.initialText}>JV</Text>
+      <Text style={styles.initialText}>{children}</Text>
     </View>
   </TouchableOpacity>
 )
