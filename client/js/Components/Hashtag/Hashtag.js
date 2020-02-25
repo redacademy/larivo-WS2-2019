@@ -2,7 +2,7 @@ import React from 'react'
 import {Text, View, TouchableOpacity} from 'react-native'
 import styles from './styles'
 
-const Hashtags = ({children}) => (
+const Hashtag = ({children}) => (
   <TouchableOpacity
     onPress={() => {
       alert('hashtag pressed')
@@ -14,4 +14,4 @@ const Hashtags = ({children}) => (
   </TouchableOpacity>
 )
 
-export default Hashtags
+export default Hashtag

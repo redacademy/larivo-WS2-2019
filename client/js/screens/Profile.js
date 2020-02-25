@@ -10,7 +10,7 @@ import Button from '../Components/Button'
 import StoryTitle from '../Components/StoryTitle'
 import StoryAuthor from '../Components/StoryAuthor'
 import NameInitials from '../Components/NameInitials'
-import Hashtags from '../Components/Hashtags'
+import Hashtag from '../Components/Hashtag'
 
 const Profile = () => {
   return (
@@ -49,10 +49,10 @@ const Profile = () => {
             flexDirection: 'row',
           }}
         >
-          <Hashtags>Anxiety</Hashtags>
+          <Hashtag>Anxiety</Hashtag>
 
-          <Hashtags>Happyness</Hashtags>
-          <Hashtags>Random</Hashtags>
+          <Hashtag>Happyness</Hashtag>
+          <Hashtag>Random</Hashtag>
         </View>
       </SafeAreaView>
     </ScrollView>
