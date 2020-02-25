@@ -11,6 +11,7 @@ import StoryTitle from '../components/StoryTitle'
 import StoryAuthor from '../components/StoryAuthor'
 import NameInitials from '../components/NameInitials'
 import Hashtag from '../components/Hashtag'
+import ReactionBar from '../components/ReactionBar'
 
 const Profile = () => {
   return (
@@ -52,6 +53,13 @@ const Profile = () => {
 
           <Hashtag>Happyness</Hashtag>
           <Hashtag>Randomdjhfhdvhdfhgd</Hashtag>
+        </View>
+
+        <View style={{paddingTop: 30, paddingLeft: 50}}>
+          <ReactionBar type="like" />
+          <ReactionBar type="love" />
+          {/* <ReactionBar type="claps" /> */}
+          <ReactionBar type="love" />
         </View>
       </SafeAreaView>
     </ScrollView>
