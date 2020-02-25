@@ -9,12 +9,16 @@ import {
 import Button from '../Components/Button'
 import StoryTitle from '../Components/StoryTitle'
 import StoryAuthor from '../Components/StoryAuthor'
+import NameInitials from '../Components/NameInitials'
 
 const Profile = () => {
   return (
     <ScrollView style={{backgroundColor: '#03dac4'}}>
       <SafeAreaView>
         <Text>Profile Page</Text>
+        <View style={{paddingTop: 30, paddingLeft: 50}}>
+          <NameInitials />
+        </View>
         <View style={{paddingTop: 30, paddingLeft: 50}}>
           <StoryTitle> I'm the Title </StoryTitle>
         </View>

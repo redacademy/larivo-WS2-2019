@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
   textTitle: {
     fontSize: 25,
-    color: 'black',
+    color: '#13443c',
     fontWeight: 'bold',
   },
 })
