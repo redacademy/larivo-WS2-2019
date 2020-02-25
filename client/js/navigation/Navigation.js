@@ -23,7 +23,7 @@ const Navigation = () => {
         <Tab.Screen
           name="Bookmark"
           component={BookMark}
-          options={{title: 'BookMark'}}
+          options={{title: 'Bookmark'}}
         />
         <Tab.Screen
           name="StoryForm"
