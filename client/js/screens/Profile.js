@@ -6,18 +6,17 @@ import {
   View,
   ScrollView,
 } from 'react-native'
-import Button from '../Components/Button'
-import StoryTitle from '../Components/StoryTitle'
-import StoryAuthor from '../Components/StoryAuthor'
-import NameInitials from '../Components/NameInitials'
-import Hashtag from '../Components/Hashtag'
+import Button from '../components/Button'
+import StoryTitle from '../components/StoryTitle'
+import StoryAuthor from '../components/StoryAuthor'
+import NameInitials from '../components/NameInitials'
+import Hashtag from '../components/Hashtag'
 
 const Profile = () => {
   return (
     <ScrollView style={{backgroundColor: '#03dac4'}}>
       <SafeAreaView>
         <Text>Profile Page</Text>
-
         <View
           style={{
             paddingTop: 30,
