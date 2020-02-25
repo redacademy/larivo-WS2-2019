@@ -41,7 +41,14 @@ const Profile = () => {
         <View style={{paddingTop: 30, paddingLeft: 50}}>
           <Button>Log In</Button>
         </View>
-        <View style={{paddingTop: 30, paddingLeft: 50}}>
+        <View
+          style={{
+            paddingTop: 30,
+            paddingLeft: 50,
+            display: 'flex',
+            flexDirection: 'row',
+          }}
+        >
           <Hashtags>Anxiety</Hashtags>
 
           <Hashtags>Happyness</Hashtags>
