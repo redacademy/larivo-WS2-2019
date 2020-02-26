@@ -24,7 +24,7 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     width: 120,
-    marginTop: 52
+    marginTop: 40
   }
 }
 
@@ -98,7 +98,7 @@ const LoginSlideContainer = () => {
                 key={i} 
                 style={{
                 height: 10, width: 10,
-                backgroundColor: 'none', margin: 12, borderRadius: 5,
+                backgroundColor: 'none',  borderRadius: 5,
                 borderWidth: borderWidth, borderColor: 'white',
                 transform: [{ scaleX: scale }, { scaleY: scale }]
               }} />
