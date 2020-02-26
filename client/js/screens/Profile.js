@@ -12,6 +12,7 @@ import StoryAuthor from '../components/StoryAuthor'
 import NameInitials from '../components/NameInitials'
 import Hashtag from '../components/Hashtag'
 import ReactionBar from '../components/ReactionBar'
+import Bookmar from '../components/Bookmark/Bookmark'
 
 const Profile = () => {
   return (
@@ -28,6 +29,7 @@ const Profile = () => {
         >
           <NameInitials>RV</NameInitials>
           <StoryTitle>I'm the Title</StoryTitle>
+          <Bookmar />
         </View>
         <View style={{paddingTop: 10, paddingLeft: 50}}>
           <StoryAuthor> I'm the author name</StoryAuthor>
