@@ -8,3 +8,5 @@ export const ActiveClap = require('./reactions/icon-reactions-high_five-active.s
 export const InActiveClap = require('./reactions/icon-reactions-high_five-inactive.svg')
 export const ActiveSad = require('./reactions/icon-reactions-sad-active.svg')
 export const InActiveSad = require('./reactions/icon-reactions-sad-inactive.svg')
+export const ActiveSpeechless = require('./reactions/icon-reactions-speechless-active.svg')
+export const InActiveSpeechless = require('./reactions/icon-reactions-speechless-inactive.svg')

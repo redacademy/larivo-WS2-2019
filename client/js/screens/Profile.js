@@ -52,7 +52,7 @@ const Profile = () => {
           <Hashtag>Anxiety</Hashtag>
 
           <Hashtag>Happyness</Hashtag>
-          <Hashtag>Randomdjhfhdvhdfhgd</Hashtag>
+          <Hashtag>Random</Hashtag>
         </View>
 
         <View style={{paddingTop: 30, paddingLeft: 50}}>
