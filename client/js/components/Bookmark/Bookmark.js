@@ -8,19 +8,13 @@ import {
 import ActiveBookmark from '../../../assets/icons/login/icon-bookmark-active.svg'
 import InActiveBookmark from '../../../assets/icons/login/icon-bookmark-inactive.svg'
 
-const Bookmark = ({type}) => {
+const Bookmark = () => {
   const [bookmarked, setBookmark] = useState(false)
   const handlePress = () => setBookmark(!bookmarked)
   return (
     <View>
       <TouchableOpacity onPress={handlePress}>
-        {type === 'booked' ? (
-          bookmarked ? (
-            <ActiveBookmark />
-          ) : (
-            <InActiveBookmark />
-          )
-        ) : null}
+        {bookmarked ? <ActiveBookmark /> : <InActiveBookmark />}
       </TouchableOpacity>
     </View>
   )

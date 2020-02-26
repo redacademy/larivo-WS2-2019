@@ -12,7 +12,7 @@ import StoryAuthor from '../components/StoryAuthor'
 import NameInitials from '../components/NameInitials'
 import Hashtag from '../components/Hashtag'
 import ReactionBar from '../components/ReactionBar'
-import Bookmar from '../components/Bookmark/Bookmark'
+import Bookmark from '../components/Bookmark/Bookmark'
 
 const Profile = () => {
   return (
@@ -29,7 +29,7 @@ const Profile = () => {
         >
           <NameInitials>RV</NameInitials>
           <StoryTitle>I'm the Title</StoryTitle>
-          <Bookmar type="booked" />
+          <Bookmark />
         </View>
         <View style={{paddingTop: 10, paddingLeft: 50}}>
           <StoryAuthor> I'm the author name</StoryAuthor>
@@ -51,9 +51,9 @@ const Profile = () => {
             flexDirection: 'row',
           }}
         >
-          <Hashtag>Anxiety</Hashtag>
+          <Hashtag>Can't touch this.</Hashtag>
 
-          <Hashtag>Happyness</Hashtag>
+          <Hashtag disabled>Happyness</Hashtag>
           <Hashtag>Random</Hashtag>
         </View>
 
