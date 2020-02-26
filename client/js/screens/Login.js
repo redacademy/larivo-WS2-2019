@@ -1,10 +1,10 @@
 import React from 'react'
-import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
-import Larivo_logo from '../../assets/icons/login/icon-larivo_logo.svg'
+import { Text, View, SafeAreaView, TouchableOpacity, Dimensions } from 'react-native'
 import Circle from '../../assets/icons/login/circle.svg'
 import Circle_O from '../../assets/icons/login/circle-o.svg'
-import LoginScrollViews from '../components/LoginScrollViews'
+import LoginSlideContainer from '../components/LoginSlideContainer'
 
+const screenWidth = Dimensions.get('window').width
 
 const styles = {
   container: {
@@ -16,9 +16,10 @@ const styles = {
 
   },
   slidesContainer: {
-    alignItems: 'center',
+    flex: 1, justifyContent: 'center', alignItems: 'center',
     marginTop: 20,
-    width: 240,
+    width: '100%',
+    padding: 10
   },
   logo: {
     shadowColor: 'rgba(0,0,0,0.25)',
@@ -69,6 +70,9 @@ const styles = {
     color: '#13443C',
     fontWeight: '600',
     textDecorationLine: 'underline'
+  },
+  scrollViewContainer: {
+    width : screenWidth
   }
 }
 
@@ -77,7 +81,15 @@ const Login = () => {
     <SafeAreaView>
       <View style={styles.container}>
         <View style={styles.slidesContainer}>
-          <LoginScrollViews />
+          
+            <LoginSlideContainer />
+
+          {/* <View style={styles.swap_circles_container}>
+              <Circle style={styles.oval}></Circle>
+              <Circle_O style={styles.oval}></Circle_O>
+              <Circle_O style={styles.oval}></Circle_O>
+              <Circle_O style={styles.oval}></Circle_O>
+            </View> */}
             <View style={styles.buttons_container}>
               <TouchableOpacity
                 style={styles.button}
