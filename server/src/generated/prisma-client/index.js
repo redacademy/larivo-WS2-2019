@@ -15,26 +15,6 @@ var models = [
   {
     name: "Hashtag",
     embedded: false
-  },
-  {
-    name: "Like",
-    embedded: false
-  },
-  {
-    name: "Love",
-    embedded: false
-  },
-  {
-    name: "Neutral",
-    embedded: false
-  },
-  {
-    name: "Sad",
-    embedded: false
-  },
-  {
-    name: "Clap",
-    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({

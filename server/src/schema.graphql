@@ -1,0 +1,54 @@
+type Query {
+  feed: [Story!]!
+  drafts: [Story!]!
+  users: [User!]!
+  story(id: ID!): Story
+  me: User
+}
+
+type Mutation {
+  signup(email: String!, password: String!, name: String!): AuthPayload!
+  login(email: String!, password: String!): AuthPayload!
+  createStory(title: String!, content: String!, hashtags: [String!]!): Story!
+  createDraft(title: String!, content: String!, hashtags: [String!]!): Story!
+  publish(id: ID!): Story!
+}
+
+type Subscription {
+  feedSubscription: Story
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type User {
+  id: ID!
+  userName: String!
+  email: String!
+  bio: String!
+  guest: Boolean!
+  following: [User!]!
+  followers: [User!]!
+}
+
+type Story {
+  id: ID!
+  createdAt: String!
+  title: String!
+  content: String!
+  author: User!
+  hashtags: [User!]!
+  likes: [User!]!
+  loves: [User!]!
+  neutrals: [User!]!
+  sads: [User!]!
+  claps: [User!]!
+  published: Boolean!
+}
+
+type Hashtag {
+  id: ID!
+  name: String!
+}
