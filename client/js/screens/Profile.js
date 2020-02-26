@@ -55,11 +55,19 @@ const Profile = () => {
           <Hashtag>Random</Hashtag>
         </View>
 
-        <View style={{paddingTop: 30, paddingLeft: 50}}>
+        <View
+          style={{
+            paddingTop: 30,
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+          }}
+        >
           <ReactionBar type="like" />
           <ReactionBar type="love" />
-          {/* <ReactionBar type="claps" /> */}
-          <ReactionBar type="love" />
+          <ReactionBar type="clap" />
+          <ReactionBar type="speechless" />
+          <ReactionBar type="sad" />
         </View>
       </SafeAreaView>
     </ScrollView>
