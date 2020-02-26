@@ -29,7 +29,7 @@ const Profile = () => {
         >
           <NameInitials>RV</NameInitials>
           <StoryTitle>I'm the Title</StoryTitle>
-          <Bookmar />
+          <Bookmar type="booked" />
         </View>
         <View style={{paddingTop: 10, paddingLeft: 50}}>
           <StoryAuthor> I'm the author name</StoryAuthor>
