@@ -18,7 +18,8 @@ const styles = {
     marginTop: 10,
     fontSize: 16,
     width: 240,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#13443C'
   },
   scrollViewContainer: {
     width : screenWidth

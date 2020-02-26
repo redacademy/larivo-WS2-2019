@@ -1,31 +1,11 @@
 import React from 'react'
 import { View, ScrollView, Dimensions, Animated, Text } from 'react-native'
 import LoginSlide from '../LoginSlide'
-import Larivo_logo from '../../../assets/icons/login/icon-larivo_logo.svg'
-// import Circle from '../../../assets/icons/login/circle.svg'
-// import Circle_O from '../../../assets/icons/login/circle-o.svg'
-import Svg, {
-  Circle,
-  Ellipse,
-  G,
-  TSpan,
-  TextPath,
-  Path,
-  Polygon,
-  Polyline,
-  Line,
-  Rect,
-  Use,
-  Image,
-  Symbol,
-  Defs,
-  LinearGradient,
-  RadialGradient,
-  Stop,
-  ClipPath,
-  Pattern,
-  Mask,
-} from 'react-native-svg';
+import Larivo from '../../../assets/icons/login/icon-larivo_logo.svg'
+import ReadStories from '../../../assets/icons/login/icon-read_stories.svg'
+import WriteStories from '../../../assets/icons/login/icon-write_stories.svg'
+import GetResources from '../../../assets/icons/login/icon-get_resources.svg'
+
 
 const screenWidth = Dimensions.get('window').width
 
@@ -50,19 +30,25 @@ const styles = {
 
 const slides = [
   {
-    logo: Larivo_logo,
+    logo: Larivo,
     headline: 'Larivo',
     body: 'A safe platform to share curated mental health stories and find mental health resources.'
   },
   {
-    logo: Larivo_logo,
-    headline: 'Larivo',
-    body: 'A safe platform to share curated mental health stories and find mental health resources.'
+    logo: ReadStories,
+    headline: 'Read Stories',
+    body: 'Come across life journeys and discover the paths others have pursued and experienced.'
   },
   {
-    logo: Larivo_logo,
-    headline: 'Larivo',
-    body: 'A safe platform to share curated mental health stories and find mental health resources.'
+    logo: WriteStories,
+    headline: 'Write Stories',
+    body: 'Find a safe platform to open up and contribute to the community, embracing mental wellness.'
+  }
+  ,
+  {
+    logo: GetResources,
+    headline: 'Get Resources',
+    body: 'Find local resources and curated information from Larivo and community partners.'
   }
 ]
 
@@ -81,44 +67,44 @@ const LoginSlideContainer = () => {
           showsHorizontalScrollIndicator={false}
           centerContent={true}
           style={styles.scrollView}
-          onScroll={Animated.event( 
+          onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { x: scrollX } } }]
-            )} 
-            scrollEventThrottle={16}
-          >
+          )}
+          scrollEventThrottle={16}
+        >
           {slides.map((item, i) => {
-            return(
-            <LoginSlide item={item} key={i}/>
+            return (
+              <LoginSlide item={item} key={i} />
             )
           })}
-          </ScrollView>
+        </ScrollView>
       </View>
       <View
-          style={styles.circles_container} 
-          >
-          {slides.map((_, i) => { 
-            let scale = position.interpolate({
-              inputRange: [i - 1, i, i + 1], 
-              outputRange: [1.2, 1.8, 1.2], 
-              extrapolate: 'clamp' 
-            });
-            let borderWidth = position.interpolate({
-              inputRange: [i - 1, i, i + 1], 
-              outputRange: [1, 3, 1], 
-              extrapolate: 'clamp' });
-            return (
-              <Animated.View // we will animate the opacity of the dots so use Animated.View instead of View here
-                key={i} // we will use i for the key because no two (or more) elements in an array will have the same index
-                style={{ height: 10, width: 10, 
-                  backgroundColor: 'none', margin: 12, borderRadius: 5,
-                  borderWidth: borderWidth, borderColor: 'white', 
-                  transform:[{scaleX: scale}, {scaleY: scale}]}} />
-            );
-          })}
-        </View>
-       
-
-
+        style={styles.circles_container}
+      >
+        {slides.map((_, i) => {
+          let scale = position.interpolate({
+            inputRange: [i - 1, i, i + 1],
+            outputRange: [1.2, 1.8, 1.2],
+            extrapolate: 'clamp'
+          });
+          let borderWidth = position.interpolate({
+            inputRange: [i - 1, i, i + 1],
+            outputRange: [1, 3, 1],
+            extrapolate: 'clamp'
+          });
+          return (
+            <Animated.View
+                key={i} 
+                style={{
+                height: 10, width: 10,
+                backgroundColor: 'none', margin: 12, borderRadius: 5,
+                borderWidth: borderWidth, borderColor: 'white',
+                transform: [{ scaleX: scale }, { scaleY: scale }]
+              }} />
+          );
+        })}
+      </View>
     </>
   )
 }
