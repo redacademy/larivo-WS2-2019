@@ -10,10 +10,13 @@ const styles = StyleSheet.create({
     shadowRadius: 7,
   },
   headline: {
+    fontFamily: 'Asap-BoldItalic',
     fontSize: 32,
     marginTop: 25,
+    color: '#13443C'
   },
   bodyText: {
+    fontFamily: 'SFProText-Light',
     marginTop: 10,
     fontSize: 16,
     width: 240,
