@@ -23,7 +23,8 @@ const Profile = () => {
       <Header>
         <NameInitials>RV</NameInitials>
         <StoryTitle>Roaring Velvet</StoryTitle>
-        {/* <Follow /> */}
+
+        <Follow type="follow" />
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
           do eiusmod tempor incididunt ut labore et dolore magna
