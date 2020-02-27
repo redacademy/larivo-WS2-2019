@@ -1,18 +1,18 @@
 import React from 'react'
-import {TouchableOpacity, Text} from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import styles from './styles'
 
-const Button = ({children}) => {
-  return (
+const Button = (props) => (
+  <>
     <TouchableOpacity
-      style={styles.button1}
+      style={styles(props).button }
       onPress={() => {
-        alert('Button pressed')
+        alert(props.text)
       }}
     >
-      <Text style={styles.text}>{children}</Text>
+      <Text style={styles.text}>{props.children}</Text>
     </TouchableOpacity>
-  )
-}
-
+  </>
+)
 export default Button
+

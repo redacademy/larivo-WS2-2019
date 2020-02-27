@@ -38,7 +38,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -53,5 +53,18 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Asap-Bold.ttf</string>
+		<string>Asap-BoldItalic.ttf</string>
+		<string>Asap-Italic.ttf</string>
+		<string>Asap-Medium.ttf</string>
+		<string>Asap-MediumItalic.ttf</string>
+		<string>Asap-Regular.ttf</string>
+		<string>Asap-SemiBold.ttf</string>
+		<string>Asap-SemiBoldItalic.ttf</string>
+		<string>SFProText-Regular.ttf</string>
+		<string>SFProText-Light.ttf</string>
+	</array>
 </dict>
 </plist>
