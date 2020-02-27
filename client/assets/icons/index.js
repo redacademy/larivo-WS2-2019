@@ -22,3 +22,4 @@ export const InActiveBookmark = require('./login/icon-bookmark-inactive.svg')
 // Follow Icon
 
 export const FollowIcon = require('./profile/icon-profile-follow.svg')
+export const FollowingIcon = require('./profile/icon-profile-follow_active.svg')

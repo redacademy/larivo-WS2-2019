@@ -22,9 +22,16 @@ const Profile = () => {
     <ScrollView style={{backgroundColor: '#ffff'}}>
       <Header>
         <NameInitials>RV</NameInitials>
-        <StoryTitle>Roaring Velvet</StoryTitle>
-
-        <Follow type="follow" />
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <StoryTitle>Roaring Velvet</StoryTitle>
+          <Follow type="follow" />
+        </View>
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
           do eiusmod tempor incididunt ut labore et dolore magna

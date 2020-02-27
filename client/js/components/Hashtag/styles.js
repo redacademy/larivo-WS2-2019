@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
 
-    backgroundColor: 'green',
+    backgroundColor: '#1e6a62',
     borderRadius: 50,
   },
   hashtagsText: {
