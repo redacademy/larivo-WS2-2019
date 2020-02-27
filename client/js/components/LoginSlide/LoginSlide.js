@@ -1,30 +1,8 @@
 import React from 'react'
 import { Text, View, SafeAreaView, ScrollView, Dimensions } from 'react-native'
-// import Larivo_logo from '../../../assets/icons/login/icon-larivo_logo.svg'
+import styles from './styles'
 
 const screenWidth = Dimensions.get('window').width
-
-const styles = {
-  logo: {
-    shadowColor: 'rgba(0,0,0,0.25)',
-    shadowOffset: { width: 2, height: 2 },
-    shadowRadiusa: 7,
-  },
-  headline: {
-    fontSize: 32,
-    marginTop: 25,
-  },
-  bodyText: {
-    marginTop: 10,
-    fontSize: 16,
-    width: 240,
-    textAlign: 'center',
-    color: '#13443C'
-  },
-  scrollViewContainer: {
-    width : screenWidth
-  }
-}
 
 const LoginSlide = ({item}) => {
 

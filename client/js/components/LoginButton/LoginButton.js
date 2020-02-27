@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, SafeAreaView, TouchableOpacity, Dimensions } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 
 const styles = {
   button: {
