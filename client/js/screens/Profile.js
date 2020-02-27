@@ -13,12 +13,32 @@ import NameInitials from '../components/NameInitials'
 import Hashtag from '../components/Hashtag'
 import ReactionBar from '../components/ReactionBar'
 import Bookmark from '../components/Bookmark/Bookmark'
+import Header from '../components/Header/Header'
+import Paragraph from '../components/Paragraph/Paragraph'
+import Follow from '../components/Follow/Follow'
 
 const Profile = () => {
   return (
-    <ScrollView style={{backgroundColor: '#03dac4'}}>
+    <ScrollView style={{backgroundColor: '#ffff'}}>
+      <Header>
+        <NameInitials>RV</NameInitials>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <StoryTitle>Roaring Velvet</StoryTitle>
+          <Follow type="follow" />
+        </View>
+        <Paragraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+          do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua.
+        </Paragraph>
+      </Header>
       <SafeAreaView>
-        <Text>Profile Page</Text>
         <View
           style={{
             paddingTop: 30,
@@ -27,7 +47,6 @@ const Profile = () => {
             flexDirection: 'row',
           }}
         >
-          <NameInitials>RV</NameInitials>
           <StoryTitle>I'm the Title</StoryTitle>
           <Bookmark />
         </View>
