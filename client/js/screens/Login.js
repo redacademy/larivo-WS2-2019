@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles'
 import { Text, View, SafeAreaView, TouchableOpacity, Dimensions } from 'react-native'
 import LoginSlideContainer from '../components/LoginSlideContainer'
-import LoginButton from '../components/LoginButton'
+import Button from '../components/Button'
 
 const Login = () => {
   return (
@@ -11,12 +11,8 @@ const Login = () => {
         <View style={styles.login_slidesContainer}>
           <LoginSlideContainer />
           <View style={styles.login_buttons_container}>
-            <LoginButton
-              text="Continue As Guest"
-            />
-            <LoginButton
-              text="Register"
-            />
+            <Button backgroundColor="#F1FFFE">Continue As Guest</Button>
+            <Button backgroundColor="#F1FFFE">Register</Button>
           </View>
           <View style={{ marginTop: 40 }}>
             <Text style={styles.text}>Already have an account?</Text>

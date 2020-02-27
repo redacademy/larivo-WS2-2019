@@ -1,30 +1,24 @@
 import {StyleSheet} from 'react-native'
 
-const styles = StyleSheet.create({
-  button1: {
-    width: '100%',
-    height: 50,
-    backgroundColor: '#1e6a62',
-    borderRadius: 50,
-    display: 'flex',
-  },
-  button2: {
-    width: '80%',
-    height: 40,
-    backgroundColor: '#03dac4',
-    borderRadius: 50,
-    display: 'flex',
-  },
-
-  text: {
-    fontSize: 24,
-    color: 'white',
-    // color: 'black',
-    textAlign: 'center',
+const styles = (props) => StyleSheet.create({
+  button: {
+    alignItems: 'center',
     justifyContent: 'center',
-    fontWeight: '300',
-    paddingTop: 5,
+    height: 44,
+    width: 214,
+    borderRadius: 20.75,
+    backgroundColor: props.backgroundColor,
+    shadowOpacity: 0.75,
+    shadowRadius: 5,
+    shadowColor: 'rgba(0,0,0,0.25)',
+    shadowOffset: { height: 2, width: 2 },
+    marginTop: 25
   },
+  text: {
+    fontSize: 16,
+    color: '#13443C',
+    fontWeight: '300',
+  }
 })
 
 export default styles
