@@ -7,27 +7,7 @@ import ReadStories from '../../../assets/icons/login/icon-read_stories.svg'
 import WriteStories from '../../../assets/icons/login/icon-write_stories.svg'
 import GetResources from '../../../assets/icons/login/icon-get_resources.svg'
 
-
 const screenWidth = Dimensions.get('window').width
-
-// const styles = {
-//   slidesContainer: {
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     marginTop: 20,
-//     width: screenWidth,
-//   },
-//   scrollViewContainer: {
-//     width: screenWidth
-//   },
-//   circles_container: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     alignItems: 'center',
-//     width: 120,
-//     marginTop: 40
-//   }
-// }
 
 const slides = [
   {
