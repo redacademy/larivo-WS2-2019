@@ -15,6 +15,7 @@ import ReactionBar from '../components/ReactionBar'
 import Bookmark from '../components/Bookmark/Bookmark'
 import Header from '../components/Header/Header'
 import Paragraph from '../components/Paragraph/Paragraph'
+import Follow from '../components/Follow/Follow'
 
 const Profile = () => {
   return (
@@ -22,6 +23,7 @@ const Profile = () => {
       <Header>
         <NameInitials>RV</NameInitials>
         <StoryTitle>Roaring Velvet</StoryTitle>
+        {/* <Follow /> */}
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
           do eiusmod tempor incididunt ut labore et dolore magna

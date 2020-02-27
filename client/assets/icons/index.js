@@ -18,3 +18,7 @@ export const InActiveSpeechless = require('./reactions/icon-reactions-speechless
 
 export const ActiveBookmark = require('./login/icon-bookmark-active.svg')
 export const InActiveBookmark = require('./login/icon-bookmark-inactive.svg')
+
+// Follow Icon
+
+export const FollowIcon = require('./profile/icon-profile-follow.svg')
