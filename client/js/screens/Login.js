@@ -11,8 +11,8 @@ const Login = () => {
         <View style={styles.login_slidesContainer}>
           <LoginSlideContainer />
           <View style={styles.login_buttons_container}>
-            <Button backgroundColor="#F1FFFE">Continue As Guest</Button>
-            <Button backgroundColor="#F1FFFE">Register</Button>
+            <Button theme="dark">Continue As Guest</Button>
+            <Button theme="light">Register</Button>
           </View>
           <View style={{ marginTop: 40 }}>
             <Text style={styles.text}>Already have an account?</Text>

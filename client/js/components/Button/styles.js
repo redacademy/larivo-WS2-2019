@@ -16,7 +16,7 @@ const styles = (props) => StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: '#13443C',
+    color: props.color,
     fontWeight: '300',
     fontFamily: 'SFProText-Light',
   }
