@@ -14,23 +14,21 @@ import Hashtag from '../components/Hashtag'
 import ReactionBar from '../components/ReactionBar'
 import Bookmark from '../components/Bookmark/Bookmark'
 import Header from '../components/Header/Header'
+import Paragraph from '../components/Paragraph/Paragraph'
 
 const Profile = () => {
   return (
     <ScrollView style={{backgroundColor: '#ffff'}}>
       <Header>
         <NameInitials>RV</NameInitials>
-        <Text style={{paddingTop: 10, fontSize: 20}}>
-          Roaring Velvet
-        </Text>
-        <Text>
+        <StoryTitle>Roaring Velvet</StoryTitle>
+        <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
           do eiusmod tempor incididunt ut labore et dolore magna
           aliqua.
-        </Text>
+        </Paragraph>
       </Header>
       <SafeAreaView>
-        <Text>Profile Page</Text>
         <View
           style={{
             paddingTop: 30,

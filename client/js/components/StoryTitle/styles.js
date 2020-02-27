@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#13443c',
     fontWeight: 'bold',
+    paddingTop: 6,
   },
 })
 

@@ -1,11 +1,9 @@
 import React from 'react'
 import {Text, View} from 'react-native'
+import styles from './styles'
 
-const Paragraph = () => (
-  <Text>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </Text>
+const Paragraph = ({children}) => (
+  <Text style={styles.paragraph}>{children}</Text>
 )
 
 export default Paragraph
