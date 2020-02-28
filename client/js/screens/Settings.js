@@ -4,7 +4,7 @@ import {Text, SafeAreaView} from 'react-native'
 const Settings = () => {
   return (
     <SafeAreaView>
-      <Text>BookMark page</Text>
+      <Text>Setting Page</Text>
     </SafeAreaView>
   )
 }

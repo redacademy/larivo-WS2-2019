@@ -4,10 +4,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {
   Login,
   Home,
-  BookMark,
+  Settings,
   StoryForm,
   Activity,
   Profile,
+  BookMark
 } from '../screens'
 
 const Tab = createBottomTabNavigator()
@@ -27,9 +28,9 @@ const Navigation = () => {
           options={{title: 'Home'}}
         />
         <Tab.Screen
-          name="Bookmark"
+          name="BookMark"
           component={BookMark}
-          options={{title: 'Bookmark'}}
+          options={{title: 'BookMark'}}
         />
         <Tab.Screen
           name="StoryForm"
@@ -45,6 +46,11 @@ const Navigation = () => {
           name="Profile"
           component={Profile}
           options={{title: 'Profile'}}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={Settings}
+          options={{title: 'Settings'}}
         />
       </Tab.Navigator>
     </NavigationContainer>
