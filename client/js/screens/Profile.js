@@ -16,12 +16,14 @@ import Bookmark from '../components/Bookmark/Bookmark'
 import Header from '../components/Header/Header'
 import Paragraph from '../components/Paragraph/Paragraph'
 import Follow from '../components/Follow/Follow'
+import SettingsIcon from '../components/SettingsIcon/SettingsIcon'
 
 const Profile = () => {
   return (
     <ScrollView style={{backgroundColor: '#ffff'}}>
       <Header>
         <NameInitials>RV</NameInitials>
+        <SettingsIcon />
         <View
           style={{
             display: 'flex',
