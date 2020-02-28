@@ -23,9 +23,22 @@ const Profile = () => {
   return (
     <ScrollView style={{backgroundColor: '#ffff'}}>
       <Header>
-        <NameInitials>RV</NameInitials>
-        <SettingsIcon />
-        <EditIcon />
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <NameInitials>RV</NameInitials>
+          <View
+            style={{
+              display: 'flex',
+            }}
+          >
+            <SettingsIcon />
+          </View>
+        </View>
         <View
           style={{
             display: 'flex',
@@ -34,7 +47,9 @@ const Profile = () => {
           }}
         >
           <StoryTitle>Roaring Velvet</StoryTitle>
-          <Follow type="follow" />
+
+          <EditIcon />
+          {/* <Follow type="follow" /> */}
         </View>
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
