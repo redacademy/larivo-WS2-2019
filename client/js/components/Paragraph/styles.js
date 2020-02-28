@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '300',
     fontFamily: 'SFProText-Light',
+    color: '#13443C',
   },
 })
 
