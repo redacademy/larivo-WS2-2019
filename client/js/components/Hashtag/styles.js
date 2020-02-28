@@ -24,12 +24,14 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     paddingVertical: 5,
     paddingHorizontal: 8,
+    fontFamily: 'SFProText-Regular',
   },
   hashtagsTextPressed: {
     color: '#ffff',
     fontWeight: '500',
     paddingVertical: 5,
     paddingHorizontal: 8,
+    fontFamily: 'SFProText-Regular',
   },
 })
 
