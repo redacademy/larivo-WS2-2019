@@ -1,6 +1,4 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
-import styles from './styles'
 import LeftArrowIcon from '../../../assets/icons/profile/left-arrow.svg'
 
 const LeftArrow = () => (
