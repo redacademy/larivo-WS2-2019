@@ -18,6 +18,7 @@ import Paragraph from '../components/Paragraph/Paragraph'
 import Follow from '../components/Follow/Follow'
 import SettingsIcon from '../components/SettingsIcon/SettingsIcon'
 import EditIcon from '../components/EditIcon/EditIcon'
+import InputField from '../components/InputField/InputField'
 
 const Profile = () => {
   return (
@@ -57,6 +58,9 @@ const Profile = () => {
           aliqua.
         </Paragraph>
       </Header>
+      <View>
+        <InputField />
+      </View>
     </ScrollView>
   )
 }

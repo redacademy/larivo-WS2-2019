@@ -31,3 +31,8 @@ export const SettingsButton = require('./profile/icon-profile-settings.svg')
 // Edit Icon
 
 export const EditButton = require('./profile/icon-profile-edit.svg')
+
+// Text Input icons
+
+export const MagGlassIcon = require('./login/icon-magnifying_glass.svg')
+export const PasswordIcon = require('./login/icon-password-dark.svg')
