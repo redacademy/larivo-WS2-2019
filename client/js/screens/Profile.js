@@ -18,7 +18,7 @@ import Paragraph from '../components/Paragraph/Paragraph'
 import Follow from '../components/Follow/Follow'
 import SettingsIcon from '../components/SettingsIcon/SettingsIcon'
 import EditIcon from '../components/EditIcon/EditIcon'
-import InputField from '../components/InputField/InputField'
+import InputFieldPassword from '../components/InputField/InputFieldPassword'
 
 const Profile = () => {
   return (
@@ -59,7 +59,7 @@ const Profile = () => {
         </Paragraph>
       </Header>
       <View>
-        <InputField />
+        <InputFieldPassword placeholder="test" />
       </View>
     </ScrollView>
   )

@@ -1,3 +1,3 @@
-import InputField from './InputField'
+import InputField from './InputFieldPassword'
 
 export default InputField
