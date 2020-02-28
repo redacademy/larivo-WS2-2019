@@ -30,4 +30,4 @@ export const SettingsButton = require('./profile/icon-profile-settings.svg')
 
 // Edit Icon
 
-export const EditIcon = require('./profile/icon-profile-edit.svg')
+export const EditButton = require('./profile/icon-profile-edit.svg')
