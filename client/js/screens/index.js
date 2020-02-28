@@ -4,6 +4,19 @@ import BookMark from './BookMark'
 import StoryForm from './StoryForm'
 import Profile from './Profile'
 import Activity from './Activity'
-
-
-export {Login, Home, BookMark, StoryForm, Activity, Profile}
+import ProfileStory from './ProfileStory'
+import ProfileDraft from './ProfileDraft'
+import ProfileBookMark from './ProfileBookMark'
+import ProfileActivity from './ProfileActivity'
+export {
+  Login,
+  Home,
+  BookMark,
+  StoryForm,
+  Activity,
+  Profile,
+  ProfileStory,
+  ProfileBookMark,
+  ProfileDraft,
+  ProfileActivity,
+}

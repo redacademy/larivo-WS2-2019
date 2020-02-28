@@ -1,2 +1,3 @@
 import Navigation from './Navigation'
-export {Navigation}
+import ProfileTabs from './ProfileTabs'
+export {Navigation, ProfileTabs}
