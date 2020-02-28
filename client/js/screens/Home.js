@@ -3,8 +3,7 @@ import styles from './styles'
 import {SafeAreaView, ScrollView, View, Text} from 'react-native'
 import {Card} from '../components/Card'
 import {Header} from '../components/Header'
-import {ProfileTabs} from '../components/ProfileTabs'
-
+import {ProfileTabs} from '../navigation'
 const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
