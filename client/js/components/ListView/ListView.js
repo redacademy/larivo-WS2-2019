@@ -1,15 +1,19 @@
 import React from 'react'
 import styles from './styles'
-import {View, Text} from 'react-native'
+import {FlatList, View, Text} from 'react-native'
 
 const ListView = ({data}) => (
   <View style={styles.container}>
-    {data.map(({title, content, id}) => (
-      <View key={id}>
-        <Text>{title}</Text>
-        <Text>{content}</Text>
-      </View>
-    ))}
+    <FlatList
+      data={data}
+      renderItem={({item}) => (
+        <>
+          <Text>{item.title}</Text>
+          <Text>{item.content}</Text>
+        </>
+      )}
+      keyExtractor={item => item.id}
+    />
   </View>
 )
 
