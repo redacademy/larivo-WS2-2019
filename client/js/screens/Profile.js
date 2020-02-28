@@ -17,6 +17,7 @@ import Header from '../components/Header/Header'
 import Paragraph from '../components/Paragraph/Paragraph'
 import Follow from '../components/Follow/Follow'
 import SettingsIcon from '../components/SettingsIcon/SettingsIcon'
+import EditIcon from '../components/EditIcon/EditIcon'
 
 const Profile = () => {
   return (
@@ -24,6 +25,7 @@ const Profile = () => {
       <Header>
         <NameInitials>RV</NameInitials>
         <SettingsIcon />
+        <EditIcon />
         <View
           style={{
             display: 'flex',
