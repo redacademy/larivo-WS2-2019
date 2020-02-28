@@ -57,59 +57,6 @@ const Profile = () => {
           aliqua.
         </Paragraph>
       </Header>
-      <SafeAreaView>
-        <View
-          style={{
-            paddingTop: 30,
-            paddingLeft: 50,
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <StoryTitle>I'm the Title</StoryTitle>
-          <Bookmark />
-        </View>
-        <View style={{paddingTop: 10, paddingLeft: 50}}>
-          <StoryAuthor> I'm the author name</StoryAuthor>
-        </View>
-        <View style={{paddingTop: 30, paddingLeft: 50}}>
-          <Button>Refresh Name</Button>
-        </View>
-        <View style={{paddingTop: 30, paddingLeft: 50}}>
-          <Button>Continue As Guest</Button>
-        </View>
-        <View style={{paddingTop: 30, paddingLeft: 50}}>
-          <Button>Log In</Button>
-        </View>
-        <View
-          style={{
-            paddingTop: 30,
-            paddingLeft: 50,
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <Hashtag>Can't touch this.</Hashtag>
-
-          <Hashtag disabled>Happyness</Hashtag>
-          <Hashtag>Random</Hashtag>
-        </View>
-
-        <View
-          style={{
-            paddingTop: 30,
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-          }}
-        >
-          <ReactionBar type="like" />
-          <ReactionBar type="love" />
-          <ReactionBar type="clap" />
-          <ReactionBar type="speechless" />
-          <ReactionBar type="sad" />
-        </View>
-      </SafeAreaView>
     </ScrollView>
   )
 }
