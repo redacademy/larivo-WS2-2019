@@ -16,12 +16,30 @@ import Bookmark from '../components/Bookmark/Bookmark'
 import Header from '../components/Header/Header'
 import Paragraph from '../components/Paragraph/Paragraph'
 import Follow from '../components/Follow/Follow'
+import SettingsIcon from '../components/SettingsIcon/SettingsIcon'
+import EditIcon from '../components/EditIcon/EditIcon'
+import InputFieldPassword from '../components/InputField/InputFieldPassword'
 
 const Profile = () => {
   return (
     <ScrollView style={{backgroundColor: '#ffff'}}>
       <Header>
-        <NameInitials>RV</NameInitials>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <NameInitials>RV</NameInitials>
+          <View
+            style={{
+              display: 'flex',
+            }}
+          >
+            <SettingsIcon />
+          </View>
+        </View>
         <View
           style={{
             display: 'flex',
@@ -30,7 +48,9 @@ const Profile = () => {
           }}
         >
           <StoryTitle>Roaring Velvet</StoryTitle>
-          <Follow type="follow" />
+
+          <EditIcon />
+          {/* <Follow type="follow" /> */}
         </View>
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -38,59 +58,9 @@ const Profile = () => {
           aliqua.
         </Paragraph>
       </Header>
-      <SafeAreaView>
-        <View
-          style={{
-            paddingTop: 30,
-            paddingLeft: 50,
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <StoryTitle>I'm the Title</StoryTitle>
-          <Bookmark />
-        </View>
-        <View style={{paddingTop: 10, paddingLeft: 50}}>
-          <StoryAuthor> I'm the author name</StoryAuthor>
-        </View>
-        <View style={{paddingTop: 30, paddingLeft: 50}}>
-          <Button>Refresh Name</Button>
-        </View>
-        <View style={{paddingTop: 30, paddingLeft: 50}}>
-          <Button>Continue As Guest</Button>
-        </View>
-        <View style={{paddingTop: 30, paddingLeft: 50}}>
-          <Button>Log In</Button>
-        </View>
-        <View
-          style={{
-            paddingTop: 30,
-            paddingLeft: 50,
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <Hashtag>Can't touch this.</Hashtag>
-
-          <Hashtag disabled>Happyness</Hashtag>
-          <Hashtag>Random</Hashtag>
-        </View>
-
-        <View
-          style={{
-            paddingTop: 30,
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-          }}
-        >
-          <ReactionBar type="like" />
-          <ReactionBar type="love" />
-          <ReactionBar type="clap" />
-          <ReactionBar type="speechless" />
-          <ReactionBar type="sad" />
-        </View>
-      </SafeAreaView>
+      <View>
+        <InputFieldPassword placeholder="test" />
+      </View>
     </ScrollView>
   )
 }

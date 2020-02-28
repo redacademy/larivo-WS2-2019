@@ -23,3 +23,16 @@ export const InActiveBookmark = require('./login/icon-bookmark-inactive.svg')
 
 export const FollowIcon = require('./profile/icon-profile-follow.svg')
 export const FollowingIcon = require('./profile/icon-profile-follow_active.svg')
+
+// SettingsIcon
+
+export const SettingsButton = require('./profile/icon-profile-settings.svg')
+
+// Edit Icon
+
+export const EditButton = require('./profile/icon-profile-edit.svg')
+
+// Text Input icons
+
+export const MagGlassIcon = require('./login/icon-magnifying_glass.svg')
+export const PasswordIcon = require('./login/icon-password-dark.svg')

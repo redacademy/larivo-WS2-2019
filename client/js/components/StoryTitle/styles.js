@@ -2,10 +2,11 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   textTitle: {
-    fontSize: 23,
-    color: '#13443c',
+    fontSize: 19,
+    color: '#13443C',
     fontWeight: 'bold',
     paddingTop: 6,
+    fontFamily: 'SFProText-Regular',
   },
 })
 

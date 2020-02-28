@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
   initialText: {
     color: 'white',
     fontSize: 20,
-    fontWeight: '600',
+    fontWeight: 'bold',
+    fontFamily: 'Asap-SemiBoldItalic',
   },
 })
 
