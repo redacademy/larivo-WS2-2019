@@ -3,16 +3,18 @@ import {TextInput, View, Text} from 'react-native'
 import styles from './styles'
 
 const InputFieldEmail = ({placeholder}) => {
-  validate = text => {
+  const [state, setState] = useState({})
+
+  const validate = text => {
     console.log(text)
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     if (reg.test(text) === false) {
-      console.log('Email is Not Correct')
-      this.setState({email: text})
+      console.warn('Email is Not Correct')
+      setState({email: text})
       return false
     } else {
-      this.setState({email: text})
-      console.log('Email is Correct')
+      setState({email: text})
+      console.warn('Email is Correct')
     }
   }
   return (
@@ -21,7 +23,7 @@ const InputFieldEmail = ({placeholder}) => {
         placeholder={placeholder}
         style={styles.input}
         inline
-        onChangeText={text => this.validate(text)}
+        onChangeText={text => validate(text)}
       />
     </View>
   )
