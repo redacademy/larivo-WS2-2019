@@ -1,11 +1,11 @@
 import React from 'react'
-import {Text, SafeAreaView} from 'react-native'
+import Setting from './Settings'
 
 const BookMark = () => {
   return (
-    <SafeAreaView>
-      <Text>BookMark Page</Text>
-    </SafeAreaView>
+    <>
+    <Setting />
+    </>
   )
 }
 
