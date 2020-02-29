@@ -53,8 +53,8 @@ const Profile = () => {
         </Paragraph>
       </Header>
       <View>
-        <InputFieldPassword placeholder="test" />
-        <InputFieldEmail placeholder="test" />
+        <InputFieldEmail placeholder="example@gmail.com" />
+        <InputFieldPassword placeholder="Existing password" />
       </View>
     </ScrollView>
   )

@@ -22,7 +22,6 @@ const InputFieldEmail = ({placeholder}) => {
       <TextInput
         placeholder={placeholder}
         style={styles.input}
-        inline
         onChangeText={text => validate(text)}
       />
     </View>
