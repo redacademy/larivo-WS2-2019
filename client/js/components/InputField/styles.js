@@ -10,11 +10,10 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   inputBox: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#03dac4',
   },
 })
 

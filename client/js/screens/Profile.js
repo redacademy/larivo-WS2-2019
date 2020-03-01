@@ -52,10 +52,6 @@ const Profile = () => {
           aliqua.
         </Paragraph>
       </Header>
-      <View>
-        <InputFieldEmail placeholder="example@gmail.com" />
-        <InputFieldPassword placeholder="Existing password" />
-      </View>
     </ScrollView>
   )
 }
