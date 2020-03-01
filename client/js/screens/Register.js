@@ -19,7 +19,16 @@ const Register = () => (
         alignItems: 'center',
       }}
     >
-      <Text>enter your deets</Text>
+      <Text
+        style={{
+          fontSize: 35,
+          fontWeight: 'bold',
+          fontFamily: 'Asap-SemiBold',
+          color: '#13443C',
+        }}
+      >
+        enter your deets
+      </Text>
       <View
         style={{
           backgroundColor: '#03DAC4',
@@ -28,11 +37,29 @@ const Register = () => (
         }}
       >
         <View style={{paddingVertical: 40}}>
-          <Text style={{paddingBottom: 20}}>Enter Your Email</Text>
+          <Text
+            style={{
+              paddingBottom: 20,
+              fontFamily: 'SFProText-Light',
+              color: '#13443C',
+              fontSize: 16,
+            }}
+          >
+            Enter Your Email
+          </Text>
           <InputFieldEmail placeholder={'example@gmail.com'} />
         </View>
         <View>
-          <Text style={{paddingBottom: 20}}>Enter Your Password</Text>
+          <Text
+            style={{
+              paddingBottom: 20,
+              fontFamily: 'SFProText-Light',
+              color: '#13443C',
+              fontSize: 16,
+            }}
+          >
+            Enter Your Password
+          </Text>
           <InputFieldPassword placeholder={'Password'} />
         </View>
         <View style={{paddingTop: 60}}>

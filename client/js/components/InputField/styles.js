@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#03dac4',
   },
+  eyeIcon: {
+    left: -10,
+    top: -7,
+    position: 'absolute',
+  },
 })
 
 export default styles
