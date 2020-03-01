@@ -7,7 +7,6 @@ import styles from './styles'
 const SettingItem = ({icon, text}) => {
   let IconV = icon
   return (
-    <View style={styles.settings_itemsConstainer}>
       <View style={styles.settings_itemRow}>
         <View style={styles.settings_items_Text_Icon}>
           <IconV fill={'#1E6A62'} width={15} />
@@ -17,7 +16,6 @@ const SettingItem = ({icon, text}) => {
         </View>
         <NextIcon fill={'#1E6A62'} style={styles.settings_nextIcon} />
       </View>
-    </View>
   )
 }
 
