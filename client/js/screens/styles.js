@@ -43,7 +43,9 @@ const styles = StyleSheet.create({
     color: '#13443C',
   },
   settings_container: {
-    padding: 40
+    padding: 40,
+    height: '100%',
+    backgroundColor: "white"
   },
   settings_contentContainer: {
     flexDirection: 'column',
@@ -53,7 +55,8 @@ const styles = StyleSheet.create({
   settings_leftArrow: {
     position:'absolute',
     marginTop: 40,
-    marginLeft: 30
+    marginLeft: 30,
+    zIndex: 10
   },
   settings_title: {
     fontFamily: 'SFProText-Bold',
