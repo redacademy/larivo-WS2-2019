@@ -19,10 +19,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   login_slidesContainer: {
-    flex: 1, justifyContent: 'center', alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 20,
     width: '100%',
-    padding: 10
+    padding: 10,
   },
   login_buttons_container: {
     flexDirection: 'column',
@@ -36,11 +38,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#13443C',
     fontWeight: '600',
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
   },
   text: {
     fontSize: 16,
     color: '#13443C',
+    fontWeight: '300',
   },
   settings_container: {
     padding: 40
@@ -91,5 +94,4 @@ const styles = StyleSheet.create({
     marginTop: 5
   }
 })
-
 export default styles

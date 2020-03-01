@@ -18,7 +18,7 @@ const InputFieldPassword = ({placeholder}) => {
         inline
       />
       <TouchableOpacity onPressIn={showData} onPressOut={hideData}>
-        <PasswordIcon style={styles.searchIcon} />
+        <PasswordIcon style={styles.eyeIcon} />
       </TouchableOpacity>
     </View>
   )

@@ -1,10 +1,10 @@
 import React from 'react'
-import {Text, SafeAreaView} from 'react-native'
-
+import {Text, SafeAreaView, View} from 'react-native'
+import Register from '../screens/Register'
 const Activity = () => {
   return (
     <SafeAreaView>
-      <Text>Activity Page</Text>
+      <Register />
     </SafeAreaView>
   )
 }

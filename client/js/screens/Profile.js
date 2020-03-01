@@ -6,20 +6,14 @@ import {
   View,
   ScrollView,
 } from 'react-native'
-import Button from '../components/Button'
 import StoryTitle from '../components/StoryTitle'
-import StoryAuthor from '../components/StoryAuthor'
 import NameInitials from '../components/NameInitials'
-import Hashtag from '../components/Hashtag'
-import ReactionBar from '../components/ReactionBar'
-import Bookmark from '../components/Bookmark/Bookmark'
 import Header from '../components/Header/Header'
 import Paragraph from '../components/Paragraph/Paragraph'
-import Follow from '../components/Follow/Follow'
 import SettingsIcon from '../components/SettingsIcon/SettingsIcon'
 import EditIcon from '../components/EditIcon/EditIcon'
 import InputFieldPassword from '../components/InputField/InputFieldPassword'
-
+import InputFieldEmail from '../components/InputField/InputFieldEmail'
 const Profile = () => {
   return (
     <ScrollView style={{backgroundColor: '#ffff'}}>
@@ -58,9 +52,6 @@ const Profile = () => {
           aliqua.
         </Paragraph>
       </Header>
-      <View>
-        <InputFieldPassword placeholder="test" />
-      </View>
     </ScrollView>
   )
 }

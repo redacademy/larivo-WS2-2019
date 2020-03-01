@@ -8,6 +8,7 @@ import ProfileStory from './ProfileStory'
 import ProfileDraft from './ProfileDraft'
 import ProfileBookMark from './ProfileBookMark'
 import ProfileActivity from './ProfileActivity'
+import Register from './Register.js'
 export {
   Login,
   Home,
@@ -19,4 +20,5 @@ export {
   ProfileBookMark,
   ProfileDraft,
   ProfileActivity,
+  Register,
 }
