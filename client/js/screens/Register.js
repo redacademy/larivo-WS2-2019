@@ -27,15 +27,15 @@ const Register = () => (
           alignItems: 'center',
         }}
       >
-        <View>
-          <Text>Enter Your Email</Text>
+        <View style={{paddingVertical: 40}}>
+          <Text style={{paddingBottom: 20}}>Enter Your Email</Text>
           <InputFieldEmail placeholder={'example@gmail.com'} />
         </View>
         <View>
-          <Text>Enter Your Password</Text>
+          <Text style={{paddingBottom: 20}}>Enter Your Password</Text>
           <InputFieldPassword placeholder={'Password'} />
         </View>
-        <View>
+        <View style={{paddingTop: 60}}>
           <Button theme="light">Next</Button>
         </View>
       </View>
