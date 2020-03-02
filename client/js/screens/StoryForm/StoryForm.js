@@ -7,6 +7,7 @@ import {
   Text,
 } from 'react-native'
 import {Card} from '../../components/Card'
+import {Popup} from '../../components/Popup/'
 import Button from '../../components/Button'
 import Hashtag from '../../components/Hashtag'
 import styles from './styles'
@@ -16,6 +17,8 @@ const StoryForm = () => {
   const [content, setContent] = useState('')
   const [tag, setTag] = useState('')
   const [tags, setTags] = useState([])
+  const [show, setShow] = useState(false)
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -44,7 +47,9 @@ const StoryForm = () => {
             onSubmitEditing={() => setTags([...tags, tag])}
           />
           <View style={styles.buttonContainer}>
-            <Button theme="dark">PUBLISH</Button>
+            <Button onPress={() => setShow(!show)} theme="dark">
+              PUBLISH
+            </Button>
             <Button>Save As Draft</Button>
           </View>
           {tags && tags.length ? (
@@ -61,6 +66,7 @@ const StoryForm = () => {
           ) : null}
         </View>
       </ScrollView>
+      <Popup text="Posted!" show={show} />
     </SafeAreaView>
   )
 }
