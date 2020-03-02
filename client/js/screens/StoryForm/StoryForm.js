@@ -52,7 +52,7 @@ const StoryForm = () => {
               <Text style={styles.hashtagTitle}>Your Hashtags</Text>
               <View style={styles.hashtags}>
                 {tags.map(tag => (
-                  <Hashtag>{tag}</Hashtag>
+                  <Hashtag disabled>{tag}</Hashtag>
                 ))}
               </View>
             </View>
