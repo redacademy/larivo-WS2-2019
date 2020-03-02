@@ -6,6 +6,8 @@ import Header from '../../components/Header/Header'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import SettingsIcon from '../../components/SettingsIcon/SettingsIcon'
 import EditIcon from '../../components/EditIcon/EditIcon'
+import {ProfileTabs} from '../../navigation'
+
 const Profile = () => {
   return (
     <ScrollView style={{backgroundColor: '#ffff'}}>
@@ -43,6 +45,7 @@ const Profile = () => {
           aliqua.
         </Paragraph>
       </Header>
+      <ProfileTabs />
     </ScrollView>
   )
 }
