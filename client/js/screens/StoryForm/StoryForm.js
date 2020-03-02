@@ -51,8 +51,10 @@ const StoryForm = () => {
             <View style={styles.hashtagContainer}>
               <Text style={styles.hashtagTitle}>Your Hashtags</Text>
               <View style={styles.hashtags}>
-                {tags.map(tag => (
-                  <Hashtag disabled>{tag}</Hashtag>
+                {tags.map((tag, i) => (
+                  <Hashtag key={i} disabled>
+                    {tag}
+                  </Hashtag>
                 ))}
               </View>
             </View>
