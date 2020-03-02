@@ -5,9 +5,9 @@ import {
   View,
   SafeAreaView,
 } from 'react-native'
-import InputFieldEmail from '../components/InputField/InputFieldEmail'
-import InputFieldPassword from '../components/InputField/InputFieldPassword'
-import Button from '../components/Button'
+import InputFieldEmail from '../../components/InputField/InputFieldEmail'
+import InputFieldPassword from '../../components/InputField/InputFieldPassword'
+import Button from '../../components/Button'
 const Register = () => (
   <SafeAreaView>
     <View

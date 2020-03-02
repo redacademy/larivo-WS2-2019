@@ -9,8 +9,8 @@ const Hashtag = ({children, disabled}) => {
 
   {
     return disabled ? (
-      <View style={styles.hashtagsBox}>
-        <Text style={styles.hashtagsText}>#{children}</Text>
+      <View style={styles.hashtagsBoxPressed}>
+        <Text style={styles.hashtagsTextPressed}>#{children}</Text>
       </View>
     ) : (
       <TouchableOpacity onPress={handlePress}>
