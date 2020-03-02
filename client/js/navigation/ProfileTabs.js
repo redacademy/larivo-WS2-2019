@@ -5,7 +5,7 @@ import {
   ProfileDraft,
   ProfileBookMark,
   ProfileActivity,
-} from '../screens'
+} from '../screens/Profile'
 
 const Tab = createMaterialTopTabNavigator()
 
@@ -13,7 +13,6 @@ const ProfileTabs = () => (
   <Tab.Navigator
     tabBarOptions={{
       showIcon: true,
-      // showLabel: false,
       tabStyle: {
         height: 45,
         borderBottomWidth: 0.3,
