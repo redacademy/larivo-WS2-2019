@@ -2,27 +2,33 @@ import React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
+import {Login} from '../screens/Login'
+import {Register} from '../screens/Register'
+import {Home} from '../screens/Home'
+import {BookMark} from '../screens/BookMark'
+import {StoryForm} from '../screens/StoryForm'
+import {Activity} from '../screens/Activity'
 import {
-  Login,
-  Home,
-  BookMark,
-  StoryForm,
-  Activity,
   Profile,
-} from '../screens'
+  ProfileStory,
+  ProfileBookMark,
+  ProfileDraft,
+  ProfileActivity,
+} from '../screens/Profile'
 
 const LoginStack = createStackNavigator()
 
 const LoginStackScreen = () => (
-  <LoginStack.Navigator>
-    <LoginStack.Screen name="Home" component={Login} />
+  <LoginStack.Navigator headerMode="none">
+    <LoginStack.Screen name="Login" component={Login} />
+    <LoginStack.Screen name="Register" component={Register} />
   </LoginStack.Navigator>
 )
 
 const HomeStack = createStackNavigator()
 
 const HomeStackScreen = () => (
-  <HomeStack.Navigator>
+  <HomeStack.Navigator headerMode="none">
     <HomeStack.Screen name="Home" component={Home} />
   </HomeStack.Navigator>
 )
@@ -30,32 +36,48 @@ const HomeStackScreen = () => (
 const BookMarkStack = createStackNavigator()
 
 const BookMarkStackScreen = () => (
-  <BookMarkStack.Navigator>
-    <BookMarkStack.Screen name="Home" component={BookMark} />
+  <BookMarkStack.Navigator headerMode="none">
+    <BookMarkStack.Screen name="Bookmark" component={BookMark} />
   </BookMarkStack.Navigator>
 )
 
 const StoryFormStack = createStackNavigator()
 
 const StoryFormStackScreen = () => (
-  <StoryFormStack.Navigator>
-    <StoryFormStack.Screen name="Home" component={StoryForm} />
+  <StoryFormStack.Navigator mode="modal" headerMode="none">
+    <StoryFormStack.Screen name="StoryForm" component={StoryForm} />
   </StoryFormStack.Navigator>
 )
 
 const ActivityStack = createStackNavigator()
 
 const ActivityStackScreen = () => (
-  <ActivityStack.Navigator>
-    <ActivityStack.Screen name="Home" component={Activity} />
+  <ActivityStack.Navigator headerMode="none">
+    <ActivityStack.Screen name="Activity" component={Activity} />
   </ActivityStack.Navigator>
 )
 
 const ProfileStack = createStackNavigator()
 
 const ProfileStackScreen = () => (
-  <ProfileStack.Navigator>
-    <ProfileStack.Screen name="Home" component={Profile} />
+  <ProfileStack.Navigator headerMode="none">
+    <ProfileStack.Screen name="Profile" component={Profile} />
+    <ProfileStack.Screen
+      name="ProfileStory"
+      component={ProfileStory}
+    />
+    <ProfileStack.Screen
+      name="ProfileBookMark"
+      component={ProfileBookMark}
+    />
+    <ProfileStack.Screen
+      name="ProfileDraft"
+      component={ProfileDraft}
+    />
+    <ProfileStack.Screen
+      name="ProfileActivity"
+      component={ProfileActivity}
+    />
   </ProfileStack.Navigator>
 )
 
