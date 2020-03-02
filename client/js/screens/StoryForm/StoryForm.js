@@ -11,13 +11,20 @@ import {Popup} from '../../components/Popup/'
 import Button from '../../components/Button'
 import Hashtag from '../../components/Hashtag'
 import styles from './styles'
-
-const StoryForm = () => {
+const StoryForm = ({navigation}) => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [tag, setTag] = useState('')
   const [tags, setTags] = useState([])
   const [show, setShow] = useState(false)
+
+  const handleSubmit = () => {
+    setShow(true)
+    setTimeout(() => {
+      setShow(false)
+      navigation.navigate('Home')
+    }, 2000)
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -47,7 +54,7 @@ const StoryForm = () => {
             onSubmitEditing={() => setTags([...tags, tag])}
           />
           <View style={styles.buttonContainer}>
-            <Button onPress={() => setShow(!show)} theme="dark">
+            <Button onPress={handleSubmit} theme="dark">
               PUBLISH
             </Button>
             <Button>Save As Draft</Button>
