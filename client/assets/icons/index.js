@@ -36,3 +36,6 @@ export const EditButton = require('./profile/icon-profile-edit.svg')
 
 export const MagGlassIcon = require('./login/icon-magnifying_glass.svg')
 export const PasswordIcon = require('./login/icon-password-dark.svg')
+
+// Posted Icon
+export const PostedIcon = require('./storyForm/posted_icon.svg')
