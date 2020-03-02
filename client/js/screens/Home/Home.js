@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles'
+import styles from './styles'
 import {SafeAreaView, ScrollView, View, Text} from 'react-native'
 import {Card} from '../../components/Card'
 import {Header} from '../../components/Header'
