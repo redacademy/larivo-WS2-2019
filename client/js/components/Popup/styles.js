@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 200,
   },
+  icon: {left: 5, marginBottom: 230},
 })
 
 export default styles
