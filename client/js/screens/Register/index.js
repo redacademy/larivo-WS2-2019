@@ -1,2 +1,3 @@
 import Register from './Register'
-export {Register}
+import Username from './Username'
+export {Register, Username}
