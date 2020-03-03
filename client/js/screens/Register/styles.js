@@ -36,6 +36,23 @@ const styles = StyleSheet.create({
   },
   btnPaddingRegister: {paddingTop: 60},
   btnPaddingUsername: {paddingTop: 10},
+
+  hashtagsWrap: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    justifyContent: 'center',
+    paddingVertical: 40,
+  },
+
+  textStyleHashtagsScreen: {
+    paddingTop: 20,
+    fontFamily: 'SFProText-Light',
+    color: '#13443C',
+    fontSize: 19,
+    textAlign: 'center',
+  },
 })
 
 export default styles

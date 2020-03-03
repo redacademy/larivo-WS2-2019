@@ -16,9 +16,11 @@ const HashtagScreen = () => (
       <Text style={styles.textStyleUsernameScreen}>
         choose hashtags
       </Text>
-      <Text>These hashtags are used to curate your content. </Text>
+      <Text style={styles.textStyleHashtagsScreen}>
+        These hashtags are used to curate your content.
+      </Text>
       <View style={styles.childContainer}>
-        <View>
+        <View style={styles.hashtagsWrap}>
           <Hashtag>Anxiety</Hashtag>
           <Hashtag>Happy</Hashtag>
           <Hashtag>MentalHealth</Hashtag>
@@ -31,10 +33,10 @@ const HashtagScreen = () => (
           <Hashtag>Anxiety</Hashtag>
         </View>
         <View style={styles.btnPaddingUsername}>
-          <Button theme="dark">Generate Another Username</Button>
+          <Button theme="light">Next</Button>
         </View>
         <View style={styles.btnPaddingUsername}>
-          <Button theme="light">Next</Button>
+          <Button theme="dark">Skip For Now</Button>
         </View>
       </View>
     </View>
