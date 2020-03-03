@@ -25,7 +25,17 @@ const styles = StyleSheet.create({
     color: '#13443C',
     fontSize: 16,
   },
-  btnPadding: {paddingTop: 60},
+  textStyleUsernameScreen: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    fontFamily: 'Asap-SemiBold',
+    color: '#13443C',
+    //   width: '80%',
+    paddingHorizontal: 20,
+    textAlign: 'center',
+  },
+  btnPaddingRegister: {paddingTop: 60},
+  btnPaddingUsername: {paddingTop: 10},
 })
 
 export default styles

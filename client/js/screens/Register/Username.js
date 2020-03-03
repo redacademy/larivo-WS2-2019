@@ -7,45 +7,22 @@ import {
 } from 'react-native'
 import InputFieldEmail from '../../components/InputField/InputFieldEmail'
 import Button from '../../components/Button'
+import styles from './styles'
 
 const Username = () => (
   <SafeAreaView>
-    <View
-      style={{
-        backgroundColor: '#03DAC4',
-        height: '100%',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text
-        style={{
-          fontSize: 35,
-          fontWeight: 'bold',
-          fontFamily: 'Asap-SemiBold',
-          color: '#13443C',
-          //   width: '80%',
-          paddingHorizontal: 20,
-          textAlign: 'center',
-        }}
-      >
+    <View style={styles.registerContainer}>
+      <Text style={styles.textStyleUsernameScreen}>
         generate your username
       </Text>
-      <View
-        style={{
-          backgroundColor: '#03DAC4',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
+      <View style={styles.childContainer}>
         <View style={{paddingVertical: 40}}>
           <InputFieldEmail placeholder={'Roaring Velvet'} />
         </View>
-        <View style={{paddingTop: 10}}>
+        <View style={styles.btnPaddingUsername}>
           <Button theme="dark">Generate Another Username</Button>
         </View>
-        <View style={{paddingTop: 10}}>
+        <View style={styles.btnPaddingUsername}>
           <Button theme="light">Next</Button>
         </View>
       </View>
