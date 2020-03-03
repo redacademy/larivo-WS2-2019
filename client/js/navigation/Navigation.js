@@ -8,6 +8,15 @@ import {Home} from '../screens/Home'
 import {BookMark} from '../screens/BookMark'
 import {StoryForm} from '../screens/StoryForm'
 import {Activity} from '../screens/Activity'
+import HomeTabIcon from '../../assets/icons/toolbar/icon-toolbar-home-active.svg'
+import HomeTabInActiveIcon from '../../assets/icons/toolbar/icon-toolbar-home-inactive.svg'
+import BookMarkIcon from '../../assets/icons/toolbar/icon-toolbar-feed-active.svg'
+import BookMarkInActiveIcon from '../../assets/icons/toolbar/icon-toolbar-feed-inactive.svg'
+import StoryFormIcon from '../../assets/icons/toolbar/icon-toolbar-post.svg'
+import ResourceInActiveIcon from '../../assets/icons/toolbar/icon-toolbar-resource-inactive.svg'
+import ResourceIcon from '../../assets/icons/toolbar/icon-toolbar-resource-active.svg'
+import ProfileInactiveIcon from '../../assets/icons/toolbar/icon-toolbar-profile-inactive.svg'
+import ProfileIcon from '../../assets/icons/toolbar/icon-toolbar-profile-active.svg'
 import {
   Profile,
   ProfileStory,
@@ -15,7 +24,12 @@ import {
   ProfileDraft,
   ProfileActivity,
 } from '../screens/Profile'
-import {Settings, Notifications, DeleteAccount, EditProfile} from '../screens/Settings'
+import {
+  Settings,
+  Notifications,
+  DeleteAccount,
+  EditProfile,
+} from '../screens/Settings'
 
 const LoginStack = createStackNavigator()
 
@@ -79,19 +93,13 @@ const ProfileStackScreen = () => (
       name="ProfileActivity"
       component={ProfileActivity}
     />
-      <ProfileStack.Screen
-      name="Settings"
-      component={Settings}
-    />
-       <ProfileStack.Screen
+    <ProfileStack.Screen name="Settings" component={Settings} />
+    <ProfileStack.Screen
       name="Notifications"
       component={Notifications}
     />
-      <ProfileStack.Screen
-      name="EditProfile"
-      component={EditProfile}
-    />
-      <ProfileStack.Screen
+    <ProfileStack.Screen name="EditProfile" component={EditProfile} />
+    <ProfileStack.Screen
       name="DeleteAccount"
       component={DeleteAccount}
     />
@@ -103,7 +111,50 @@ const Tab = createBottomTabNavigator()
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Login">
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            const {name} = route
+            if (name === 'Home') {
+              if (focused) {
+                return <HomeTabIcon />
+              } else {
+                return <HomeTabInActiveIcon />
+              }
+            } else if (name === 'Bookmark') {
+              if (focused) {
+                return <BookMarkIcon />
+              } else {
+                return <BookMarkInActiveIcon />
+              }
+            } else if (name === 'StoryForm') {
+              return <StoryFormIcon />
+            } else if (name === 'Activity') {
+              if (focused) {
+                return <ResourceIcon />
+              } else {
+                return <ResourceInActiveIcon />
+              }
+            } else if (name === 'Profile') {
+              if (focused) {
+                return <ProfileIcon />
+              } else {
+                return <ProfileInactiveIcon />
+              }
+            }
+          },
+        })}
+        tabBarOptions={{
+          showLabel: false,
+          inactiveTintColor: '#fff',
+          activeTintColor: '#fff',
+          style: {
+            height: 95,
+            backgroundColor: '#03DAC4',
+          },
+        }}
+        initialRouteName="Login"
+      >
         <Tab.Screen
           name="Login"
           component={LoginStackScreen}
@@ -120,7 +171,7 @@ const Navigation = () => {
           options={{title: 'Bookmark'}}
         />
         <Tab.Screen
-          name="StoryFor "
+          name="StoryForm"
           component={StoryFormStackScreen}
           options={{title: '+'}}
         />
