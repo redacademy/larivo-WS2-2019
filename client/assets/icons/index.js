@@ -24,7 +24,7 @@ export const InActiveBookmark = require('./login/icon-bookmark-inactive.svg')
 export const FollowIcon = require('./profile/icon-profile-follow.svg')
 export const FollowingIcon = require('./profile/icon-profile-follow_active.svg')
 
-// SettingsIcon
+// Settings Icon
 
 export const SettingsButton = require('./profile/icon-profile-settings.svg')
 
@@ -39,3 +39,14 @@ export const PasswordIcon = require('./login/icon-password-dark.svg')
 
 // Posted Icon
 export const PostedIcon = require('./storyForm/posted_icon.svg')
+
+// Toolbar Icons
+export const HomeInActiveIcon = require('./toolbar/icon-toolbar-home-inactive.svg')
+export const HomeIcon = require('./toolbar/icon-toolbar-home-active.svg')
+export const BookmarkInActiveIcon = require('./toolbar/icon-toolbar-feed-inactive.svg')
+export const BookmarkIcon = require('./toolbar/icon-toolbar-feed-active.svg')
+export const StoryFormIcon = require('./toolbar/icon-toolbar-post.svg')
+export const ActivityInActiveIcon = require('./toolbar/icon-resource-inactive.svg')
+export const ActivityIcon = require('./toolbar/icon-resource-active.svg')
+export const ProfileInactiveIcon = require('./toolbar/icon-profile-inactive.svg')
+export const ProfileIcon = require('./toolbar/icon-profile-active.svg')
