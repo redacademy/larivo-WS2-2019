@@ -39,6 +39,8 @@ const styles = StyleSheet.create({
   settings_itemRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+
   },
   settings_items_Text_Icon: {
     flexDirection: 'row',
