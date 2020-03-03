@@ -25,9 +25,12 @@ const Username = () => (
           fontWeight: 'bold',
           fontFamily: 'Asap-SemiBold',
           color: '#13443C',
+          //   width: '80%',
+          paddingHorizontal: 20,
+          textAlign: 'center',
         }}
       >
-        enter your deets
+        generate your username
       </Text>
       <View
         style={{
@@ -37,20 +40,12 @@ const Username = () => (
         }}
       >
         <View style={{paddingVertical: 40}}>
-          <Text
-            style={{
-              paddingBottom: 20,
-              fontFamily: 'SFProText-Light',
-              color: '#13443C',
-              fontSize: 16,
-            }}
-          >
-            Enter Your Email
-          </Text>
-          <InputFieldEmail placeholder={'example@gmail.com'} />
+          <InputFieldEmail placeholder={'Roaring Velvet'} />
         </View>
-
-        <View style={{paddingTop: 60}}>
+        <View style={{paddingTop: 10}}>
+          <Button theme="dark">Generate Another Username</Button>
+        </View>
+        <View style={{paddingTop: 10}}>
           <Button theme="light">Next</Button>
         </View>
       </View>
