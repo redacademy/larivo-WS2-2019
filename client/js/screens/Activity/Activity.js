@@ -7,7 +7,8 @@ const Activity = () => {
   return (
     <SafeAreaView>
       {/* <Username /> */}
-      <HashtagScreen />
+      {/* <HashtagScreen /> */}
+      <Register />
     </SafeAreaView>
   )
 }

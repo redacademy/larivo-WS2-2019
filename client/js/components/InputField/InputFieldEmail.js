@@ -23,6 +23,7 @@ const InputFieldEmail = ({placeholder}) => {
         placeholder={placeholder}
         style={styles.input}
         onChangeText={text => validate(text)}
+        placeholderTextColor="#13443C"
       />
     </View>
   )

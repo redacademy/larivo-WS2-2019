@@ -23,7 +23,7 @@ const Register = () => (
           <Text style={styles.textStyle}>Enter Your Password</Text>
           <InputFieldPassword placeholder={'Password'} />
         </View>
-        <View style={styles.btnPadding}>
+        <View style={styles.btnPaddingRegister}>
           <Button theme="light">Next</Button>
         </View>
       </View>

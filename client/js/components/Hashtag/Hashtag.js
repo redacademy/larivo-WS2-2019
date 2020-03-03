@@ -4,7 +4,6 @@ import styles from './styles'
 
 const Hashtag = ({children, disabled}) => {
   const [pressed, setPressed] = useState(false)
-
   const handlePress = () => setPressed(!pressed)
 
   {

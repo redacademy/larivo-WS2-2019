@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: 100,
   },
   title: {
     fontSize: 35,
@@ -20,10 +21,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textStyle: {
-    paddingBottom: 20,
+    paddingBottom: 10,
     fontFamily: 'SFProText-Light',
     color: '#13443C',
-    fontSize: 16,
+    fontSize: 18,
+    marginLeft: 10,
   },
   textStyleUsernameScreen: {
     fontSize: 35,
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     textAlign: 'center',
   },
-  btnPaddingRegister: {paddingTop: 60},
+  btnPaddingRegister: {paddingTop: 50},
   btnPaddingUsername: {paddingTop: 10},
 
   hashtagContainer: {
@@ -50,9 +52,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
     justifyContent: 'center',
-    paddingVertical: 25,
+    paddingVertical: 15,
   },
 
   textStyleHashtagsScreen: {
