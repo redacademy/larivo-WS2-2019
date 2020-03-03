@@ -1,4 +1,4 @@
 import InputFieldPassword from './InputFieldPassword'
 import InputFieldEmail from './InputFieldEmail'
-
-export default {InputFieldPassword, InputFieldEmail}
+import InputSearchField from './InputSearchField'
+export default {InputFieldPassword, InputFieldEmail, InputSearchField}
