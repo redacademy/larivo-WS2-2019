@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   settings_itemText: {
-    fontFamily: 'SFProText-Medium',
+    // fontFamily: 'SFProText-Medium',
     fontSize: 16,
     color: '#1E6A62',
     marginLeft: 20

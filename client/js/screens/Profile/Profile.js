@@ -8,7 +8,7 @@ import SettingsIcon from '../../components/SettingsIcon/SettingsIcon'
 import EditIcon from '../../components/EditIcon/EditIcon'
 import {ProfileTabs} from '../../navigation'
 
-const Profile = () => {
+const Profile = ({navigation}) => {
   return (
     <ScrollView style={{backgroundColor: '#ffff'}}>
       <Header>
@@ -25,7 +25,7 @@ const Profile = () => {
               display: 'flex',
             }}
           >
-            <SettingsIcon />
+            <SettingsIcon onPress={() => navigation.navigate('Settings')}/>
           </View>
         </View>
         <View
