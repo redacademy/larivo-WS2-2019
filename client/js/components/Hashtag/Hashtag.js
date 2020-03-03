@@ -34,25 +34,3 @@ const Hashtag = ({children, disabled}) => {
   }
 }
 export default Hashtag
-
-// {
-//   return disabled ? (
-//     <View style={styles.hashtagsBox}>
-//       <Text style={styles.hashtagsText}>#{children}</Text>
-//     </View>
-//   ) : (
-//     <TouchableOpacity onPress={handlePress}>
-//       <View
-//         style={
-//           pressed
-//             ? {backgroundColor: '#000'}
-//             : {backgroundColor: '#fff'}
-//         }
-//       >
-//         <Text style={pressed ? {color: '#fff'} : {color: '#000'}}>
-//           #{children}
-//         </Text>
-//       </View>
-//     </TouchableOpacity>
-//   )
-// }
