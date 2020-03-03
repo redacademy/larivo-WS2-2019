@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginRight: 20,
   },
+
   inputBox: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -16,10 +17,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#03dac4',
   },
   eyeIcon: {
-    left: -10,
+    right: -10,
     top: -7,
     position: 'absolute',
   },
+  PlaceholderStyle: {
+    fontSize: 20,
+    color: 'red',
   searchInput: {
     backgroundColor: '#fff',
     borderRadius: 20.5,

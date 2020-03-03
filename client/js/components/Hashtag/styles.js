@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.3)',
     alignItems: 'center',
     justifyContent: 'center',
-
+    marginVertical: 5,
+    marginHorizontal: 5,
     backgroundColor: '#ffff',
     borderRadius: 50,
   },
@@ -15,7 +16,8 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.3)',
     alignItems: 'center',
     justifyContent: 'center',
-
+    marginVertical: 5,
+    marginHorizontal: 5,
     backgroundColor: '#1e6a62',
     borderRadius: 50,
   },

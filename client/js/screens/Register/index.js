@@ -1,2 +1,4 @@
 import Register from './Register'
-export {Register}
+import Username from './Username'
+import HashtagScreen from './HashtagScreen'
+export {Register, Username, HashtagScreen}
