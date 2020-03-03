@@ -37,21 +37,31 @@ const styles = StyleSheet.create({
   btnPaddingRegister: {paddingTop: 60},
   btnPaddingUsername: {paddingTop: 10},
 
+  hashtagContainer: {
+    backgroundColor: '#03DAC4',
+    height: '100%',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 150,
+  },
+
   hashtagsWrap: {
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
     paddingHorizontal: 20,
     justifyContent: 'center',
-    paddingVertical: 40,
+    paddingVertical: 25,
   },
 
   textStyleHashtagsScreen: {
-    paddingTop: 20,
+    paddingTop: 10,
     fontFamily: 'SFProText-Light',
     color: '#13443C',
     fontSize: 19,
     textAlign: 'center',
+    paddingHorizontal: 70,
   },
 })
 

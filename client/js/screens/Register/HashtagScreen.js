@@ -12,7 +12,7 @@ import Hashtag from '../../components/Hashtag/Hashtag'
 
 const HashtagScreen = () => (
   <SafeAreaView>
-    <View style={styles.registerContainer}>
+    <View style={styles.hashtagContainer}>
       <Text style={styles.textStyleUsernameScreen}>
         choose hashtags
       </Text>
