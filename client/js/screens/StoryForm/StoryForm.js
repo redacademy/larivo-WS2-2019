@@ -23,7 +23,7 @@ const StoryForm = ({navigation}) => {
     setTimeout(() => {
       setShow(false)
       navigation.navigate('Home')
-    }, 2000)
+    }, 1500)
   }
 
   return (

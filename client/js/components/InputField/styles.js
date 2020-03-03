@@ -20,6 +20,20 @@ const styles = StyleSheet.create({
     top: -7,
     position: 'absolute',
   },
+  searchInput: {
+    backgroundColor: '#fff',
+    borderRadius: 20.5,
+    fontSize: 14,
+    marginLeft: 15,
+    paddingVertical: 10,
+    minWidth: 255,
+    width: 275,
+    paddingLeft: 15,
+  },
+  searchInputIcon: {
+    position: 'absolute',
+    right: 40,
+  },
 })
 
 export default styles
