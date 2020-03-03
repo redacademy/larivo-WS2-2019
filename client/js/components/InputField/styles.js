@@ -24,6 +24,19 @@ const styles = StyleSheet.create({
   PlaceholderStyle: {
     fontSize: 20,
     color: 'red',
+  searchInput: {
+    backgroundColor: '#fff',
+    borderRadius: 20.5,
+    fontSize: 14,
+    marginLeft: 15,
+    paddingVertical: 10,
+    minWidth: 255,
+    width: 275,
+    paddingLeft: 15,
+  },
+  searchInputIcon: {
+    position: 'absolute',
+    right: 40,
   },
 })
 
