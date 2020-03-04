@@ -7,6 +7,7 @@ import Paragraph from '../../components/Paragraph/Paragraph'
 import SettingsIcon from '../../components/SettingsIcon/SettingsIcon'
 import EditIcon from '../../components/EditIcon/EditIcon'
 import {ProfileTabs} from '../../navigation'
+import styles from './styles'
 
 const Profile = ({navigation}) => {
   return (
@@ -17,6 +18,7 @@ const Profile = ({navigation}) => {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
+            paddingTop: 10,
           }}
         >
           <NameInitials>RV</NameInitials>
@@ -27,8 +29,8 @@ const Profile = ({navigation}) => {
               alignItems: 'center',
             }}
           >
-            <Text>53</Text>
-            <Text>Stories</Text>
+            <Text style={styles.numbers}>53</Text>
+            <Text style={styles.textFollow}>Stories</Text>
           </View>
           <View
             style={{
@@ -37,8 +39,8 @@ const Profile = ({navigation}) => {
               alignItems: 'center',
             }}
           >
-            <Text>64.5K</Text>
-            <Text>Followers</Text>
+            <Text style={styles.numbers}>64.5K</Text>
+            <Text style={styles.textFollow}>Followers</Text>
           </View>
           <View
             style={{
@@ -47,8 +49,8 @@ const Profile = ({navigation}) => {
               alignItems: 'center',
             }}
           >
-            <Text>1247</Text>
-            <Text>Following</Text>
+            <Text style={styles.numbers}>1247</Text>
+            <Text style={styles.textFollow}>Following</Text>
           </View>
           <View
             style={{
