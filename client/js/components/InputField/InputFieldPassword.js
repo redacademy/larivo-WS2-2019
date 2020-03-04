@@ -14,6 +14,7 @@ const InputFieldPassword = ({placeholder}) => {
       <TextInput
         secureTextEntry={hidden}
         placeholder={placeholder}
+        placeholderTextColor="#1E6A62"
         style={styles.input}
         inline
       />
