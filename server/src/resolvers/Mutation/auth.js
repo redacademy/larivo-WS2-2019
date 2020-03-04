@@ -8,7 +8,7 @@ const auth = {
 
     return {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
-      user,
+      user
     }
   },
 
@@ -23,9 +23,9 @@ const auth = {
     }
     return {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
-      user,
+      user
     }
-  },
+  }
 }
 
 module.exports = { auth }

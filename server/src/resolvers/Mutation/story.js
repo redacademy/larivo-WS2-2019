@@ -23,19 +23,45 @@ const story = {
     })
   },
 
-  async publish(parent, { id }, context) {
+  // async publish(parent, { id }, context) {
+  //   const userId = getUserId(context)
+  //   const storyExists = await context.prisma.$exists.story({
+  //     id,
+  //     author: { id: userId }
+  //   })
+  //   if (!storyExists) {
+  //     throw new Error(`Post not found or you're not the author`)
+  //   }
+
+  //   return context.prisma.updateStory({
+  //     where: { id },
+  //     data: { published: true }
+  //   })
+  // },
+
+  async like(parent, { id }, context) {
     const userId = getUserId(context)
-    const storyExists = await context.prisma.$exists.story({
-      id,
-      author: { id: userId }
-    })
-    if (!storyExists) {
-      throw new Error(`Post not found or you're not the author`)
-    }
 
     return context.prisma.updateStory({
       where: { id },
-      data: { published: true }
+      data: {
+        likes: {
+          connect: [{ id: userId }]
+        }
+      }
+    })
+  },
+
+  async favoriteStory(parent, { id }, context) {
+    const userId = getUserId(context)
+
+    return context.prisma.updateUser({
+      where: { id: userId },
+      data: {
+        favoriteStories: {
+          connect: { id }
+        }
+      }
     })
   }
 }
