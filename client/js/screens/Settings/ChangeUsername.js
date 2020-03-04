@@ -5,7 +5,7 @@ import {
   Text,
   SafeAreaView,
   View,
-  TextInput
+  TextInput,
 } from 'react-native'
 import LeftArrow from '../../components/LeftArrow'
 import styles from './styles'
@@ -18,32 +18,30 @@ const ChangeUsername = ({navigation}) => {
     <SafeAreaView>
       <View style={styles.settings_container}>
         <View style={styles.settings_leftArrow}>
-        <LeftArrow onPress={() => navigation.goBack()}/>
+          <LeftArrow onPress={() => navigation.goBack()} />
         </View>
         <View style={styles.settings_contentContainer}>
-          <Text style={styles.settings_title}>
-            Change Username
-          </Text>
+          <Text style={styles.settings_title}>Change Username</Text>
 
           <View style={styles.settings_itemsConstainer} />
 
           <Text style={styles.setting_changeUserText}>
-            Existing stories will be stored under your new username. 
+            Existing stories will be stored under your new username.
           </Text>
         </View>
-        <InputChangeUsername placeholder={'example@gmail.com'} />
+        <InputChangeUsername placeholder={'Gabe and Dimitri'} />
 
         <View style={styles.setting_logout}>
           <View style={styles.setting_logoutBtn}>
-        <Button theme="light" >Get New Username</Button>
-        </View>
-        </View> 
-
-        <View style={styles.setting_logout}>
-          <View style={styles.setting_logoutBtn}>
-          <Button theme="dark" >SAVE CHANGES</Button>
+            <Button theme="light">Get New Username</Button>
           </View>
-        </View> 
+        </View>
+
+        <View style={styles.setting_logout}>
+          <View style={styles.setting_logoutBtn}>
+            <Button theme="dark">SAVE CHANGES</Button>
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   )

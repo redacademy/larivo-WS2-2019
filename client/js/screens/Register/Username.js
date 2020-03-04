@@ -1,15 +1,10 @@
 import React from 'react'
-import {
-  Text,
-  TouchableOpacity,
-  View,
-  SafeAreaView,
-} from 'react-native'
+import {Text, View, SafeAreaView} from 'react-native'
 import InputFieldEmail from '../../components/InputField/InputFieldEmail'
 import Button from '../../components/Button'
 import styles from './styles'
 
-const Username = () => (
+const Username = ({navigation}) => (
   <SafeAreaView>
     <View style={styles.registerContainer}>
       <Text style={styles.textStyleUsernameScreen}>
@@ -23,7 +18,12 @@ const Username = () => (
           <Button theme="dark">Generate Another Username</Button>
         </View>
         <View style={styles.btnPaddingUsername}>
-          <Button theme="light">Next</Button>
+          <Button
+            onPress={() => navigation.navigate('HashtagScreen')}
+            theme="light"
+          >
+            Next
+          </Button>
         </View>
       </View>
     </View>

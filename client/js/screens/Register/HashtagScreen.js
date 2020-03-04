@@ -1,16 +1,10 @@
 import React from 'react'
-import {
-  Text,
-  TouchableOpacity,
-  View,
-  SafeAreaView,
-} from 'react-native'
-import InputFieldEmail from '../../components/InputField/InputFieldEmail'
+import {Text, View, SafeAreaView} from 'react-native'
 import Button from '../../components/Button'
 import styles from './styles'
 import Hashtag from '../../components/Hashtag/Hashtag'
 
-const HashtagScreen = () => (
+const HashtagScreen = ({navigation}) => (
   <SafeAreaView>
     <View style={styles.hashtagContainer}>
       <Text style={styles.textStyleUsernameScreen}>
@@ -33,10 +27,20 @@ const HashtagScreen = () => (
           <Hashtag>Anxiety</Hashtag>
         </View>
         <View style={styles.btnPaddingUsername}>
-          <Button theme="light">Next</Button>
+          <Button
+            onPress={() => navigation.navigate('Tabs')}
+            theme="light"
+          >
+            Next
+          </Button>
         </View>
         <View style={styles.btnPaddingUsername}>
-          <Button theme="dark">Skip For Now</Button>
+          <Button
+            onPress={() => navigation.navigate('Tabs')}
+            theme="dark"
+          >
+            Skip For Now
+          </Button>
         </View>
       </View>
     </View>

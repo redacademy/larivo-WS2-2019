@@ -9,24 +9,32 @@ import {
 import LoginSlideContainer from '../../components/LoginSlideContainer'
 import Button from '../../components/Button'
 
-const Login = () => {
+const Welcome = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={styles.login_container}>
         <View style={styles.login_slidesContainer}>
           <LoginSlideContainer />
           <View style={styles.login_buttons_container}>
-            <Button theme="dark">Continue As Guest</Button>
-            <Button theme="light">Register</Button>
+            <Button
+              onPress={() => navigation.navigate('Tabs')}
+              theme="dark"
+            >
+              Continue As Guest
+            </Button>
+            <Button
+              onPress={() => navigation.navigate('Register')}
+              theme="light"
+            >
+              Register
+            </Button>
           </View>
           <View style={{marginTop: 40}}>
             <Text style={styles.text}>Already have an account?</Text>
           </View>
           <View>
             <TouchableOpacity
-              onPress={() => {
-                alert('Login')
-              }}
+              onPress={() => navigation.navigate('Register')}
             >
               <Text style={styles.login}>Login</Text>
             </TouchableOpacity>
@@ -37,4 +45,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Welcome
