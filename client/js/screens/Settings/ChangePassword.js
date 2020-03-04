@@ -11,7 +11,7 @@ import styles from './styles'
 import Button from '../../components/Button'
 
 // to be changed to settings component
-const DeleteAccount = ({navigation}) => {
+const ChangePassword = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={styles.settings_container}>
@@ -38,4 +38,4 @@ const DeleteAccount = ({navigation}) => {
   )
 }
 
-export default DeleteAccount
+export default ChangePassword

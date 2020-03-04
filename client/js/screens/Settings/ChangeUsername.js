@@ -5,13 +5,15 @@ import {
   Text,
   SafeAreaView,
   View,
+  TextInput
 } from 'react-native'
 import LeftArrow from '../../components/LeftArrow'
 import styles from './styles'
 import Button from '../../components/Button'
+import InputChangeUsername from '../../components/InputField/InputChangeUsername'
 
 // to be changed to settings component
-const DeleteAccount = ({navigation}) => {
+const ChangeUsername = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={styles.settings_container}>
@@ -19,18 +21,27 @@ const DeleteAccount = ({navigation}) => {
         <LeftArrow onPress={() => navigation.goBack()}/>
         </View>
         <View style={styles.settings_contentContainer}>
-          <Text style={styles.settings_title}>Delete Account</Text>
+          <Text style={styles.settings_title}>
+            Change Username
+          </Text>
 
           <View style={styles.settings_itemsConstainer} />
 
-          <Text style={styles.setting_delText}>
-            Deleting your account will remove all stories, activity, and data. This cannot be undone.
+          <Text style={styles.setting_changeUserText}>
+            Existing stories will be stored under your new username. 
           </Text>
         </View>
+        <InputChangeUsername placeholder={'example@gmail.com'} />
 
         <View style={styles.setting_logout}>
           <View style={styles.setting_logoutBtn}>
-          <Button theme="dark" >DELETE</Button>
+        <Button theme="light" >Get New Username</Button>
+        </View>
+        </View> 
+
+        <View style={styles.setting_logout}>
+          <View style={styles.setting_logoutBtn}>
+          <Button theme="dark" >SAVE CHANGES</Button>
           </View>
         </View> 
       </View>
@@ -38,4 +49,4 @@ const DeleteAccount = ({navigation}) => {
   )
 }
 
-export default DeleteAccount
+export default ChangeUsername

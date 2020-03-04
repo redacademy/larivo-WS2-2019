@@ -39,6 +39,27 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 40,
   },
+  changeUserInput: {
+    borderRadius: 25,
+    fontSize: 14,
+    marginLeft: 15,
+    paddingVertical: 10,
+    height : 50,
+    minWidth: 255,
+    width: '92%',
+    paddingLeft: 15,
+    backgroundColor: '#ededed',
+    borderColor: 'white',
+    borderWidth: 2,
+    overflow: 'hidden',
+    shadowColor: 'black',
+    shadowRadius: 2,
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+  }
 })
 
 export default styles
