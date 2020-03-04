@@ -13,62 +13,27 @@ const Profile = ({navigation}) => {
   return (
     <ScrollView style={{backgroundColor: '#ffff'}}>
       <Header>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingTop: 10,
-          }}
-        >
+        <View style={styles.headerContainer}>
           <NameInitials>RV</NameInitials>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
+          <View style={styles.followsContainer}>
             <Text style={styles.numbers}>53</Text>
             <Text style={styles.textFollow}>Stories</Text>
           </View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
+          <View style={styles.textFollow}>
             <Text style={styles.numbers}>64.5K</Text>
             <Text style={styles.textFollow}>Followers</Text>
           </View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
+          <View style={styles.followsContainer}>
             <Text style={styles.numbers}>1247</Text>
             <Text style={styles.textFollow}>Following</Text>
           </View>
-          <View
-            style={{
-              display: 'flex',
-            }}
-          >
+          <View>
             <SettingsIcon
               onPress={() => navigation.navigate('Settings')}
             />
           </View>
         </View>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}
-        >
+        <View style={styles.titleContainer}>
           <StoryTitle>Roaring Velvet</StoryTitle>
 
           <EditIcon />
