@@ -23,9 +23,41 @@ const Profile = ({navigation}) => {
           <View
             style={{
               display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            <SettingsIcon onPress={() => navigation.navigate('Settings')}/>
+            <Text>53</Text>
+            <Text>Stories</Text>
+          </View>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Text>64.5K</Text>
+            <Text>Followers</Text>
+          </View>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Text>1247</Text>
+            <Text>Following</Text>
+          </View>
+          <View
+            style={{
+              display: 'flex',
+            }}
+          >
+            <SettingsIcon
+              onPress={() => navigation.navigate('Settings')}
+            />
           </View>
         </View>
         <View
