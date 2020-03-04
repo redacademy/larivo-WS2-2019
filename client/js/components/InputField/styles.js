@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
     height: 36,
     borderRadius: 20,
     marginRight: 20,
+    color: '#1E6A62',
+    fontSize: 19,
+    paddingLeft: 8,
   },
 
   inputBox: {
