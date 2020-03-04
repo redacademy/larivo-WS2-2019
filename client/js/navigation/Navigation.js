@@ -29,6 +29,8 @@ import {
   Notifications,
   DeleteAccount,
   EditProfile,
+  ChangeUsername,
+  ChangePassword,
 } from '../screens/Settings'
 
 const LoginStack = createStackNavigator()
@@ -93,15 +95,29 @@ const ProfileStackScreen = () => (
       name="ProfileActivity"
       component={ProfileActivity}
     />
-    <ProfileStack.Screen name="Settings" component={Settings} />
+    <ProfileStack.Screen 
+      name="Settings" 
+      component={Settings} 
+    />
     <ProfileStack.Screen
       name="Notifications"
       component={Notifications}
     />
-    <ProfileStack.Screen name="EditProfile" component={EditProfile} />
+    <ProfileStack.Screen  
+      name="EditProfile" 
+      component={EditProfile}
+    />
     <ProfileStack.Screen
       name="DeleteAccount"
       component={DeleteAccount}
+    />
+    <ProfileStack.Screen
+      name="ChangeUsername"
+      component={ChangeUsername}
+    />
+    <ProfileStack.Screen
+      name="ChangePassword"
+      component={ChangePassword}
     />
   </ProfileStack.Navigator>
 )
