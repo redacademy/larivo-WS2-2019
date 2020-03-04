@@ -56,12 +56,15 @@ const Notifications = ({ navigation, modal }) => {
               </View>
           </View>
           <View style={styles.settings_itemsConstainer} />
-
-          <View style={{marginTop: 280}}>
-          <Button theme="dark">LOGOUT</Button>
-          </View>  
         </View>
-      </View>
+       
+        <View style={styles.setting_logout}>
+            <View style={styles.setting_logoutBtn}>
+            <Button theme="dark" >LOGOUT</Button>
+            </View>
+          </View> 
+
+        </View>
     </SafeAreaView>
   )
 }

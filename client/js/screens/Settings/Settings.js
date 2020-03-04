@@ -10,6 +10,7 @@ import BellIcon from '../../../assets/icons/profile/icon-profile-bell.svg'
 import UserIcon from '../../../assets/icons/profile/icon-profile-user.svg'
 import DeleteIcon from '../../../assets/icons/profile/icon-profile-delete.svg'
 import SettingItem from '../../components/SettingItem'
+import Button from '../../components/Button'
 
 import styles from './styles'
 const items = [
@@ -31,8 +32,6 @@ const items = [
 ]
 
 const Settings = ({navigation}) => {
-  const [openModal, setOpenModal] = useState(false)
-  const [modalId, setModalId] = useState(0)
 
   return (
     <SafeAreaView>
@@ -53,13 +52,20 @@ const Settings = ({navigation}) => {
                     navigation.navigate(item.screen)
                   }}
                 >
-                  <SettingItem icon={item.icon} text={item.text} />
+                  <SettingItem icon={item.icon} text={item.text} key={item.text}/>
                 </TouchableOpacity>
               </View>
             )
           })}
           <View style={styles.settings_itemsConstainer} />
         </View>
+
+          <View style={styles.setting_logout}>
+            <View style={styles.setting_logoutBtn}>
+            <Button theme="dark" >LOGOUT</Button>
+            </View>
+          </View> 
+          
       </View>
     </SafeAreaView>
   )

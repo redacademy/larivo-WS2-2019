@@ -2,9 +2,14 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   settings_container: {
+    // flex: 1,
+    // flexDirection: 'column',
     padding: 40,
     height: '100%',
+    width: '100%',
     backgroundColor: 'white',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
   },
   settings_contentContainer: {
     flexDirection: 'column',
@@ -18,10 +23,11 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   settings_title: {
-    // fontFamily: 'SFProText-Bold',
+    fontFamily: 'SFProText-Bold',
     fontSize: 20,
     color: '#1E6A62',
     marginBottom: 40,
+    marginTop: 5,
   },
   settings_itemsConstainer: {
     justifyContent: 'center',
@@ -40,13 +46,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-
   },
   settings_items_Text_Icon: {
     flexDirection: 'row',
   },
   settings_itemText: {
-    // fontFamily: 'SFProText-Medium',
+    fontFamily: 'SFProText-Medium',
     fontSize: 16,
     color: '#1E6A62',
     marginLeft: 20,
@@ -54,5 +59,21 @@ const styles = StyleSheet.create({
   settings_nextIcon: {
     marginTop: 5,
   },
+  setting_logout: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 100
+  },
+  setting_logoutBtn: {
+    width: '90%',
+  },
+  setting_delText: {
+    fontFamily: 'SFProText-Light',
+    textAlign: 'center',
+    fontSize: 20,
+    color: '#1E6A62',
+    marginTop: 20
+  }
 })
 export default styles

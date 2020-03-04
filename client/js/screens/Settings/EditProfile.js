@@ -1,32 +1,68 @@
 import React, {useState} from 'react'
 import {
-  Modal,
   TouchableOpacity,
   Text,
   SafeAreaView,
   View,
 } from 'react-native'
 import LeftArrow from '../../components/LeftArrow'
+import BellIcon from '../../../assets/icons/profile/icon-profile-bell.svg'
+import UserIcon from '../../../assets/icons/profile/icon-profile-user.svg'
+import DeleteIcon from '../../../assets/icons/profile/icon-profile-delete.svg'
+import PasswordIcon from '../../../assets/icons/profile/icon-profile-password.svg'
+import Button from '../../components/Button'
+
+import SettingItem from '../../components/SettingItem'
 
 import styles from './styles'
+const items = [
+  {
+    icon: UserIcon,
+    text: 'Change Username',
+    screen: 'ChangeUsername',
+  },
+  {
+    icon: PasswordIcon,
+    text: 'Change Password',
+    screen: 'ChangePassword',
+  }
+]
 
-// to be changed to settings component
-const EditProfile = ({modal}) => {
+const EditProfile = ({navigation}) => {
+
   return (
     <SafeAreaView>
+
       <View style={styles.settings_container}>
         <View style={styles.settings_leftArrow}>
-          <TouchableOpacity
-            onPress={() => {
-              modal(false)
-            }}
-          >
-            <LeftArrow />
-          </TouchableOpacity>
+          <LeftArrow onPress={() => navigation.goBack()}/>
         </View>
         <View style={styles.settings_contentContainer}>
           <Text style={styles.settings_title}>Edit Profile</Text>
+
+          {items.map(item => {
+            return (
+              <View style={styles.settings_itemsConstainer}>
+                <TouchableOpacity
+                  style={{width: '100%'}}
+                  onPress={() => {
+                    navigation.navigate(item.screen)
+                  }}
+                >
+                  <SettingItem icon={item.icon} text={item.text} key={item.text} />
+                </TouchableOpacity>
+              </View>
+            )
+          })}
+          <View style={styles.settings_itemsConstainer} />
         </View>
+
+        <View style={styles.setting_logout}>
+            <View style={styles.setting_logoutBtn}>
+            <Button theme="dark" >LOGOUT</Button>
+            </View>
+          </View> 
+
       </View>
     </SafeAreaView>
   )
