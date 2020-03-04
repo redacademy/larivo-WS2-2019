@@ -213,10 +213,10 @@ export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
-  userName: String;
+  userName?: Maybe<String>;
   email: String;
   password: String;
-  bio: String;
+  bio?: Maybe<String>;
   guest?: Maybe<Boolean>;
   following?: Maybe<UserCreateManyWithoutFollowingInput>;
   followers?: Maybe<UserCreateManyWithoutFollowersInput>;
@@ -575,10 +575,10 @@ export type StoryWhereUniqueInput = AtLeastOne<{
 
 export interface UserCreateWithoutFollowingInput {
   id?: Maybe<ID_Input>;
-  userName: String;
+  userName?: Maybe<String>;
   email: String;
   password: String;
-  bio: String;
+  bio?: Maybe<String>;
   guest?: Maybe<Boolean>;
   followers?: Maybe<UserCreateManyWithoutFollowersInput>;
 }
@@ -604,10 +604,10 @@ export interface UserUpdateManyDataInput {
 
 export interface UserCreateWithoutFollowersInput {
   id?: Maybe<ID_Input>;
-  userName: String;
+  userName?: Maybe<String>;
   email: String;
   password: String;
-  bio: String;
+  bio?: Maybe<String>;
   guest?: Maybe<Boolean>;
   following?: Maybe<UserCreateManyWithoutFollowingInput>;
 }
@@ -778,10 +778,10 @@ export interface NodeNode {
 
 export interface UserPreviousValues {
   id: ID_Output;
-  userName: String;
+  userName?: String;
   email: String;
   password: String;
-  bio: String;
+  bio?: String;
   guest: Boolean;
 }
 
@@ -1024,10 +1024,10 @@ export interface HashtagConnectionSubscription
 
 export interface User {
   id: ID_Output;
-  userName: String;
+  userName?: String;
   email: String;
   password: String;
-  bio: String;
+  bio?: String;
   guest: Boolean;
 }
 

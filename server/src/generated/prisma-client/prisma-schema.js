@@ -340,10 +340,10 @@ type Subscription {
 
 type User {
   id: ID!
-  userName: String!
+  userName: String
   email: String!
   password: String!
-  bio: String!
+  bio: String
   guest: Boolean!
   following(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   followers(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
@@ -357,10 +357,10 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  userName: String!
+  userName: String
   email: String!
   password: String!
-  bio: String!
+  bio: String
   guest: Boolean
   following: UserCreateManyWithoutFollowingInput
   followers: UserCreateManyWithoutFollowersInput
@@ -383,20 +383,20 @@ input UserCreateManyWithoutFollowingInput {
 
 input UserCreateWithoutFollowersInput {
   id: ID
-  userName: String!
+  userName: String
   email: String!
   password: String!
-  bio: String!
+  bio: String
   guest: Boolean
   following: UserCreateManyWithoutFollowingInput
 }
 
 input UserCreateWithoutFollowingInput {
   id: ID
-  userName: String!
+  userName: String
   email: String!
   password: String!
-  bio: String!
+  bio: String
   guest: Boolean
   followers: UserCreateManyWithoutFollowersInput
 }
@@ -423,10 +423,10 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
-  userName: String!
+  userName: String
   email: String!
   password: String!
-  bio: String!
+  bio: String
   guest: Boolean!
 }
 
