@@ -20,7 +20,7 @@ const Bio = ({navigation}) => {
     setShow(true)
     setTimeout(() => {
       setShow(false)
-      navigation.navigate('Home')
+      navigation.navigate('profile')
     }, 1500)
   }
 
