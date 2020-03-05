@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #03DAC4;">
-    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
-    <title>Icon / Toolbar / Feed [Active]@3x</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icon-/-Toolbar-/-Feed-[Active]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#03DAC4" x="0" y="0" width="23" height="23"></rect>
-        <path d="M11.5,18.2385538 L3.57835495,22.403209 L5.09125453,13.5823276 L-1.31749094,7.33534474 L7.53917748,6.04839549 L11.5,-1.97710753 L15.4608225,6.04839549 L24.3174909,7.33534474 L17.9087455,13.5823276 L19.421645,22.403209 L11.5,18.2385538 Z" id="Star-Copy-6" stroke="#F1FFFE" stroke-width="1.75" fill-opacity="0.6" fill="#F1FFFE" stroke-linejoin="round"></path>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+    <title>5A935C58-E725-461C-A0FC-DEA1D09FCB18@3x</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.6" stroke-linejoin="round">
+        <g id="25-Feeds" transform="translate(-108.000000, -1557.000000)" fill="#F1FFFE" stroke="#F1FFFE" stroke-width="1.75">
+            <g id="Bottom-Tab-Bar" transform="translate(0.000000, 1540.000000)">
+                <g id="Bookmark-Icon" transform="translate(108.000000, 17.000000)">
+                    <path d="M13,0.0390566291 L9.02927359,8.40644992 L0.23354086,9.73566849 L6.5955823,16.1851845 L5.08499863,25.3448583 L13,21.0172493 L20.9150014,25.3448583 L19.4044177,16.1851845 L25.7664591,9.73566849 L16.9707264,8.40644992 L13,0.0390566291 Z" id="Star-Copy-6"></path>
+                </g>
+            </g>
+        </g>
     </g>
 </svg>

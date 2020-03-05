@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="23px" height="22px" viewBox="0 0 23 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #03DAC4;">
-    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
-    <title>Icon / Toolbar / Home [Active]@3x</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icon-/-Toolbar-/-Home-[Active]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#03DAC4" x="0" y="0" width="23" height="22"></rect>
-        <path d="M21.1014179,10.30058 L21.1014179,22.875 L13.2320865,22.875 L13.2320865,15.5292267 C13.2320865,14.4430109 12.4612041,13.5945583 11.5543114,13.5945583 C10.6474609,13.5945583 9.87658307,14.4430167 9.87658307,15.5292267 L9.87658307,22.875 L1.89862892,22.875 L1.89862892,10.30058 L-2.44785949,10.30058 L11.4996562,-1.13134821 L25.4479675,10.30058 L21.1014179,10.30058 Z" id="Home-Icon" stroke="#F1FFFE" stroke-width="1.75" fill-opacity="0.6" fill="#F1FFFE" stroke-linejoin="round"></path>
+<svg width="27px" height="26px" viewBox="0 0 27 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+    <title>4FFFC0BB-3136-41F4-A8FE-8BB01800B9C6@3x</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.6" stroke-linejoin="round">
+        <g id="05-Home-6" transform="translate(-40.000000, -1557.000000)" fill="#F1FFFE" stroke="#F1FFFE" stroke-width="1.75">
+            <g id="Bottom-Tab-Bar" transform="translate(0.000000, 1540.000000)">
+                <g id="Home-Icon-[Active]" transform="translate(40.000000, 17.000000)">
+                    <path d="M13.4996562,0.868651795 L-0.447859492,12.30058 L3.89862892,12.30058 L3.89862892,24.875 L11.8765831,24.875 L11.8765831,17.5292267 C11.8765831,16.9847133 12.071745,16.488759 12.3968823,16.1308956 C12.6930976,15.8048653 13.099837,15.5945583 13.5543114,15.5945583 C14.008805,15.5945583 14.4155582,15.8048625 14.7117817,16.1308959 C15.0369243,16.4887585 15.2320865,16.984713 15.2320865,17.5292267 L15.2320865,24.875 L23.1014179,24.875 L23.1014179,12.30058 L27.4479675,12.30058 L13.4996562,0.868651795 Z" id="Home-Icon"></path>
+                </g>
+            </g>
+        </g>
     </g>
 </svg>

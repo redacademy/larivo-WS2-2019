@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   numbers: {
     paddingTop: 2,
     fontSize: 14,
+    textAlign: 'center',
     fontWeight: 'bold',
     color: '#13443C',
   },

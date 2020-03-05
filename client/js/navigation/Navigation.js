@@ -2,8 +2,8 @@ import React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
-import {Login} from '../screens/Login'
-import {Register} from '../screens/Register'
+import {Welcome} from '../screens/Welcome'
+import {Register, Username, HashtagScreen} from '../screens/Register'
 import {Home} from '../screens/Home'
 import {BookMark} from '../screens/BookMark'
 import {StoryForm} from '../screens/StoryForm'
@@ -30,14 +30,21 @@ import {
   Notifications,
   DeleteAccount,
   EditProfile,
+  ChangeUsername,
+  ChangePassword,
 } from '../screens/Settings'
 
 const LoginStack = createStackNavigator()
 
-const LoginStackScreen = () => (
-  <LoginStack.Navigator headerMode="none">
-    <LoginStack.Screen name="Login" component={Login} />
+const WelcomeStackScreen = () => (
+  <LoginStack.Navigator initialRouteName="Welcome" headerMode="none">
+    <LoginStack.Screen name="Welcome" component={Welcome} />
     <LoginStack.Screen name="Register" component={Register} />
+    <LoginStack.Screen name="Username" component={Username} />
+    <LoginStack.Screen
+      name="HashtagScreen"
+      component={HashtagScreen}
+    />
   </LoginStack.Navigator>
 )
 
@@ -76,7 +83,7 @@ const ActivityStackScreen = () => (
 const ProfileStack = createStackNavigator()
 
 const ProfileStackScreen = () => (
-  <ProfileStack.Navigator headerMode="none">
+  <ProfileStack.Navigator mode="modal" headerMode="none">
     <ProfileStack.Screen name="Profile" component={Profile} />
     <ProfileStack.Screen
       name="ProfileStory"
@@ -105,92 +112,107 @@ const ProfileStackScreen = () => (
       component={DeleteAccount}
     />
     <ProfileStack.Screen name="Bio" component={Bio} />
-    {/* change this */}
+    <ProfileStack.Screen
+      name="ChangeUsername"
+      component={ChangeUsername}
+    />
+    <ProfileStack.Screen
+      name="ChangePassword"
+      component={ChangePassword}
+    />
   </ProfileStack.Navigator>
 )
 
 const Tab = createBottomTabNavigator()
 
-const Navigation = () => {
+const HomeTabs = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-            const {name} = route
-            if (name === 'Home') {
-              if (focused) {
-                return <HomeTabIcon />
-              } else {
-                return <HomeTabInActiveIcon />
-              }
-            } else if (name === 'Bookmark') {
-              if (focused) {
-                return <BookMarkIcon />
-              } else {
-                return <BookMarkInActiveIcon />
-              }
-            } else if (name === 'StoryForm') {
-              return <StoryFormIcon />
-            } else if (name === 'Activity') {
-              if (focused) {
-                return <ResourceIcon />
-              } else {
-                return <ResourceInActiveIcon />
-              }
-            } else if (name === 'Profile') {
-              if (focused) {
-                return <ProfileIcon />
-              } else {
-                return <ProfileInactiveIcon />
-              }
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused}) => {
+          const {name} = route
+          if (name === 'Home') {
+            if (focused) {
+              return <HomeTabIcon />
+            } else {
+              return <HomeTabInActiveIcon />
             }
-          },
-        })}
-        tabBarOptions={{
-          showLabel: false,
-          inactiveTintColor: '#fff',
-          activeTintColor: '#fff',
-          style: {
-            height: 95,
-            backgroundColor: '#03DAC4',
-          },
-        }}
-        initialRouteName="Login"
-      >
-        <Tab.Screen
-          name="Login"
-          component={LoginStackScreen}
-          options={{title: 'Login'}}
-        />
-        <Tab.Screen
-          name="Home"
-          component={HomeStackScreen}
-          options={{title: 'Home'}}
-        />
-        <Tab.Screen
-          name="Bookmark"
-          component={BookMarkStackScreen}
-          options={{title: 'Bookmark'}}
-        />
-        <Tab.Screen
-          name="StoryForm"
-          component={StoryFormStackScreen}
-          options={{title: '+'}}
-        />
-        <Tab.Screen
-          name="Activity"
-          component={ActivityStackScreen}
-          options={{title: 'Activity'}}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={ProfileStackScreen}
-          options={{title: 'Profile'}}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+          } else if (name === 'Bookmark') {
+            if (focused) {
+              return <BookMarkIcon />
+            } else {
+              return <BookMarkInActiveIcon />
+            }
+          } else if (name === 'StoryForm') {
+            return <StoryFormIcon />
+          } else if (name === 'Activity') {
+            if (focused) {
+              return <ResourceIcon />
+            } else {
+              return <ResourceInActiveIcon />
+            }
+          } else if (name === 'Profile') {
+            if (focused) {
+              return <ProfileIcon />
+            } else {
+              return <ProfileInactiveIcon />
+            }
+          }
+        },
+      })}
+      tabBarOptions={{
+        showLabel: false,
+        inactiveTintColor: '#fff',
+        activeTintColor: '#fff',
+        style: {
+          height: 95,
+          backgroundColor: '#03DAC4',
+        },
+      }}
+      initialRouteName="Register"
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeStackScreen}
+        options={{title: 'Home'}}
+      />
+      <Tab.Screen
+        name="Bookmark"
+        component={BookMarkStackScreen}
+        options={{title: 'Bookmark'}}
+      />
+      <Tab.Screen
+        name="StoryForm"
+        component={StoryFormStackScreen}
+        options={{title: '+'}}
+      />
+      <Tab.Screen
+        name="Activity"
+        component={ActivityStackScreen}
+        options={{title: 'Activity'}}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileStackScreen}
+        options={{title: 'Profile'}}
+      />
+    </Tab.Navigator>
   )
 }
+
+const RootStack = createStackNavigator()
+
+const Navigation = () => (
+  <NavigationContainer>
+    <RootStack.Navigator initialRouteName="Welcome" headerMode="none">
+      <RootStack.Screen name="Tabs" component={HomeTabs} />
+      <RootStack.Screen
+        name="Welcome"
+        component={WelcomeStackScreen}
+      />
+    </RootStack.Navigator>
+  </NavigationContainer>
+)
 
 export default Navigation

@@ -2,7 +2,7 @@ const { getUserId } = require('../utils')
 
 const Query = {
   feed(parent, args, context) {
-    return context.prisma.stories({ where: { published: true } })
+    return context.prisma.story({ where: { published: true } })
   },
   drafts(parent, args, context) {
     const id = getUserId(context)

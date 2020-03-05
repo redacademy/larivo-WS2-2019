@@ -74,6 +74,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#1E6A62',
     marginTop: 20
+  },
+  setting_changeUserText: {
+    fontFamily: 'SFProText-Light',
+    textAlign: 'center',
+    fontSize: 20,
+    color: '#1E6A62',
   }
 })
 export default styles

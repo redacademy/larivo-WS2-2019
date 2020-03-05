@@ -1,8 +1,13 @@
 import React from 'react'
-import {Text, TouchableOpacity} from 'react-native'
+import {View, Text, TouchableOpacity} from 'react-native'
 import styles from './styles'
 
-const Button = ({theme: buttonTheme, onPress, children}) => {
+const Button = ({
+  theme: buttonTheme,
+  onPress,
+  children,
+  disabled,
+}) => {
   let theme = {}
   if (buttonTheme == 'light') {
     theme.backgroundColor = '#F1FFFE'
@@ -13,7 +18,11 @@ const Button = ({theme: buttonTheme, onPress, children}) => {
     theme.color = '#F1FFFE'
   }
 
-  return (
+  return disabled ? (
+    <View style={styles(theme).disabledBtn}>
+      <Text style={styles(theme).disabledText}>{children}</Text>
+    </View>
+  ) : (
     <>
       <TouchableOpacity
         style={styles(theme).button}

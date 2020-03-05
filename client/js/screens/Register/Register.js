@@ -10,7 +10,7 @@ import InputFieldPassword from '../../components/InputField/InputFieldPassword'
 import Button from '../../components/Button'
 import styles from './styles'
 
-const Register = () => (
+const Register = ({navigation}) => (
   <SafeAreaView>
     <View style={styles.registerContainer}>
       <Text style={styles.title}>enter your deets</Text>
@@ -24,7 +24,12 @@ const Register = () => (
           <InputFieldPassword placeholder={'Password'} />
         </View>
         <View style={styles.btnPaddingRegister}>
-          <Button theme="light">Next</Button>
+          <Button
+            onPress={() => navigation.navigate('Username')}
+            theme="light"
+          >
+            Next
+          </Button>
         </View>
       </View>
     </View>

@@ -19,8 +19,17 @@ const StoryForm = ({navigation}) => {
   const [tags, setTags] = useState([])
   const [show, setShow] = useState(false)
 
+  const handleTags = () => {
+    if (tag === '') return
+    setTags([...tags, tag])
+    setTag('')
+  }
+
   const handleSubmit = () => {
     setShow(true)
+    setTitle('')
+    setContent('')
+    setTags([])
     setTimeout(() => {
       setShow(false)
       navigation.navigate('Home')
@@ -33,6 +42,7 @@ const StoryForm = ({navigation}) => {
         <View style={styles.content}>
           <Card>
             <TextInput
+              autoFocus={true}
               placeholderTextColor="#1E6A62"
               style={styles.titleInput}
               value={title}
@@ -49,10 +59,11 @@ const StoryForm = ({navigation}) => {
           </Card>
           <TextInput
             style={styles.tagInput}
+            blurOnSubmit={false}
             placeholder="Add #Hashtags"
             value={tag}
             onChangeText={val => setTag(val)}
-            onSubmitEditing={() => setTags([...tags, tag])}
+            onSubmitEditing={handleTags}
           />
           <View style={styles.buttonContainer}>
             <Button onPress={handleSubmit} theme="dark">

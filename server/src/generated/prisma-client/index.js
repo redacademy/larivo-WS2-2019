@@ -20,6 +20,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://us1.prisma.sh/zareef-baksh/larivo/dev`
+  endpoint: `https://eu1.prisma.sh/edin/larivo/dev`
 });
 exports.prisma = new exports.Prisma();
