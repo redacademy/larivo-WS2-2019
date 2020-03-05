@@ -9,10 +9,11 @@ import {
 import {Card} from '../../components/Card'
 import {Popup} from '../../components/Popup/'
 import Button from '../../components/Button'
+import LeftArrow from '../../components/LeftArrow'
+
 import styles from './styles'
 
 const Bio = ({navigation}) => {
-  const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [show, setShow] = useState(false)
 
@@ -20,13 +21,16 @@ const Bio = ({navigation}) => {
     setShow(true)
     setTimeout(() => {
       setShow(false)
-      navigation.navigate('profile')
+      navigation.navigate('home')
     }, 1500)
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
+        <View style={styles.settings_leftArrow}>
+          <LeftArrow onPress={() => navigation.goBack()} />
+        </View>
         <View style={styles.content}>
           <Card>
             <Text style={styles.titleInput}>Bio</Text>
