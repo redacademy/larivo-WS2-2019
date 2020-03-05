@@ -36,7 +36,7 @@ const Profile = ({navigation}) => {
         <View style={styles.titleContainer}>
           <StoryTitle>Roaring Velvet</StoryTitle>
 
-          <EditIcon />
+          <EditIcon onPress={() => navigation.navigate('Bio')} />
         </View>
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

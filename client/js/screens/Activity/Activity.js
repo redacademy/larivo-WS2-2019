@@ -1,14 +1,9 @@
 import React from 'react'
-import {SafeAreaView} from 'react-native'
+import Bio from '../Profile/Bio'
 import {Register, Username, HashtagScreen} from '../Register'
+
 const Activity = () => {
-  return (
-    <SafeAreaView>
-      {/* <Username /> */}
-      {/* <HashtagScreen /> */}
-      <Register />
-    </SafeAreaView>
-  )
+  return <Bio />
 }
 
 export default Activity

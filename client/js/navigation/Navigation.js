@@ -23,6 +23,7 @@ import {
   ProfileBookMark,
   ProfileDraft,
   ProfileActivity,
+  Bio,
 } from '../screens/Profile'
 import {
   Settings,
@@ -110,6 +111,7 @@ const ProfileStackScreen = () => (
       name="DeleteAccount"
       component={DeleteAccount}
     />
+    <ProfileStack.Screen name="Bio" component={Bio} />
     <ProfileStack.Screen
       name="ChangeUsername"
       component={ChangeUsername}

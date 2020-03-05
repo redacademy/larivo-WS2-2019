@@ -10,6 +10,13 @@ const styles = StyleSheet.create({
     marginRight: 20,
     fontSize: 16,
     paddingLeft: 8,
+    backgroundColor: 'transparent',
+    borderRadius: 20.5,
+    fontSize: 16,
+    paddingVertical: 10,
+    minWidth: 255,
+    width: 275,
+    paddingLeft: 15,
   },
   changePasswordInput: {
     // borderWidth: .5,
@@ -35,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   eyeIcon: {
-    right: -10,
+    right: -30,
     top: -7,
     position: 'absolute',
   },
