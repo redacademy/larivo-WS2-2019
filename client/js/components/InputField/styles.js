@@ -4,12 +4,13 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: '#1E6A62',
-    width: 268,
-    height: 36,
-    borderRadius: 20,
-    marginRight: 20,
-    fontSize: 19,
-    paddingLeft: 8,
+    backgroundColor: 'transparent',
+    borderRadius: 20.5,
+    fontSize: 16,
+    paddingVertical: 10,
+    minWidth: 255,
+    width: 275,
+    paddingLeft: 15,
   },
 
   inputBox: {
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#03dac4',
   },
   eyeIcon: {
-    right: -10,
+    right: -30,
     top: -7,
     position: 'absolute',
   },
