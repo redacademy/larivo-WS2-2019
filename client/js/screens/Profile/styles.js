@@ -75,6 +75,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  settings_leftArrowBio: {
+    marginLeft: 20,
+    marginTop: 20,
+  },
 })
 
 export default styles

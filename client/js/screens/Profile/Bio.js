@@ -21,14 +21,14 @@ const Bio = ({navigation}) => {
     setShow(true)
     setTimeout(() => {
       setShow(false)
-      navigation.navigate('home')
+      navigation.goBack()
     }, 1500)
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View style={styles.settings_leftArrow}>
+        <View style={styles.settings_leftArrowBio}>
           <LeftArrow onPress={() => navigation.goBack()} />
         </View>
         <View style={styles.content}>
