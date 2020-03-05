@@ -11,6 +11,7 @@ import {Popup} from '../../components/Popup/'
 import Button from '../../components/Button'
 import Hashtag from '../../components/Hashtag'
 import styles from './styles'
+
 const StoryForm = ({navigation}) => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')

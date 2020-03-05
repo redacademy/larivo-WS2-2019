@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
   //bio Styles
 
-  container: {
+  containerBio: {
     flex: 1,
     backgroundColor: '#F1FFFE',
   },

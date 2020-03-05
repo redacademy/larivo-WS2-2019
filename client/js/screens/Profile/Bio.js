@@ -1,47 +1,49 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
-  Text,
-  View,
-  ScrollView,
   SafeAreaView,
   TextInput,
-  Card,
+  View,
+  ScrollView,
+  Text,
 } from 'react-native'
+import {Card} from '../../components/Card'
+import {Popup} from '../../components/Popup/'
 import Button from '../../components/Button'
-import Card from '../../components/Card'
-import Popup from '../../components/Popup'
+import styles from './styles'
 
-const Bio = () => (
-  <SafeAreaView style={styles.container}>
-    <ScrollView>
+const Bio = () => {
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
+  return (
+    <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Card>
-          <TextInput
+          <Text style={styles.titleInput}>Update your Bio</Text>
+          {/* <TextInput
             placeholderTextColor="#1E6A62"
             style={styles.titleInput}
             value={title}
             onChangeText={val => setTitle(val)}
-            placeholder="Give Your Story a Title"
-          />
+            placeholder="Update your Bio"
+          /> */}
           <TextInput
             style={styles.contentInput}
             multiline={true}
             value={content}
             onChangeText={val => setContent(val)}
-            placeholder="Write your story here..."
+            placeholder="New Bio..."
           />
         </Card>
 
         <View style={styles.buttonContainer}>
-          <Button onPress={handleSubmit} theme="dark">
-            PUBLISH
-          </Button>
-          <Button>Save As Draft</Button>
+          <Button theme="dark">Update Bio</Button>
         </View>
       </View>
-    </ScrollView>
-    <Popup text="Posted!" show={show} />
-  </SafeAreaView>
-)
+      <Popup text="Posted!" />
+    </SafeAreaView>
+  )
+}
 
 export default Bio
+
+// show={show}
