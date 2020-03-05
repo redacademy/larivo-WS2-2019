@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="27px" height="25px" viewBox="0 0 27 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #03DAC4;">
-    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
-    <title>Icon / Toolbar / Feed@3x</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icon-/-Toolbar-/-Feed" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#03DAC4" x="0" y="0" width="27" height="25"></rect>
-        <path d="M13.5,20.2385538 L5.57835495,24.403209 L7.09125453,15.5823276 L0.682509064,9.33534474 L9.53917748,8.04839549 L13.5,0.0228924708 L17.4608225,8.04839549 L26.3174909,9.33534474 L19.9087455,15.5823276 L21.421645,24.403209 L13.5,20.2385538 Z" id="Star-Copy-6" stroke="#90FDF6" stroke-width="1.75" stroke-linejoin="round"></path>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+    <title>8878EF10-20FC-4627-9B3E-AD73A93F9D66@3x</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g id="05-Home-6" transform="translate(-108.000000, -1557.000000)" stroke="#90FDF6" stroke-width="1.75">
+            <g id="Bottom-Tab-Bar" transform="translate(0.000000, 1540.000000)">
+                <g id="Bookmark-Icon" transform="translate(108.000000, 17.000000)">
+                    <path d="M13,0.0390566291 L9.02927359,8.40644992 L0.23354086,9.73566849 L6.5955823,16.1851845 L5.08499863,25.3448583 L13,21.0172493 L20.9150014,25.3448583 L19.4044177,16.1851845 L25.7664591,9.73566849 L16.9707264,8.40644992 L13,0.0390566291 Z" id="Star-Copy-6"></path>
+                </g>
+            </g>
+        </g>
     </g>
 </svg>

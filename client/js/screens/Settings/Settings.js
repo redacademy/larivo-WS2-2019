@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {
   TouchableOpacity,
   Text,
@@ -15,16 +15,19 @@ import Button from '../../components/Button'
 import styles from './styles'
 const items = [
   {
+    id: 1,
     icon: BellIcon,
     text: 'Notifications',
     screen: 'Notifications',
   },
   {
+    id: 2,
     icon: UserIcon,
     text: 'Edit Profile',
     screen: 'EditProfile',
   },
   {
+    id: 3,
     icon: DeleteIcon,
     text: 'Delete Account',
     screen: 'DeleteAccount',
@@ -32,27 +35,28 @@ const items = [
 ]
 
 const Settings = ({navigation}) => {
-
   return (
     <SafeAreaView>
-
       <View style={styles.settings_container}>
         <View style={styles.settings_leftArrow}>
-          <LeftArrow onPress={() => navigation.goBack()}/>
+          <LeftArrow onPress={() => navigation.goBack()} />
         </View>
         <View style={styles.settings_contentContainer}>
-          <Text style={styles.settings_title}>Setting</Text>
+          <Text style={styles.settings_title}>Settings</Text>
 
           {items.map(item => {
             return (
-              <View style={styles.settings_itemsConstainer}>
+              <View
+                key={item.id}
+                style={styles.settings_itemsConstainer}
+              >
                 <TouchableOpacity
                   style={{width: '100%'}}
                   onPress={() => {
                     navigation.navigate(item.screen)
                   }}
                 >
-                  <SettingItem icon={item.icon} text={item.text} key={item.text}/>
+                  <SettingItem icon={item.icon} text={item.text} />
                 </TouchableOpacity>
               </View>
             )
@@ -60,12 +64,11 @@ const Settings = ({navigation}) => {
           <View style={styles.settings_itemsConstainer} />
         </View>
 
-          <View style={styles.setting_logout}>
-            <View style={styles.setting_logoutBtn}>
-            <Button theme="dark" >LOGOUT</Button>
-            </View>
-          </View> 
-          
+        <View style={styles.setting_logout}>
+          <View style={styles.setting_logoutBtn}>
+            <Button theme="dark">LOGOUT</Button>
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   )
