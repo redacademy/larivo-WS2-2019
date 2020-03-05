@@ -2,8 +2,14 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   input: {
-    borderWidth: 1,
+    borderWidth: .5,
     borderColor: '#1E6A62',
+    width: 268,
+    height: 36,
+    borderRadius: 20,
+    marginRight: 20,
+    fontSize: 16,
+    paddingLeft: 8,
     backgroundColor: 'transparent',
     borderRadius: 20.5,
     fontSize: 16,
@@ -12,12 +18,28 @@ const styles = StyleSheet.create({
     width: 275,
     paddingLeft: 15,
   },
-
+  changePasswordInput: {
+    // borderWidth: .5,
+    // borderColor: '#1E6A62',
+    width: 290,
+    height: 42,
+    borderRadius: 20,
+    marginRight: 20,
+    fontSize: 16,
+    paddingLeft: 18,
+    backgroundColor: '#ededed'
+  },
   inputBox: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#03dac4',
+  },
+  inputChangePasswordBox: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
   eyeIcon: {
     right: -30,
@@ -42,26 +64,18 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 40,
   },
+  changeUserInputView: {
+    width: '100%'
+  },
   changeUserInput: {
     borderRadius: 25,
-    fontSize: 14,
+    fontSize: 16,
     marginLeft: 15,
     paddingVertical: 10,
     height : 50,
-    minWidth: 255,
-    width: '92%',
+    minWidth: 100,
     paddingLeft: 15,
-    backgroundColor: '#ededed',
-    borderColor: 'white',
-    borderWidth: 2,
-    overflow: 'hidden',
-    shadowColor: 'black',
-    shadowRadius: 2,
-    shadowOpacity: 1,
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
+    backgroundColor: '#ededed'
   }
 })
 
