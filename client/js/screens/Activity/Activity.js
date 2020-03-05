@@ -5,14 +5,7 @@ import Username from '../Register/Username'
 import HashtagScreen from '../Register/HashtagScreen'
 import Bio from '../Profile/Bio'
 const Activity = () => {
-  return (
-    <SafeAreaView>
-      {/* <Username /> */}
-      {/* <HashtagScreen /> */}
-      {/* <Register /> */}
-      <Bio />
-    </SafeAreaView>
-  )
+  return <Bio />
 }
 
 export default Activity

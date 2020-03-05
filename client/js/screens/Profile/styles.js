@@ -29,8 +29,7 @@ const styles = StyleSheet.create({
   },
 
   //bio Styles
-
-  containerBio: {
+  container: {
     flex: 1,
     backgroundColor: '#F1FFFE',
   },
@@ -75,18 +74,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  hashtagContainer: {
-    marginTop: 20,
-  },
-  hashtagTitle: {
-    fontSize: 18,
-    fontWeight: '500',
-    marginBottom: 10,
-  },
-  hashtags: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
   },
 })
 

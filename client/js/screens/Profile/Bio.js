@@ -11,39 +11,43 @@ import {Popup} from '../../components/Popup/'
 import Button from '../../components/Button'
 import styles from './styles'
 
-const Bio = () => {
+const Bio = ({navigation}) => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const [show, setShow] = useState(false)
+
+  const handleSubmit = () => {
+    setShow(true)
+    setTimeout(() => {
+      setShow(false)
+      navigation.navigate('Home')
+    }, 1500)
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <Card>
-          <Text style={styles.titleInput}>Update your Bio</Text>
-          {/* <TextInput
-            placeholderTextColor="#1E6A62"
-            style={styles.titleInput}
-            value={title}
-            onChangeText={val => setTitle(val)}
-            placeholder="Update your Bio"
-          /> */}
-          <TextInput
-            style={styles.contentInput}
-            multiline={true}
-            value={content}
-            onChangeText={val => setContent(val)}
-            placeholder="New Bio..."
-          />
-        </Card>
-
-        <View style={styles.buttonContainer}>
-          <Button theme="dark">Update Bio</Button>
+      <ScrollView>
+        <View style={styles.content}>
+          <Card>
+            <Text style={styles.titleInput}>Bio</Text>
+            <TextInput
+              style={styles.contentInput}
+              multiline={true}
+              value={content}
+              onChangeText={val => setContent(val)}
+              placeholder="Update your Bio here..."
+            />
+          </Card>
+          <View style={styles.buttonContainer}>
+            <Button onPress={handleSubmit} theme="dark">
+              Update Bio
+            </Button>
+          </View>
         </View>
-      </View>
-      <Popup text="Posted!" />
+      </ScrollView>
+      <Popup text="Updated!" show={show} />
     </SafeAreaView>
   )
 }
 
 export default Bio
-
-// show={show}
