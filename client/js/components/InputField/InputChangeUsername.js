@@ -1,7 +1,6 @@
 import React from 'react'
 import {View, TextInput} from 'react-native'
 import styles from './styles'
-import MagGlassIcon from '../../../assets/icons/login/icon-magnifying_glass.svg'
 
 const InputChangeUsername = ({placeholder}) => {
   return (
@@ -13,7 +12,6 @@ const InputChangeUsername = ({placeholder}) => {
         inline
       />
       </View>
-      <MagGlassIcon style={styles.searchInputIcon} />
     </>
   )
 }

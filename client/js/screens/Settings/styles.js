@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
   },
   setting_changeUserText: {
     fontFamily: 'SFProText-Light',
-    textAlign: 'center',
+    marginBottom: 10,
+    // textAlign: 'center',
     fontSize: 20,
     color: '#1E6A62',
   }
