@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#f1fffe',
     width: '100%',
-    padding: 14,
+    // padding: 14,
     marginTop: 14,
     borderRadius: 20,
     alignItems: 'center',
@@ -14,8 +14,7 @@ const styles = StyleSheet.create({
       height: 4,
     },
     shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-
+    shadowRadius: 3,
     elevation: 9,
   },
 })

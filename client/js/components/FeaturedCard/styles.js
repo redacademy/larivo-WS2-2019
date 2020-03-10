@@ -13,7 +13,10 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-  
+  searchBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   cardImage: {
     alignSelf: 'center',
     height: 150,

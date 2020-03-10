@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingTop: 40,
   },
+  searchBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 })
 
 export default styles
