@@ -1,5 +1,6 @@
 type Query {
   feed: [Story!]!
+  filteredStories: [Story!]!
   drafts: [Story!]!
   users: [User!]!
   story(id: ID!): Story!
@@ -26,7 +27,6 @@ type Mutation {
     hashtags: [String!]!
     published: Boolean!
   ): Story!
-  viewStory(id: String!): Story!
   favoriteStory(id: String!): Story!
   like(id: String!): Story!
 }

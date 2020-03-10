@@ -248,8 +248,8 @@ type Query {
 
 type Story {
   id: ID!
-  author: User!
   createdAt: DateTime!
+  author: User!
   title: String!
   content: String!
   hashtags(where: HashtagWhereInput, orderBy: HashtagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hashtag!]
@@ -469,7 +469,6 @@ input StoryWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  author: UserWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -478,6 +477,7 @@ input StoryWhereInput {
   createdAt_lte: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
+  author: UserWhereInput
   title: String
   title_not: String
   title_in: [String!]

@@ -4,7 +4,7 @@ type User {
   email: String! @unique
   password: String!
   bio: String
-  favoriteStories: [Story!]! @relation(link: TABLE, name: "FavoriteStories")
+  favoriteStories: [Story]! @relation(link: TABLE, name: "FavoriteStories")
   hashtags: [Hashtag!]! @relation(link: TABLE, name: "Hashtags")
   following: [User!]! @relation(link: TABLE, name: "UserFollowing")
   followers: [User!]! @relation(link: TABLE, name: "UserFollower")
@@ -12,11 +12,11 @@ type User {
 
 type Story {
   id: ID! @id
-  author: User! @relation(link: TABLE, name: "StoryAuthor")
   createdAt: DateTime! @createdAt
+  author: User! @relation(link: TABLE, name: "StoryAuthor")
   title: String! 
   content: String!  
-  hashtags: [Hashtag] @relation(link: TABLE, name: "UserHashtags")
+  hashtags: [Hashtag!]! @relation(link: TABLE, name: "UserHashtags")
   likes: [User!]! @relation(link: TABLE, name: "UserLikes")
   loves: [User!]! @relation(link: TABLE, name: "UserLoves")
   neutrals: [User!]! @relation(link: TABLE, name: "UserNeutrals")
