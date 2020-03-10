@@ -4,7 +4,36 @@ const jwt = require('jsonwebtoken')
 const auth = {
   async signup(parent, args, context) {
     const password = await bcrypt.hash(args.password, 10)
-    const user = await context.prisma.createUser({ ...args, password })
+    const hashtags = await context.prisma.hashtags()
+    const { existinghashtags, newhashtags } = args.hashtags.reduce(
+      (hashtagsummary, hashtag) => {
+        const existingEntry =
+          hashtags && hashtags.find(({ name }) => name === hashtag)
+        if (existingEntry) {
+          return {
+            ...hashtagsummary,
+            existinghashtags: [
+              ...hashtagsummary.existinghashtags,
+              existingEntry.id
+            ]
+          }
+        } else {
+          return {
+            ...hashtagsummary,
+            newhashtags: [...hashtagsummary.newhashtags, hashtag]
+          }
+        }
+      },
+      { existinghashtags: [], newhashtags: [] }
+    )
+    const user = await context.prisma.createUser({
+      ...args,
+      password,
+      hashtags: {
+        create: newhashtags.map(name => ({ name })),
+        connect: existinghashtags.map(id => ({ id }))
+      }
+    })
 
     return {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),

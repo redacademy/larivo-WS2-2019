@@ -1,18 +1,23 @@
 type Query {
   feed: [Story!]!
   drafts: [Story!]!
-  users: [User]
-  story(id: ID!): Story
-  me: User
+  users: [User!]!
+  story(id: ID!): Story!
+  me: User!
 }
 
 type Mutation {
-  signup(email: String!, password: String!): AuthPayload!
+  signup(
+    email: String!
+    password: String!
+    userName: String!
+    hashtags: [String!]!
+  ): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
   createStory(
     title: String!
     content: String!
-    # hashtags: [String!]!
+    hashtags: [String!]!
     published: Boolean!
   ): Story!
   createDraft(
@@ -37,13 +42,13 @@ type AuthPayload {
 
 type User {
   id: ID!
-  # userName: String!
+  userName: String!
   email: String!
-  bio: String!
+  bio: String
   hashtags: [Hashtag!]!
   favoriteStories: [Story]
-  following: [User!]!
-  followers: [User!]!
+  following: [User]
+  followers: [User]
 }
 
 type Story {
@@ -51,7 +56,6 @@ type Story {
   createdAt: String!
   title: String!
   content: String!
-  author: User!
   hashtags: [Hashtag!]!
   likes: [User!]!
   loves: [User!]!
