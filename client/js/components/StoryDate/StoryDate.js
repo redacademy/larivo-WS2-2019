@@ -4,7 +4,7 @@ import styles from './styles'
 
 const StoryDate = () => (
   <View>
-    <Text>im the story date</Text>
+    <Text style={styles.storyDate}> JUST NOW |6 MIN. READ </Text>
   </View>
 )
 
