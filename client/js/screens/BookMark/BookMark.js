@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Text,
   SafeAreaView,
-  View,
+  ScrollView,
   Image
 } from 'react-native'
 import LeftArrow from '../../components/LeftArrow'
@@ -26,11 +26,37 @@ const contents = [
     id: 1,
     img: img1,
     title: 'Strength In Numbers',
+    date: 'NOV. 12TH 2019',
+    readTime: 3,
+    text: 'The larger-than-life Arab-American music producer and DJ is known for and DJ is known',
+    tags: ['Strength', 'Support System'],
+    likes: 399,
+    featured: true,
+    author: "Holy Jesus"
+  },
+  {
+    id: 2,
+    img: img1,
+    title: 'Strength In Numbers',
     date: 'NOV. 12TH 2019 | 3 MIN. READ',
     readTime: 3,
     text: 'The larger-than-life Arab-American music producer and DJ is known for…',
     tags: [],
-    likes: 399
+    likes: 399,
+    featured: true,
+    author: "James Bond"
+  },
+  {
+    id: 3,
+    img: img1,
+    title: 'Strength In Numbers',
+    date: 'NOV. 12TH 2019 | 3 MIN. READ',
+    readTime: 3,
+    text: 'The larger-than-life Arab-American music producer and DJ is known for…',
+    tags: [],
+    likes: 399,
+    featured: true,
+    author: "Kill Bill"
   }
 ]
 
@@ -38,18 +64,18 @@ const BookMark = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
+      <ScrollView style={styles.cardContainer}>
       {contents.map(item => {
         return (
           <FeaturedCard 
-            img={item.img}
-            title={item.title}
-            date={item.date}
-            text={item.text}
-            tags={item.tags}
-            likes={item.likes}
+            item={item}
+            key={item.id}
           />
         )
       })}
+
+      <Text />
+     </ScrollView>
     </SafeAreaView>
   )
 }

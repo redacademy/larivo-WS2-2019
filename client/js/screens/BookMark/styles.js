@@ -1,19 +1,22 @@
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
-  cardContainer: {    
+  container: {
+    backgroundColor: '#fff',
     height: '100%',
+    // paddingBottom: 40
+  },
+  cardContainer: {    
+    height: '120%',
     backgroundColor: '#fff',
     paddingHorizontal: 30,
-    // paddingVertical: 15
-  },
+    },
   content: {
     justifyContent: 'center',
     width: '90%',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-  
   cardImage: {
     alignSelf: 'center',
     height: 150,

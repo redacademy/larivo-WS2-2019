@@ -4,6 +4,7 @@ import styles from './styles'
 import NameInitials from '../NameInitials/NameInitials'
 import InputSearchField from '../InputField/InputSearchField'
 
+const userName = "Roaring Velvet"
 
 const Header = ({ children }) => {
   return <View style={styles.header}>
@@ -12,7 +13,7 @@ const Header = ({ children }) => {
       <NameInitials
         onPress={() => navigation.navigate('Profile')}
       >
-        RV
+        {userName}
         </NameInitials>
       <InputSearchField placeholder="Search for topics of interest" />
     </View>
