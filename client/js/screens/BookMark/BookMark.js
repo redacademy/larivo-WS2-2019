@@ -7,7 +7,7 @@ import {
   Text,
   SafeAreaView,
   ScrollView,
-  Image
+  View
 } from 'react-native'
 import LeftArrow from '../../components/LeftArrow'
 import BellIcon from '../../../assets/icons/profile/icon-profile-bell.svg'
@@ -21,51 +21,64 @@ import InputSearchField from '../../components/InputField/InputSearchField'
 import img1 from '../../../assets/img/lions.jpg'
 import FeaturedCard from '../../components/FeaturedCard'
 
-const contents = [
+const stories = [
   {
     id: 1,
     img: img1,
     title: 'Strength In Numbers',
-    date: 'NOV. 12TH 2019',
+    createdAt: 'NOV. 12TH 2019',
     readTime: 3,
-    text: 'The larger-than-life Arab-American music producer and DJ is known for and DJ is known',
-    tags: ['Strength', 'Support System'],
-    likes: 399,
+    content: 'The larger-than-life Arab-American music producer and DJ is known for and DJ is known',
+    hashtags: ['Strength', 'Support System', 'tag3', 'tag4'],
+    likes: 10,
+    loves: 20,
+    neutrals: 30,
+    sads: 10,
+    claps: 22,
     featured: true,
-    author: "Holy Jesus"
+    author: "Aesus ist"
   },
   {
     id: 2,
     img: img1,
-    title: 'Strength In Numbers',
-    date: 'NOV. 12TH 2019 | 3 MIN. READ',
+    title: 'Story 2',
+    createdAt: 'NOV. 12TH 2019',
     readTime: 3,
-    text: 'The larger-than-life Arab-American music producer and DJ is known for…',
-    tags: [],
-    likes: 399,
-    featured: true,
+    content: 'The larger-than-life Arab-American music producer and DJ is known for and DJ is known',
+    hashtags: ['Strength', 'Support System', 'tag3', 'tag4'],
+    likes: 34,
+    loves: 5,
+    neutrals: 3,
+    sads: 20,
+    claps: 32,
+    featured: false,
     author: "James Bond"
   },
   {
     id: 3,
     img: img1,
-    title: 'Strength In Numbers',
-    date: 'NOV. 12TH 2019 | 3 MIN. READ',
+    title: 'Story 3',
+    createdAt: 'NOV. 12TH 2019',
     readTime: 3,
-    text: 'The larger-than-life Arab-American music producer and DJ is known for…',
-    tags: [],
-    likes: 399,
+    content: 'The larger-than-life Arab-American music producer and DJ is known for and DJ is known',
+    hashtags: ['Strength', 'Support System', 'tag3', 'tag4'],
+    likes: 10,
+    loves: 20,
+    neutrals: 30,
+    sads: 10,
+    claps: 22,
     featured: true,
-    author: "Kill Bill"
-  }
+    author: "Hello Kitty"
+  },
 ]
 
 const BookMark = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
-      <ScrollView style={styles.cardContainer}>
-      {contents.map(item => {
+      <ScrollView>
+        <View  style={styles.cardContainer}>
+      {stories.map(item => {
         return (
           <FeaturedCard 
             item={item}
@@ -73,8 +86,8 @@ const BookMark = () => {
           />
         )
       })}
-
       <Text />
+      </View>
      </ScrollView>
     </SafeAreaView>
   )

@@ -3,6 +3,14 @@ import styles from './styles'
 import { Card } from '../Card'
 import CardInitials from '../CardInitials'
 import CardHashtag from  '../CardHashtag'
+import ContinueIcon from '../../../assets/icons/Continue.svg'
+import ReactionBar from '../ReactionBar'
+import Like from '../../../assets/icons/reactions/icon-reactions-thumbs_up-inactive.svg'
+import Heart from '../../../assets/icons/reactions/icon-reactions-heart-inactive.svg'
+import Sad from '../../../assets/icons/reactions/icon-reactions-sad-inactive.svg'
+import Speechless from '../../../assets/icons/reactions/icon-reactions-speechless-inactive.svg'
+import Clap from '../../../assets/icons/reactions/icon-reactions-high_five-inactive.svg'
+
 import {
   TouchableOpacity,
   Text,
@@ -12,25 +20,61 @@ import {
 } from 'react-native'
 
 const FeaturedCard = ({item}) => {
-  const {img, title, date, readTime, text, tags, likes, featured, author} = item
+  const {img, title, createdAt, readTime, 
+    content, hashtags, featured, author,
+    likes, loves, neutrals, sads, claps} = item
+
+  const totalLikes = likes + loves + neutrals + sads + claps  
+
+  let theme = {}
+  if (featured) {
+    theme.backgroundColor = '#03DAC4'
+    theme.marginLeft = 0
+    theme.marginBottom = 4
+  }
+  else {
+    theme.backgroundColor = '#f1fffe'
+    theme.marginLeft = 45
+    theme.marginBottom = 18
+  }
+
   return (
-    
-    <View style={styles.card}>
+    <View style={styles(theme).card}>
+        {featured ? 
         <Image
-          style={styles.cardImage}
+          style={styles(theme).cardImage}
           source={img}
-        />
-        <View style={styles.initial}>
+        /> : null }
+        <View style={styles(theme).initial}>
           <CardInitials >{author}</CardInitials>
         </View>
-        <View style={styles.content}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.date}>{date} | {readTime} MIN. READ</Text>
-          <Text style={styles.body} numberOfLines={2}>{text}</Text>
-          <View style={styles.hashtagContainer}>
-            <CardHashtag>{tags[0]}</CardHashtag>
-            <CardHashtag>{tags[1]}</CardHashtag>
-        </View>
+        
+        <View style={styles(theme).content}>
+          <Text style={styles(theme).title}>{title}</Text> 
+          
+          <Text style={styles(theme).createdAt}>{createdAt} | {readTime} MIN. READ</Text>
+          <Text style={styles(theme).body} numberOfLines={2}>{content}</Text>
+          <View style={styles(theme).hashtagContainer}>
+            {hashtags.map((hashtag, i)=>{
+              if (i < 2){
+                return(
+                  <CardHashtag>{hashtag}</CardHashtag>
+                )}})}
+            {hashtags.length > 2 ? 
+              <TouchableOpacity>
+                <ContinueIcon fill={'#1E6A62'} style={styles(theme).continueIcon}/>
+              </TouchableOpacity> 
+              : null
+            }
+          </View>
+          <View style={styles(theme).reactionsContainer}>
+            <Like style={styles(theme).reactions}/>
+            <Heart style={styles(theme).reactions}/>
+            <Sad style={styles(theme).reactions}/>
+            <Speechless style={styles(theme).reactions}/>
+            <Clap style={styles(theme).reactions}/>
+            <Text style={styles(theme).body}>{totalLikes}</Text>
+          </View>
         </View>
       </View>
   )

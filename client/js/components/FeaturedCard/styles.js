@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native'
 
-const styles = StyleSheet.create({
+const styles = props =>
+StyleSheet.create({
   card: {
-    backgroundColor: '#f1fffe',
-    width: '100%',
-    // padding: 14,
+    backgroundColor: props.backgroundColor,
+    width: '90%',
     marginTop: 14,
     borderRadius: 20,
     alignItems: 'center',
@@ -16,12 +16,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.32,
     shadowRadius: 3,
     elevation: 9,
-  },
-  cardContainer: {    
-    height: '100%',
-    backgroundColor: '#fff',
-    paddingHorizontal: 30,
-    // paddingVertical: 15
+    marginHorizontal: 0
   },
   content: {
     justifyContent: 'center',
@@ -51,9 +46,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#13443C",
     fontFamily: "SFProText-Bold",
-    marginBottom: 4
+    marginTop: 7,
+    marginLeft: props.marginLeft,
+    // marginBottom: 4,
+    marginBottom: props.marginBottom,
   },
-  date: {
+  createdAt: {
     fontSize: 15,
     color: "#13443C",
     fontFamily: "SFProText-Regular",
@@ -69,6 +67,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignContent: 'flex-start',
     justifyContent: 'flex-start',
+  },
+  continueIcon: {
+    marginTop:13.5
+  },
+  reactionsContainer: {
+    flexDirection: 'row',
+    alignContent: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  reactions: {
+    marginRight: 7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 2,
+
+    //for android, shadows have problem
+    // elevation: 2,
   }
 })
 

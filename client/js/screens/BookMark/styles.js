@@ -4,12 +4,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     height: '100%',
-    // paddingBottom: 40
+    justifyContent: 'center'
   },
   cardContainer: {    
     height: '120%',
     backgroundColor: '#fff',
-    paddingHorizontal: 30,
+    alignItems: 'center'
     },
   content: {
     justifyContent: 'center',
