@@ -1,7 +1,5 @@
 import React from 'react'
 import styles from './styles'
-import { Settings } from '../Settings'
-import { Card } from '../../components/Card'
 import {
   TouchableOpacity,
   Text,
@@ -9,15 +7,7 @@ import {
   ScrollView,
   View
 } from 'react-native'
-import LeftArrow from '../../components/LeftArrow'
-import BellIcon from '../../../assets/icons/profile/icon-profile-bell.svg'
-import UserIcon from '../../../assets/icons/profile/icon-profile-user.svg'
-import DeleteIcon from '../../../assets/icons/profile/icon-profile-delete.svg'
-import SettingItem from '../../components/SettingItem'
-import Button from '../../components/Button'
 import { Header } from '../../components/Header'
-import NameInitials from '../../components/NameInitials/NameInitials'
-import InputSearchField from '../../components/InputField/InputSearchField'
 import img1 from '../../../assets/img/lions.jpg'
 import FeaturedCard from '../../components/FeaturedCard'
 
