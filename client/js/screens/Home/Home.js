@@ -6,25 +6,19 @@ import {
   View,
   Text,
   FlatList,
+  Animated
 } from 'react-native'
 import {Card} from '../../components/Card'
 import {Header} from '../../components/Header'
 import NameInitials from '../../components/NameInitials/NameInitials'
 import InputSearchField from '../../components/InputField/InputSearchField'
 import getInitials from '../../utils/getInitials'
+import FeaturedCard from '../../components/FeaturedCard'
+import Hashtag from '../../components/Hashtag'
+import {featuredStories} from '../../tempData/featuredStories'
+import {userStories} from '../../tempData/userStories'
 
 const Home = ({navigation}) => {
-  const data = [
-    {id: 1, title: 'title 1', content: 'content 1'},
-    {id: 2, title: 'title 2', content: 'content 2'},
-    {id: 3, title: 'title 3', content: 'content 3'},
-    {id: 4, title: 'title 4', content: 'content 4'},
-    {id: 5, title: 'title 5', content: 'content 5'},
-    {id: 6, title: 'title 6', content: 'content 6'},
-    {id: 7, title: 'title 7', content: 'content 7'},
-    {id: 8, title: 'title 8', content: 'content 8'},
-    {id: 9, title: 'title 9', content: 'content 9'},
-  ]
   return (
     <SafeAreaView style={styles.container}>
       <Header>
@@ -37,50 +31,57 @@ const Home = ({navigation}) => {
           <InputSearchField placeholder="Search for topics of interest" />
         </View>
       </Header>
-      <View
-        style={{
-          flex: 1,
-          paddingVertical: 10,
-          backgroundColor: '#03dac4',
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 40,
-            fontWeight: 'bold',
-            fontStyle: 'italic',
-            paddingVertical: 20,
-            paddingLeft: 30,
-          }}
+      <ScrollView>
+        <View style={{ backgroundColor: '#03dac4'}}>
+        <ScrollView 
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
         >
+          <View style={{marginLeft:25}}/>
+          <Hashtag>some hashtag</Hashtag>
+          <Hashtag>some hashtag2</Hashtag>
+          <Hashtag>some hashtag3</Hashtag>
+          <Hashtag>some hashtag4</Hashtag>
+        </ScrollView>
+
+        <Text style={styles.featuredText}>
           Featured
         </Text>
-        <FlatList
-          data={data}
+
+        <ScrollView
           horizontal={true}
-          renderItem={({item}) => (
-            <View style={{marginHorizontal: 30, paddingVertical: 20}}>
-              <Card key={item.id}>
-                <Text>{item.title}</Text>
-                <Text>{item.content}</Text>
-              </Card>
-            </View>
-          )}
-          keyExtractor={item => item.id}
-        />
+          showsHorizontalScrollIndicator={true}
+          // centerContent={true}
+          style={{height: 390}}
+        >
+          <View style={{marginLeft:25}}/>
+          {featuredStories.map(item => {
+            return (
+              <View style={styles.featuredCardContainer}>
+                <FeaturedCard 
+                  item={item}
+                  home={true}
+                  key={item.id}
+                />
+              </View>
+              )
+              })}
+          </ScrollView>
       </View>
-      <ScrollView>
-        <View style={styles.content}>
-          <Card>
-            <Text>hello</Text>
-            <Text>hello</Text>
-            <Text>hello</Text>
-            <Text>hello</Text>
-            <Text>hello</Text>
-            <Text>hello</Text>
-            <Text>hello</Text>
-          </Card>
-        </View>
+      <View 
+      style={styles.userCardContainer}
+      >
+        {userStories.map(item => {
+          return (
+              <FeaturedCard 
+                item={item}
+                home={true}
+                key={item.id}
+              />
+            )
+            })}
+            <View style={{ marginBottom: 40 }}/>
+         </View>
       </ScrollView>
     </SafeAreaView>
   )
