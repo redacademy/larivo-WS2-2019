@@ -1,4 +1,5 @@
 import client from './client'
+import {ALL_STORIES} from './queries'
 import {
   SIGN_UP,
   LOG_IN,
@@ -10,6 +11,7 @@ import {
 
 export default client
 export {
+  ALL_STORIES,
   SIGN_UP,
   LOG_IN,
   CREATE_STORY,
