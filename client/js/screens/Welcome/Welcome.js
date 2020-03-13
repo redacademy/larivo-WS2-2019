@@ -8,6 +8,8 @@ import {
 } from 'react-native'
 import LoginSlideContainer from '../../components/LoginSlideContainer'
 import Button from '../../components/Button'
+import ReactionBar from '../../components/ReactionBar'
+import {useAuth} from '../../hooks'
 
 const Welcome = ({navigation}) => {
   return (
@@ -36,7 +38,12 @@ const Welcome = ({navigation}) => {
             <TouchableOpacity
               onPress={() => navigation.navigate('Register')}
             >
-              <Text style={styles.login}>Login</Text>
+              <Text
+                onPress={() => navigation.navigate('Login')}
+                style={styles.login}
+              >
+                Login
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

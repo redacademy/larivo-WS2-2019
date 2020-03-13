@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
   },
 
   hashtagsWrap: {
-    display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
     // paddingHorizontal: 20,

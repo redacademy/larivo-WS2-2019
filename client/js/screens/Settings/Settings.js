@@ -13,6 +13,7 @@ import SettingItem from '../../components/SettingItem'
 import Button from '../../components/Button'
 
 import styles from './styles'
+import {useAuth} from '../../hooks'
 const items = [
   {
     id: 1,
@@ -35,6 +36,12 @@ const items = [
 ]
 
 const Settings = ({navigation}) => {
+  const {logout} = useAuth()
+
+  const handleLogout = () => {
+    logout()
+    navigation.navigate('Welcome')
+  }
   return (
     <SafeAreaView>
       <View style={styles.settings_container}>
@@ -66,7 +73,9 @@ const Settings = ({navigation}) => {
 
         <View style={styles.setting_logout}>
           <View style={styles.setting_logoutBtn}>
-            <Button theme="dark">LOGOUT</Button>
+            <Button onPress={handleLogout} theme="dark">
+              LOGOUT
+            </Button>
           </View>
         </View>
       </View>
