@@ -1,10 +1,11 @@
 const User = {
-  hashtags: ({ id }, args, context) => context.prisma.user({ id }).hashtags(),
+  stories: ({ id }, args, context) => context.prisma.user({ id }).stories(),
 
   favoriteStories: ({ id }, args, context) =>
-    context.prisma.user({ id }).favoriteStories()
-}
+    context.prisma.user({ id }).favoriteStories(),
 
+  hashtags: ({ id }, args, context) => context.prisma.user({ id }).hashtags()
+}
 module.exports = {
   User
 }

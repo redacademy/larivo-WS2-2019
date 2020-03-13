@@ -11,6 +11,7 @@ import {Card} from '../../components/Card'
 import {Header} from '../../components/Header'
 import NameInitials from '../../components/NameInitials/NameInitials'
 import InputSearchField from '../../components/InputField/InputSearchField'
+import getInitials from '../../utils/getInitials'
 
 const Home = ({navigation}) => {
   const data = [
@@ -26,7 +27,16 @@ const Home = ({navigation}) => {
   ]
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header>
+        <View style={styles.searchBox}>
+          <NameInitials
+            onPress={() => navigation.navigate('Profile')}
+          >
+            {getInitials('Edin Kaymakqi')}
+          </NameInitials>
+          <InputSearchField placeholder="Search for topics of interest" />
+        </View>
+      </Header>
       <View
         style={{
           flex: 1,

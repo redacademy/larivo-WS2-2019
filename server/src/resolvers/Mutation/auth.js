@@ -1,10 +1,40 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const { getUserId } = require('../../utils')
 
 const auth = {
   async signup(parent, args, context) {
     const password = await bcrypt.hash(args.password, 10)
-    const user = await context.prisma.createUser({ ...args, password })
+    const hashtags = await context.prisma.hashtags()
+    const { existinghashtags, newhashtags } = args.hashtags.reduce(
+      (hashtagsummary, hashtag) => {
+        const existingEntry =
+          hashtags && hashtags.find(({ name }) => name === hashtag)
+        if (existingEntry) {
+          return {
+            ...hashtagsummary,
+            existinghashtags: [
+              ...hashtagsummary.existinghashtags,
+              existingEntry.id
+            ]
+          }
+        } else {
+          return {
+            ...hashtagsummary,
+            newhashtags: [...hashtagsummary.newhashtags, hashtag]
+          }
+        }
+      },
+      { existinghashtags: [], newhashtags: [] }
+    )
+    const user = await context.prisma.createUser({
+      ...args,
+      password,
+      hashtags: {
+        create: newhashtags.map(name => ({ name })),
+        connect: existinghashtags.map(id => ({ id }))
+      }
+    })
 
     return {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
@@ -25,6 +55,28 @@ const auth = {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
       user
     }
+  },
+
+  async updateBio(parent, { bio }, context) {
+    const userId = getUserId(context)
+
+    return context.prisma.updateUser({
+      where: { id: userId },
+      data: { bio }
+    })
+  },
+
+  async updateUserName(parent, { userName }, context) {
+    const userId = getUserId(context)
+
+    return context.prisma.updateUser({
+      where: { id: userId },
+      data: { userName }
+    })
+  },
+
+  async deleteUser(parent, { email }, context) {
+    return context.prisma.deleteUser({ email })
   }
 }
 

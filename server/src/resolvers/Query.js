@@ -2,7 +2,14 @@ const { getUserId } = require('../utils')
 
 const Query = {
   feed(parent, args, context) {
-    return context.prisma.story({ where: { published: true } })
+    const id = getUserId(context)
+    const where = {
+      published: true,
+      author: {
+        id
+      }
+    }
+    return context.prisma.stories({ where })
   },
   drafts(parent, args, context) {
     const id = getUserId(context)
@@ -23,7 +30,22 @@ const Query = {
   me(parent, args, context) {
     const id = getUserId(context)
     return context.prisma.user({ id })
+  },
+  async filteredStories(parent, args, context) {
+    const id = getUserId(context)
+    const hashtags = await context.prisma.user({ id }).hashtags()
+
+    return context.prisma.stories({
+      where: {
+        author: {
+          id
+        },
+
+        hashtags_some: {
+          name_in: hashtags.map(tag => tag.name)
+        }
+      }
+    })
   }
 }
-
 module.exports = { Query }

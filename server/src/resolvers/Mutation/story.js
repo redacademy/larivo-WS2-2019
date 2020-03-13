@@ -3,10 +3,34 @@ const { getUserId } = require('../../utils')
 const story = {
   async createStory(parent, { title, content, hashtags }, context) {
     const userId = getUserId(context)
+    const { existinghashtags, newhashtags } = hashtags.reduce(
+      (hashtagsummary, hashtag) => {
+        const existingEntry =
+          hashtags && hashtags.find(({ name }) => name === hashtag)
+        if (existingEntry) {
+          return {
+            ...hashtagsummary,
+            existinghashtags: [
+              ...hashtagsummary.existinghashtags,
+              existingEntry.id
+            ]
+          }
+        } else {
+          return {
+            ...hashtagsummary,
+            newhashtags: [...hashtagsummary.newhashtags, hashtag]
+          }
+        }
+      },
+      { existinghashtags: [], newhashtags: [] }
+    )
     return context.prisma.createStory({
       title,
       content,
-      hashtags,
+      hashtags: {
+        create: newhashtags.map(name => ({ name })),
+        connect: existinghashtags.map(id => ({ id }))
+      },
       published: true,
       author: { connect: { id: userId } }
     })
@@ -14,10 +38,34 @@ const story = {
 
   async createDraft(parent, { title, content, hashtags }, context) {
     const userId = getUserId(context)
+    const { existinghashtags, newhashtags } = hashtags.reduce(
+      (hashtagsummary, hashtag) => {
+        const existingEntry =
+          hashtags && hashtags.find(({ name }) => name === hashtag)
+        if (existingEntry) {
+          return {
+            ...hashtagsummary,
+            existinghashtags: [
+              ...hashtagsummary.existinghashtags,
+              existingEntry.id
+            ]
+          }
+        } else {
+          return {
+            ...hashtagsummary,
+            newhashtags: [...hashtagsummary.newhashtags, hashtag]
+          }
+        }
+      },
+      { existinghashtags: [], newhashtags: [] }
+    )
     return context.prisma.createStory({
       title,
       content,
-      hashtags,
+      hashtags: {
+        create: newhashtags.map(name => ({ name })),
+        connect: existinghashtags.map(id => ({ id }))
+      },
       published: false,
       author: { connect: { id: userId } }
     })

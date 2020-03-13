@@ -4,22 +4,26 @@ type User {
   email: String! @unique
   password: String!
   bio: String
-  guest: Boolean! @default(value: false)
-  following: [User!]! @relation(name: "UserFollowing")
-  followers: [User!]! @relation(name: "UserFollower")
+  stories: [Story!]! @relation(name: "StoriesByUser", onDelete: CASCADE)
+  favoriteStories: [Story]! @relation(link: TABLE, name: "FavoriteStories", onDelete: CASCADE)
+  hashtags: [Hashtag!]! @relation(link: TABLE, name: "Hashtags")
+  following: [User!]! @relation(link: TABLE, name: "UserFollowing")
+  followers: [User!]! @relation(link: TABLE, name: "UserFollower")
 }
 
 type Story {
   id: ID! @id
+  createdAt: DateTime! @createdAt
+  author: User! @relation(link: TABLE, name: "StoriesByUser")
   title: String! 
   content: String!  
-  hashtags: [User!]! @relation(name: "UserHashtags")
-  likes: [User!]! @relation(name: "UserLikes")
-  loves: [User!]! @relation(name: "UserLoves")
-  neutrals: [User!]! @relation(name: "UserNeutrals")
-  sads: [User!]! @relation(name: "UserSads")
-  claps: [User!]! @relation(name: "UserClaps")
-  published: Boolean! @default(value: false)
+  hashtags: [Hashtag!]! @relation(link: TABLE, name: "UserHashtags")
+  likes: [User!]! @relation(link: TABLE, name: "UserLikes")
+  loves: [User!]! @relation(link: TABLE, name: "UserLoves")
+  neutrals: [User!]! @relation(link: TABLE, name: "UserNeutrals")
+  sads: [User!]! @relation(link: TABLE, name: "UserSads")
+  claps: [User!]! @relation(link: TABLE, name: "UserClaps")
+  published: Boolean! @default(link: TABLE, value: false)
 }
 
 type Hashtag {
