@@ -17,7 +17,7 @@ import {
   Image
 } from 'react-native'
 
-const FeaturedCard = ({item}) => {
+const FeaturedCard = ({item, home}) => {
   const {img, title, createdAt, readTime, 
     content, hashtags, featured, author, bookmarked,
     likes, loves, neutrals, sads, claps} = item
@@ -26,7 +26,12 @@ const FeaturedCard = ({item}) => {
 
   let theme = {}
   if (featured) {
-    theme.backgroundColor = '#03DAC4'
+    if (home){
+      theme.backgroundColor = '#f1fffe'
+    }
+    if (!home) {
+      theme.backgroundColor = '#03DAC4'
+    }
     theme.marginLeft = 0
     theme.marginBottom = 4
   }
@@ -38,10 +43,10 @@ const FeaturedCard = ({item}) => {
 
   return (
     <View style={styles(theme).card}>
-        {featured ? 
+        {(featured) ? 
         <Image
           style={styles(theme).cardImage}
-          source={img}
+          source={{uri: img}}
         /> : null }
         <View style={styles(theme).initial}>
           <CardInitials >{author}</CardInitials>
@@ -62,7 +67,7 @@ const FeaturedCard = ({item}) => {
             {hashtags.map((hashtag, i)=>{
               if (i < 2){
                 return(
-                  <CardHashtag>{hashtag}</CardHashtag>
+                  <CardHashtag key={i}>{hashtag}</CardHashtag>
                 )}})}
             {hashtags.length > 2 ? 
               <TouchableOpacity>
