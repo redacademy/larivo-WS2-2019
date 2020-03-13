@@ -23,6 +23,7 @@ import ResourceInActiveIcon from '../../assets/icons/toolbar/icon-toolbar-resour
 import ResourceIcon from '../../assets/icons/toolbar/icon-toolbar-resource-active.svg'
 import ProfileInactiveIcon from '../../assets/icons/toolbar/icon-toolbar-profile-inactive.svg'
 import ProfileIcon from '../../assets/icons/toolbar/icon-toolbar-profile-active.svg'
+import {Guest, GuestAuth} from '../screens/Guest'
 import {
   Profile,
   ProfileStory,
@@ -39,6 +40,25 @@ import {
   ChangeUsername,
   ChangePassword,
 } from '../screens/Settings'
+
+const GuestStack = createStackNavigator()
+
+const GuestStackScreen = () => (
+  <GuestStack.Navigator headerMode="none">
+    <GuestStack.Screen name="Guest" component={Guest} />
+  </GuestStack.Navigator>
+)
+
+const GuestProfileAuthStack = createStackNavigator()
+
+const GuestProfileAuthStackScreen = () => (
+  <GuestProfileAuthStack.Navigator headerMode="none">
+    <GuestProfileAuthStack.Screen
+      name="GuestProfile"
+      component={GuestAuth}
+    />
+  </GuestProfileAuthStack.Navigator>
+)
 
 const LoginStack = createStackNavigator()
 
@@ -208,6 +228,53 @@ const HomeTabs = () => {
   )
 }
 
+const GuestTab = createBottomTabNavigator()
+
+const GuestTabs = () => {
+  return (
+    <GuestTab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused}) => {
+          const {name} = route
+          if (name === 'Guest') {
+            if (focused) {
+              return <HomeTabIcon />
+            } else {
+              return <HomeTabInActiveIcon />
+            }
+          } else if (name === 'GuestProfile') {
+            if (focused) {
+              return <ProfileIcon />
+            } else {
+              return <ProfileInactiveIcon />
+            }
+          }
+        },
+      })}
+      tabBarOptions={{
+        showLabel: false,
+        inactiveTintColor: '#fff',
+        activeTintColor: '#fff',
+        style: {
+          height: 95,
+          backgroundColor: '#03DAC4',
+        },
+      }}
+    >
+      <GuestTab.Screen
+        name="Guest"
+        component={GuestStackScreen}
+        options={{title: 'Guest'}}
+      />
+      <GuestTab.Screen
+        name="GuestProfile"
+        component={GuestProfileAuthStackScreen}
+        options={{title: 'Profile'}}
+      />
+    </GuestTab.Navigator>
+  )
+}
+
 const RootStack = createStackNavigator()
 
 const Navigation = () => {
@@ -219,6 +286,7 @@ const Navigation = () => {
         initialRouteName={isLoggedIn ? 'Tabs' : 'Welcome'}
         headerMode="none"
       >
+        <RootStack.Screen name="Guest" component={GuestTabs} />
         <RootStack.Screen name="Tabs" component={HomeTabs} />
         <RootStack.Screen
           name="Welcome"
