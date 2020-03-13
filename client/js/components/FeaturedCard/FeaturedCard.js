@@ -10,6 +10,7 @@ import Heart from '../../../assets/icons/reactions/icon-reactions-heart-inactive
 import Sad from '../../../assets/icons/reactions/icon-reactions-sad-inactive.svg'
 import Speechless from '../../../assets/icons/reactions/icon-reactions-speechless-inactive.svg'
 import Clap from '../../../assets/icons/reactions/icon-reactions-high_five-inactive.svg'
+import BookmarkIcon from '../../../assets/icons/login/icon-bookmark-active.svg'
 
 import {
   TouchableOpacity,
@@ -21,7 +22,7 @@ import {
 
 const FeaturedCard = ({item}) => {
   const {img, title, createdAt, readTime, 
-    content, hashtags, featured, author,
+    content, hashtags, featured, author, bookmarked,
     likes, loves, neutrals, sads, claps} = item
 
   const totalLikes = likes + loves + neutrals + sads + claps  
@@ -48,6 +49,12 @@ const FeaturedCard = ({item}) => {
         <View style={styles(theme).initial}>
           <CardInitials >{author}</CardInitials>
         </View>
+        
+        {bookmarked ? 
+        <View style={styles(theme).bookmarkIcon}>
+          <BookmarkIcon />
+        </View>
+        : null}
         
         <View style={styles(theme).content}>
           <Text style={styles(theme).title}>{title}</Text> 

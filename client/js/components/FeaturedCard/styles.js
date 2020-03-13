@@ -42,6 +42,19 @@ StyleSheet.create({
     left: 10,
     top: 10,
   },
+  bookmarkIcon : {
+    position: 'absolute',
+    right: 30,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 2,
+    //for android, shadows have problem
+    elevation: 2
+  },
   title: {
     fontSize: 20,
     color: "#13443C",

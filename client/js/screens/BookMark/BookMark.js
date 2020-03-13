@@ -36,7 +36,8 @@ const stories = [
     sads: 10,
     claps: 22,
     featured: true,
-    author: "Aesus ist"
+    author: "Aesus ist",
+    bookmarked: false
   },
   {
     id: 2,
@@ -52,7 +53,8 @@ const stories = [
     sads: 20,
     claps: 32,
     featured: false,
-    author: "James Bond"
+    author: "James Bond",
+    bookmarked: true
   },
   {
     id: 3,
@@ -68,7 +70,8 @@ const stories = [
     sads: 10,
     claps: 22,
     featured: true,
-    author: "Hello Kitty"
+    author: "Hello Kitty",
+    bookmarked: true
   },
 ]
 
