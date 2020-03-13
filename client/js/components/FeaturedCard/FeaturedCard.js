@@ -1,10 +1,8 @@
 import React from 'react'
 import styles from './styles'
-import { Card } from '../Card'
 import CardInitials from '../CardInitials'
 import CardHashtag from  '../CardHashtag'
 import ContinueIcon from '../../../assets/icons/Continue.svg'
-import ReactionBar from '../ReactionBar'
 import Like from '../../../assets/icons/reactions/icon-reactions-thumbs_up-inactive.svg'
 import Heart from '../../../assets/icons/reactions/icon-reactions-heart-inactive.svg'
 import Sad from '../../../assets/icons/reactions/icon-reactions-sad-inactive.svg'
@@ -15,7 +13,6 @@ import BookmarkIcon from '../../../assets/icons/login/icon-bookmark-active.svg'
 import {
   TouchableOpacity,
   Text,
-  SafeAreaView,
   View,
   Image
 } from 'react-native'
