@@ -3,13 +3,18 @@ const { getUserId } = require('../utils')
 const Query = {
   feed(parent, args, context) {
     const id = getUserId(context)
+    // const orderBy = {
     const where = {
       published: true,
       author: {
         id
       }
     }
-    return context.prisma.stories({ where })
+    return context.prisma.stories({
+      where,
+      orderBy: 'createdAt_DESC',
+      first: 25
+    })
   },
   drafts(parent, args, context) {
     const id = getUserId(context)
