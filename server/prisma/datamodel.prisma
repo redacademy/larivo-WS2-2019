@@ -4,7 +4,8 @@ type User {
   email: String! @unique
   password: String!
   bio: String
-  favoriteStories: [Story]! @relation(link: TABLE, name: "FavoriteStories")
+  stories: [Story!]! @relation(name: "StoriesByUser", onDelete: CASCADE)
+  favoriteStories: [Story]! @relation(link: TABLE, name: "FavoriteStories", onDelete: CASCADE)
   hashtags: [Hashtag!]! @relation(link: TABLE, name: "Hashtags")
   following: [User!]! @relation(link: TABLE, name: "UserFollowing")
   followers: [User!]! @relation(link: TABLE, name: "UserFollower")
@@ -13,7 +14,7 @@ type User {
 type Story {
   id: ID! @id
   createdAt: DateTime! @createdAt
-  author: User! @relation(link: TABLE, name: "StoryAuthor")
+  author: User! @relation(link: TABLE, name: "StoriesByUser")
   title: String! 
   content: String!  
   hashtags: [Hashtag!]! @relation(link: TABLE, name: "UserHashtags")

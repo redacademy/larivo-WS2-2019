@@ -27,8 +27,11 @@ type Mutation {
     hashtags: [String!]!
     published: Boolean!
   ): Story!
+  updateBio(bio: String!): User!
+  updateUserName(userName: String!): User!
   favoriteStory(id: String!): Story!
   like(id: String!): Story!
+  deleteUser(email: String!): User!
 }
 
 type Subscription {
@@ -46,6 +49,7 @@ type User {
   email: String!
   bio: String
   hashtags: [Hashtag!]!
+  stories: [Story!]!
   favoriteStories: [Story]
   following: [User]
   followers: [User]
@@ -54,6 +58,7 @@ type User {
 type Story {
   id: ID!
   createdAt: String!
+  author: User!
   title: String!
   content: String!
   hashtags: [Hashtag!]!
