@@ -3,7 +3,13 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
 import {Welcome} from '../screens/Welcome'
-import {Register, Username, HashtagScreen} from '../screens/Register'
+import {useAuth} from '../hooks'
+import {
+  Register,
+  Login,
+  Username,
+  HashtagScreen,
+} from '../screens/Register'
 import {Home} from '../screens/Home'
 import {BookMark} from '../screens/BookMark'
 import {StoryForm} from '../screens/StoryForm'
@@ -40,6 +46,7 @@ const WelcomeStackScreen = () => (
   <LoginStack.Navigator initialRouteName="Welcome" headerMode="none">
     <LoginStack.Screen name="Welcome" component={Welcome} />
     <LoginStack.Screen name="Register" component={Register} />
+    <LoginStack.Screen name="Login" component={Login} />
     <LoginStack.Screen name="Username" component={Username} />
     <LoginStack.Screen
       name="HashtagScreen"
@@ -203,16 +210,23 @@ const HomeTabs = () => {
 
 const RootStack = createStackNavigator()
 
-const Navigation = () => (
-  <NavigationContainer>
-    <RootStack.Navigator initialRouteName="Welcome" headerMode="none">
-      <RootStack.Screen name="Tabs" component={HomeTabs} />
-      <RootStack.Screen
-        name="Welcome"
-        component={WelcomeStackScreen}
-      />
-    </RootStack.Navigator>
-  </NavigationContainer>
-)
+const Navigation = () => {
+  const {isLoggedIn, user} = useAuth()
+  console.log('logged in ?', isLoggedIn, 'user', user)
+  return (
+    <NavigationContainer>
+      <RootStack.Navigator
+        initialRouteName={isLoggedIn ? 'Tabs' : 'Welcome'}
+        headerMode="none"
+      >
+        <RootStack.Screen name="Tabs" component={HomeTabs} />
+        <RootStack.Screen
+          name="Welcome"
+          component={WelcomeStackScreen}
+        />
+      </RootStack.Navigator>
+    </NavigationContainer>
+  )
+}
 
 export default Navigation
