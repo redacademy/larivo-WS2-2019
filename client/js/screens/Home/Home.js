@@ -18,6 +18,8 @@ import Hashtag from '../../components/Hashtag'
 import {useAuth} from '../../hooks'
 import {ALL_STORIES} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
+import {Spinner} from '../../components/Spinner'
+import {NetWorkError} from '../../components/FourOhFour'
 
 const Home = ({navigation}) => {
   const {user} = useAuth()
@@ -30,8 +32,8 @@ const Home = ({navigation}) => {
     networkStatus,
   } = useQuery(ALL_STORIES)
   console.log(data)
-  if (loading) return <Text>loading...</Text>
-  if (error) return <Text>oops...</Text>
+  if (loading) return <Spinner />
+  if (error) return <NetWorkError />
   const {userName} = user.user
 
   return (
@@ -57,7 +59,9 @@ const Home = ({navigation}) => {
             <Text>{item.createdAt}</Text>
             <Text>{item.title}</Text>
             <Text>{item.content}</Text>
-            <Hashtag>{item.hashtags.map(tag => tag.name)}</Hashtag>
+            <Hashtag disabled>
+              {item.hashtags.map(tag => tag.name)}
+            </Hashtag>
           </Card>
         )}
         keyExtractor={item => item.id}

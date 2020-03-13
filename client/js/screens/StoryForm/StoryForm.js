@@ -30,7 +30,7 @@ const StoryForm = ({navigation}) => {
   }
 
   const handlePublish = () => {
-    // setShow(true)
+    setShow(true)
     createStory({
       variables: {
         title,
@@ -43,14 +43,14 @@ const StoryForm = ({navigation}) => {
     setTitle('')
     setContent('')
     setTags([])
-    // setTimeout(() => {
-    //   setShow(false)
-    //   navigation.navigate('Home')
-    // }, 1500)
+    setTimeout(() => {
+      setShow(false)
+      navigation.navigate('Home')
+    }, 1500)
   }
 
   const handleDraft = () => {
-    // setShow(true)
+    setShow(true)
     createDraft({
       variables: {
         title,
@@ -63,10 +63,10 @@ const StoryForm = ({navigation}) => {
     setTitle('')
     setContent('')
     setTags([])
-    // setTimeout(() => {
-    //   setShow(false)
-    //   navigation.navigate('Home')
-    // }, 1500)
+    setTimeout(() => {
+      setShow(false)
+      navigation.navigate('Home')
+    }, 1500)
   }
 
   return (
