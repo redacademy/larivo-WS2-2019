@@ -11,6 +11,7 @@ import {Card} from '../../components/Card'
 import {Header} from '../../components/Header'
 import NameInitials from '../../components/NameInitials/NameInitials'
 import InputSearchField from '../../components/InputField/InputSearchField'
+import getInitials from '../../utils/getInitials'
 
 const Home = ({navigation}) => {
   const data = [
@@ -31,7 +32,7 @@ const Home = ({navigation}) => {
           <NameInitials
             onPress={() => navigation.navigate('Profile')}
           >
-            RV
+            {getInitials('Edin Kaymakqi')}
           </NameInitials>
           <InputSearchField placeholder="Search for topics of interest" />
         </View>
