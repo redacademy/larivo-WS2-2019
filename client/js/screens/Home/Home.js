@@ -26,16 +26,7 @@ const Home = ({navigation}) => {
   ]
   return (
     <SafeAreaView style={styles.container}>
-      <Header>
-        <View style={styles.searchBox}>
-          <NameInitials
-            onPress={() => navigation.navigate('Profile')}
-          >
-            RV
-          </NameInitials>
-          <InputSearchField placeholder="Search for topics of interest" />
-        </View>
-      </Header>
+      <Header />
       <View
         style={{
           flex: 1,
