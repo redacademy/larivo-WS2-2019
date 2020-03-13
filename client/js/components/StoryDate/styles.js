@@ -2,9 +2,9 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   storyDate: {
-    fontSize: 13,
-    color: '#13443C',
-    fontWeight: '900',
+    fontSize: 12,
+    color: '#7daea7',
+    fontWeight: 'normal',
   },
 })
 
