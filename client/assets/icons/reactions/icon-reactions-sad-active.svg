@@ -12,7 +12,6 @@
         </filter>
     </defs>
     <g id="Icon-/-Reactions-/-Sad-[Active]" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#03DAC4" x="0" y="0" width="19" height="19"></rect>
         <g id="Oval">
             <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
             <use fill="#F1FFFE" fill-rule="evenodd" xlink:href="#path-1"></use>

@@ -2,18 +2,18 @@ import React from 'react'
 import {Text, View, TouchableOpacity} from 'react-native'
 import styles from './styles'
 
-const getInitial = (children) => {
-  const initial = children.charAt(0) + 
+const getInitials = (children) => {
+  const initials = children.charAt(0) + 
     children.charAt(children.indexOf(' ') + 1)
-  return initial
+  return initials
 }
 
-const NameInitials = ({children, onPress}) => (
+const CardInitials = ({children, onPress}) => (
   <TouchableOpacity onPress={onPress}>
     <View style={styles.initialBox}>
-      <Text style={styles.initialText}>{getInitial(children)}</Text>
+      <Text style={styles.initialText}>{getInitials(children)}</Text>
     </View>
   </TouchableOpacity>
 )
 
-export default NameInitials
+export default CardInitials
