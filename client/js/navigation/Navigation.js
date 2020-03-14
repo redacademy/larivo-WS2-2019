@@ -61,7 +61,7 @@ const WelcomeStackScreen = () => (
 const HomeStack = createStackNavigator()
 
 const HomeStackScreen = () => (
-  <HomeStack.Navigator headerMode="none">
+  <HomeStack.Navigator mode="modal" headerMode="none">
     <HomeStack.Screen name="Home" component={Home} />
     <HomeStack.Screen name="HomeStory" component={Story} />
   </HomeStack.Navigator>
