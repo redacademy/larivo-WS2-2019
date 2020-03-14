@@ -50,3 +50,5 @@ export const ActivityInActiveIcon = require('./toolbar/icon-resource-inactive.sv
 export const ActivityIcon = require('./toolbar/icon-resource-active.svg')
 export const ProfileInactiveIcon = require('./toolbar/icon-profile-inactive.svg')
 export const ProfileIcon = require('./toolbar/icon-profile-active.svg')
+export const ErrorMessage = require('./network/error-message.svg')
+export const AuthIcon = require('./network/auth.svg')

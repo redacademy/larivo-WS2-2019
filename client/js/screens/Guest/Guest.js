@@ -3,28 +3,18 @@ import styles from './styles'
 import readingTime from 'reading-time'
 import {
   SafeAreaView,
-  ScrollView,
-  View,
   Text,
   FlatList,
-  Animated,
   TouchableOpacity,
 } from 'react-native'
 import {Card} from '../../components/Card'
-import {Header} from '../../components/Header'
-import NameInitials from '../../components/NameInitials/NameInitials'
-import InputSearchField from '../../components/InputField/InputSearchField'
-import getInitials from '../../utils/getInitials'
-import FeaturedCard from '../../components/FeaturedCard'
 import Hashtag from '../../components/Hashtag'
-import {useAuth} from '../../hooks'
-import {USER_FEED} from '../../context/apollo'
+import {GUEST_FEED} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 
-const Home = ({navigation}) => {
-  const {user} = useAuth()
+const Guest = ({navigation}) => {
   const {
     loading,
     error,
@@ -32,15 +22,12 @@ const Home = ({navigation}) => {
     refetch,
     fetchMore,
     networkStatus,
-  } = useQuery(USER_FEED)
-  console.log('home data', data)
+  } = useQuery(GUEST_FEED)
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
-  const {userName} = user.user
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header userName={userName} />
       <FlatList
         refreshing={networkStatus === 4}
         onRefresh={() => refetch()}
@@ -49,24 +36,24 @@ const Home = ({navigation}) => {
             updateQuery: (prev, {fetchMoreResult}) => {
               if (!fetchMoreResult) return prev
               return Object.assign({}, prev, {
-                userFeed: [
-                  ...prev.userFeed,
-                  ...fetchMoreResult.userFeed,
+                guestFeed: [
+                  ...prev.guestFeed,
+                  ...fetchMoreResult.guestFeed,
                 ],
               })
             },
           })
         }
-        data={data.userFeed}
+        data={data.guestFeed}
         renderItem={({
           item: {id, author, title, createdAt, content, hashtags},
         }) => {
           const {text: readTime} = readingTime(content)
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate('HomeStory', {id})}
+              onPress={() => navigation.navigate('GuestStory', {id})}
             >
-              <Card key={id}>
+              <Card>
                 <Text>{author.userName}</Text>
                 <Text>{createdAt}</Text>
                 <Text>{readTime}</Text>
@@ -129,4 +116,4 @@ const Home = ({navigation}) => {
   )
 }
 
-export default Home
+export default Guest

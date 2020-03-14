@@ -39,6 +39,9 @@ import {
   ChangeUsername,
   ChangePassword,
 } from '../screens/Settings'
+import GuestTabs from './GuestNav'
+import {Spinner} from '../components/Spinner'
+import {Story} from '../screens/Story'
 
 const LoginStack = createStackNavigator()
 
@@ -58,8 +61,9 @@ const WelcomeStackScreen = () => (
 const HomeStack = createStackNavigator()
 
 const HomeStackScreen = () => (
-  <HomeStack.Navigator headerMode="none">
+  <HomeStack.Navigator mode="modal" headerMode="none">
     <HomeStack.Screen name="Home" component={Home} />
+    <HomeStack.Screen name="HomeStory" component={Story} />
   </HomeStack.Navigator>
 )
 
@@ -212,13 +216,15 @@ const RootStack = createStackNavigator()
 
 const Navigation = () => {
   const {isLoggedIn, user} = useAuth()
-  console.log('logged in ?', isLoggedIn, 'user', user)
+  console.log('user', user)
+  if (typeof user === 'undefined') return <Spinner />
   return (
     <NavigationContainer>
       <RootStack.Navigator
-        initialRouteName={isLoggedIn ? 'Tabs' : 'Welcome'}
+        initialRouteName={isLoggedIn || user ? 'Tabs' : 'Welcome'}
         headerMode="none"
       >
+        <RootStack.Screen name="Guest" component={GuestTabs} />
         <RootStack.Screen name="Tabs" component={HomeTabs} />
         <RootStack.Screen
           name="Welcome"

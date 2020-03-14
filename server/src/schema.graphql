@@ -1,5 +1,6 @@
 type Query {
-  feed: [Story!]!
+  guestFeed: [Story!]!
+  userFeed: [Story!]!
   filteredStories: [Story!]!
   drafts: [Story!]!
   users: [User!]!

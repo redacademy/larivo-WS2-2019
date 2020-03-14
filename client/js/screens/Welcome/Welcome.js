@@ -8,8 +8,6 @@ import {
 } from 'react-native'
 import LoginSlideContainer from '../../components/LoginSlideContainer'
 import Button from '../../components/Button'
-import ReactionBar from '../../components/ReactionBar'
-import {useAuth} from '../../hooks'
 
 const Welcome = ({navigation}) => {
   return (
@@ -19,7 +17,7 @@ const Welcome = ({navigation}) => {
           <LoginSlideContainer />
           <View style={styles.login_buttons_container}>
             <Button
-              onPress={() => navigation.navigate('Tabs')}
+              onPress={() => navigation.navigate('Guest')}
               theme="dark"
             >
               Continue As Guest

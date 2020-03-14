@@ -1,9 +1,10 @@
 import {gql} from 'apollo-boost'
 
-const ALL_STORIES = gql`
-  query feed {
-    feed {
+const GUEST_FEED = gql`
+  query guestFeed {
+    guestFeed {
       id
+      createdAt
       author {
         userName
       }
@@ -15,4 +16,38 @@ const ALL_STORIES = gql`
     }
   }
 `
-export {ALL_STORIES}
+
+const USER_FEED = gql`
+  query userFeed {
+    userFeed {
+      id
+      createdAt
+      author {
+        userName
+      }
+      title
+      content
+      hashtags {
+        name
+      }
+    }
+  }
+`
+
+const STORY = gql`
+  query story($id: ID!) {
+    story(id: $id) {
+      id
+      createdAt
+      title
+      content
+      hashtags {
+        name
+      }
+      author {
+        userName
+      }
+    }
+  }
+`
+export {GUEST_FEED, USER_FEED, STORY}

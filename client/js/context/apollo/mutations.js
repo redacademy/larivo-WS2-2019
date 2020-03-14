@@ -15,6 +15,8 @@ const SIGN_UP = gql`
     ) {
       user {
         id
+        userName
+        bio
       }
       token
     }
@@ -25,6 +27,8 @@ const LOG_IN = gql`
     login(email: $email, password: $password) {
       user {
         id
+        userName
+        bio
       }
       token
     }
