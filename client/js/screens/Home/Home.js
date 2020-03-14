@@ -7,6 +7,7 @@ import {
   Text,
   FlatList,
   Animated,
+  TouchableOpacity,
 } from 'react-native'
 import {Card} from '../../components/Card'
 import {Header} from '../../components/Header'
@@ -56,16 +57,22 @@ const Home = ({navigation}) => {
           })
         }
         data={data.userFeed}
-        renderItem={({item}) => (
-          <Card>
-            <Text>{item.author.userName}</Text>
-            <Text>{item.createdAt}</Text>
-            <Text>{item.title}</Text>
-            <Text>{item.content}</Text>
-            <Hashtag disabled>
-              {item.hashtags.map(tag => tag.name)}
-            </Hashtag>
-          </Card>
+        renderItem={({
+          item: {id, author, title, createdAt, content, hashtags},
+        }) => (
+          <TouchableOpacity
+            onPress={() => navigation.navigate('HomeStory', {id})}
+          >
+            <Card key={id}>
+              <Text>{author.userName}</Text>
+              <Text>{createdAt}</Text>
+              <Text>{title}</Text>
+              <Text>{content}</Text>
+              <Hashtag disabled>
+                {hashtags.map(tag => tag.name)}
+              </Hashtag>
+            </Card>
+          </TouchableOpacity>
         )}
         keyExtractor={item => item.id}
       />
