@@ -75,6 +75,15 @@ const auth = {
     })
   },
 
+  async updateEmail(parent, { email }, context) {
+    const userId = getUserId(context)
+
+    return context.prisma.updateUser({
+      where: { id: userId },
+      data: { email }
+    })
+  },
+
   async deleteUser(parent, { email }, context) {
     return context.prisma.deleteUser({ email })
   }
