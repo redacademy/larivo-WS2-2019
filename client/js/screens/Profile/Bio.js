@@ -10,19 +10,27 @@ import {Card} from '../../components/Card'
 import {Popup} from '../../components/Popup/'
 import Button from '../../components/Button'
 import LeftArrow from '../../components/LeftArrow'
-
 import styles from './styles'
+import {useUpdateBio} from '../../hooks'
 
 const Bio = ({navigation}) => {
+  const [updateBio] = useUpdateBio()
+
   const [content, setContent] = useState('')
   const [show, setShow] = useState(false)
 
   const handleSubmit = () => {
-    setShow(true)
-    setTimeout(() => {
-      setShow(false)
-      navigation.goBack()
-    }, 1500)
+    // setShow(true)
+    updateBio({
+      variables: {
+        bio: content,
+      },
+    })
+    setContent('')
+    // setTimeout(() => {
+    //   setShow(false)
+    //   navigation.goBack()
+    // }, 1500)
   }
 
   return (
@@ -49,7 +57,7 @@ const Bio = ({navigation}) => {
           </View>
         </View>
       </ScrollView>
-      <Popup text="Updated!" show={show} />
+      <Popup text="Bio updated!" show={show} />
     </SafeAreaView>
   )
 }
