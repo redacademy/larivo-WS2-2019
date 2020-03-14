@@ -8,8 +8,6 @@ import {
 } from 'react-native'
 import LoginSlideContainer from '../../components/LoginSlideContainer'
 import Button from '../../components/Button'
-import ReactionBar from '../../components/ReactionBar'
-import {useAuth} from '../../hooks'
 
 const Welcome = ({navigation}) => {
   return (
