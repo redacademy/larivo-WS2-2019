@@ -1,7 +1,6 @@
 import React from 'react'
-import {View, Text, SafeAreaView, Modal} from 'react-native'
+import {Text, SafeAreaView} from 'react-native'
 import styles from './styles'
-import {STORY} from '../../context/apollo'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 import {getStoryById} from '../../hooks'

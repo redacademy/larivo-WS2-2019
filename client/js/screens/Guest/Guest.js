@@ -1,6 +1,11 @@
 import React from 'react'
 import styles from './styles'
-import {SafeAreaView, Text, FlatList} from 'react-native'
+import {
+  SafeAreaView,
+  Text,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native'
 import {Card} from '../../components/Card'
 import Hashtag from '../../components/Hashtag'
 import {GUEST_FEED} from '../../context/apollo'
@@ -39,16 +44,22 @@ const Guest = ({navigation}) => {
           })
         }
         data={data.guestFeed}
-        renderItem={({item}) => (
-          <Card>
-            <Text>{item.author.userName}</Text>
-            <Text>{item.createdAt}</Text>
-            <Text>{item.title}</Text>
-            <Text>{item.content}</Text>
-            <Hashtag disabled>
-              {item.hashtags.map(tag => tag.name)}
-            </Hashtag>
-          </Card>
+        renderItem={({
+          item: {id, author, title, createdAt, content, hashtags},
+        }) => (
+          <TouchableOpacity
+            onPress={() => navigation.navigate('GuestStory', {id})}
+          >
+            <Card>
+              <Text>{author.userName}</Text>
+              <Text>{createdAt}</Text>
+              <Text>{title}</Text>
+              <Text>{content}</Text>
+              <Hashtag disabled>
+                {hashtags.map(tag => tag.name)}
+              </Hashtag>
+            </Card>
+          </TouchableOpacity>
         )}
         keyExtractor={item => item.id}
       />
