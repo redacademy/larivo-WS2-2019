@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles'
+import readingTime from 'reading-time'
 import {
   SafeAreaView,
   ScrollView,
@@ -59,21 +60,25 @@ const Home = ({navigation}) => {
         data={data.userFeed}
         renderItem={({
           item: {id, author, title, createdAt, content, hashtags},
-        }) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('HomeStory', {id})}
-          >
-            <Card key={id}>
-              <Text>{author.userName}</Text>
-              <Text>{createdAt}</Text>
-              <Text>{title}</Text>
-              <Text>{content}</Text>
-              <Hashtag disabled>
-                {hashtags.map(tag => tag.name)}
-              </Hashtag>
-            </Card>
-          </TouchableOpacity>
-        )}
+        }) => {
+          const {text: readTime} = readingTime(content)
+          return (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('HomeStory', {id})}
+            >
+              <Card key={id}>
+                <Text>{author.userName}</Text>
+                <Text>{createdAt}</Text>
+                <Text>{readTime}</Text>
+                <Text>{title}</Text>
+                <Text>{content}</Text>
+                <Hashtag disabled>
+                  {hashtags.map(tag => tag.name)}
+                </Hashtag>
+              </Card>
+            </TouchableOpacity>
+          )
+        }}
         keyExtractor={item => item.id}
       />
       {/* <ScrollView>
