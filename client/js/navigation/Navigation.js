@@ -41,6 +41,7 @@ import {
 } from '../screens/Settings'
 import GuestTabs from './GuestNav'
 import {Spinner} from '../components/Spinner'
+import {Story} from '../screens/Story'
 
 const LoginStack = createStackNavigator()
 
@@ -62,6 +63,7 @@ const HomeStack = createStackNavigator()
 const HomeStackScreen = () => (
   <HomeStack.Navigator headerMode="none">
     <HomeStack.Screen name="Home" component={Home} />
+    <HomeStack.Screen name="HomeStory" component={Story} />
   </HomeStack.Navigator>
 )
 
