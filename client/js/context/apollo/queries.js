@@ -33,4 +33,21 @@ const USER_FEED = gql`
     }
   }
 `
-export {GUEST_FEED, USER_FEED}
+
+const STORY = gql`
+  query story($id: ID!) {
+    story(id: $id) {
+      id
+      createdAt
+      title
+      content
+      hashtags {
+        name
+      }
+      author {
+        userName
+      }
+    }
+  }
+`
+export {GUEST_FEED, USER_FEED, STORY}

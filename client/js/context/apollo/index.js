@@ -1,5 +1,5 @@
 import client from './client'
-import {GUEST_FEED, USER_FEED} from './queries'
+import {GUEST_FEED, USER_FEED, STORY} from './queries'
 import {
   SIGN_UP,
   LOG_IN,
@@ -13,6 +13,7 @@ export default client
 export {
   GUEST_FEED,
   USER_FEED,
+  STORY,
   SIGN_UP,
   LOG_IN,
   CREATE_STORY,
