@@ -13,7 +13,7 @@ const NetWorkError = () => (
       Oh no, something went terribly wrong.
     </Text>
     <Text style={styles.text}>
-      Please try closing an reopening the app.
+      Please try closing and reopening the app.
     </Text>
   </View>
 )
