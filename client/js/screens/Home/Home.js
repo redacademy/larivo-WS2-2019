@@ -16,7 +16,7 @@ import getInitials from '../../utils/getInitials'
 import FeaturedCard from '../../components/FeaturedCard'
 import Hashtag from '../../components/Hashtag'
 import {useAuth} from '../../hooks'
-import {ALL_STORIES} from '../../context/apollo'
+import {USER_FEED} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
@@ -30,8 +30,8 @@ const Home = ({navigation}) => {
     refetch,
     fetchMore,
     networkStatus,
-  } = useQuery(ALL_STORIES)
-  console.log(data)
+  } = useQuery(USER_FEED)
+  console.log('home data', data)
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
   const {userName} = user.user
@@ -47,12 +47,15 @@ const Home = ({navigation}) => {
             updateQuery: (prev, {fetchMoreResult}) => {
               if (!fetchMoreResult) return prev
               return Object.assign({}, prev, {
-                feed: [...prev.feed, ...fetchMoreResult.feed],
+                userFeed: [
+                  ...prev.userFeed,
+                  ...fetchMoreResult.userFeed,
+                ],
               })
             },
           })
         }
-        data={data.feed}
+        data={data.userFeed}
         renderItem={({item}) => (
           <Card>
             <Text>{item.author.userName}</Text>
