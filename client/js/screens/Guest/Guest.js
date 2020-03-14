@@ -2,16 +2,13 @@ import React from 'react'
 import styles from './styles'
 import {SafeAreaView, Text, FlatList} from 'react-native'
 import {Card} from '../../components/Card'
-import {Header} from '../../components/Header'
 import Hashtag from '../../components/Hashtag'
-import {useAuth} from '../../hooks'
-import {ALL_STORIES} from '../../context/apollo'
+import {GUEST_FEED} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 
 const Guest = ({navigation}) => {
-  const {user} = useAuth()
   const {
     loading,
     error,
@@ -19,11 +16,9 @@ const Guest = ({navigation}) => {
     refetch,
     fetchMore,
     networkStatus,
-  } = useQuery(ALL_STORIES)
-  console.log(data)
+  } = useQuery(GUEST_FEED)
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
-  const {userName} = user.user
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,12 +30,15 @@ const Guest = ({navigation}) => {
             updateQuery: (prev, {fetchMoreResult}) => {
               if (!fetchMoreResult) return prev
               return Object.assign({}, prev, {
-                feed: [...prev.feed, ...fetchMoreResult.feed],
+                guestFeed: [
+                  ...prev.guestFeed,
+                  ...fetchMoreResult.guestFeed,
+                ],
               })
             },
           })
         }
-        data={data.feed}
+        data={data.guestFeed}
         renderItem={({item}) => (
           <Card>
             <Text>{item.author.userName}</Text>
