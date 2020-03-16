@@ -38,10 +38,8 @@ const items = [
 const Settings = ({navigation}) => {
   const {logout} = useAuth()
 
-  const handleLogout = () => {
-    logout()
-    navigation.navigate('Welcome')
-  }
+  const handleLogout = () => logout()
+
   return (
     <SafeAreaView>
       <View style={styles.settings_container}>
