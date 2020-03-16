@@ -4,9 +4,7 @@ import styles from './styles'
 import NameInitials from '../NameInitials/NameInitials'
 import InputSearchField from '../InputField/InputSearchField'
 
-const userName = 'Roaring Velvet'
-
-const Header = ({userName}) => {
+const Header = ({userName, navigation}) => {
   return (
     <View style={styles.header}>
       <View style={styles.searchBox}>
