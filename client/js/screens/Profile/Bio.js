@@ -20,17 +20,17 @@ const Bio = ({navigation}) => {
   const [show, setShow] = useState(false)
 
   const handleSubmit = () => {
-    // setShow(true)
     updateBio({
       variables: {
         bio: content,
       },
     })
+    setShow(true)
     setContent('')
-    // setTimeout(() => {
-    //   setShow(false)
-    //   navigation.goBack()
-    // }, 1500)
+    setTimeout(() => {
+      setShow(false)
+      navigation.goBack()
+    }, 1500)
   }
 
   return (
