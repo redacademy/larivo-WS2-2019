@@ -7,6 +7,8 @@ import {
   CREATE_DRAFT,
   UPDATE_BIO,
   UPDATE_USERNAME,
+  UPDATE_EMAIL,
+  DELETE_USER,
 } from './mutations'
 
 export default client
@@ -20,4 +22,6 @@ export {
   CREATE_DRAFT,
   UPDATE_BIO,
   UPDATE_USERNAME,
+  UPDATE_EMAIL,
+  DELETE_USER,
 }
