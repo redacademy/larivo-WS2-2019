@@ -11,7 +11,6 @@ const Login = ({navigation}) => {
 
   const handleLogin = variables => {
     login({variables})
-    navigation.navigate('Tabs')
   }
 
   return (

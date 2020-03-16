@@ -42,13 +42,12 @@ const HashtagScreen = ({route, navigation}) => {
         hashtags: tags,
       },
     })
-    navigation.navigate('Tabs')
   }
 
   console.log(userName, password, email, tags)
 
   return (
-    <Formik onSubmit={() => alert('hi')}>
+    <Formik>
       <SafeAreaView>
         <View style={styles.hashtagContainer}>
           <Text style={styles.textStyleUsernameScreen}>
