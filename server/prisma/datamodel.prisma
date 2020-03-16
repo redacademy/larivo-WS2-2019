@@ -6,6 +6,7 @@ type User {
   bio: String
   hashtags: [Hashtag!]! @relation(link: TABLE, name: "HashtagsByUser", onDelete: CASCADE)
   stories: [Story!]! @relation(name: "StoriesByUser", onDelete: CASCADE)
+  drafts: [Story]! @relation(name: "StoriesByUser", onDelete: CASCADE)
   favoriteStories: [Story]! @relation(link: TABLE, name: "FavoriteStories", onDelete: CASCADE)
   following: [User!]! @relation(link: TABLE, name: "UserFollowing")
   followers: [User!]! @relation(link: TABLE, name: "UserFollower")
