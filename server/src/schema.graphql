@@ -31,6 +31,7 @@ type Mutation {
   updateBio(bio: String!): User!
   updateUserName(userName: String!): User!
   updateEmail(email: String!): User!
+  updatePassword(password: String!): User!
   favoriteStory(id: String!): Story!
   like(id: String!): Story!
   deleteUser(email: String!): User!
