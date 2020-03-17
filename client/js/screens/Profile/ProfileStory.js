@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Text, FlatList, TouchableOpacity} from 'react-native'
+import readingTime from 'reading-time'
 import {USER_STORIES} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
@@ -15,22 +16,26 @@ const ProfileStory = ({navigation}) => {
   return (
     <FlatList
       data={stories}
-      renderItem={({item: {id, title, createdAt, content}}) => (
-        <TouchableOpacity
-          onPress={() => navigation.navigate('HomeStory', {id})}
-        >
-          <View
-            style={{
-              borderBottomColor: '#000',
-              borderBottomWidth: 1,
-            }}
+      renderItem={({item: {id, title, createdAt, content}}) => {
+        const {text: readTime} = readingTime(content)
+        return (
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SingleStory', {id})}
           >
-            <Text>{title}</Text>
-            <Text>{createdAt}</Text>
-            <Text>{content}</Text>
-          </View>
-        </TouchableOpacity>
-      )}
+            <View
+              style={{
+                borderBottomColor: '#000',
+                borderBottomWidth: 1,
+              }}
+            >
+              <Text>{title}</Text>
+              <Text>{createdAt}</Text>
+              <Text>{readTime}</Text>
+              <Text>{content}</Text>
+            </View>
+          </TouchableOpacity>
+        )
+      }}
       keyExtractor={item => item.id}
     />
   )
