@@ -109,6 +109,7 @@ const ProfileStackScreen = () => (
       name="ProfileBookMark"
       component={ProfileBookMark}
     />
+    <HomeStack.Screen name="SingleBookMark" component={Story} />
     <ProfileStack.Screen
       name="ProfileDraft"
       component={ProfileDraft}
