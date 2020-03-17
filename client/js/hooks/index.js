@@ -6,6 +6,7 @@ import useUpdateBio from './useUpdateBio'
 import useDeleteUser from './useDeleteUser'
 import usePublish from './usePublish'
 import useFavoriteStory from './useFavoriteStory'
+import useUnFavoriteStory from './useUnFavoriteStory'
 import getStoryById from './getStoryById'
 
 export {
@@ -17,5 +18,6 @@ export {
   useDeleteUser,
   usePublish,
   useFavoriteStory,
+  useUnFavoriteStory,
   getStoryById,
 }
