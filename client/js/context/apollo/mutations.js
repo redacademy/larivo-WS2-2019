@@ -73,6 +73,14 @@ const CREATE_DRAFT = gql`
   }
 `
 
+const PUBLISH = gql`
+  mutation publish($id: String!) {
+    publish(id: $id) {
+      id
+    }
+  }
+`
+
 const UPDATE_BIO = gql`
   mutation updateBio($bio: String!) {
     updateBio(bio: $bio) {
@@ -117,6 +125,7 @@ export {
   LOG_IN,
   CREATE_STORY,
   CREATE_DRAFT,
+  PUBLISH,
   UPDATE_BIO,
   UPDATE_USERNAME,
   UPDATE_EMAIL,
