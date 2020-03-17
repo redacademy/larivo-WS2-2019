@@ -1,15 +1,21 @@
 import React from 'react'
-import {Text, SafeAreaView} from 'react-native'
+import {Text, SafeAreaView, Button} from 'react-native'
+import {getStoryById} from '../../hooks'
+import {useFavoriteStory} from '../../hooks'
 import styles from './styles'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
-import {getStoryById} from '../../hooks'
 import {Card} from '../../components/Card'
 import Hashtag from '../../components/Hashtag'
 
 const Story = ({route, navigation}) => {
-  const {id} = route.params
-  const {error, loading, story} = getStoryById(id)
+  const {id: storyId} = route.params
+  const [favoriteStory] = useFavoriteStory()
+  const {error, loading, story} = getStoryById(storyId)
+
+  const handleFavoriteStory = () =>
+    favoriteStory({variables: {id: storyId}})
+
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
   return (
@@ -23,6 +29,7 @@ const Story = ({route, navigation}) => {
         <Hashtag disabled style={styles.text}>
           {story.hashtags.map(tag => tag.name)}
         </Hashtag>
+        <Button onPress={handleFavoriteStory} title="Bookmark" />
       </Card>
     </SafeAreaView>
   )
