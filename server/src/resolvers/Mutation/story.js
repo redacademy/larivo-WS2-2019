@@ -111,6 +111,19 @@ const story = {
         }
       }
     })
+  },
+
+  async unFavoriteStory(parent, { id }, context) {
+    const userId = getUserId(context)
+
+    return context.prisma.updateUser({
+      where: { id: userId },
+      data: {
+        favoriteStories: {
+          disconnect: { id }
+        }
+      }
+    })
   }
 }
 
