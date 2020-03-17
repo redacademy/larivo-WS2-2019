@@ -26,17 +26,6 @@ const Query = {
     })
   },
 
-  drafts(parent, args, context) {
-    const id = getUserId(context)
-    const where = {
-      published: false,
-      author: {
-        id
-      }
-    }
-    return context.prisma.stories({ where })
-  },
-
   users(parent, args, context) {
     return context.prisma.users()
   },

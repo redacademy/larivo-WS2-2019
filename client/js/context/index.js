@@ -3,8 +3,11 @@ import client, {
   LOG_IN,
   CREATE_STORY,
   CREATE_DRAFT,
+  PUBLISH,
   UPDATE_BIO,
   UPDATE_USERNAME,
+  UPDATE_EMAIL,
+  DELETE_USER,
 } from './apollo'
 import AuthContext, {AuthContextProvider} from './auth'
 
@@ -14,8 +17,11 @@ export {
   LOG_IN,
   CREATE_STORY,
   CREATE_DRAFT,
+  PUBLISH,
   UPDATE_BIO,
   UPDATE_USERNAME,
+  UPDATE_EMAIL,
+  DELETE_USER,
   AuthContext,
   AuthContextProvider,
 }

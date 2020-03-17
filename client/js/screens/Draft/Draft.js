@@ -1,27 +1,31 @@
 import React, {useState} from 'react'
 import {
-  SafeAreaView,
-  TextInput,
   View,
-  ScrollView,
   Text,
+  TextInput,
+  SafeAreaView,
+  ScrollView,
   FlatList,
 } from 'react-native'
-import {Card} from '../../components/Card'
-import {Popup} from '../../components/Popup/'
-import Button from '../../components/Button'
-import Hashtag from '../../components/Hashtag'
 import styles from './styles'
-import {useCreateStory, useCreateDraft} from '../../hooks'
+import {getStoryById} from '../../hooks'
+import {Spinner} from '../../components/Spinner'
+import {NetWorkError} from '../../components/FourOhFour'
+import Button from '../../components/Button'
+import {Popup} from '../../components/Popup/'
+import {Card} from '../../components/Card'
+import Hashtag from '../../components/Hashtag'
+import {usePublish} from '../../hooks'
 
-const StoryForm = ({navigation}) => {
+const Draft = ({route, navigation}) => {
+  const {id: draftId} = route.params
+  const {error, loading, story} = getStoryById(draftId)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [tag, setTag] = useState('')
   const [tags, setTags] = useState([])
   const [show, setShow] = useState(false)
-  const [createStory] = useCreateStory()
-  const [createDraft] = useCreateDraft()
+  const [publish] = usePublish()
 
   const handleTags = () => {
     if (tag === '') return
@@ -31,45 +35,22 @@ const StoryForm = ({navigation}) => {
 
   const handlePublish = () => {
     setShow(true)
-    createStory({
-      variables: {
-        title,
-        content,
-        hashtags: tags,
-        published: true,
-      },
-    })
+    publish({variables: {id: draftId}})
     setTitle('')
     setContent('')
     setTags([])
     setTimeout(() => {
       setShow(false)
-      navigation.navigate('Home')
+      navigation.navigate('Profile')
     }, 1500)
   }
 
-  const handleDraft = () => {
-    setShow(true)
-    createDraft({
-      variables: {
-        title,
-        content,
-        hashtags: tags,
-        published: false,
-      },
-    })
-    console.log(title, content, tags)
-    setTitle('')
-    setContent('')
-    setTags([])
-    setTimeout(() => {
-      setShow(false)
-      navigation.navigate('Home')
-    }, 1500)
-  }
+  if (loading) return <Spinner />
+  if (error) return <NetWorkError />
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text onPress={() => navigation.goBack()}>x</Text>
       <ScrollView>
         <View style={styles.content}>
           <Card>
@@ -101,30 +82,25 @@ const StoryForm = ({navigation}) => {
             <Button onPress={handlePublish} theme="dark">
               PUBLISH
             </Button>
-            <Button onPress={handleDraft}>Save As Draft</Button>
           </View>
-          {tags && tags.length ? (
-            <View style={styles.hashtagContainer}>
-              <Text style={styles.hashtagTitle}>Your Hashtags</Text>
-              <FlatList
-                data={tags}
-                numColumns="4"
-                renderItem={({item}) =>
-                  console.log(item) || (
-                    <Hashtag key={item} disabled>
-                      {item}
-                    </Hashtag>
-                  )
-                }
-                keyExtractor={item => item}
-              />
-            </View>
-          ) : null}
+          <View style={styles.hashtagContainer}>
+            <Text style={styles.hashtagTitle}>Your Hashtags</Text>
+            <FlatList
+              data={tags}
+              numColumns="4"
+              renderItem={({item}) => (
+                <Hashtag key={item.id} disabled>
+                  {item}
+                </Hashtag>
+              )}
+              keyExtractor={item => item}
+            />
+          </View>
         </View>
       </ScrollView>
-      <Popup text="Posted!" show={show} />
+      <Popup text="Published!" show={show} />
     </SafeAreaView>
   )
 }
 
-export default StoryForm
+export default Draft

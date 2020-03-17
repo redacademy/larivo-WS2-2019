@@ -50,4 +50,42 @@ const STORY = gql`
     }
   }
 `
-export {GUEST_FEED, USER_FEED, STORY}
+
+const USER_STORIES = gql`
+  query me {
+    me {
+      stories {
+        id
+        createdAt
+        title
+        content
+        hashtags {
+          name
+        }
+        author {
+          userName
+        }
+      }
+    }
+  }
+`
+
+const USER_DRAFTS = gql`
+  query me {
+    me {
+      drafts {
+        id
+        createdAt
+        title
+        content
+        hashtags {
+          name
+        }
+        author {
+          userName
+        }
+      }
+    }
+  }
+`
+export {GUEST_FEED, USER_FEED, STORY, USER_STORIES, USER_DRAFTS}

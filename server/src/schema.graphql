@@ -5,6 +5,7 @@ type Query {
   drafts: [Story!]!
   users: [User!]!
   story(id: ID!): Story!
+  draft(id: ID!): Story!
   me: User!
 }
 
@@ -28,8 +29,11 @@ type Mutation {
     hashtags: [String!]!
     published: Boolean!
   ): Story!
+  publish(id: String!): Story!
   updateBio(bio: String!): User!
   updateUserName(userName: String!): User!
+  updateEmail(email: String!): User!
+  updatePassword(password: String!): User!
   favoriteStory(id: String!): Story!
   like(id: String!): Story!
   deleteUser(email: String!): User!
@@ -51,6 +55,7 @@ type User {
   bio: String
   hashtags: [Hashtag!]!
   stories: [Story!]!
+  drafts: [Story!]
   favoriteStories: [Story]
   following: [User]
   followers: [User]

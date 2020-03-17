@@ -4,9 +4,10 @@ type User {
   email: String! @unique
   password: String!
   bio: String
+  hashtags: [Hashtag!]! @relation(link: TABLE, name: "HashtagsByUser", onDelete: CASCADE)
   stories: [Story!]! @relation(name: "StoriesByUser", onDelete: CASCADE)
+  drafts: [Story]! @relation(name: "StoriesByUser", onDelete: CASCADE)
   favoriteStories: [Story]! @relation(link: TABLE, name: "FavoriteStories", onDelete: CASCADE)
-  hashtags: [Hashtag!]! @relation(link: TABLE, name: "Hashtags")
   following: [User!]! @relation(link: TABLE, name: "UserFollowing")
   followers: [User!]! @relation(link: TABLE, name: "UserFollower")
 }
@@ -17,7 +18,7 @@ type Story {
   author: User! @relation(link: TABLE, name: "StoriesByUser")
   title: String! 
   content: String!  
-  hashtags: [Hashtag!]! @relation(link: TABLE, name: "UserHashtags")
+  hashtags: [Hashtag!]! @relation(link: TABLE, name: "HashtagsByUser")
   likes: [User!]! @relation(link: TABLE, name: "UserLikes")
   loves: [User!]! @relation(link: TABLE, name: "UserLoves")
   neutrals: [User!]! @relation(link: TABLE, name: "UserNeutrals")

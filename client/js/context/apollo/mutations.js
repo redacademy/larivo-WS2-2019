@@ -16,6 +16,7 @@ const SIGN_UP = gql`
       user {
         id
         userName
+        email
         bio
       }
       token
@@ -28,6 +29,7 @@ const LOG_IN = gql`
       user {
         id
         userName
+        email
         bio
       }
       token
@@ -71,6 +73,14 @@ const CREATE_DRAFT = gql`
   }
 `
 
+const PUBLISH = gql`
+  mutation publish($id: String!) {
+    publish(id: $id) {
+      id
+    }
+  }
+`
+
 const UPDATE_BIO = gql`
   mutation updateBio($bio: String!) {
     updateBio(bio: $bio) {
@@ -81,17 +91,43 @@ const UPDATE_BIO = gql`
 
 const UPDATE_USERNAME = gql`
   mutation updateUserName($userName: String!) {
-    updateBio(userName: $userName) {
+    updateUserName(userName: $userName) {
       id
     }
   }
 `
+const UPDATE_EMAIL = gql`
+  mutation updateEmail($email: String!) {
+    updateEmail(email: $email) {
+      id
+    }
+  }
+`
+
+const DELETE_USER = gql`
+  mutation deleteUser($email: String!) {
+    deleteUser(email: $email) {
+      id
+    }
+  }
+`
+
+// const UPDATE_PASSWORD = gql`
+//   mutation updatePassword($email: String!) {
+//     updateBio(email: $email) {
+//       id
+//     }
+//   }
+// `
 
 export {
   SIGN_UP,
   LOG_IN,
   CREATE_STORY,
   CREATE_DRAFT,
+  PUBLISH,
   UPDATE_BIO,
   UPDATE_USERNAME,
+  UPDATE_EMAIL,
+  DELETE_USER,
 }

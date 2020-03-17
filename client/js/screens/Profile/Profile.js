@@ -36,14 +36,16 @@ const Profile = ({navigation}) => {
           </View>
           <View>
             <SettingsIcon
-              onPress={() => navigation.navigate('Settings')}
+              onPress={() => navigation.navigate('Settings', {user})}
             />
           </View>
         </View>
         <View style={styles.titleContainer}>
           <StoryTitle>Roaring Velvet</StoryTitle>
 
-          <EditIcon onPress={() => navigation.navigate('Bio')} />
+          <EditIcon
+            onPress={() => navigation.navigate('Bio', {user})}
+          />
         </View>
         <Paragraph>{user.user.bio || 'lorem'}</Paragraph>
         {/* </Header> */}
