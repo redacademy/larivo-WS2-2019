@@ -5,6 +5,7 @@ import useCreateDraft from './useCreateDraft'
 import useUpdateBio from './useUpdateBio'
 import useDeleteUser from './useDeleteUser'
 import usePublish from './usePublish'
+import useFavoriteStory from './useFavoriteStory'
 import getStoryById from './getStoryById'
 
 export {
@@ -15,5 +16,6 @@ export {
   useUpdateBio,
   useDeleteUser,
   usePublish,
+  useFavoriteStory,
   getStoryById,
 }
