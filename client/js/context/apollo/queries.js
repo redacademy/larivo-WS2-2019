@@ -88,4 +88,31 @@ const USER_DRAFTS = gql`
     }
   }
 `
-export {GUEST_FEED, USER_FEED, STORY, USER_STORIES, USER_DRAFTS}
+
+const USER_BOOKMARKS = gql`
+  query me {
+    me {
+      favoriteStories {
+        id
+        createdAt
+        title
+        content
+        hashtags {
+          name
+        }
+        author {
+          userName
+        }
+      }
+    }
+  }
+`
+
+export {
+  GUEST_FEED,
+  USER_FEED,
+  STORY,
+  USER_STORIES,
+  USER_DRAFTS,
+  USER_BOOKMARKS,
+}

@@ -81,6 +81,22 @@ const PUBLISH = gql`
   }
 `
 
+const FAVORITE_STORY = gql`
+  mutation favoriteStory($id: String!) {
+    favoriteStory(id: $id) {
+      id
+    }
+  }
+`
+
+const UNFAVORITE_STORY = gql`
+  mutation unFavoriteStory($id: String!) {
+    unFavoriteStory(id: $id) {
+      id
+    }
+  }
+`
+
 const UPDATE_BIO = gql`
   mutation updateBio($bio: String!) {
     updateBio(bio: $bio) {
@@ -126,6 +142,8 @@ export {
   CREATE_STORY,
   CREATE_DRAFT,
   PUBLISH,
+  FAVORITE_STORY,
+  UNFAVORITE_STORY,
   UPDATE_BIO,
   UPDATE_USERNAME,
   UPDATE_EMAIL,
