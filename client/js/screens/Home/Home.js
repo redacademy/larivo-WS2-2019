@@ -45,9 +45,7 @@ const Home = ({navigation}) => {
         onEndReached={() =>
           fetchMore({
             updateQuery: (prev, {fetchMoreResult}) => {
-              if (!fetchMoreResult) {
-                return prev
-              }
+              if (!fetchMoreResult) return prev
               return Object.assign({}, prev, {
                 userFeed: [
                   ...prev.userFeed,
