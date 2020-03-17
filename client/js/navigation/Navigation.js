@@ -43,6 +43,7 @@ import {Spinner} from '../components/Spinner'
 import {Story} from '../screens/Story'
 import Guest from '../screens/Guest/Guest'
 import GuestTabs from './GuestNav'
+import {Draft} from '../screens/Draft'
 
 const LoginStack = createStackNavigator()
 
@@ -103,6 +104,7 @@ const ProfileStackScreen = () => (
       name="ProfileStory"
       component={ProfileStory}
     />
+    <HomeStack.Screen name="SingleStory" component={Story} />
     <ProfileStack.Screen
       name="ProfileBookMark"
       component={ProfileBookMark}
@@ -111,6 +113,7 @@ const ProfileStackScreen = () => (
       name="ProfileDraft"
       component={ProfileDraft}
     />
+    <HomeStack.Screen name="SingleDraft" component={Draft} />
     <ProfileStack.Screen
       name="ProfileActivity"
       component={ProfileActivity}
