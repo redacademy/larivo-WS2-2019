@@ -107,6 +107,7 @@ const USER_BOOKMARKS = gql`
     }
   }
 `
+
 export {
   GUEST_FEED,
   USER_FEED,
