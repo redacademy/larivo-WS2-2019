@@ -3,11 +3,8 @@ import styles from './styles'
 import readingTime from 'reading-time'
 import {
   SafeAreaView,
-  ScrollView,
-  View,
   Text,
   FlatList,
-  Animated,
   TouchableOpacity,
 } from 'react-native'
 import {Card} from '../../components/Card'
@@ -33,21 +30,24 @@ const Home = ({navigation}) => {
     fetchMore,
     networkStatus,
   } = useQuery(USER_FEED)
-  console.log('home data', data)
+
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
+
   const {userName} = user.user
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header userName={userName} />
+      <Header navigation={navigation} userName={userName} />
       <FlatList
         refreshing={networkStatus === 4}
         onRefresh={() => refetch()}
         onEndReached={() =>
           fetchMore({
             updateQuery: (prev, {fetchMoreResult}) => {
-              if (!fetchMoreResult) return prev
+              if (!fetchMoreResult) {
+                return prev
+              }
               return Object.assign({}, prev, {
                 userFeed: [
                   ...prev.userFeed,
