@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#1E6A62',
     paddingTop: 10,
+    paddingLeft: 10,
     paddingBottom: 10,
     width: '100%',
   },
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     fontSize: 16,
     color: '#1E6A62',
+    paddingLeft: 10,
     paddingBottom: 16,
   },
   tagInput: {
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
-
     elevation: 16,
     borderWidth: 1,
     borderRadius: 20.75,
