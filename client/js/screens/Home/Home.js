@@ -39,6 +39,7 @@ const Home = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} userName={userName} />
+      <Text style={styles.title}>Featured</Text>
       <FlatList
         refreshing={networkStatus === 4}
         onRefresh={() => refetch()}
