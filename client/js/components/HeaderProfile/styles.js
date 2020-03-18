@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   headerContainer: {
+    display: 'flex',
     backgroundColor: '#03dac4',
     paddingVertical: 60,
     paddingVertical: 30,
