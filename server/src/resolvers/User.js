@@ -9,7 +9,7 @@ const User = {
         id
       }
     }
-    return context.prisma.stories({ where })
+    return context.prisma.stories({ where, orderBy: 'createdAt_DESC' })
   },
 
   drafts(parent, args, context) {
@@ -20,11 +20,11 @@ const User = {
         id
       }
     }
-    return context.prisma.stories({ where })
+    return context.prisma.stories({ where, orderBy: 'createdAt_DESC' })
   },
 
   favoriteStories: ({ id }, args, context) =>
-    context.prisma.user({ id }).favoriteStories(),
+    context.prisma.user({ id }).favoriteStories({ orderBy: 'createdAt_DESC' }),
 
   hashtags: ({ id }, args, context) => context.prisma.user({ id }).hashtags()
 }
