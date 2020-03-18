@@ -10,6 +10,7 @@ import {ProfileTabs} from '../../navigation'
 import styles from './styles'
 import {useAuth} from '../../hooks'
 import {Spinner} from '../../components/Spinner'
+import HeaderProfile from '../../components/HeaderProfile/HeaderProfile'
 
 const Profile = ({navigation}) => {
   const {user} = useAuth()
@@ -17,10 +18,10 @@ const Profile = ({navigation}) => {
 
   if (typeof user === 'undefined') return <Spinner />
   return (
-    <SafeAreaView>
-      <ScrollView style={{backgroundColor: '#ffff'}}>
-        {/* <Header> */}
-        <View style={styles.headerContainer}>
+    <SafeAreaView style={{backgroundColor: '#03dac4'}}>
+      <HeaderProfile />
+      <ScrollView style={{backgroundColor: '#03dac4'}}>
+        {/* <View style={styles.headerContainer}>
           <NameInitials>RV</NameInitials>
           <View style={styles.followsContainer}>
             <Text style={styles.numbers}>53</Text>
@@ -47,8 +48,8 @@ const Profile = ({navigation}) => {
             onPress={() => navigation.navigate('Bio', {user})}
           />
         </View>
-        <Paragraph>{user.user.bio || 'lorem'}</Paragraph>
-        {/* </Header> */}
+        <Paragraph>{user.user.bio || 'lorem'}</Paragraph> */}
+
         <ProfileTabs />
       </ScrollView>
     </SafeAreaView>
