@@ -19,8 +19,9 @@ const Profile = ({navigation, userName}) => {
   if (typeof user === 'undefined') return <Spinner />
   return (
     <SafeAreaView style={{backgroundColor: '#03dac4'}}>
-      {/* <HeaderProfile /> */}
       <ScrollView style={{backgroundColor: '#03dac4'}}>
+        {/* <HeaderProfile /> */}
+
         <View style={styles.headerContainer}>
           <View style={styles.titleContainer}>
             <NameInitials>j</NameInitials>
