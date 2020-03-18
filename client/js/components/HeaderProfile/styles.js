@@ -13,6 +13,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingTop: 50,
   },
+  followsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  titleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  numbers: {
+    paddingTop: 2,
+    fontSize: 14,
+  },
+  textFollow: {
+    color: '#1e6a62',
+    fontFamily: 'SFProText-Light',
+  },
 })
 
 export default styles

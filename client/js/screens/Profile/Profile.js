@@ -49,7 +49,6 @@ const Profile = ({navigation}) => {
           />
         </View>
         <Paragraph>{user.user.bio || 'lorem'}</Paragraph> */}
-
         <ProfileTabs />
       </ScrollView>
     </SafeAreaView>
