@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     paddingVertical: 60,
     paddingVertical: 30,
     paddingHorizontal: 30,
-    paddingTop: 50,
+    paddingTop: 10,
   },
   followsContainer: {
     display: 'flex',

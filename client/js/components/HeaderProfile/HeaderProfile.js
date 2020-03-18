@@ -6,8 +6,14 @@ import Paragraph from '../../components/Paragraph/Paragraph'
 import SettingsIcon from '../../components/SettingsIcon/SettingsIcon'
 import StoryTitle from '../../components/StoryTitle'
 import EditIcon from '../../components/EditIcon/EditIcon'
+import {useAuth} from '../../hooks'
+import {Spinner} from '../../components/Spinner'
 
-const HeaderProfile = () => {
+const HeaderProfile = ({navigation}) => {
+  const {user} = useAuth()
+  console.log('profile user', user)
+
+  if (typeof user === 'undefined') return <Spinner />
   return (
     <View style={styles.headerContainer}>
       <View style={styles.titleContainer}>
@@ -16,7 +22,7 @@ const HeaderProfile = () => {
           <Text style={styles.numbers}>53</Text>
           <Text style={styles.textFollow}>Stories</Text>
         </View>
-        <View style={styles.textFollow}>
+        <View style={styles.followsContainer}>
           <Text style={styles.numbers}>64.5K</Text>
           <Text style={styles.textFollow}>Followers</Text>
         </View>
@@ -34,7 +40,9 @@ const HeaderProfile = () => {
       <View style={styles.titleContainer}>
         <StoryTitle>Roaring Velvet</StoryTitle>
 
-        <EditIcon />
+        <EditIcon
+          onPress={() => navigation.navigate('Bio', {user})}
+        />
       </View>
       <Paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
