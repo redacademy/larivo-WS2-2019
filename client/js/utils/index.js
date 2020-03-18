@@ -1,2 +1,3 @@
 import getInitials from './getInitials'
-export {getInitials}
+import trimContent from './trimContent'
+export {getInitials, trimContent}
