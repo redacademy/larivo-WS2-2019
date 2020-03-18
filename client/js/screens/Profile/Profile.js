@@ -10,17 +10,63 @@ import {ProfileTabs} from '../../navigation'
 import styles from './styles'
 import {useAuth} from '../../hooks'
 import {Spinner} from '../../components/Spinner'
+import HeaderProfile from '../../components/HeaderProfile/HeaderProfile'
 
-const Profile = ({navigation}) => {
+const Profile = ({navigation, userName}) => {
   const {user} = useAuth()
   console.log('profile user', user)
 
   if (typeof user === 'undefined') return <Spinner />
   return (
-    <SafeAreaView>
-      <ScrollView style={{backgroundColor: '#ffff'}}>
-        {/* <Header> */}
+    <SafeAreaView style={{backgroundColor: '#03dac4'}}>
+      <ScrollView style={{backgroundColor: '#03dac4'}}>
+        {/* <HeaderProfile /> */}
+
         <View style={styles.headerContainer}>
+          <View style={styles.titleContainer}>
+            <NameInitials>j</NameInitials>
+            <View style={styles.followsContainer}>
+              <Text style={styles.numbers}>53</Text>
+              <Text style={styles.textFollow}>Stories</Text>
+            </View>
+            <View style={styles.followsContainer}>
+              <Text style={styles.numbers}>64.5K</Text>
+              <Text style={styles.textFollow}>Followers</Text>
+            </View>
+            <View style={styles.followsContainer}>
+              <Text style={styles.numbers}>1247</Text>
+              <Text style={styles.textFollow}>Following</Text>
+            </View>
+            <View>
+              <SettingsIcon
+                onPress={() => navigation.navigate('Settings')}
+              />
+            </View>
+          </View>
+
+          <View style={styles.titleContainer}>
+            <StoryTitle>Roaring Velvet</StoryTitle>
+
+            <EditIcon
+              onPress={() => navigation.navigate('Bio', {user})}
+            />
+          </View>
+          <Paragraph>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua.
+          </Paragraph>
+        </View>
+        <ProfileTabs />
+      </ScrollView>
+    </SafeAreaView>
+  )
+}
+
+export default Profile
+
+{
+  /* <View style={styles.headerContainer}>
           <NameInitials>RV</NameInitials>
           <View style={styles.followsContainer}>
             <Text style={styles.numbers}>53</Text>
@@ -47,12 +93,5 @@ const Profile = ({navigation}) => {
             onPress={() => navigation.navigate('Bio', {user})}
           />
         </View>
-        <Paragraph>{user.user.bio || 'lorem'}</Paragraph>
-        {/* </Header> */}
-        <ProfileTabs />
-      </ScrollView>
-    </SafeAreaView>
-  )
+        <Paragraph>{user.user.bio || 'lorem'}</Paragraph> */
 }
-
-export default Profile
