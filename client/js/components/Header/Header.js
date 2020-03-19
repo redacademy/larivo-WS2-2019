@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {View, TextInput} from 'react-native'
 import styles from './styles'
 import NameInitials from '../NameInitials/NameInitials'
-import {SearchTabs} from '../../navigation'
 
 const Header = ({userName, navigation, search, setSearch}) => {
   return (
