@@ -8,6 +8,8 @@ import usePublish from './usePublish'
 import useFavoriteStory from './useFavoriteStory'
 import useUnFavoriteStory from './useUnFavoriteStory'
 import getStoryById from './getStoryById'
+import getSearchedUsers from './getSearchedUsers'
+import getSearchedStories from './getSearchedStories'
 
 export {
   useAsyncStorage,
@@ -20,4 +22,6 @@ export {
   useFavoriteStory,
   useUnFavoriteStory,
   getStoryById,
+  getSearchedUsers,
+  getSearchedStories,
 }
