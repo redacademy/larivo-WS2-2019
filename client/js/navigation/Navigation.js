@@ -80,6 +80,10 @@ const BookMarkStackScreen = () => (
   <BookMarkStack.Navigator mode="modal" headerMode="none">
     <BookMarkStack.Screen name="Bookmark" component={BookMark} />
     <BookMarkStack.Screen name="BookmarkStory" component={Story} />
+    <HomeStack.Screen
+      name="BookmarkProfile"
+      component={UserProfile}
+    />
     <BookMarkStack.Screen name="SearchTabs" component={SearchTabs} />
   </BookMarkStack.Navigator>
 )
