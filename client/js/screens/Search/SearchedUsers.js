@@ -4,9 +4,8 @@ import {getSearchedUsers} from '../../hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 
-const SearchedUsers = ({query}) => {
+const SearchedUsers = ({query, navigation, route}) => {
   const {error, loading, users} = getSearchedUsers(query)
-  console.log(users)
 
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
@@ -16,14 +15,15 @@ const SearchedUsers = ({query}) => {
       {users && users.length ? (
         <FlatList
           data={users}
-          renderItem={({item}) => (
+          renderItem={({item: {id, userName}}) => (
             <TouchableOpacity
               style={{
                 borderBottomColor: '#000',
                 borderBottomWidth: 1,
               }}
+              onPress={() => navigation.navigate('HomeProfile', {id})}
             >
-              <Text>{item.userName}</Text>
+              <Text>{userName}</Text>
             </TouchableOpacity>
           )}
           keyExtractor={item => item.id}

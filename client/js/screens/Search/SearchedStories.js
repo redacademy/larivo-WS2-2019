@@ -4,9 +4,8 @@ import {getSearchedStories} from '../../hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 
-const SearchedStories = ({query}) => {
+const SearchedStories = ({query, navigation, route}) => {
   const {error, loading, stories} = getSearchedStories(query)
-  console.log(stories)
 
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
@@ -16,14 +15,22 @@ const SearchedStories = ({query}) => {
       {stories && stories.length ? (
         <FlatList
           data={stories}
-          renderItem={({item}) => (
+          renderItem={({item: {id, title}}) => (
             <TouchableOpacity
               style={{
                 borderBottomColor: '#000',
                 borderBottomWidth: 1,
               }}
+              onPress={() =>
+                navigation.navigate(
+                  route.name === 'Home'
+                    ? 'HomeStory'
+                    : 'BookmarkStory',
+                  {id},
+                )
+              }
             >
-              <Text>{item.title}</Text>
+              <Text>{title}</Text>
             </TouchableOpacity>
           )}
           keyExtractor={item => item.id}
