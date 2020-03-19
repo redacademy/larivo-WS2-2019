@@ -30,6 +30,7 @@ import {
   ProfileDraft,
   ProfileActivity,
   Bio,
+  UserProfile,
 } from '../screens/Profile'
 import {
   Settings,
@@ -41,7 +42,6 @@ import {
 } from '../screens/Settings'
 import {Spinner} from '../components/Spinner'
 import {Story} from '../screens/Story'
-import Guest from '../screens/Guest/Guest'
 import GuestTabs from './GuestNav'
 import {Draft} from '../screens/Draft'
 import SearchTabs from './SearchTabs'
@@ -69,6 +69,7 @@ const HomeStackScreen = () => (
   <HomeStack.Navigator mode="modal" headerMode="none">
     <HomeStack.Screen name="Home" component={Home} />
     <HomeStack.Screen name="HomeStory" component={Story} />
+    <HomeStack.Screen name="HomeProfile" component={UserProfile} />
     <HomeStack.Screen name="SearchTabs" component={SearchTabs} />
   </HomeStack.Navigator>
 )
