@@ -39,19 +39,42 @@ const Query = {
     return context.prisma.user({ id })
   },
 
-  async filteredStories(parent, args, context) {
-    const id = getUserId(context)
-    const hashtags = await context.prisma.user({ id }).hashtags()
-
+  filteredStories: async (parent, args, context) => {
+    const userId = getUserId(context)
+    const hashtags = await context.prisma.user({ id: userId }).hashtags()
     return context.prisma.stories({
       where: {
-        author: {
-          id
-        },
-
         hashtags_some: {
           name_in: hashtags.map(tag => tag.name)
         }
+      }
+    })
+  },
+
+  searchedUsers(parent, { query }, context) {
+    return context.prisma.users({
+      where: {
+        userName_contains: query
+      }
+    })
+  },
+
+  searchedStories(parent, { query }, context) {
+    console.log(query)
+    return context.prisma.stories({
+      where: {
+        AND: [
+          {
+            OR: [
+              {
+                title_contains: query
+              },
+              {
+                content_contains: query
+              }
+            ]
+          }
+        ]
       }
     })
   }

@@ -6,6 +6,8 @@ type Query {
   users: [User!]!
   story(id: ID!): Story!
   draft(id: ID!): Story!
+  searchedUsers(query: String!): [User!]!
+  searchedStories(query: String!): [Story!]!
   me: User!
 }
 
@@ -29,7 +31,12 @@ type Mutation {
     hashtags: [String!]!
     published: Boolean!
   ): Story!
-  publish(id: String!): Story!
+  publish(
+    id: String!
+    title: String!
+    content: String!
+    hashtags: [String!]!
+  ): Story!
   updateBio(bio: String!): User!
   updateUserName(userName: String!): User!
   updateEmail(email: String!): User!
