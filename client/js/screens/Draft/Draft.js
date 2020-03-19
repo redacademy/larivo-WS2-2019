@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {
   View,
   Text,
@@ -20,12 +20,22 @@ import {usePublish} from '../../hooks'
 const Draft = ({route, navigation}) => {
   const {id: draftId} = route.params
   const {error, loading, story} = getStoryById(draftId)
+  console.log(story)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [tag, setTag] = useState('')
   const [tags, setTags] = useState([])
+  console.log(tags)
   const [show, setShow] = useState(false)
   const [publish] = usePublish()
+
+  useEffect(() => {
+    if (story) {
+      setTitle(story.title)
+      setContent(story.content)
+      setTags([...story.hashtags.map(tag => tag.name)])
+    }
+  }, [story])
 
   const handleTags = () => {
     if (tag === '') return
@@ -35,7 +45,9 @@ const Draft = ({route, navigation}) => {
 
   const handlePublish = () => {
     setShow(true)
-    publish({variables: {id: draftId}})
+    publish({
+      variables: {id: draftId, title, content, hashtags: tags},
+    })
     setTitle('')
     setContent('')
     setTags([])
