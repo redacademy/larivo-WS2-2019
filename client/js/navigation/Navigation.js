@@ -76,8 +76,10 @@ const HomeStackScreen = () => (
 const BookMarkStack = createStackNavigator()
 
 const BookMarkStackScreen = () => (
-  <BookMarkStack.Navigator headerMode="none">
+  <BookMarkStack.Navigator mode="modal" headerMode="none">
     <BookMarkStack.Screen name="Bookmark" component={BookMark} />
+    <BookMarkStack.Screen name="BookmarkStory" component={Story} />
+    <BookMarkStack.Screen name="SearchTabs" component={SearchTabs} />
   </BookMarkStack.Navigator>
 )
 
