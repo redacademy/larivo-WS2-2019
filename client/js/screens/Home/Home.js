@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './styles'
 import readingTime from 'reading-time'
 import {
@@ -6,21 +6,20 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native'
 import {Card} from '../../components/Card'
 import {Header} from '../../components/Header'
-import NameInitials from '../../components/NameInitials/NameInitials'
-import InputSearchField from '../../components/InputField/InputSearchField'
-import getInitials from '../../utils/getInitials'
-import FeaturedCard from '../../components/FeaturedCard'
 import Hashtag from '../../components/Hashtag'
 import {useAuth} from '../../hooks'
 import {USER_FEED} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
+import {SearchTabs} from '../../navigation'
 
 const Home = ({navigation}) => {
+  const [search, setSearch] = useState('')
   const {user} = useAuth()
   const {
     loading,
@@ -38,92 +37,63 @@ const Home = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header navigation={navigation} userName={userName} />
-      <Text style={styles.title}>Featured</Text>
-      <FlatList
-        refreshing={networkStatus === 4}
-        onRefresh={() => refetch()}
-        onEndReached={() =>
-          fetchMore({
-            updateQuery: (prev, {fetchMoreResult}) => {
-              if (!fetchMoreResult) return prev
-              return Object.assign({}, prev, {
-                userFeed: [
-                  ...prev.userFeed,
-                  ...fetchMoreResult.userFeed,
-                ],
-              })
-            },
-          })
-        }
-        data={data.userFeed}
-        renderItem={({
-          item: {id, author, title, createdAt, content, hashtags},
-        }) => {
-          const {text: readTime} = readingTime(content)
-          return (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('HomeStory', {id})}
-            >
-              <Card key={id}>
-                <Text>{author.userName}</Text>
-                <Text>{createdAt}</Text>
-                <Text>{readTime}</Text>
-                <Text>{title}</Text>
-                <Text>{content}</Text>
-                <Hashtag disabled>
-                  {hashtags.map(tag => tag.name)}
-                </Hashtag>
-              </Card>
-            </TouchableOpacity>
-          )
-        }}
-        keyExtractor={item => item.id}
+      <Header
+        navigation={navigation}
+        userName={userName}
+        search={search}
+        setSearch={setSearch}
       />
-      {/* <ScrollView>
-        <View style={{backgroundColor: '#03dac4'}}>
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          >
-            <View style={{marginLeft: 25}} />
-            <Hashtag>some hashtag</Hashtag>
-            <Hashtag>some hashtag2</Hashtag>
-            <Hashtag>some hashtag3</Hashtag>
-            <Hashtag>some hashtag4</Hashtag>
-          </ScrollView>
-
-          <Text style={styles.featuredText}>Featured</Text>
-
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={true}
-            // centerContent={true}
-            style={{height: 390}}
-          >
-            <View style={{marginLeft: 25}} />
-            {featuredStories.map(item => {
+      {search.length ? (
+        <SearchTabs search={search} />
+      ) : (
+        <ScrollView>
+          <FlatList
+            ListHeaderComponent={() => (
+              <Text style={styles.title}>Featured</Text>
+            )}
+            refreshing={networkStatus === 4}
+            onRefresh={() => refetch()}
+            onEndReached={() =>
+              fetchMore({
+                updateQuery: (prev, {fetchMoreResult}) => {
+                  if (!fetchMoreResult) return prev
+                  return Object.assign({}, prev, {
+                    userFeed: [
+                      ...prev.userFeed,
+                      ...fetchMoreResult.userFeed,
+                    ],
+                  })
+                },
+              })
+            }
+            data={data.userFeed}
+            renderItem={({
+              item: {id, author, title, createdAt, content, hashtags},
+            }) => {
+              const {text: readTime} = readingTime(content)
               return (
-                <View style={styles.featuredCardContainer}>
-                  <FeaturedCard
-                    item={item}
-                    home={true}
-                    key={item.id}
-                  />
-                </View>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('HomeStory', {id})
+                  }
+                >
+                  <Card key={id}>
+                    <Text>{author.userName}</Text>
+                    <Text>{createdAt}</Text>
+                    <Text>{readTime}</Text>
+                    <Text>{title}</Text>
+                    <Text>{content}</Text>
+                    <Hashtag disabled>
+                      {hashtags.map(tag => tag.name)}
+                    </Hashtag>
+                  </Card>
+                </TouchableOpacity>
               )
-            })}
-          </ScrollView>
-        </View>
-        <View style={styles.userCardContainer}>
-          {userStories.map(item => {
-            return (
-              <FeaturedCard item={item} home={true} key={item.id} />
-            )
-          })}
-          <View style={{marginBottom: 40}} />
-        </View>
-      </ScrollView> */}
+            }}
+            keyExtractor={item => item.id}
+          />
+        </ScrollView>
+      )}
     </SafeAreaView>
   )
 }
