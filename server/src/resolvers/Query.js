@@ -8,7 +8,7 @@ const Query = {
     return context.prisma.stories({
       where,
       orderBy: 'createdAt_DESC',
-      first: 25
+      first: 10
     })
   },
 
@@ -22,7 +22,7 @@ const Query = {
     return context.prisma.stories({
       where,
       orderBy: 'createdAt_DESC',
-      first: 25
+      first: 10
     })
   },
 
@@ -32,6 +32,10 @@ const Query = {
 
   story(parent, { id }, context) {
     return context.prisma.story({ id })
+  },
+
+  user(parent, { id }, context) {
+    return context.prisma.user({ id })
   },
 
   me(parent, args, context) {
@@ -60,7 +64,6 @@ const Query = {
   },
 
   searchedStories(parent, { query }, context) {
-    console.log(query)
     return context.prisma.stories({
       where: {
         AND: [

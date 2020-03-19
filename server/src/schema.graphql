@@ -4,6 +4,7 @@ type Query {
   filteredStories: [Story!]!
   drafts: [Story!]!
   users: [User!]!
+  user(id: ID!): User!
   story(id: ID!): Story!
   draft(id: ID!): Story!
   searchedUsers(query: String!): [User!]!
