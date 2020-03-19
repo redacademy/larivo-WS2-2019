@@ -18,7 +18,7 @@ import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 import {SearchTabs} from '../../navigation'
 
-const BookMark = ({navigation}) => {
+const BookMark = ({navigation, route}) => {
   const [search, setSearch] = useState('')
   const {user} = useAuth()
   const {
@@ -30,7 +30,7 @@ const BookMark = ({navigation}) => {
     networkStatus,
   } = useQuery(USER_FEED)
 
-  if (typeof user === 'undefined') return <Spinner />
+  if (loading || typeof user === 'undefined') return <Spinner />
   if (error) return <NetWorkError />
 
   const {userName} = user.user
@@ -44,7 +44,11 @@ const BookMark = ({navigation}) => {
         setSearch={setSearch}
       />
       {search.length ? (
-        <SearchTabs navigation={navigation} search={search} />
+        <SearchTabs
+          route={route}
+          navigation={navigation}
+          search={search}
+        />
       ) : (
         // <ScrollView>
         <FlatList
