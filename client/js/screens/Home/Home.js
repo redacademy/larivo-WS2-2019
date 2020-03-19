@@ -18,7 +18,7 @@ import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 import {SearchTabs} from '../../navigation'
 
-const Home = ({navigation}) => {
+const Home = ({navigation, route}) => {
   const [search, setSearch] = useState('')
   const {user} = useAuth()
   const {
@@ -29,6 +29,7 @@ const Home = ({navigation}) => {
     fetchMore,
     networkStatus,
   } = useQuery(USER_FEED)
+  console.log(route)
 
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
@@ -44,55 +45,59 @@ const Home = ({navigation}) => {
         setSearch={setSearch}
       />
       {search.length ? (
-        <SearchTabs search={search} />
+        <SearchTabs
+          route={route}
+          navigation={navigation}
+          search={search}
+        />
       ) : (
-        <ScrollView>
-          <FlatList
-            ListHeaderComponent={() => (
-              <Text style={styles.title}>Featured</Text>
-            )}
-            refreshing={networkStatus === 4}
-            onRefresh={() => refetch()}
-            onEndReached={() =>
-              fetchMore({
-                updateQuery: (prev, {fetchMoreResult}) => {
-                  if (!fetchMoreResult) return prev
-                  return Object.assign({}, prev, {
-                    userFeed: [
-                      ...prev.userFeed,
-                      ...fetchMoreResult.userFeed,
-                    ],
-                  })
-                },
-              })
-            }
-            data={data.userFeed}
-            renderItem={({
-              item: {id, author, title, createdAt, content, hashtags},
-            }) => {
-              const {text: readTime} = readingTime(content)
-              return (
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('HomeStory', {id})
-                  }
-                >
-                  <Card key={id}>
-                    <Text>{author.userName}</Text>
-                    <Text>{createdAt}</Text>
-                    <Text>{readTime}</Text>
-                    <Text>{title}</Text>
-                    <Text>{content}</Text>
-                    <Hashtag disabled>
-                      {hashtags.map(tag => tag.name)}
+        // <ScrollView>
+        <FlatList
+          ListHeaderComponent={() => (
+            <Text style={styles.title}>Featured</Text>
+          )}
+          // refreshing={networkStatus === 4}
+          // onRefresh={() => refetch()}
+          // onEndReached={() =>
+          //   fetchMore({
+          //     updateQuery: (prev, {fetchMoreResult}) => {
+          //       if (!fetchMoreResult) return prev
+          //       return Object.assign({}, prev, {
+          //         userFeed: [
+          //           ...prev.userFeed,
+          //           ...fetchMoreResult.userFeed,
+          //         ],
+          //       })
+          //     },
+          //   })
+          // }
+          data={data.userFeed}
+          renderItem={({
+            item: {id, author, title, createdAt, content, hashtags},
+          }) => {
+            const {text: readTime} = readingTime(content)
+            return (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('HomeStory', {id})}
+              >
+                <Card key={id}>
+                  <Text>{author.userName}</Text>
+                  <Text>{createdAt}</Text>
+                  <Text>{readTime}</Text>
+                  <Text>{title}</Text>
+                  <Text>{content}</Text>
+                  {hashtags.map(tag => (
+                    <Hashtag key={tag.id} disabled>
+                      {tag.name}
                     </Hashtag>
-                  </Card>
-                </TouchableOpacity>
-              )
-            }}
-            keyExtractor={item => item.id}
-          />
-        </ScrollView>
+                  ))}
+                </Card>
+              </TouchableOpacity>
+            )
+          }}
+          keyExtractor={item => item.id}
+        />
+        // </ScrollView>
       )}
     </SafeAreaView>
   )

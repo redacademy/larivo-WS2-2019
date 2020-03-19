@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from './styles'
 import readingTime from 'reading-time'
 import {
@@ -30,7 +30,7 @@ const BookMark = ({navigation}) => {
     networkStatus,
   } = useQuery(USER_FEED)
 
-  if (loading) return <Spinner />
+  if (typeof user === 'undefined') return <Spinner />
   if (error) return <NetWorkError />
 
   const {userName} = user.user
@@ -44,55 +44,57 @@ const BookMark = ({navigation}) => {
         setSearch={setSearch}
       />
       {search.length ? (
-        <SearchTabs search={search} />
+        <SearchTabs navigation={navigation} search={search} />
       ) : (
-        <ScrollView>
-          <FlatList
-            ListHeaderComponent={() => (
-              <Text style={styles.title}>Your Feeds</Text>
-            )}
-            refreshing={networkStatus === 4}
-            onRefresh={() => refetch()}
-            onEndReached={() =>
-              fetchMore({
-                updateQuery: (prev, {fetchMoreResult}) => {
-                  if (!fetchMoreResult) return prev
-                  return Object.assign({}, prev, {
-                    userFeed: [
-                      ...prev.userFeed,
-                      ...fetchMoreResult.userFeed,
-                    ],
-                  })
-                },
-              })
-            }
-            data={data.userFeed}
-            renderItem={({
-              item: {id, author, title, createdAt, content, hashtags},
-            }) => {
-              const {text: readTime} = readingTime(content)
-              return (
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('BookmarkStory', {id})
-                  }
-                >
-                  <Card key={id}>
-                    <Text>{author.userName}</Text>
-                    <Text>{createdAt}</Text>
-                    <Text>{readTime}</Text>
-                    <Text>{title}</Text>
-                    <Text>{content}</Text>
-                    <Hashtag disabled>
-                      {hashtags.map(tag => tag.name)}
+        // <ScrollView>
+        <FlatList
+          ListHeaderComponent={() => (
+            <Text style={styles.title}>Featured</Text>
+          )}
+          // refreshing={networkStatus === 4}
+          // onRefresh={() => refetch()}
+          // onEndReached={() =>
+          //   fetchMore({
+          //     updateQuery: (prev, {fetchMoreResult}) => {
+          //       if (!fetchMoreResult) return prev
+          //       return Object.assign({}, prev, {
+          //         userFeed: [
+          //           ...prev.userFeed,
+          //           ...fetchMoreResult.userFeed,
+          //         ],
+          //       })
+          //     },
+          //   })
+          // }
+          data={data.userFeed}
+          renderItem={({
+            item: {id, author, title, createdAt, content, hashtags},
+          }) => {
+            const {text: readTime} = readingTime(content)
+            return (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('BookmarkStory', {id})
+                }
+              >
+                <Card key={id}>
+                  <Text>{author.userName}</Text>
+                  <Text>{createdAt}</Text>
+                  <Text>{readTime}</Text>
+                  <Text>{title}</Text>
+                  <Text>{content}</Text>
+                  {hashtags.map(tag => (
+                    <Hashtag key={tag.id} disabled>
+                      {tag.name}
                     </Hashtag>
-                  </Card>
-                </TouchableOpacity>
-              )
-            }}
-            keyExtractor={item => item.id}
-          />
-        </ScrollView>
+                  ))}
+                </Card>
+              </TouchableOpacity>
+            )
+          }}
+          keyExtractor={item => item.id}
+        />
+        // </ScrollView>
       )}
     </SafeAreaView>
   )
