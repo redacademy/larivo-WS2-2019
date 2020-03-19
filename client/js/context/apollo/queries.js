@@ -108,6 +108,39 @@ const USER_BOOKMARKS = gql`
   }
 `
 
+const SEARCHED_USERS = gql`
+  query searchedUsers($query: String!) {
+    searchedUsers(query: $query) {
+      id
+      userName
+      bio
+      stories {
+        id
+        createdAt
+        title
+        content
+      }
+    }
+  }
+`
+
+const SEARCHED_STORIES = gql`
+  query searchedStories($query: String!) {
+    searchedStories(query: $query) {
+      id
+      createdAt
+      title
+      content
+      hashtags {
+        name
+      }
+      author {
+        userName
+      }
+    }
+  }
+`
+
 export {
   GUEST_FEED,
   USER_FEED,
@@ -115,4 +148,6 @@ export {
   USER_STORIES,
   USER_DRAFTS,
   USER_BOOKMARKS,
+  SEARCHED_USERS,
+  SEARCHED_STORIES,
 }
