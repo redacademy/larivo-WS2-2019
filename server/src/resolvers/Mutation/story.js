@@ -71,19 +71,41 @@ const story = {
     })
   },
 
-  async publish(parent, { id }, context) {
+  async publish(parent, { id, title, content, hashtags }, context) {
     const userId = getUserId(context)
-    const storyExists = await context.prisma.$exists.story({
-      id,
-      author: { id: userId }
-    })
-    if (!storyExists) {
-      throw new Error(`Post not found or you're not the author`)
-    }
+    const { existinghashtags, newhashtags } = hashtags.reduce(
+      (hashtagsummary, hashtag) => {
+        const existingEntry =
+          hashtags && hashtags.find(({ name }) => name === hashtag)
+        if (existingEntry) {
+          return {
+            ...hashtagsummary,
+            existinghashtags: [
+              ...hashtagsummary.existinghashtags,
+              existingEntry.id
+            ]
+          }
+        } else {
+          return {
+            ...hashtagsummary,
+            newhashtags: [...hashtagsummary.newhashtags, hashtag]
+          }
+        }
+      },
+      { existinghashtags: [], newhashtags: [] }
+    )
 
     return context.prisma.updateStory({
       where: { id },
-      data: { published: true }
+      data: {
+        title,
+        content,
+        hashtags: {
+          create: newhashtags.map(name => ({ name })),
+          connect: existinghashtags.map(id => ({ id }))
+        },
+        published: true
+      }
     })
   },
 
