@@ -4,8 +4,9 @@ import {SearchedUsers, SearchedStories} from '../screens/Search'
 
 const Tab = createMaterialTopTabNavigator()
 
-const SearchTabs = ({search}) => (
+const SearchTabs = ({search, navigation, route}) => (
   <Tab.Navigator
+    initialRouteName="Account"
     tabBarOptions={{
       showIcon: true,
       tabStyle: {
@@ -18,10 +19,22 @@ const SearchTabs = ({search}) => (
     }}
   >
     <Tab.Screen name="Account">
-      {() => <SearchedUsers query={search} />}
+      {() => (
+        <SearchedUsers
+          query={search}
+          navigation={navigation}
+          route={route}
+        />
+      )}
     </Tab.Screen>
     <Tab.Screen name="Stories">
-      {() => <SearchedStories query={search} />}
+      {() => (
+        <SearchedStories
+          query={search}
+          navigation={navigation}
+          route={route}
+        />
+      )}
     </Tab.Screen>
   </Tab.Navigator>
 )
