@@ -21,7 +21,14 @@ const SearchedUsers = ({query, navigation, route}) => {
                 borderBottomColor: '#000',
                 borderBottomWidth: 1,
               }}
-              onPress={() => navigation.navigate('HomeProfile', {id})}
+              onPress={() =>
+                navigation.navigate(
+                  route.name === 'Home'
+                    ? 'HomeProfile'
+                    : 'BookmarkProfile',
+                  {id},
+                )
+              }
             >
               <Text>{userName}</Text>
             </TouchableOpacity>

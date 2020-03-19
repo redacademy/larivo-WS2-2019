@@ -59,7 +59,14 @@ const UserProfile = ({route, navigation}) => {
             const {text: readTime} = readingTime(content)
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate('HomeStory', {id})}
+                onPress={() =>
+                  navigation.navigate(
+                    route.name === 'HomeProfile'
+                      ? 'HomeStory'
+                      : 'BookmarkStory',
+                    {id},
+                  )
+                }
               >
                 <View
                   style={{
