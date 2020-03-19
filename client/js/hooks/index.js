@@ -8,6 +8,7 @@ import usePublish from './usePublish'
 import useFavoriteStory from './useFavoriteStory'
 import useUnFavoriteStory from './useUnFavoriteStory'
 import getStoryById from './getStoryById'
+import getUserById from './getUserById'
 import getSearchedUsers from './getSearchedUsers'
 import getSearchedStories from './getSearchedStories'
 
@@ -22,6 +23,7 @@ export {
   useFavoriteStory,
   useUnFavoriteStory,
   getStoryById,
+  getUserById,
   getSearchedUsers,
   getSearchedStories,
 }
