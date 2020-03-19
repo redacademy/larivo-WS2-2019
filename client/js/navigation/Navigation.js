@@ -44,6 +44,7 @@ import {Story} from '../screens/Story'
 import Guest from '../screens/Guest/Guest'
 import GuestTabs from './GuestNav'
 import {Draft} from '../screens/Draft'
+import SearchTabs from './SearchTabs'
 
 const LoginStack = createStackNavigator()
 
@@ -68,6 +69,7 @@ const HomeStackScreen = () => (
   <HomeStack.Navigator mode="modal" headerMode="none">
     <HomeStack.Screen name="Home" component={Home} />
     <HomeStack.Screen name="HomeStory" component={Story} />
+    <HomeStack.Screen name="SearchTabs" component={SearchTabs} />
   </HomeStack.Navigator>
 )
 
