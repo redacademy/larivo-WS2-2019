@@ -30,6 +30,7 @@ import {
   ProfileDraft,
   ProfileActivity,
   Bio,
+  UserProfile,
 } from '../screens/Profile'
 import {
   Settings,
@@ -41,9 +42,9 @@ import {
 } from '../screens/Settings'
 import {Spinner} from '../components/Spinner'
 import {Story} from '../screens/Story'
-import Guest from '../screens/Guest/Guest'
 import GuestTabs from './GuestNav'
 import {Draft} from '../screens/Draft'
+import SearchTabs from './SearchTabs'
 
 const LoginStack = createStackNavigator()
 
@@ -68,14 +69,22 @@ const HomeStackScreen = () => (
   <HomeStack.Navigator mode="modal" headerMode="none">
     <HomeStack.Screen name="Home" component={Home} />
     <HomeStack.Screen name="HomeStory" component={Story} />
+    <HomeStack.Screen name="HomeProfile" component={UserProfile} />
+    <HomeStack.Screen name="SearchTabs" component={SearchTabs} />
   </HomeStack.Navigator>
 )
 
 const BookMarkStack = createStackNavigator()
 
 const BookMarkStackScreen = () => (
-  <BookMarkStack.Navigator headerMode="none">
+  <BookMarkStack.Navigator mode="modal" headerMode="none">
     <BookMarkStack.Screen name="Bookmark" component={BookMark} />
+    <BookMarkStack.Screen name="BookmarkStory" component={Story} />
+    <HomeStack.Screen
+      name="BookmarkProfile"
+      component={UserProfile}
+    />
+    <BookMarkStack.Screen name="SearchTabs" component={SearchTabs} />
   </BookMarkStack.Navigator>
 )
 

@@ -5,6 +5,7 @@ import {USER_STORIES} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
+import {trimContent} from '../../utils'
 
 const ProfileStory = ({navigation}) => {
   const {loading, error, data} = useQuery(USER_STORIES)
@@ -31,7 +32,7 @@ const ProfileStory = ({navigation}) => {
               <Text>{title}</Text>
               <Text>{createdAt}</Text>
               <Text>{readTime}</Text>
-              <Text>{content}</Text>
+              <Text>{trimContent(content)}</Text>
             </View>
           </TouchableOpacity>
         )

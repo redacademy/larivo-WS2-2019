@@ -74,8 +74,18 @@ const CREATE_DRAFT = gql`
 `
 
 const PUBLISH = gql`
-  mutation publish($id: String!) {
-    publish(id: $id) {
+  mutation publish(
+    $id: String!
+    $title: String!
+    $content: String!
+    $hashtags: [String!]!
+  ) {
+    publish(
+      id: $id
+      title: $title
+      content: $content
+      hashtags: $hashtags
+    ) {
       id
     }
   }

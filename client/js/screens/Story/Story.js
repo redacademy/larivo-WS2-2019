@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, SafeAreaView, Button} from 'react-native'
+import {Text, SafeAreaView, Button, FlatList} from 'react-native'
 import {getStoryById} from '../../hooks'
 import {useFavoriteStory} from '../../hooks'
 import styles from './styles'
@@ -12,6 +12,7 @@ const Story = ({route, navigation}) => {
   const {id: storyId} = route.params
   const [favoriteStory] = useFavoriteStory()
   const {error, loading, story} = getStoryById(storyId)
+  console.log(story)
 
   const handleFavoriteStory = () =>
     favoriteStory({variables: {id: storyId}})
@@ -26,9 +27,16 @@ const Story = ({route, navigation}) => {
         <Text style={styles.text}>{story.createdAt}</Text>
         <Text style={styles.text}>{story.author.userName}</Text>
         <Text style={styles.text}>{story.content}</Text>
-        <Hashtag disabled style={styles.text}>
-          {story.hashtags.map(tag => tag.name)}
-        </Hashtag>
+        <FlatList
+          data={story.hashtags}
+          numColumns="4"
+          renderItem={({item}) => (
+            <Hashtag key={item.id} disabled>
+              {item.name}
+            </Hashtag>
+          )}
+          keyExtractor={item => item}
+        />
         <Button onPress={handleFavoriteStory} title="Bookmark" />
       </Card>
     </SafeAreaView>

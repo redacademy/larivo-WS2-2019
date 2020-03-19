@@ -3,7 +3,14 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#03dac4'
+    backgroundColor: '#03dac4',
+  },
+  title: {
+    fontSize: 36,
+    paddingHorizontal: 30,
+    paddingVertical: 20,
+    color: '#13443C',
+    fontFamily: 'Asap-BoldItalic',
   },
   content: {
     justifyContent: 'center',
@@ -26,7 +33,7 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
     justifyContent: 'flex-start',
   },
-  featuredText : {
+  featuredText: {
     fontSize: 40,
     fontWeight: 'bold',
     fontFamily: 'Asap-BoldItalic',
@@ -40,17 +47,16 @@ const styles = StyleSheet.create({
   featuredCardContainer: {
     width: 350,
     marginBottom: 10,
-    marginRight: -15
+    marginRight: -15,
   },
   userCardContainer: {
-    width: "110%",
+    width: '110%',
     // marginBottom: 10,
     paddingHorizontal: 25,
     paddingTop: 10,
     alignItems: 'stretch',
-    backgroundColor: '#f1fffe'
+    backgroundColor: '#f1fffe',
   },
-  
 })
 
 export default styles

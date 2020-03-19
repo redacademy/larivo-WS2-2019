@@ -3,7 +3,7 @@ import {PUBLISH} from '../context'
 
 const usePublish = () => {
   const [publish, {data, error}] = useMutation(PUBLISH, {
-    refetchQueries: ['userFeed, guestFeed'],
+    refetchQueries: ['userFeed, guestFeed', 'me'],
   })
   return [publish, data, error]
 }

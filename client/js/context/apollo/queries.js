@@ -12,6 +12,7 @@ const GUEST_FEED = gql`
       content
       hashtags {
         name
+        id
       }
     }
   }
@@ -29,6 +30,7 @@ const USER_FEED = gql`
       content
       hashtags {
         name
+        id
       }
     }
   }
@@ -43,9 +45,29 @@ const STORY = gql`
       content
       hashtags {
         name
+        id
       }
       author {
         userName
+      }
+    }
+  }
+`
+
+const USER = gql`
+  query user($id: ID!) {
+    user(id: $id) {
+      id
+      userName
+      stories {
+        id
+        createdAt
+        title
+        content
+        hashtags {
+          name
+          id
+        }
       }
     }
   }
@@ -61,6 +83,7 @@ const USER_STORIES = gql`
         content
         hashtags {
           name
+          id
         }
         author {
           userName
@@ -80,6 +103,7 @@ const USER_DRAFTS = gql`
         content
         hashtags {
           name
+          id
         }
         author {
           userName
@@ -108,11 +132,40 @@ const USER_BOOKMARKS = gql`
   }
 `
 
+const SEARCHED_USERS = gql`
+  query searchedUsers($query: String!) {
+    searchedUsers(query: $query) {
+      id
+      userName
+    }
+  }
+`
+
+const SEARCHED_STORIES = gql`
+  query searchedStories($query: String!) {
+    searchedStories(query: $query) {
+      id
+      createdAt
+      title
+      content
+      hashtags {
+        name
+      }
+      author {
+        userName
+      }
+    }
+  }
+`
+
 export {
   GUEST_FEED,
   USER_FEED,
   STORY,
+  USER,
   USER_STORIES,
   USER_DRAFTS,
   USER_BOOKMARKS,
+  SEARCHED_USERS,
+  SEARCHED_STORIES,
 }
