@@ -158,6 +158,15 @@ const SEARCHED_STORIES = gql`
   }
 `
 
+const RECOMMENDED_HASHTAGS = gql`
+  query recommendedHashtags {
+    recommendedHashtags {
+      id
+      name
+    }
+  }
+`
+
 export {
   GUEST_FEED,
   USER_FEED,
@@ -168,4 +177,5 @@ export {
   USER_BOOKMARKS,
   SEARCHED_USERS,
   SEARCHED_STORIES,
+  RECOMMENDED_HASHTAGS,
 }
