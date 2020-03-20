@@ -8,18 +8,19 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native'
+import {RECOMMENDED_HASHTAGS} from '../../context/apollo'
+import {useQuery} from '@apollo/react-hooks'
+import {Spinner} from '../../components/Spinner'
+import {NetWorkError} from '../../components/FourOhFour'
+import Hashtag from '../../components/Hashtag'
 import Button from '../../components/Button'
 import styles from './styles'
 
-const HashtagScreen = ({route, navigation}) => {
+const HashtagScreen = ({route}) => {
   const {signup} = useAuth()
   const {email, password, userName} = route.params
-  const data = [
-    {id: 1, name: 'happiness'},
-    {id: 2, name: 'anxiety'},
-    {id: 3, name: 'depression'},
-    {id: 4, name: 'sadness'},
-  ]
+  const {loading, error, data} = useQuery(RECOMMENDED_HASHTAGS)
+
   const [tags, setTags] = useState([])
   const onTagPress = tag => {
     if (!tags.includes(tag)) {
@@ -44,7 +45,8 @@ const HashtagScreen = ({route, navigation}) => {
     })
   }
 
-  console.log(userName, password, email, tags)
+  if (loading) return <Spinner />
+  if (error) return <NetWorkError />
 
   return (
     <Formik>
@@ -59,11 +61,12 @@ const HashtagScreen = ({route, navigation}) => {
           <View style={styles.childContainer}>
             <View style={styles.hashtagsWrap}>
               <FlatList
-                data={data}
+                data={data.recommendedHashtags}
                 numColumns="4"
                 renderItem={({item}) => (
                   <View style={{padding: 20}}>
                     <TouchableOpacity
+                      key={item.id}
                       onPress={() => onTagPress(item.name)}
                     >
                       <Text>{item.name}</Text>
@@ -75,13 +78,13 @@ const HashtagScreen = ({route, navigation}) => {
             </View>
             <View style={styles.btnPaddingUsername}>
               <Button
+                theme="dark"
                 disabled={tags.length !== 0 ? false : true}
                 onPress={handleSignUp}
               >
                 Register
               </Button>
             </View>
-            <View style={styles.btnPaddingUsername} />
           </View>
         </View>
       </SafeAreaView>
