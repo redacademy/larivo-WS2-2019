@@ -9,6 +9,7 @@ type Query {
   draft(id: ID!): Story!
   searchedUsers(query: String!): [User!]!
   searchedStories(query: String!): [Story!]!
+  recommendedHashtags: [Hashtag!]!
   me: User!
 }
 
@@ -87,5 +88,6 @@ type Story {
 
 type Hashtag {
   id: ID!
+  createdAt: String!
   name: String!
 }

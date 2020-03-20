@@ -80,6 +80,9 @@ const Query = {
         ]
       }
     })
-  }
+  },
+
+  recommendedHashtags: (parent, args, context) =>
+    context.prisma.hashtags({ orderBy: 'id_DESC', first: 12 })
 }
 module.exports = { Query }
