@@ -12,7 +12,7 @@ import {Card} from '../../components/Card'
 import {Header} from '../../components/Header'
 import Hashtag from '../../components/Hashtag'
 import {useAuth} from '../../hooks'
-import {USER_FEED} from '../../context/apollo'
+import {FILTERED_STORIES} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
@@ -28,7 +28,7 @@ const BookMark = ({navigation, route}) => {
     refetch,
     fetchMore,
     networkStatus,
-  } = useQuery(USER_FEED)
+  } = useQuery(FILTERED_STORIES)
 
   if (loading || typeof user === 'undefined') return <Spinner />
   if (error) return <NetWorkError />
@@ -52,9 +52,9 @@ const BookMark = ({navigation, route}) => {
       ) : (
         // <ScrollView>
         <FlatList
-          ListHeaderComponent={() => (
-            <Text style={styles.title}>Featured</Text>
-          )}
+          // ListHeaderComponent={() => (
+          //   <Text style={styles.title}>Featured</Text>
+          // )}
           // refreshing={networkStatus === 4}
           // onRefresh={() => refetch()}
           // onEndReached={() =>
@@ -70,7 +70,7 @@ const BookMark = ({navigation, route}) => {
           //     },
           //   })
           // }
-          data={data.userFeed}
+          data={data.filteredStories}
           renderItem={({
             item: {id, author, title, createdAt, content, hashtags},
           }) => {

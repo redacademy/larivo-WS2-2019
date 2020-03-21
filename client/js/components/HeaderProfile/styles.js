@@ -3,22 +3,17 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
   header: {
     backgroundColor: '#03dac4',
-  },
-  headerContainer: {
-    display: 'flex',
-    backgroundColor: '#03dac4',
     paddingVertical: 60,
     paddingVertical: 30,
     paddingHorizontal: 30,
     paddingTop: 10,
   },
   followsContainer: {
-    display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   titleContainer: {
-    display: 'flex',
+    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

@@ -47,7 +47,7 @@ const Bio = ({navigation}) => {
               multiline={true}
               value={content}
               onChangeText={val => setContent(val)}
-              placeholder="Update your Bio here..."
+              placeholder="Update your bio here..."
             />
           </Card>
           <View style={styles.buttonContainer}>

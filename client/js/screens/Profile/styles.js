@@ -85,6 +85,31 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 20,
   },
+
+  profile_container: {
+    flex: 1,
+  },
+
+  profile_stories: {
+    backgroundColor: '#F1FFFE',
+  },
+  profile_lists: {
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    borderBottomColor: '#1E6A62',
+    borderBottomWidth: 0.3,
+  },
+  no_results_container: {
+    flex: 1,
+    backgroundColor: '#F1FFFE',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  no_results_text: {
+    marginTop: 50,
+    fontSize: 20,
+    fontFamily: 'SFProText-Light',
+  },
 })
 
 export default styles

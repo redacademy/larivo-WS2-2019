@@ -167,6 +167,24 @@ const RECOMMENDED_HASHTAGS = gql`
   }
 `
 
+const FILTERED_STORIES = gql`
+  query filteredStories {
+    filteredStories {
+      id
+      createdAt
+      author {
+        userName
+      }
+      title
+      content
+      hashtags {
+        name
+        id
+      }
+    }
+  }
+`
+
 export {
   GUEST_FEED,
   USER_FEED,
@@ -178,4 +196,5 @@ export {
   SEARCHED_USERS,
   SEARCHED_STORIES,
   RECOMMENDED_HASHTAGS,
+  FILTERED_STORIES,
 }
