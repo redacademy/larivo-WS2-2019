@@ -6,6 +6,10 @@ import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 import {trimContent} from '../../utils'
+import styles from './styles'
+import StoryTitle from '../../components/StoryTitle'
+import StoryDate from '../../components/StoryDate'
+import Paragraph from '../../components/Paragraph/Paragraph'
 
 const ProfileStory = ({navigation}) => {
   const {loading, error, data} = useQuery(USER_STORIES)
@@ -14,8 +18,9 @@ const ProfileStory = ({navigation}) => {
   if (error) return <NetWorkError />
   const {stories} = data.me
 
-  return (
+  return stories && stories.length ? (
     <FlatList
+      style={styles.profile_stories}
       data={stories}
       renderItem={({item: {id, title, createdAt, content}}) => {
         const {text: readTime} = readingTime(content)
@@ -23,22 +28,22 @@ const ProfileStory = ({navigation}) => {
           <TouchableOpacity
             onPress={() => navigation.navigate('SingleStory', {id})}
           >
-            <View
-              style={{
-                borderBottomColor: '#000',
-                borderBottomWidth: 1,
-              }}
-            >
-              <Text>{title}</Text>
-              <Text>{createdAt}</Text>
-              <Text>{readTime}</Text>
-              <Text>{trimContent(content)}</Text>
+            <View style={styles.profile_lists}>
+              <StoryTitle>{title}</StoryTitle>
+              <StoryDate>
+                {createdAt} | {readTime}
+              </StoryDate>
+              <Paragraph>{trimContent(content)}</Paragraph>
             </View>
           </TouchableOpacity>
         )
       }}
       keyExtractor={item => item.id}
     />
+  ) : (
+    <View style={styles.no_results_container}>
+      <Text style={styles.no_results_text}>No drafts yet</Text>
+    </View>
   )
 }
 

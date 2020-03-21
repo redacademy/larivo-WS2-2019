@@ -28,7 +28,6 @@ import {
   ProfileStory,
   ProfileBookMark,
   ProfileDraft,
-  ProfileActivity,
   Bio,
   UserProfile,
 } from '../screens/Profile'
@@ -113,21 +112,17 @@ const ProfileStackScreen = () => (
       name="ProfileStory"
       component={ProfileStory}
     />
-    <HomeStack.Screen name="SingleStory" component={Story} />
+    <ProfileStack.Screen name="SingleStory" component={Story} />
     <ProfileStack.Screen
       name="ProfileBookMark"
       component={ProfileBookMark}
     />
-    <HomeStack.Screen name="SingleBookMark" component={Story} />
+    <ProfileStack.Screen name="SingleBookMark" component={Story} />
     <ProfileStack.Screen
       name="ProfileDraft"
       component={ProfileDraft}
     />
-    <HomeStack.Screen name="SingleDraft" component={Draft} />
-    <ProfileStack.Screen
-      name="ProfileActivity"
-      component={ProfileActivity}
-    />
+    <ProfileStack.Screen name="SingleDraft" component={Draft} />
     <ProfileStack.Screen name="Settings" component={Settings} />
     <ProfileStack.Screen
       name="Notifications"

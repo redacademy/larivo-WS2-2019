@@ -18,12 +18,10 @@ const Profile = ({navigation}) => {
 
   if (typeof user === 'undefined') return <Spinner />
   return (
-    <View>
+    <SafeAreaView style={styles.profile_container}>
       <HeaderProfile navigation={navigation} />
-      <ScrollView>
-        <ProfileTabs />
-      </ScrollView>
-    </View>
+      <ProfileTabs />
+    </SafeAreaView>
   )
 }
 

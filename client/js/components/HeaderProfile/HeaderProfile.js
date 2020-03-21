@@ -21,39 +21,37 @@ const HeaderProfile = ({navigation}) => {
 
   if (typeof user === 'undefined') return <Spinner />
   return (
-    <SafeAreaView style={styles.header}>
-      <View style={styles.headerContainer}>
-        <View style={styles.titleContainer}>
-          <NameInitials>{user.user.userName}</NameInitials>
-          <View style={styles.followsContainer}>
-            <Text style={styles.numbers}>53</Text>
-            <Text style={styles.textFollow}>Stories</Text>
-          </View>
-          <View style={styles.followsContainer}>
-            <Text style={styles.numbers}>64.5K</Text>
-            <Text style={styles.textFollow}>Followers</Text>
-          </View>
-          <View style={styles.followsContainer}>
-            <Text style={styles.numbers}>1247</Text>
-            <Text style={styles.textFollow}>Following</Text>
-          </View>
-          <View>
-            <SettingsIcon
-              onPress={() => navigation.navigate('Settings')}
-            />
-          </View>
+    <View style={styles.header}>
+      <View style={styles.titleContainer}>
+        <NameInitials>{user.user.userName}</NameInitials>
+        <View style={styles.followsContainer}>
+          <Text style={styles.numbers}>53</Text>
+          <Text style={styles.textFollow}>Stories</Text>
         </View>
-
-        <View style={styles.titleContainer}>
-          <StoryTitle>{user.user.userName}</StoryTitle>
-
-          <EditIcon
-            onPress={() => navigation.navigate('Bio', {user})}
+        <View style={styles.followsContainer}>
+          <Text style={styles.numbers}>64.5K</Text>
+          <Text style={styles.textFollow}>Followers</Text>
+        </View>
+        <View style={styles.followsContainer}>
+          <Text style={styles.numbers}>1247</Text>
+          <Text style={styles.textFollow}>Following</Text>
+        </View>
+        <View>
+          <SettingsIcon
+            onPress={() => navigation.navigate('Settings')}
           />
         </View>
-        <Paragraph>{user.user.bio || 'lorem'}</Paragraph>
       </View>
-    </SafeAreaView>
+
+      <View style={styles.titleContainer}>
+        <StoryTitle>{user.user.userName}</StoryTitle>
+
+        <EditIcon
+          onPress={() => navigation.navigate('Bio', {user})}
+        />
+      </View>
+      <Paragraph>{user.user.bio || 'lorem'}</Paragraph>
+    </View>
   )
 }
 
