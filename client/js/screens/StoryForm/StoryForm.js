@@ -122,7 +122,7 @@ const StoryForm = ({navigation}) => {
           ) : null}
         </View>
       </ScrollView>
-      <Popup text="Posted!" show={show} />
+      <Popup text="Success!" show={show} />
     </SafeAreaView>
   )
 }
