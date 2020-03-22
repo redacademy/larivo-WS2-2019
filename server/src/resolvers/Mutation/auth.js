@@ -86,6 +86,27 @@ const auth = {
 
   async deleteUser(parent, { email }, context) {
     return context.prisma.deleteUser({ email })
+  },
+
+  async followUser(parent, { id }, context) {
+    const userId = getUserId(context)
+
+    context.prisma.updateUser({
+      where: { id: userId },
+      data: {
+        following: {
+          connect: { id }
+        }
+      }
+    })
+    return context.prisma.updateUser({
+      where: { id },
+      data: {
+        followers: {
+          connect: { id: userId }
+        }
+      }
+    })
   }
 }
 
