@@ -42,7 +42,7 @@ const ProfileStory = ({navigation}) => {
     />
   ) : (
     <View style={styles.no_results_container}>
-      <Text style={styles.no_results_text}>No drafts yet</Text>
+      <Text style={styles.no_results_text}>No stories yet</Text>
     </View>
   )
 }
