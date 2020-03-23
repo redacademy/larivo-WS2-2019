@@ -12,7 +12,6 @@ import {RECOMMENDED_HASHTAGS} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
-import Hashtag from '../../components/Hashtag'
 import Button from '../../components/Button'
 import styles from './styles'
 
@@ -61,15 +60,32 @@ const HashtagScreen = ({route}) => {
           <View style={styles.childContainer}>
             <View style={styles.hashtagsWrap}>
               <FlatList
+                scrollEnabled={false}
+                style={{
+                  paddingVertical: 10,
+                }}
                 data={data.recommendedHashtags}
                 numColumns="4"
                 renderItem={({item}) => (
-                  <View style={{padding: 20}}>
+                  <View style={styles.hashtagsChild}>
                     <TouchableOpacity
+                      style={
+                        tags.includes(item.name)
+                          ? styles.hashtagSelected
+                          : styles.hashtagNotSelected
+                      }
                       key={item.id}
                       onPress={() => onTagPress(item.name)}
                     >
-                      <Text>{item.name}</Text>
+                      <Text
+                        style={
+                          tags.includes(item.name)
+                            ? styles.hashtagTextSelected
+                            : styles.hashtagTextNotSelected
+                        }
+                      >
+                        #{item.name}
+                      </Text>
                     </TouchableOpacity>
                   </View>
                 )}

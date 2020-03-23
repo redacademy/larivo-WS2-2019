@@ -26,7 +26,10 @@ const User = {
   favoriteStories: ({ id }, args, context) =>
     context.prisma.user({ id }).favoriteStories({ orderBy: 'createdAt_DESC' }),
 
-  hashtags: ({ id }, args, context) => context.prisma.user({ id }).hashtags()
+  hashtags: ({ id }, args, context) => context.prisma.user({ id }).hashtags(),
+
+  following: ({ id }, args, context) => context.prisma.user({ id }).following(),
+  followers: ({ id }, args, context) => context.prisma.user({ id }).followers()
 }
 module.exports = {
   User
