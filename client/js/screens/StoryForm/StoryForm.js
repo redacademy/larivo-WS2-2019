@@ -109,13 +109,11 @@ const StoryForm = ({navigation}) => {
               <FlatList
                 data={tags}
                 numColumns="4"
-                renderItem={({item}) =>
-                  console.log(item) || (
-                    <Hashtag key={item} disabled>
-                      {item}
-                    </Hashtag>
-                  )
-                }
+                renderItem={({item}) => (
+                  <Hashtag key={item} disabled>
+                    {item}
+                  </Hashtag>
+                )}
                 keyExtractor={item => item}
               />
             </View>
