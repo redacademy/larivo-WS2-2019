@@ -15,13 +15,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Asap-SemiBold',
     color: '#13443C',
   },
+  userName: {
+    paddingHorizontal: 20,
+    textAlign: 'center',
+    marginBottom: 30,
+  },
   childContainer: {
     backgroundColor: '#03DAC4',
     flexDirection: 'column',
     alignItems: 'center',
   },
   innerChild: {
-    paddingVertical: 40,
+    paddingVertical: 10,
   },
   textStyle: {
     paddingBottom: 10,
@@ -39,7 +44,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     textAlign: 'center',
   },
-  btnPaddingRegister: {paddingTop: 50},
+  btnPaddingRegister: {marginRight: 20},
+  btnGenerate: {marginBottom: 60},
   btnPaddingUsername: {paddingTop: 10},
 
   hashtagContainer: {
