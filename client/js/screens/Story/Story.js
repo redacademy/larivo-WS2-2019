@@ -55,7 +55,8 @@ const Story = ({ route, navigation }) => {
             </View>
           </View>
         </View>
-        <View style={styles.reactionsContainer}>
+        
+        {/* <View style={styles.reactionsContainer}>
           <View style={styles.reactText} >
             <Like style={styles.reactions} />
             <Text style={styles.body}>{'99'}</Text>
@@ -76,7 +77,8 @@ const Story = ({ route, navigation }) => {
             <Clap style={styles.reactions} />
             <Text style={styles.body}>{'99'}</Text>
           </View>
-        </View>
+        </View> */}
+
       </ScrollView>
     </SafeAreaView>
   )

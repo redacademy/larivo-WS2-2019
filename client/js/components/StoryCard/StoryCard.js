@@ -65,14 +65,14 @@ const StoryCard = ({
             }
           </View>
 
-          <View style={styles(theme).reactionsContainer}>
+          {/* <View style={styles(theme).reactionsContainer}>
             <Like style={styles(theme).reactions}/>
             <Heart style={styles(theme).reactions}/>
             <Sad style={styles(theme).reactions}/>
             <Speechless style={styles(theme).reactions}/>
             <Clap style={styles(theme).reactions}/>
             <Text style={styles(theme).body}>{'9999'}</Text>
-          </View>
+          </View> */}
 
         </View>
       </View>
