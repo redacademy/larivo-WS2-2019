@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
   },
   listView: {
     backgroundColor: 'white',
-    minHeight: '100%'
+    minHeight: '100%',
+    paddingBottom: 120,
   },
   cardContainer:{
     flex: 1,

@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native'
-import {Card} from '../../components/Card'
+import {StoryCard} from '../../components/StoryCard'
 import {Header} from '../../components/Header'
 import Hashtag from '../../components/Hashtag'
 import {useAuth} from '../../hooks'
@@ -80,7 +80,7 @@ const BookMark = ({navigation, route}) => {
               style={styles.cardContainer}
                 onPress={() => navigation.navigate('HomeStory', {id})}
               >
-                <Card
+                <StoryCard
                   userName={author.userName}
                   createdAt={createdAt}
                   readTime={readTime}
