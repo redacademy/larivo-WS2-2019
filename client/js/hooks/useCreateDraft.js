@@ -3,7 +3,7 @@ import {CREATE_DRAFT} from '../context'
 
 const useCreateDraft = () => {
   const [createDraft, {data, error}] = useMutation(CREATE_DRAFT, {
-    refetchQueries: ['USER_DRAFTS'],
+    refetchQueries: ['me'],
   })
   const handleCreateDraft = args => createDraft(args)
   return [handleCreateDraft, data, error]
