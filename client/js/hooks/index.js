@@ -11,6 +11,7 @@ import getStoryById from './getStoryById'
 import getUserById from './getUserById'
 import getSearchedUsers from './getSearchedUsers'
 import getSearchedStories from './getSearchedStories'
+import useFollowUser from './useFollowUser'
 
 export {
   useAsyncStorage,
@@ -20,6 +21,7 @@ export {
   useUpdateBio,
   useDeleteUser,
   usePublish,
+  useFollowUser,
   useFavoriteStory,
   useUnFavoriteStory,
   getStoryById,

@@ -59,6 +59,12 @@ const USER = gql`
     user(id: $id) {
       id
       userName
+      followers {
+        id
+      }
+      following {
+        id
+      }
       stories {
         id
         createdAt
@@ -68,6 +74,24 @@ const USER = gql`
           name
           id
         }
+      }
+    }
+  }
+`
+
+const USER_HEADER_INFO = gql`
+  query me {
+    me {
+      userName
+      bio
+      followers {
+        id
+      }
+      following {
+        id
+      }
+      stories {
+        id
       }
     }
   }
@@ -190,6 +214,7 @@ export {
   USER_FEED,
   STORY,
   USER,
+  USER_HEADER_INFO,
   USER_STORIES,
   USER_DRAFTS,
   USER_BOOKMARKS,
