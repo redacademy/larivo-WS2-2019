@@ -10,16 +10,16 @@ import StoryTitle from '../../components/StoryTitle/index'
 import StoryDate from '../../components/StoryDate/StoryDate'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import trimContent from '../../utils/trimContent'
+import styles from './styles'
 
 const SearchedStories = ({query, navigation, route}) => {
   const {error, loading, stories} = getSearchedStories(query)
 
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
-  console.log(stories[0].author.name)
 
   return (
-    <View style={{flex: 1, backgroundColor: '#F1FFFE'}}>
+    <View style={styles.container}>
       {stories && stories.length ? (
         <FlatList
           data={stories}
@@ -29,11 +29,7 @@ const SearchedStories = ({query, navigation, route}) => {
             const {text: readTime} = readingTime(content)
             return (
               <TouchableOpacity
-                style={{
-                  backgroundColor: '#F1FFFE',
-                  borderBottomColor: '#1E6A62',
-                  borderBottomWidth: 0.5,
-                }}
+                style={styles.content}
                 onPress={() =>
                   navigation.navigate(
                     route.name === 'Home'
@@ -43,21 +39,10 @@ const SearchedStories = ({query, navigation, route}) => {
                   )
                 }
               >
-                <View
-                  style={{
-                    paddingVertical: 20,
-                    paddingHorizontal: 20,
-                  }}
-                >
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      paddingVertical: 15,
-                    }}
-                  >
+                <View style={styles.resultWrapper}>
+                  <View style={styles.storyResult}>
                     <NameInitials>{author.userName}</NameInitials>
-                    <View style={{paddingLeft: 20}}>
+                    <View style={styles.title}>
                       <StoryTitle>{title}</StoryTitle>
                     </View>
                   </View>
@@ -66,7 +51,7 @@ const SearchedStories = ({query, navigation, route}) => {
                   </StoryDate>
                   <Paragraph>{trimContent(content)}</Paragraph>
                   <FlatList
-                    style={{paddingVertical: 10}}
+                    style={styles.hashtags}
                     scrollEnabled={false}
                     data={hashtags}
                     numColumns={4}
@@ -84,7 +69,9 @@ const SearchedStories = ({query, navigation, route}) => {
           keyExtractor={item => item.id}
         />
       ) : (
-        <Text>No searches found</Text>
+        <View style={styles.no_results_container}>
+          <Text style={styles.no_results_text}>No stories found</Text>
+        </View>
       )}
     </View>
   )

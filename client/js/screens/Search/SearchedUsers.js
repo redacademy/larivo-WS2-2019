@@ -5,6 +5,7 @@ import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 import NameInitials from '../../components/NameInitials'
 import StoryTitle from '../../components/StoryTitle/index'
+import styles from './styles'
 
 const SearchedUsers = ({query, navigation, route}) => {
   const {error, loading, users} = getSearchedUsers(query)
@@ -13,17 +14,13 @@ const SearchedUsers = ({query, navigation, route}) => {
   if (error) return <NetWorkError />
 
   return (
-    <View style={{flex: 1, backgroundColor: '#F1FFFE'}}>
+    <View style={styles.container}>
       {users && users.length ? (
         <FlatList
           data={users}
           renderItem={({item: {id, userName}}) => (
             <TouchableOpacity
-              style={{
-                backgroundColor: '#F1FFFE',
-                borderBottomColor: '#1E6A62',
-                borderBottomWidth: 0.5,
-              }}
+              style={styles.content}
               onPress={() =>
                 navigation.navigate(
                   route.name === 'Home'
@@ -33,16 +30,9 @@ const SearchedUsers = ({query, navigation, route}) => {
                 )
               }
             >
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  paddingVertical: 20,
-                  paddingHorizontal: 20,
-                }}
-              >
+              <View style={styles.result}>
                 <NameInitials>{userName}</NameInitials>
-                <View style={{paddingLeft: 20}}>
+                <View style={styles.title}>
                   <StoryTitle>{userName}</StoryTitle>
                 </View>
               </View>
@@ -51,7 +41,9 @@ const SearchedUsers = ({query, navigation, route}) => {
           keyExtractor={item => item.id}
         />
       ) : (
-        <Text>No searches found</Text>
+        <View style={styles.no_results_container}>
+          <Text style={styles.no_results_text}>No users found</Text>
+        </View>
       )}
     </View>
   )
