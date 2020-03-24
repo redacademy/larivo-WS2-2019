@@ -11,6 +11,7 @@ const SearchTabs = ({search, navigation, route}) => (
       showIcon: true,
       tabStyle: {
         height: 45,
+        backgroundColor: '#F1FFFE',
         borderBottomWidth: 0.3,
         borderBottomColor: '#1E6A62',
         borderTopWidth: 0,
