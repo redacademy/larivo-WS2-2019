@@ -54,24 +54,6 @@ const Home = ({navigation, route}) => {
       ) : (
         <View style={styles.listView}>
         <FlatList
-          // ListHeaderComponent={() => (
-          //   <Text style={styles.title}>Featured</Text>
-          // )}
-          // refreshing={networkStatus === 4}
-          // onRefresh={() => refetch()}
-          // onEndReached={() =>
-          //   fetchMore({
-          //     updateQuery: (prev, {fetchMoreResult}) => {
-          //       if (!fetchMoreResult) return prev
-          //       return Object.assign({}, prev, {
-          //         userFeed: [
-          //           ...prev.userFeed,
-          //           ...fetchMoreResult.userFeed,
-          //         ],
-          //       })
-          //     },
-          //   })
-          // }
           data={data.userFeed}
           renderItem={({
             item: {id, author, title, createdAt, content, hashtags},
@@ -79,7 +61,7 @@ const Home = ({navigation, route}) => {
             const {text: readTime} = readingTime(content)
             return (
               <TouchableOpacity
-              style={styles.cardContainer}
+                style={styles.cardContainer}
                 onPress={() => navigation.navigate('HomeStory', {id})}
               >
                 <Card
