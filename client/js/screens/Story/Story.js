@@ -15,6 +15,7 @@ import Speechless from '../../../assets/icons/reactions/icon-reactions-speechles
 import Clap from '../../../assets/icons/reactions/icon-reactions-high_five-inactive.svg'
 import FormattedDate from '../../components/FormattedDate'
 import CardHashtag from '../../components/CardHashtag'
+import readingTime from 'reading-time'
 
 const Story = ({ route, navigation }) => {
   const { id: storyId } = route.params
@@ -27,6 +28,9 @@ const Story = ({ route, navigation }) => {
 
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
+
+  const {text: readTime} = readingTime(story.content)
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.backIcon} onPress={() => navigation.goBack()}>x</Text>
@@ -41,7 +45,7 @@ const Story = ({ route, navigation }) => {
             <Text style={styles.title}>{story.title}</Text>
             <Text style={styles.createdAt}>{story.author.userName.toUpperCase()}</Text>
             <Text style={styles.createdAt}>
-              <FormattedDate createdAt={story.createdAt} />  |  {story.readTime}</Text>
+              <FormattedDate createdAt={story.createdAt} />  |  {readTime}</Text>
             <Text style={styles.body}>{story.content}</Text>
 
             <View style={styles.hashtagContainer}>
