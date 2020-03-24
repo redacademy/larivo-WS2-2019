@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   ScrollView,
   FlatList,
+  TouchableOpacity,
 } from 'react-native'
 import styles from './styles'
 import {getStoryById} from '../../hooks'
@@ -16,6 +17,7 @@ import {Popup} from '../../components/Popup/'
 import {Card} from '../../components/Card'
 import Hashtag from '../../components/Hashtag'
 import {usePublish} from '../../hooks'
+import LeftArrow from '../../components/LeftArrow/LeftArrow'
 
 const Draft = ({route, navigation}) => {
   const {id: draftId} = route.params
@@ -62,7 +64,7 @@ const Draft = ({route, navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text onPress={() => navigation.goBack()}>x</Text>
+      <LeftArrow onPress={() => navigation.goBack()} />
       <ScrollView>
         <View style={styles.content}>
           <Card>
@@ -91,7 +93,11 @@ const Draft = ({route, navigation}) => {
             onSubmitEditing={handleTags}
           />
           <View style={styles.buttonContainer}>
-            <Button onPress={handlePublish} theme="dark">
+            <Button
+              disabled={!title || !content || tags.length < 0}
+              onPress={handlePublish}
+              theme="dark"
+            >
               PUBLISH
             </Button>
           </View>
@@ -110,7 +116,7 @@ const Draft = ({route, navigation}) => {
           </View>
         </View>
       </ScrollView>
-      <Popup text="Published!" show={show} />
+      <Popup text="Success!" show={show} />
     </SafeAreaView>
   )
 }
