@@ -64,9 +64,9 @@ type User {
   email: String!
   bio: String
   hashtags: [Hashtag!]!
-  stories: [Story!]!
-  drafts: [Story!]
-  favoriteStories: [Story]
+  stories: [Story]!
+  drafts: [Story]!
+  favoriteStories: [Story]!
   following: [User]
   followers: [User]
 }
