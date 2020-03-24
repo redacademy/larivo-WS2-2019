@@ -52,6 +52,7 @@ const Home = ({navigation, route}) => {
           search={search}
         />
       ) : (
+        <View style={styles.listView}>
         <FlatList
           // ListHeaderComponent={() => (
           //   <Text style={styles.title}>Featured</Text>
@@ -95,7 +96,7 @@ const Home = ({navigation, route}) => {
           }}
           keyExtractor={item => item.id}
         />
-      )}
+      </View>)}
     </SafeAreaView>
   )
 }

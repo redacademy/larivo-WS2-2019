@@ -4,10 +4,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#03dac4',
-    justifyContent: 'center',
     width: '100%',
-    alignItems: 'center',
-
+  },
+  listView: {
+    backgroundColor: 'white',
+    minHeight: '100%'
   },
   cardContainer:{
     flex: 1,

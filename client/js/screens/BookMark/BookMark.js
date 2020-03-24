@@ -3,7 +3,7 @@ import styles from './styles'
 import readingTime from 'reading-time'
 import {
   SafeAreaView,
-  Text,
+  View,
   FlatList,
   TouchableOpacity,
   ScrollView,
@@ -50,7 +50,7 @@ const BookMark = ({navigation, route}) => {
           search={search}
         />
       ) : (
-        // <ScrollView>
+        <View style={styles.listView}>
         <FlatList
           // ListHeaderComponent={() => (
           //   <Text style={styles.title}>Featured</Text>
@@ -77,29 +77,25 @@ const BookMark = ({navigation, route}) => {
             const {text: readTime} = readingTime(content)
             return (
               <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('BookmarkStory', {id})
-                }
+              style={styles.cardContainer}
+                onPress={() => navigation.navigate('HomeStory', {id})}
               >
-                <Card key={id}>
-                  <Text>{author.userName}</Text>
-                  <Text>{createdAt}</Text>
-                  <Text>{readTime}</Text>
-                  <Text>{title}</Text>
-                  <Text>{content}</Text>
-                  {hashtags.map(tag => (
-                    <Hashtag key={tag.id} disabled>
-                      {tag.name}
-                    </Hashtag>
-                  ))}
-                </Card>
+                <Card
+                  userName={author.userName}
+                  createdAt={createdAt}
+                  readTime={readTime}
+                  title={title}
+                  content={content}
+                  hashtags={hashtags}
+                  bookmarked={null}
+                />
               </TouchableOpacity>
+
             )
           }}
           keyExtractor={item => item.id}
         />
-        // </ScrollView>
-      )}
+      </View>)}
     </SafeAreaView>
   )
 }
