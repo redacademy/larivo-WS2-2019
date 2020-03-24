@@ -1,15 +1,11 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#03dac4',
-    width: '100%',
-  },
+const styles = props =>
+StyleSheet.create({
   card: {
-    backgroundColor: "white",
-    margin: 24,
-    padding: 20,
+    backgroundColor: 'white',
+    width: '100%',
+    // marginTop: 14,
     borderRadius: 20,
     alignItems: 'center',
     shadowColor: '#000',
@@ -20,17 +16,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.32,
     shadowRadius: 3,
     elevation: 9,
-  },
-  backIcon: {
-    position: 'absolute',
-    fontSize: 20,
-    marginTop: 40,
-    marginLeft: 20,
-    zIndex: 100
-  },
-  text: {
-    color: '#333',
-    fontSize: 18,
   },
   content: {
     justifyContent: 'center',
@@ -56,7 +41,7 @@ const styles = StyleSheet.create({
     left: 10,
     top: 20,
   },
-  bookmarkIcon: {
+  bookmarkIcon : {
     position: 'absolute',
     right: 30,
     shadowColor: '#000',
@@ -73,10 +58,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#13443C",
     fontFamily: "SFProText-Bold",
-    // marginTop: 20,
-    // marginLeft: 45,
+    marginTop: 20,
+    marginLeft: 45,
     // marginBottom: 4,
-    marginBottom: 5,
+    marginBottom: 18,
   },
   createdAt: {
     fontSize: 15,
@@ -88,7 +73,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: "#13443C",
     fontFamily: "SFProText-Regular",
-    marginTop: 5,
     marginBottom: 4
   },
   hashtagContainer: {
@@ -97,17 +81,15 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   continueIcon: {
-    marginTop: 13.5
+    marginTop:13.5
   },
   reactionsContainer: {
     flexDirection: 'row',
-    alignContent: 'center',
-    justifyContent: 'space-between',
-    padding: 40
+    alignContent: 'flex-start',
+    justifyContent: 'flex-start',
   },
   reactions: {
     marginRight: 7,
-    marginTop: 5,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -118,11 +100,6 @@ const styles = StyleSheet.create({
 
     //for android, shadows have problem
     // elevation: 2,
-  },
-  reactText: {
-    flexDirection: 'row',
-    alignContent: 'center',
-    justifyContent: 'center',
   }
 })
 

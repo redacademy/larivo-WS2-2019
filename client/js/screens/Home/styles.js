@@ -4,17 +4,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#03dac4',
+    width: '100%',
   },
-  title: {
-    fontSize: 36,
-    paddingHorizontal: 30,
-    paddingVertical: 20,
-    color: '#13443C',
-    fontFamily: 'Asap-BoldItalic',
+  listView: {
+    backgroundColor: 'white',
+    minHeight: '100%',
+    paddingBottom: 120,
+  },
+  cardContainer:{
+    flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 8,
+    width: "100%"
   },
   content: {
     justifyContent: 'center',
-    width: '90%',
+    width: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
@@ -33,7 +41,7 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
     justifyContent: 'flex-start',
   },
-  featuredText: {
+  featuredText : {
     fontSize: 40,
     fontWeight: 'bold',
     fontFamily: 'Asap-BoldItalic',
@@ -47,16 +55,17 @@ const styles = StyleSheet.create({
   featuredCardContainer: {
     width: 350,
     marginBottom: 10,
-    marginRight: -15,
+    marginRight: -15
   },
   userCardContainer: {
-    width: '110%',
+    width: "110%",
     // marginBottom: 10,
     paddingHorizontal: 25,
     paddingTop: 10,
     alignItems: 'stretch',
-    backgroundColor: '#f1fffe',
+    backgroundColor: '#f1fffe'
   },
+  
 })
 
 export default styles
