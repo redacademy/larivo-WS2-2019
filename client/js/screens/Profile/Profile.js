@@ -8,15 +8,18 @@ import SettingsIcon from '../../components/SettingsIcon/SettingsIcon'
 import EditIcon from '../../components/EditIcon/EditIcon'
 import {ProfileTabs} from '../../navigation'
 import styles from './styles'
-import {useAuth} from '../../hooks'
+import {USER_HEADER_INFO} from '../../context/apollo'
+import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import HeaderProfile from '../../components/HeaderProfile/HeaderProfile'
+import {NetWorkError} from '../../components/FourOhFour'
 
 const Profile = ({navigation}) => {
-  const {user} = useAuth()
-  console.log('profile user', user)
+  const {loading, error} = useQuery(USER_HEADER_INFO)
 
-  if (typeof user === 'undefined') return <Spinner />
+  if (loading) return <Spinner />
+  if (error) return <NetWorkError />
+
   return (
     <SafeAreaView style={styles.profile_container}>
       <HeaderProfile navigation={navigation} />

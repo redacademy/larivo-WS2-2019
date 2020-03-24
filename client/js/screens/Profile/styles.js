@@ -2,12 +2,10 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   headerContainer: {
-    display: 'flex',
     backgroundColor: '#03dac4',
-    paddingVertical: 60,
-    paddingVertical: 30,
     paddingHorizontal: 30,
     paddingTop: 10,
+    paddingBottom: 20,
   },
   followsContainer: {
     display: 'flex',
@@ -93,6 +91,13 @@ const styles = StyleSheet.create({
   profile_stories: {
     backgroundColor: '#F1FFFE',
   },
+  profile_follow: {
+    flexDirection: 'row',
+    paddingVertical: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
   profile_lists: {
     paddingHorizontal: 30,
     paddingVertical: 10,
@@ -109,6 +114,11 @@ const styles = StyleSheet.create({
     marginTop: 50,
     fontSize: 20,
     fontFamily: 'SFProText-Light',
+  },
+  backArrow: {
+    fontSize: 20,
+    padding: 10,
+    backgroundColor: '#03dac4',
   },
 })
 
