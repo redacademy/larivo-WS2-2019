@@ -1,12 +1,12 @@
 type User {
   id: ID! @id
-  userName: String @unique
+  userName: String! @unique
   email: String! @unique
   password: String!
-  bio: String
+  bio: String!
   hashtags: [Hashtag!]! @relation(link: TABLE, name: "HashtagsByUser", onDelete: CASCADE)
-  stories: [Story!]! @relation(name: "StoriesByUser", onDelete: CASCADE)
-  drafts: [Story]! @relation(name: "DraftsByUser", onDelete: CASCADE)
+  stories: [Story]! @relation(link: TABLE, name: "StoriesByUser", onDelete: CASCADE)
+  drafts: [Story]! @relation(link: TABLE, name: "DraftsByUser", onDelete: CASCADE)
   favoriteStories: [Story]! @relation(link: TABLE, name: "FavoriteStories", onDelete: CASCADE)
   following: [User!]! @relation(link: TABLE, name: "UserFollowing")
   followers: [User!]! @relation(link: TABLE, name: "UserFollower")
@@ -15,10 +15,10 @@ type User {
 type Story {
   id: ID! @id
   createdAt: DateTime! @createdAt
-  author: User! @relation(link: TABLE, name: "StoriesByUser")
+  author: User! @relation(link: TABLE, name: "StoryAuthor")
   title: String! 
   content: String!  
-  hashtags: [Hashtag!]! @relation(link: TABLE, name: "HashtagsByUser")
+  hashtags: [Hashtag!]! @relation(link: TABLE, name: "Hashtags")
   likes: [User!]! @relation(link: TABLE, name: "UserLikes")
   loves: [User!]! @relation(link: TABLE, name: "UserLoves")
   neutrals: [User!]! @relation(link: TABLE, name: "UserNeutrals")

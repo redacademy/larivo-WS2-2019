@@ -52,3 +52,7 @@ export const ProfileInactiveIcon = require('./toolbar/icon-profile-inactive.svg'
 export const ProfileIcon = require('./toolbar/icon-profile-active.svg')
 export const ErrorMessage = require('./network/error-message.svg')
 export const AuthIcon = require('./network/auth.svg')
+
+// Follow Icons
+export const FollowIcon = require('./follow_icon')
+export const FollowingIcon = require('./following_icon')

@@ -72,7 +72,6 @@ const story = {
   },
 
   async publish(parent, { id, title, content, hashtags }, context) {
-    const userId = getUserId(context)
     const { existinghashtags, newhashtags } = hashtags.reduce(
       (hashtagsummary, hashtag) => {
         const existingEntry =

@@ -182,6 +182,8 @@ export interface ClientConstructor<T> {
 export type HashtagOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
   | "name_ASC"
   | "name_DESC";
 
@@ -211,69 +213,89 @@ export type UserOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserUpdateWithoutStoriesDataInput {
-  userName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  bio?: Maybe<String>;
-  favoriteStories?: Maybe<StoryUpdateManyInput>;
-  hashtags?: Maybe<HashtagUpdateManyInput>;
-  following?: Maybe<UserUpdateManyWithoutFollowingInput>;
-  followers?: Maybe<UserUpdateManyWithoutFollowersInput>;
+export interface UserUpdateOneRequiredInput {
+  create?: Maybe<UserCreateInput>;
+  update?: Maybe<UserUpdateDataInput>;
+  upsert?: Maybe<UserUpsertNestedInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
 export type HashtagWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface UserCreateWithoutFollowingInput {
+export interface HashtagUpdateWithWhereUniqueNestedInput {
+  where: HashtagWhereUniqueInput;
+  data: HashtagUpdateDataInput;
+}
+
+export interface HashtagWhereInput {
   id?: Maybe<ID_Input>;
-  userName?: Maybe<String>;
-  email: String;
-  password: String;
-  bio?: Maybe<String>;
-  stories?: Maybe<StoryCreateManyWithoutAuthorInput>;
-  favoriteStories?: Maybe<StoryCreateManyInput>;
-  hashtags?: Maybe<HashtagCreateManyInput>;
-  followers?: Maybe<UserCreateManyWithoutFollowersInput>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  AND?: Maybe<HashtagWhereInput[] | HashtagWhereInput>;
+  OR?: Maybe<HashtagWhereInput[] | HashtagWhereInput>;
+  NOT?: Maybe<HashtagWhereInput[] | HashtagWhereInput>;
 }
 
-export interface UserUpdateWithWhereUniqueWithoutFollowingInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateWithoutFollowingDataInput;
+export interface HashtagCreateManyInput {
+  create?: Maybe<HashtagCreateInput[] | HashtagCreateInput>;
+  connect?: Maybe<HashtagWhereUniqueInput[] | HashtagWhereUniqueInput>;
 }
 
-export interface StoryCreateManyWithoutAuthorInput {
-  create?: Maybe<
-    StoryCreateWithoutAuthorInput[] | StoryCreateWithoutAuthorInput
-  >;
+export interface StoryUpsertWithWhereUniqueNestedInput {
+  where: StoryWhereUniqueInput;
+  update: StoryUpdateDataInput;
+  create: StoryCreateInput;
+}
+
+export interface StoryCreateManyInput {
+  create?: Maybe<StoryCreateInput[] | StoryCreateInput>;
   connect?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
 }
 
-export interface StoryUpdateDataInput {
-  author?: Maybe<UserUpdateOneRequiredWithoutStoriesInput>;
-  title?: Maybe<String>;
-  content?: Maybe<String>;
-  hashtags?: Maybe<HashtagUpdateManyInput>;
-  likes?: Maybe<UserUpdateManyInput>;
-  loves?: Maybe<UserUpdateManyInput>;
-  neutrals?: Maybe<UserUpdateManyInput>;
-  sads?: Maybe<UserUpdateManyInput>;
-  claps?: Maybe<UserUpdateManyInput>;
-  published?: Maybe<Boolean>;
+export interface HashtagUpdateDataInput {
+  name?: Maybe<String>;
 }
 
-export interface StoryCreateWithoutAuthorInput {
-  id?: Maybe<ID_Input>;
-  title: String;
-  content: String;
-  hashtags?: Maybe<HashtagCreateManyInput>;
-  likes?: Maybe<UserCreateManyInput>;
-  loves?: Maybe<UserCreateManyInput>;
-  neutrals?: Maybe<UserCreateManyInput>;
-  sads?: Maybe<UserCreateManyInput>;
-  claps?: Maybe<UserCreateManyInput>;
-  published?: Maybe<Boolean>;
+export interface UserCreateManyWithoutFollowingInput {
+  create?: Maybe<
+    UserCreateWithoutFollowingInput[] | UserCreateWithoutFollowingInput
+  >;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
 }
 
 export interface StorySubscriptionWhereInput {
@@ -287,42 +309,22 @@ export interface StorySubscriptionWhereInput {
   NOT?: Maybe<StorySubscriptionWhereInput[] | StorySubscriptionWhereInput>;
 }
 
-export interface UserCreateManyInput {
-  create?: Maybe<UserCreateInput[] | UserCreateInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
-export interface UserUpdateManyMutationInput {
-  userName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  bio?: Maybe<String>;
-}
-
-export interface UserCreateInput {
+export interface UserCreateWithoutFollowingInput {
   id?: Maybe<ID_Input>;
   userName?: Maybe<String>;
   email: String;
   password: String;
   bio?: Maybe<String>;
-  stories?: Maybe<StoryCreateManyWithoutAuthorInput>;
-  favoriteStories?: Maybe<StoryCreateManyInput>;
   hashtags?: Maybe<HashtagCreateManyInput>;
-  following?: Maybe<UserCreateManyWithoutFollowingInput>;
+  stories?: Maybe<StoryCreateManyInput>;
+  drafts?: Maybe<StoryCreateManyInput>;
+  favoriteStories?: Maybe<StoryCreateManyInput>;
   followers?: Maybe<UserCreateManyWithoutFollowersInput>;
 }
 
-export interface UserUpdateInput {
-  userName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  bio?: Maybe<String>;
-  stories?: Maybe<StoryUpdateManyWithoutAuthorInput>;
-  favoriteStories?: Maybe<StoryUpdateManyInput>;
-  hashtags?: Maybe<HashtagUpdateManyInput>;
-  following?: Maybe<UserUpdateManyWithoutFollowingInput>;
-  followers?: Maybe<UserUpdateManyWithoutFollowersInput>;
-}
+export type StoryWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface UserCreateManyWithoutFollowersInput {
   create?: Maybe<
@@ -331,9 +333,17 @@ export interface UserCreateManyWithoutFollowersInput {
   connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
 }
 
-export interface UserUpsertWithoutStoriesInput {
-  update: UserUpdateWithoutStoriesDataInput;
-  create: UserCreateWithoutStoriesInput;
+export interface UserUpdateInput {
+  userName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  bio?: Maybe<String>;
+  hashtags?: Maybe<HashtagUpdateManyInput>;
+  stories?: Maybe<StoryUpdateManyInput>;
+  drafts?: Maybe<StoryUpdateManyInput>;
+  favoriteStories?: Maybe<StoryUpdateManyInput>;
+  following?: Maybe<UserUpdateManyWithoutFollowingInput>;
+  followers?: Maybe<UserUpdateManyWithoutFollowersInput>;
 }
 
 export interface UserCreateWithoutFollowersInput {
@@ -342,9 +352,10 @@ export interface UserCreateWithoutFollowersInput {
   email: String;
   password: String;
   bio?: Maybe<String>;
-  stories?: Maybe<StoryCreateManyWithoutAuthorInput>;
-  favoriteStories?: Maybe<StoryCreateManyInput>;
   hashtags?: Maybe<HashtagCreateManyInput>;
+  stories?: Maybe<StoryCreateManyInput>;
+  drafts?: Maybe<StoryCreateManyInput>;
+  favoriteStories?: Maybe<StoryCreateManyInput>;
   following?: Maybe<UserCreateManyWithoutFollowingInput>;
 }
 
@@ -419,15 +430,18 @@ export interface UserWhereInput {
   bio_not_starts_with?: Maybe<String>;
   bio_ends_with?: Maybe<String>;
   bio_not_ends_with?: Maybe<String>;
-  stories_every?: Maybe<StoryWhereInput>;
-  stories_some?: Maybe<StoryWhereInput>;
-  stories_none?: Maybe<StoryWhereInput>;
-  favoriteStories_every?: Maybe<StoryWhereInput>;
-  favoriteStories_some?: Maybe<StoryWhereInput>;
-  favoriteStories_none?: Maybe<StoryWhereInput>;
   hashtags_every?: Maybe<HashtagWhereInput>;
   hashtags_some?: Maybe<HashtagWhereInput>;
   hashtags_none?: Maybe<HashtagWhereInput>;
+  stories_every?: Maybe<StoryWhereInput>;
+  stories_some?: Maybe<StoryWhereInput>;
+  stories_none?: Maybe<StoryWhereInput>;
+  drafts_every?: Maybe<StoryWhereInput>;
+  drafts_some?: Maybe<StoryWhereInput>;
+  drafts_none?: Maybe<StoryWhereInput>;
+  favoriteStories_every?: Maybe<StoryWhereInput>;
+  favoriteStories_some?: Maybe<StoryWhereInput>;
+  favoriteStories_none?: Maybe<StoryWhereInput>;
   following_every?: Maybe<UserWhereInput>;
   following_some?: Maybe<UserWhereInput>;
   following_none?: Maybe<UserWhereInput>;
@@ -439,8 +453,18 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
+export interface UserCreateManyInput {
+  create?: Maybe<UserCreateInput[] | UserCreateInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface UserUpsertNestedInput {
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
+}
+
 export interface StoryUpdateInput {
-  author?: Maybe<UserUpdateOneRequiredWithoutStoriesInput>;
+  author?: Maybe<UserUpdateOneRequiredInput>;
   title?: Maybe<String>;
   content?: Maybe<String>;
   hashtags?: Maybe<HashtagUpdateManyInput>;
@@ -452,23 +476,35 @@ export interface StoryUpdateInput {
   published?: Maybe<Boolean>;
 }
 
-export interface StoryUpsertWithWhereUniqueNestedInput {
-  where: StoryWhereUniqueInput;
-  update: StoryUpdateDataInput;
-  create: StoryCreateInput;
-}
-
-export interface UserUpdateOneRequiredWithoutStoriesInput {
-  create?: Maybe<UserCreateWithoutStoriesInput>;
-  update?: Maybe<UserUpdateWithoutStoriesDataInput>;
-  upsert?: Maybe<UserUpsertWithoutStoriesInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpsertWithWhereUniqueWithoutFollowingInput {
+export interface UserUpsertWithWhereUniqueWithoutFollowersInput {
   where: UserWhereUniqueInput;
-  update: UserUpdateWithoutFollowingDataInput;
-  create: UserCreateWithoutFollowingInput;
+  update: UserUpdateWithoutFollowersDataInput;
+  create: UserCreateWithoutFollowersInput;
+}
+
+export interface StoryUpdateManyDataInput {
+  title?: Maybe<String>;
+  content?: Maybe<String>;
+  published?: Maybe<Boolean>;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  userName?: Maybe<String>;
+  email?: Maybe<String>;
+}>;
+
+export interface UserUpdateDataInput {
+  userName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  bio?: Maybe<String>;
+  hashtags?: Maybe<HashtagUpdateManyInput>;
+  stories?: Maybe<StoryUpdateManyInput>;
+  drafts?: Maybe<StoryUpdateManyInput>;
+  favoriteStories?: Maybe<StoryUpdateManyInput>;
+  following?: Maybe<UserUpdateManyWithoutFollowingInput>;
+  followers?: Maybe<UserUpdateManyWithoutFollowersInput>;
 }
 
 export interface UserUpdateManyWithoutFollowersInput {
@@ -493,139 +529,6 @@ export interface UserUpdateManyWithoutFollowersInput {
   >;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  userName?: Maybe<String>;
-  email?: Maybe<String>;
-}>;
-
-export interface StoryUpdateManyInput {
-  create?: Maybe<StoryCreateInput[] | StoryCreateInput>;
-  update?: Maybe<
-    | StoryUpdateWithWhereUniqueNestedInput[]
-    | StoryUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | StoryUpsertWithWhereUniqueNestedInput[]
-    | StoryUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
-  connect?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
-  set?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
-  disconnect?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
-  deleteMany?: Maybe<StoryScalarWhereInput[] | StoryScalarWhereInput>;
-  updateMany?: Maybe<
-    StoryUpdateManyWithWhereNestedInput[] | StoryUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface UserScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  userName?: Maybe<String>;
-  userName_not?: Maybe<String>;
-  userName_in?: Maybe<String[] | String>;
-  userName_not_in?: Maybe<String[] | String>;
-  userName_lt?: Maybe<String>;
-  userName_lte?: Maybe<String>;
-  userName_gt?: Maybe<String>;
-  userName_gte?: Maybe<String>;
-  userName_contains?: Maybe<String>;
-  userName_not_contains?: Maybe<String>;
-  userName_starts_with?: Maybe<String>;
-  userName_not_starts_with?: Maybe<String>;
-  userName_ends_with?: Maybe<String>;
-  userName_not_ends_with?: Maybe<String>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  password?: Maybe<String>;
-  password_not?: Maybe<String>;
-  password_in?: Maybe<String[] | String>;
-  password_not_in?: Maybe<String[] | String>;
-  password_lt?: Maybe<String>;
-  password_lte?: Maybe<String>;
-  password_gt?: Maybe<String>;
-  password_gte?: Maybe<String>;
-  password_contains?: Maybe<String>;
-  password_not_contains?: Maybe<String>;
-  password_starts_with?: Maybe<String>;
-  password_not_starts_with?: Maybe<String>;
-  password_ends_with?: Maybe<String>;
-  password_not_ends_with?: Maybe<String>;
-  bio?: Maybe<String>;
-  bio_not?: Maybe<String>;
-  bio_in?: Maybe<String[] | String>;
-  bio_not_in?: Maybe<String[] | String>;
-  bio_lt?: Maybe<String>;
-  bio_lte?: Maybe<String>;
-  bio_gt?: Maybe<String>;
-  bio_gte?: Maybe<String>;
-  bio_contains?: Maybe<String>;
-  bio_not_contains?: Maybe<String>;
-  bio_starts_with?: Maybe<String>;
-  bio_not_starts_with?: Maybe<String>;
-  bio_ends_with?: Maybe<String>;
-  bio_not_ends_with?: Maybe<String>;
-  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-}
-
-export interface StoryUpdateWithWhereUniqueNestedInput {
-  where: StoryWhereUniqueInput;
-  data: StoryUpdateDataInput;
-}
-
-export interface HashtagUpdateInput {
-  name?: Maybe<String>;
-}
-
-export interface UserUpdateWithoutFollowingDataInput {
-  userName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  bio?: Maybe<String>;
-  stories?: Maybe<StoryUpdateManyWithoutAuthorInput>;
-  favoriteStories?: Maybe<StoryUpdateManyInput>;
-  hashtags?: Maybe<HashtagUpdateManyInput>;
-  followers?: Maybe<UserUpdateManyWithoutFollowersInput>;
-}
-
-export interface UserUpdateWithoutFollowersDataInput {
-  userName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  bio?: Maybe<String>;
-  stories?: Maybe<StoryUpdateManyWithoutAuthorInput>;
-  favoriteStories?: Maybe<StoryUpdateManyInput>;
-  hashtags?: Maybe<HashtagUpdateManyInput>;
-  following?: Maybe<UserUpdateManyWithoutFollowingInput>;
-}
-
 export interface HashtagUpdateManyInput {
   create?: Maybe<HashtagCreateInput[] | HashtagCreateInput>;
   update?: Maybe<
@@ -647,9 +550,81 @@ export interface HashtagUpdateManyInput {
   >;
 }
 
+export interface HashtagUpdateInput {
+  name?: Maybe<String>;
+}
+
+export interface StoryUpdateManyWithWhereNestedInput {
+  where: StoryScalarWhereInput;
+  data: StoryUpdateManyDataInput;
+}
+
+export interface UserUpdateWithWhereUniqueWithoutFollowingInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutFollowingDataInput;
+}
+
+export interface StoryScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  content?: Maybe<String>;
+  content_not?: Maybe<String>;
+  content_in?: Maybe<String[] | String>;
+  content_not_in?: Maybe<String[] | String>;
+  content_lt?: Maybe<String>;
+  content_lte?: Maybe<String>;
+  content_gt?: Maybe<String>;
+  content_gte?: Maybe<String>;
+  content_contains?: Maybe<String>;
+  content_not_contains?: Maybe<String>;
+  content_starts_with?: Maybe<String>;
+  content_not_starts_with?: Maybe<String>;
+  content_ends_with?: Maybe<String>;
+  content_not_ends_with?: Maybe<String>;
+  published?: Maybe<Boolean>;
+  published_not?: Maybe<Boolean>;
+  AND?: Maybe<StoryScalarWhereInput[] | StoryScalarWhereInput>;
+  OR?: Maybe<StoryScalarWhereInput[] | StoryScalarWhereInput>;
+  NOT?: Maybe<StoryScalarWhereInput[] | StoryScalarWhereInput>;
+}
+
 export interface StoryCreateInput {
   id?: Maybe<ID_Input>;
-  author: UserCreateOneWithoutStoriesInput;
+  author: UserCreateOneInput;
   title: String;
   content: String;
   hashtags?: Maybe<HashtagCreateManyInput>;
@@ -661,47 +636,24 @@ export interface StoryCreateInput {
   published?: Maybe<Boolean>;
 }
 
-export interface HashtagUpdateWithWhereUniqueNestedInput {
-  where: HashtagWhereUniqueInput;
-  data: HashtagUpdateDataInput;
-}
-
-export interface UserCreateWithoutStoriesInput {
-  id?: Maybe<ID_Input>;
-  userName?: Maybe<String>;
-  email: String;
-  password: String;
-  bio?: Maybe<String>;
-  favoriteStories?: Maybe<StoryCreateManyInput>;
-  hashtags?: Maybe<HashtagCreateManyInput>;
-  following?: Maybe<UserCreateManyWithoutFollowingInput>;
-  followers?: Maybe<UserCreateManyWithoutFollowersInput>;
-}
-
-export interface HashtagUpdateDataInput {
-  name?: Maybe<String>;
-}
-
-export interface HashtagCreateManyInput {
-  create?: Maybe<HashtagCreateInput[] | HashtagCreateInput>;
-  connect?: Maybe<HashtagWhereUniqueInput[] | HashtagWhereUniqueInput>;
-}
-
 export interface HashtagUpsertWithWhereUniqueNestedInput {
   where: HashtagWhereUniqueInput;
   update: HashtagUpdateDataInput;
   create: HashtagCreateInput;
 }
 
-export interface UserSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+export interface UserCreateInput {
+  id?: Maybe<ID_Input>;
+  userName?: Maybe<String>;
+  email: String;
+  password: String;
+  bio?: Maybe<String>;
+  hashtags?: Maybe<HashtagCreateManyInput>;
+  stories?: Maybe<StoryCreateManyInput>;
+  drafts?: Maybe<StoryCreateManyInput>;
+  favoriteStories?: Maybe<StoryCreateManyInput>;
+  following?: Maybe<UserCreateManyWithoutFollowingInput>;
+  followers?: Maybe<UserCreateManyWithoutFollowersInput>;
 }
 
 export interface HashtagScalarWhereInput {
@@ -719,6 +671,14 @@ export interface HashtagScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
   name?: Maybe<String>;
   name_not?: Maybe<String>;
   name_in?: Maybe<String[] | String>;
@@ -738,9 +698,16 @@ export interface HashtagScalarWhereInput {
   NOT?: Maybe<HashtagScalarWhereInput[] | HashtagScalarWhereInput>;
 }
 
-export type StoryWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface HashtagSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<HashtagWhereInput>;
+  AND?: Maybe<HashtagSubscriptionWhereInput[] | HashtagSubscriptionWhereInput>;
+  OR?: Maybe<HashtagSubscriptionWhereInput[] | HashtagSubscriptionWhereInput>;
+  NOT?: Maybe<HashtagSubscriptionWhereInput[] | HashtagSubscriptionWhereInput>;
+}
 
 export interface HashtagUpdateManyWithWhereNestedInput {
   where: HashtagScalarWhereInput;
@@ -828,57 +795,30 @@ export interface HashtagUpdateManyDataInput {
   name?: Maybe<String>;
 }
 
-export interface UserUpsertWithWhereUniqueNestedInput {
+export interface UserUpsertWithWhereUniqueWithoutFollowingInput {
   where: UserWhereUniqueInput;
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
+  update: UserUpdateWithoutFollowingDataInput;
+  create: UserCreateWithoutFollowingInput;
 }
 
-export interface UserUpdateManyInput {
-  create?: Maybe<UserCreateInput[] | UserCreateInput>;
+export interface StoryUpdateManyInput {
+  create?: Maybe<StoryCreateInput[] | StoryCreateInput>;
   update?: Maybe<
-    | UserUpdateWithWhereUniqueNestedInput[]
-    | UserUpdateWithWhereUniqueNestedInput
+    | StoryUpdateWithWhereUniqueNestedInput[]
+    | StoryUpdateWithWhereUniqueNestedInput
   >;
   upsert?: Maybe<
-    | UserUpsertWithWhereUniqueNestedInput[]
-    | UserUpsertWithWhereUniqueNestedInput
+    | StoryUpsertWithWhereUniqueNestedInput[]
+    | StoryUpsertWithWhereUniqueNestedInput
   >;
-  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  delete?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
+  connect?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
+  set?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
+  disconnect?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
+  deleteMany?: Maybe<StoryScalarWhereInput[] | StoryScalarWhereInput>;
   updateMany?: Maybe<
-    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+    StoryUpdateManyWithWhereNestedInput[] | StoryUpdateManyWithWhereNestedInput
   >;
-}
-
-export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
-}
-
-export interface UserUpdateWithWhereUniqueNestedInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateDataInput;
-}
-
-export interface HashtagCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-}
-
-export interface UserUpdateDataInput {
-  userName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  bio?: Maybe<String>;
-  stories?: Maybe<StoryUpdateManyWithoutAuthorInput>;
-  favoriteStories?: Maybe<StoryUpdateManyInput>;
-  hashtags?: Maybe<HashtagUpdateManyInput>;
-  following?: Maybe<UserUpdateManyWithoutFollowingInput>;
-  followers?: Maybe<UserUpdateManyWithoutFollowersInput>;
 }
 
 export interface UserUpdateWithWhereUniqueWithoutFollowersInput {
@@ -886,50 +826,18 @@ export interface UserUpdateWithWhereUniqueWithoutFollowersInput {
   data: UserUpdateWithoutFollowersDataInput;
 }
 
-export interface StoryUpdateManyWithoutAuthorInput {
-  create?: Maybe<
-    StoryCreateWithoutAuthorInput[] | StoryCreateWithoutAuthorInput
-  >;
-  delete?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
-  connect?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
-  set?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
-  disconnect?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
-  update?: Maybe<
-    | StoryUpdateWithWhereUniqueWithoutAuthorInput[]
-    | StoryUpdateWithWhereUniqueWithoutAuthorInput
-  >;
-  upsert?: Maybe<
-    | StoryUpsertWithWhereUniqueWithoutAuthorInput[]
-    | StoryUpsertWithWhereUniqueWithoutAuthorInput
-  >;
-  deleteMany?: Maybe<StoryScalarWhereInput[] | StoryScalarWhereInput>;
-  updateMany?: Maybe<
-    StoryUpdateManyWithWhereNestedInput[] | StoryUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface StoryCreateManyInput {
-  create?: Maybe<StoryCreateInput[] | StoryCreateInput>;
-  connect?: Maybe<StoryWhereUniqueInput[] | StoryWhereUniqueInput>;
-}
-
-export interface StoryUpdateWithWhereUniqueWithoutAuthorInput {
+export interface StoryUpdateWithWhereUniqueNestedInput {
   where: StoryWhereUniqueInput;
-  data: StoryUpdateWithoutAuthorDataInput;
+  data: StoryUpdateDataInput;
 }
 
-export interface HashtagSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<HashtagWhereInput>;
-  AND?: Maybe<HashtagSubscriptionWhereInput[] | HashtagSubscriptionWhereInput>;
-  OR?: Maybe<HashtagSubscriptionWhereInput[] | HashtagSubscriptionWhereInput>;
-  NOT?: Maybe<HashtagSubscriptionWhereInput[] | HashtagSubscriptionWhereInput>;
+export interface HashtagCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
 }
 
-export interface StoryUpdateWithoutAuthorDataInput {
+export interface StoryUpdateDataInput {
+  author?: Maybe<UserUpdateOneRequiredInput>;
   title?: Maybe<String>;
   content?: Maybe<String>;
   hashtags?: Maybe<HashtagUpdateManyInput>;
@@ -939,52 +847,6 @@ export interface StoryUpdateWithoutAuthorDataInput {
   sads?: Maybe<UserUpdateManyInput>;
   claps?: Maybe<UserUpdateManyInput>;
   published?: Maybe<Boolean>;
-}
-
-export interface HashtagWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  AND?: Maybe<HashtagWhereInput[] | HashtagWhereInput>;
-  OR?: Maybe<HashtagWhereInput[] | HashtagWhereInput>;
-  NOT?: Maybe<HashtagWhereInput[] | HashtagWhereInput>;
-}
-
-export interface StoryUpsertWithWhereUniqueWithoutAuthorInput {
-  where: StoryWhereUniqueInput;
-  update: StoryUpdateWithoutAuthorDataInput;
-  create: StoryCreateWithoutAuthorInput;
-}
-
-export interface UserUpsertWithWhereUniqueWithoutFollowersInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateWithoutFollowersDataInput;
-  create: UserCreateWithoutFollowersInput;
 }
 
 export interface UserUpdateManyWithoutFollowingInput {
@@ -1009,18 +871,61 @@ export interface UserUpdateManyWithoutFollowingInput {
   >;
 }
 
-export interface StoryUpdateManyDataInput {
+export interface UserUpdateManyInput {
+  create?: Maybe<UserCreateInput[] | UserCreateInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueNestedInput[]
+    | UserUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueNestedInput[]
+    | UserUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+}
+
+export interface UserUpdateWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateDataInput;
+}
+
+export interface StoryUpdateManyMutationInput {
   title?: Maybe<String>;
   content?: Maybe<String>;
   published?: Maybe<Boolean>;
 }
 
-export interface StoryUpdateManyWithWhereNestedInput {
-  where: StoryScalarWhereInput;
-  data: StoryUpdateManyDataInput;
+export interface UserUpdateManyDataInput {
+  userName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  bio?: Maybe<String>;
 }
 
-export interface StoryScalarWhereInput {
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput;
+  data: UserUpdateManyDataInput;
+}
+
+export interface UserScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1035,76 +940,111 @@ export interface StoryScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  title?: Maybe<String>;
-  title_not?: Maybe<String>;
-  title_in?: Maybe<String[] | String>;
-  title_not_in?: Maybe<String[] | String>;
-  title_lt?: Maybe<String>;
-  title_lte?: Maybe<String>;
-  title_gt?: Maybe<String>;
-  title_gte?: Maybe<String>;
-  title_contains?: Maybe<String>;
-  title_not_contains?: Maybe<String>;
-  title_starts_with?: Maybe<String>;
-  title_not_starts_with?: Maybe<String>;
-  title_ends_with?: Maybe<String>;
-  title_not_ends_with?: Maybe<String>;
-  content?: Maybe<String>;
-  content_not?: Maybe<String>;
-  content_in?: Maybe<String[] | String>;
-  content_not_in?: Maybe<String[] | String>;
-  content_lt?: Maybe<String>;
-  content_lte?: Maybe<String>;
-  content_gt?: Maybe<String>;
-  content_gte?: Maybe<String>;
-  content_contains?: Maybe<String>;
-  content_not_contains?: Maybe<String>;
-  content_starts_with?: Maybe<String>;
-  content_not_starts_with?: Maybe<String>;
-  content_ends_with?: Maybe<String>;
-  content_not_ends_with?: Maybe<String>;
-  published?: Maybe<Boolean>;
-  published_not?: Maybe<Boolean>;
-  AND?: Maybe<StoryScalarWhereInput[] | StoryScalarWhereInput>;
-  OR?: Maybe<StoryScalarWhereInput[] | StoryScalarWhereInput>;
-  NOT?: Maybe<StoryScalarWhereInput[] | StoryScalarWhereInput>;
+  userName?: Maybe<String>;
+  userName_not?: Maybe<String>;
+  userName_in?: Maybe<String[] | String>;
+  userName_not_in?: Maybe<String[] | String>;
+  userName_lt?: Maybe<String>;
+  userName_lte?: Maybe<String>;
+  userName_gt?: Maybe<String>;
+  userName_gte?: Maybe<String>;
+  userName_contains?: Maybe<String>;
+  userName_not_contains?: Maybe<String>;
+  userName_starts_with?: Maybe<String>;
+  userName_not_starts_with?: Maybe<String>;
+  userName_ends_with?: Maybe<String>;
+  userName_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  password?: Maybe<String>;
+  password_not?: Maybe<String>;
+  password_in?: Maybe<String[] | String>;
+  password_not_in?: Maybe<String[] | String>;
+  password_lt?: Maybe<String>;
+  password_lte?: Maybe<String>;
+  password_gt?: Maybe<String>;
+  password_gte?: Maybe<String>;
+  password_contains?: Maybe<String>;
+  password_not_contains?: Maybe<String>;
+  password_starts_with?: Maybe<String>;
+  password_not_starts_with?: Maybe<String>;
+  password_ends_with?: Maybe<String>;
+  password_not_ends_with?: Maybe<String>;
+  bio?: Maybe<String>;
+  bio_not?: Maybe<String>;
+  bio_in?: Maybe<String[] | String>;
+  bio_not_in?: Maybe<String[] | String>;
+  bio_lt?: Maybe<String>;
+  bio_lte?: Maybe<String>;
+  bio_gt?: Maybe<String>;
+  bio_gte?: Maybe<String>;
+  bio_contains?: Maybe<String>;
+  bio_not_contains?: Maybe<String>;
+  bio_starts_with?: Maybe<String>;
+  bio_not_starts_with?: Maybe<String>;
+  bio_ends_with?: Maybe<String>;
+  bio_not_ends_with?: Maybe<String>;
+  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
 }
 
-export interface HashtagUpdateManyMutationInput {
-  name?: Maybe<String>;
+export interface UserUpsertWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
 }
 
-export interface UserUpdateManyDataInput {
+export interface UserUpdateWithoutFollowersDataInput {
+  userName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  bio?: Maybe<String>;
+  hashtags?: Maybe<HashtagUpdateManyInput>;
+  stories?: Maybe<StoryUpdateManyInput>;
+  drafts?: Maybe<StoryUpdateManyInput>;
+  favoriteStories?: Maybe<StoryUpdateManyInput>;
+  following?: Maybe<UserUpdateManyWithoutFollowingInput>;
+}
+
+export interface UserUpdateManyMutationInput {
   userName?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
   bio?: Maybe<String>;
 }
 
-export interface StoryUpdateManyMutationInput {
-  title?: Maybe<String>;
-  content?: Maybe<String>;
-  published?: Maybe<Boolean>;
-}
-
-export interface UserCreateManyWithoutFollowingInput {
-  create?: Maybe<
-    UserCreateWithoutFollowingInput[] | UserCreateWithoutFollowingInput
-  >;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
-export interface UserCreateOneWithoutStoriesInput {
-  create?: Maybe<UserCreateWithoutStoriesInput>;
+export interface UserCreateOneInput {
+  create?: Maybe<UserCreateInput>;
   connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface HashtagUpdateManyMutationInput {
+  name?: Maybe<String>;
+}
+
+export interface UserUpdateWithoutFollowingDataInput {
+  userName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  bio?: Maybe<String>;
+  hashtags?: Maybe<HashtagUpdateManyInput>;
+  stories?: Maybe<StoryUpdateManyInput>;
+  drafts?: Maybe<StoryUpdateManyInput>;
+  favoriteStories?: Maybe<StoryUpdateManyInput>;
+  followers?: Maybe<UserUpdateManyWithoutFollowersInput>;
 }
 
 export interface NodeNode {
@@ -1139,6 +1079,27 @@ export interface UserPreviousValuesSubscription
   bio: () => Promise<AsyncIterator<String>>;
 }
 
+export interface HashtagConnection {
+  pageInfo: PageInfo;
+  edges: HashtagEdge[];
+}
+
+export interface HashtagConnectionPromise
+  extends Promise<HashtagConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<HashtagEdge>>() => T;
+  aggregate: <T = AggregateHashtagPromise>() => T;
+}
+
+export interface HashtagConnectionSubscription
+  extends Promise<AsyncIterator<HashtagConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HashtagEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHashtagSubscription>() => T;
+}
+
 export interface PageInfo {
   hasNextPage: Boolean;
   hasPreviousPage: Boolean;
@@ -1162,29 +1123,74 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface StorySubscriptionPayload {
+export interface UserSubscriptionPayload {
   mutation: MutationType;
-  node: Story;
+  node: User;
   updatedFields: String[];
-  previousValues: StoryPreviousValues;
+  previousValues: UserPreviousValues;
 }
 
-export interface StorySubscriptionPayloadPromise
-  extends Promise<StorySubscriptionPayload>,
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = StoryPromise>() => T;
+  node: <T = UserPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = StoryPreviousValuesPromise>() => T;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
 }
 
-export interface StorySubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<StorySubscriptionPayload>>,
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = StorySubscription>() => T;
+  node: <T = UserSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = StoryPreviousValuesSubscription>() => T;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
+}
+
+export interface HashtagEdge {
+  node: Hashtag;
+  cursor: String;
+}
+
+export interface HashtagEdgePromise extends Promise<HashtagEdge>, Fragmentable {
+  node: <T = HashtagPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface HashtagEdgeSubscription
+  extends Promise<AsyncIterator<HashtagEdge>>,
+    Fragmentable {
+  node: <T = HashtagSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface StoryPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  title: String;
+  content: String;
+  published: Boolean;
+}
+
+export interface StoryPreviousValuesPromise
+  extends Promise<StoryPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  title: () => Promise<String>;
+  content: () => Promise<String>;
+  published: () => Promise<Boolean>;
+}
+
+export interface StoryPreviousValuesSubscription
+  extends Promise<AsyncIterator<StoryPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  title: () => Promise<AsyncIterator<String>>;
+  content: () => Promise<AsyncIterator<String>>;
+  published: () => Promise<AsyncIterator<Boolean>>;
 }
 
 export interface User {
@@ -1201,7 +1207,25 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   email: () => Promise<String>;
   password: () => Promise<String>;
   bio: () => Promise<String>;
+  hashtags: <T = FragmentableArray<Hashtag>>(args?: {
+    where?: HashtagWhereInput;
+    orderBy?: HashtagOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   stories: <T = FragmentableArray<Story>>(args?: {
+    where?: StoryWhereInput;
+    orderBy?: StoryOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  drafts: <T = FragmentableArray<Story>>(args?: {
     where?: StoryWhereInput;
     orderBy?: StoryOrderByInput;
     skip?: Int;
@@ -1213,15 +1237,6 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   favoriteStories: <T = FragmentableArray<Story>>(args?: {
     where?: StoryWhereInput;
     orderBy?: StoryOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  hashtags: <T = FragmentableArray<Hashtag>>(args?: {
-    where?: HashtagWhereInput;
-    orderBy?: HashtagOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -1256,7 +1271,25 @@ export interface UserSubscription
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   bio: () => Promise<AsyncIterator<String>>;
+  hashtags: <T = Promise<AsyncIterator<HashtagSubscription>>>(args?: {
+    where?: HashtagWhereInput;
+    orderBy?: HashtagOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   stories: <T = Promise<AsyncIterator<StorySubscription>>>(args?: {
+    where?: StoryWhereInput;
+    orderBy?: StoryOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  drafts: <T = Promise<AsyncIterator<StorySubscription>>>(args?: {
     where?: StoryWhereInput;
     orderBy?: StoryOrderByInput;
     skip?: Int;
@@ -1268,15 +1301,6 @@ export interface UserSubscription
   favoriteStories: <T = Promise<AsyncIterator<StorySubscription>>>(args?: {
     where?: StoryWhereInput;
     orderBy?: StoryOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  hashtags: <T = Promise<AsyncIterator<HashtagSubscription>>>(args?: {
-    where?: HashtagWhereInput;
-    orderBy?: HashtagOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -1311,7 +1335,25 @@ export interface UserNullablePromise
   email: () => Promise<String>;
   password: () => Promise<String>;
   bio: () => Promise<String>;
+  hashtags: <T = FragmentableArray<Hashtag>>(args?: {
+    where?: HashtagWhereInput;
+    orderBy?: HashtagOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   stories: <T = FragmentableArray<Story>>(args?: {
+    where?: StoryWhereInput;
+    orderBy?: StoryOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  drafts: <T = FragmentableArray<Story>>(args?: {
     where?: StoryWhereInput;
     orderBy?: StoryOrderByInput;
     skip?: Int;
@@ -1323,15 +1365,6 @@ export interface UserNullablePromise
   favoriteStories: <T = FragmentableArray<Story>>(args?: {
     where?: StoryWhereInput;
     orderBy?: StoryOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  hashtags: <T = FragmentableArray<Hashtag>>(args?: {
-    where?: HashtagWhereInput;
-    orderBy?: HashtagOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -1358,69 +1391,45 @@ export interface UserNullablePromise
   }) => T;
 }
 
-export interface HashtagConnection {
-  pageInfo: PageInfo;
-  edges: HashtagEdge[];
+export interface StorySubscriptionPayload {
+  mutation: MutationType;
+  node: Story;
+  updatedFields: String[];
+  previousValues: StoryPreviousValues;
 }
 
-export interface HashtagConnectionPromise
-  extends Promise<HashtagConnection>,
+export interface StorySubscriptionPayloadPromise
+  extends Promise<StorySubscriptionPayload>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<HashtagEdge>>() => T;
-  aggregate: <T = AggregateHashtagPromise>() => T;
+  mutation: () => Promise<MutationType>;
+  node: <T = StoryPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = StoryPreviousValuesPromise>() => T;
 }
 
-export interface HashtagConnectionSubscription
-  extends Promise<AsyncIterator<HashtagConnection>>,
+export interface StorySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<StorySubscriptionPayload>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<HashtagEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateHashtagSubscription>() => T;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = StorySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = StoryPreviousValuesSubscription>() => T;
 }
 
-export interface StoryPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  title: String;
-  content: String;
-  published: Boolean;
+export interface AggregateUser {
+  count: Int;
 }
 
-export interface StoryPreviousValuesPromise
-  extends Promise<StoryPreviousValues>,
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
-  published: () => Promise<Boolean>;
+  count: () => Promise<Int>;
 }
 
-export interface StoryPreviousValuesSubscription
-  extends Promise<AsyncIterator<StoryPreviousValues>>,
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  title: () => Promise<AsyncIterator<String>>;
-  content: () => Promise<AsyncIterator<String>>;
-  published: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface Story {
@@ -1624,78 +1633,47 @@ export interface StoryNullablePromise
   published: () => Promise<Boolean>;
 }
 
-export interface UserEdge {
-  node: User;
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface StoryEdge {
+  node: Story;
   cursor: String;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
+export interface StoryEdgePromise extends Promise<StoryEdge>, Fragmentable {
+  node: <T = StoryPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface StoryEdgeSubscription
+  extends Promise<AsyncIterator<StoryEdge>>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
+  node: <T = StorySubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateHashtag {
-  count: Int;
-}
-
-export interface AggregateHashtagPromise
-  extends Promise<AggregateHashtag>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateHashtagSubscription
-  extends Promise<AsyncIterator<AggregateHashtag>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateStory {
-  count: Int;
-}
-
-export interface AggregateStoryPromise
-  extends Promise<AggregateStory>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateStorySubscription
-  extends Promise<AsyncIterator<AggregateStory>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface StoryConnection {
-  pageInfo: PageInfo;
-  edges: StoryEdge[];
-}
-
-export interface StoryConnectionPromise
-  extends Promise<StoryConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<StoryEdge>>() => T;
-  aggregate: <T = AggregateStoryPromise>() => T;
-}
-
-export interface StoryConnectionSubscription
-  extends Promise<AsyncIterator<StoryConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<StoryEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateStorySubscription>() => T;
 }
 
 export interface HashtagPreviousValues {
   id: ID_Output;
+  createdAt: DateTimeOutput;
   name: String;
 }
 
@@ -1703,6 +1681,7 @@ export interface HashtagPreviousValuesPromise
   extends Promise<HashtagPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
   name: () => Promise<String>;
 }
 
@@ -1710,6 +1689,7 @@ export interface HashtagPreviousValuesSubscription
   extends Promise<AsyncIterator<HashtagPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   name: () => Promise<AsyncIterator<String>>;
 }
 
@@ -1740,11 +1720,13 @@ export interface HashtagSubscriptionPayloadSubscription
 
 export interface Hashtag {
   id: ID_Output;
+  createdAt: DateTimeOutput;
   name: String;
 }
 
 export interface HashtagPromise extends Promise<Hashtag>, Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
   name: () => Promise<String>;
 }
 
@@ -1752,6 +1734,7 @@ export interface HashtagSubscription
   extends Promise<AsyncIterator<Hashtag>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   name: () => Promise<AsyncIterator<String>>;
 }
 
@@ -1759,121 +1742,95 @@ export interface HashtagNullablePromise
   extends Promise<Hashtag | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
   name: () => Promise<String>;
 }
 
-export interface HashtagEdge {
-  node: Hashtag;
-  cursor: String;
-}
-
-export interface HashtagEdgePromise extends Promise<HashtagEdge>, Fragmentable {
-  node: <T = HashtagPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface HashtagEdgeSubscription
-  extends Promise<AsyncIterator<HashtagEdge>>,
-    Fragmentable {
-  node: <T = HashtagSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface StoryEdge {
-  node: Story;
-  cursor: String;
-}
-
-export interface StoryEdgePromise extends Promise<StoryEdge>, Fragmentable {
-  node: <T = StoryPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface StoryEdgeSubscription
-  extends Promise<AsyncIterator<StoryEdge>>,
-    Fragmentable {
-  node: <T = StorySubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
-}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface AggregateUser {
+export interface AggregateHashtag {
   count: Int;
 }
 
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
+export interface AggregateHashtagPromise
+  extends Promise<AggregateHashtag>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
+export interface AggregateHashtagSubscription
+  extends Promise<AsyncIterator<AggregateHashtag>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-/*
-DateTime scalar input type, allowing Date
-*/
-export type DateTimeInput = Date | string;
+export interface StoryConnection {
+  pageInfo: PageInfo;
+  edges: StoryEdge[];
+}
 
-/*
-DateTime scalar output type, which is always a string
-*/
-export type DateTimeOutput = string;
+export interface StoryConnectionPromise
+  extends Promise<StoryConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<StoryEdge>>() => T;
+  aggregate: <T = AggregateStoryPromise>() => T;
+}
 
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
-*/
-export type Int = number;
+export interface StoryConnectionSubscription
+  extends Promise<AsyncIterator<StoryConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<StoryEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateStorySubscription>() => T;
+}
 
-export type Long = string;
+export interface AggregateStory {
+  count: Int;
+}
+
+export interface AggregateStoryPromise
+  extends Promise<AggregateStory>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateStorySubscription
+  extends Promise<AsyncIterator<AggregateStory>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
 
 /*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
@@ -1887,9 +1844,26 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
+DateTime scalar input type, allowing Date
+*/
+export type DateTimeInput = Date | string;
+
+/*
+DateTime scalar output type, which is always a string
+*/
+export type DateTimeOutput = string;
+
+/*
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
+
+export type Long = string;
 
 /**
  * Model Metadata

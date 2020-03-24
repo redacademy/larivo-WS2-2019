@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   Text,
   SafeAreaView,
@@ -16,45 +16,77 @@ import NameInitials from '../../components/NameInitials/NameInitials'
 import StoryTitle from '../../components/StoryTitle'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import StoryDate from '../../components/StoryDate/StoryDate'
+import LeftArrow from '../../components/LeftArrow/LeftArrow'
+import {useFollowUser} from '../../hooks'
+import {useAuth} from '../../hooks'
+import FollowIcon from '../../../assets/icons/follow_icon.svg'
+import FollowingIcon from '../../../assets/icons/following_icon.svg'
 
 const UserProfile = ({route, navigation}) => {
   const {id: userId} = route.params
+  const {user: currentUser} = useAuth()
+  const [followUser] = useFollowUser()
   const {error, loading, user} = getUserById(userId)
-  console.log(user)
+  const [isFollowing, setIsFollowing] = useState(false)
+
+  const handleFollowUser = () => {
+    followUser({variables: {id: userId}})
+    setIsFollowing(true)
+  }
+
+  // const handleUnFollowUser = () => {
+  //   unFollowUser({variables: {id: userId}})
+  //   setIsFollowing(false)
+  // }
+
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
 
   return (
-    <SafeAreaView>
-      <Text onPress={() => navigation.goBack()}>x</Text>
-      <SafeAreaView style={styles.header}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.backArrow}>
+          <LeftArrow onPress={() => navigation.goBack()} />
+        </View>
         <View style={styles.headerContainer}>
           <View style={styles.titleContainer}>
             <NameInitials>{user.userName}</NameInitials>
             <View style={styles.followsContainer}>
-              <Text style={styles.numbers}>53</Text>
+              <Text style={styles.numbers}>
+                {user.stories.length}
+              </Text>
               <Text style={styles.textFollow}>Stories</Text>
             </View>
             <View style={styles.followsContainer}>
-              <Text style={styles.numbers}>64.5K</Text>
+              <Text style={styles.numbers}>
+                {user.followers.length}
+              </Text>
               <Text style={styles.textFollow}>Followers</Text>
             </View>
             <View style={styles.followsContainer}>
-              <Text style={styles.numbers}>1247</Text>
+              <Text style={styles.numbers}>
+                {user.following.length}
+              </Text>
               <Text style={styles.textFollow}>Following</Text>
             </View>
           </View>
 
           <View style={styles.titleContainer}>
-            <StoryTitle>{user.userName}</StoryTitle>
+            <View style={styles.profile_follow}>
+              <StoryTitle>{user.userName}</StoryTitle>
+              <TouchableOpacity onPress={handleFollowUser}>
+                {isFollowing ? <FollowingIcon /> : <FollowIcon />}
+              </TouchableOpacity>
+            </View>
           </View>
           <Paragraph>{user.bio || 'lorem'}</Paragraph>
         </View>
-      </SafeAreaView>
+      </View>
 
       {user.stories && user.stories.length ? (
         <FlatList
           data={user.stories}
+          style={styles.profile_stories}
           renderItem={({item: {id, title, createdAt, content}}) => {
             const {text: readTime} = readingTime(content)
             return (
@@ -68,12 +100,7 @@ const UserProfile = ({route, navigation}) => {
                   )
                 }
               >
-                <View
-                  style={{
-                    borderBottomColor: '#000',
-                    borderBottomWidth: 1,
-                  }}
-                >
+                <View style={styles.profile_lists}>
                   <StoryTitle>{title}</StoryTitle>
                   <StoryDate>
                     {createdAt} | {readTime}
@@ -86,7 +113,9 @@ const UserProfile = ({route, navigation}) => {
           keyExtractor={item => item.id}
         />
       ) : (
-        <Text>no stories</Text>
+        <View style={styles.no_results_container}>
+          <Text style={styles.no_results_text}>No stories yet</Text>
+        </View>
       )}
     </SafeAreaView>
   )

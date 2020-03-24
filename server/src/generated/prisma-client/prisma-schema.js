@@ -23,6 +23,7 @@ scalar DateTime
 
 type Hashtag {
   id: ID!
+  createdAt: DateTime!
   name: String!
 }
 
@@ -50,12 +51,15 @@ type HashtagEdge {
 enum HashtagOrderByInput {
   id_ASC
   id_DESC
+  createdAt_ASC
+  createdAt_DESC
   name_ASC
   name_DESC
 }
 
 type HashtagPreviousValues {
   id: ID!
+  createdAt: DateTime!
   name: String!
 }
 
@@ -74,6 +78,14 @@ input HashtagScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   name: String
   name_not: String
   name_in: [String!]
@@ -170,6 +182,14 @@ input HashtagWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   name: String
   name_not: String
   name_in: [String!]
@@ -269,7 +289,7 @@ type StoryConnection {
 
 input StoryCreateInput {
   id: ID
-  author: UserCreateOneWithoutStoriesInput!
+  author: UserCreateOneInput!
   title: String!
   content: String!
   hashtags: HashtagCreateManyInput
@@ -284,24 +304,6 @@ input StoryCreateInput {
 input StoryCreateManyInput {
   create: [StoryCreateInput!]
   connect: [StoryWhereUniqueInput!]
-}
-
-input StoryCreateManyWithoutAuthorInput {
-  create: [StoryCreateWithoutAuthorInput!]
-  connect: [StoryWhereUniqueInput!]
-}
-
-input StoryCreateWithoutAuthorInput {
-  id: ID
-  title: String!
-  content: String!
-  hashtags: HashtagCreateManyInput
-  likes: UserCreateManyInput
-  loves: UserCreateManyInput
-  neutrals: UserCreateManyInput
-  sads: UserCreateManyInput
-  claps: UserCreateManyInput
-  published: Boolean
 }
 
 type StoryEdge {
@@ -407,7 +409,7 @@ input StorySubscriptionWhereInput {
 }
 
 input StoryUpdateDataInput {
-  author: UserUpdateOneRequiredWithoutStoriesInput
+  author: UserUpdateOneRequiredInput
   title: String
   content: String
   hashtags: HashtagUpdateManyInput
@@ -420,7 +422,7 @@ input StoryUpdateDataInput {
 }
 
 input StoryUpdateInput {
-  author: UserUpdateOneRequiredWithoutStoriesInput
+  author: UserUpdateOneRequiredInput
   title: String
   content: String
   hashtags: HashtagUpdateManyInput
@@ -456,33 +458,9 @@ input StoryUpdateManyMutationInput {
   published: Boolean
 }
 
-input StoryUpdateManyWithoutAuthorInput {
-  create: [StoryCreateWithoutAuthorInput!]
-  delete: [StoryWhereUniqueInput!]
-  connect: [StoryWhereUniqueInput!]
-  set: [StoryWhereUniqueInput!]
-  disconnect: [StoryWhereUniqueInput!]
-  update: [StoryUpdateWithWhereUniqueWithoutAuthorInput!]
-  upsert: [StoryUpsertWithWhereUniqueWithoutAuthorInput!]
-  deleteMany: [StoryScalarWhereInput!]
-  updateMany: [StoryUpdateManyWithWhereNestedInput!]
-}
-
 input StoryUpdateManyWithWhereNestedInput {
   where: StoryScalarWhereInput!
   data: StoryUpdateManyDataInput!
-}
-
-input StoryUpdateWithoutAuthorDataInput {
-  title: String
-  content: String
-  hashtags: HashtagUpdateManyInput
-  likes: UserUpdateManyInput
-  loves: UserUpdateManyInput
-  neutrals: UserUpdateManyInput
-  sads: UserUpdateManyInput
-  claps: UserUpdateManyInput
-  published: Boolean
 }
 
 input StoryUpdateWithWhereUniqueNestedInput {
@@ -490,21 +468,10 @@ input StoryUpdateWithWhereUniqueNestedInput {
   data: StoryUpdateDataInput!
 }
 
-input StoryUpdateWithWhereUniqueWithoutAuthorInput {
-  where: StoryWhereUniqueInput!
-  data: StoryUpdateWithoutAuthorDataInput!
-}
-
 input StoryUpsertWithWhereUniqueNestedInput {
   where: StoryWhereUniqueInput!
   update: StoryUpdateDataInput!
   create: StoryCreateInput!
-}
-
-input StoryUpsertWithWhereUniqueWithoutAuthorInput {
-  where: StoryWhereUniqueInput!
-  update: StoryUpdateWithoutAuthorDataInput!
-  create: StoryCreateWithoutAuthorInput!
 }
 
 input StoryWhereInput {
@@ -600,9 +567,10 @@ type User {
   email: String!
   password: String!
   bio: String
-  stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
-  favoriteStories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
   hashtags(where: HashtagWhereInput, orderBy: HashtagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hashtag!]
+  stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
+  drafts(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
+  favoriteStories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
   following(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   followers(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
 }
@@ -619,9 +587,10 @@ input UserCreateInput {
   email: String!
   password: String!
   bio: String
-  stories: StoryCreateManyWithoutAuthorInput
-  favoriteStories: StoryCreateManyInput
   hashtags: HashtagCreateManyInput
+  stories: StoryCreateManyInput
+  drafts: StoryCreateManyInput
+  favoriteStories: StoryCreateManyInput
   following: UserCreateManyWithoutFollowingInput
   followers: UserCreateManyWithoutFollowersInput
 }
@@ -641,8 +610,8 @@ input UserCreateManyWithoutFollowingInput {
   connect: [UserWhereUniqueInput!]
 }
 
-input UserCreateOneWithoutStoriesInput {
-  create: UserCreateWithoutStoriesInput
+input UserCreateOneInput {
+  create: UserCreateInput
   connect: UserWhereUniqueInput
 }
 
@@ -652,9 +621,10 @@ input UserCreateWithoutFollowersInput {
   email: String!
   password: String!
   bio: String
-  stories: StoryCreateManyWithoutAuthorInput
-  favoriteStories: StoryCreateManyInput
   hashtags: HashtagCreateManyInput
+  stories: StoryCreateManyInput
+  drafts: StoryCreateManyInput
+  favoriteStories: StoryCreateManyInput
   following: UserCreateManyWithoutFollowingInput
 }
 
@@ -664,21 +634,10 @@ input UserCreateWithoutFollowingInput {
   email: String!
   password: String!
   bio: String
-  stories: StoryCreateManyWithoutAuthorInput
-  favoriteStories: StoryCreateManyInput
   hashtags: HashtagCreateManyInput
-  followers: UserCreateManyWithoutFollowersInput
-}
-
-input UserCreateWithoutStoriesInput {
-  id: ID
-  userName: String
-  email: String!
-  password: String!
-  bio: String
+  stories: StoryCreateManyInput
+  drafts: StoryCreateManyInput
   favoriteStories: StoryCreateManyInput
-  hashtags: HashtagCreateManyInput
-  following: UserCreateManyWithoutFollowingInput
   followers: UserCreateManyWithoutFollowersInput
 }
 
@@ -807,9 +766,10 @@ input UserUpdateDataInput {
   email: String
   password: String
   bio: String
-  stories: StoryUpdateManyWithoutAuthorInput
-  favoriteStories: StoryUpdateManyInput
   hashtags: HashtagUpdateManyInput
+  stories: StoryUpdateManyInput
+  drafts: StoryUpdateManyInput
+  favoriteStories: StoryUpdateManyInput
   following: UserUpdateManyWithoutFollowingInput
   followers: UserUpdateManyWithoutFollowersInput
 }
@@ -819,9 +779,10 @@ input UserUpdateInput {
   email: String
   password: String
   bio: String
-  stories: StoryUpdateManyWithoutAuthorInput
-  favoriteStories: StoryUpdateManyInput
   hashtags: HashtagUpdateManyInput
+  stories: StoryUpdateManyInput
+  drafts: StoryUpdateManyInput
+  favoriteStories: StoryUpdateManyInput
   following: UserUpdateManyWithoutFollowingInput
   followers: UserUpdateManyWithoutFollowersInput
 }
@@ -881,10 +842,10 @@ input UserUpdateManyWithWhereNestedInput {
   data: UserUpdateManyDataInput!
 }
 
-input UserUpdateOneRequiredWithoutStoriesInput {
-  create: UserCreateWithoutStoriesInput
-  update: UserUpdateWithoutStoriesDataInput
-  upsert: UserUpsertWithoutStoriesInput
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
   connect: UserWhereUniqueInput
 }
 
@@ -893,9 +854,10 @@ input UserUpdateWithoutFollowersDataInput {
   email: String
   password: String
   bio: String
-  stories: StoryUpdateManyWithoutAuthorInput
-  favoriteStories: StoryUpdateManyInput
   hashtags: HashtagUpdateManyInput
+  stories: StoryUpdateManyInput
+  drafts: StoryUpdateManyInput
+  favoriteStories: StoryUpdateManyInput
   following: UserUpdateManyWithoutFollowingInput
 }
 
@@ -904,20 +866,10 @@ input UserUpdateWithoutFollowingDataInput {
   email: String
   password: String
   bio: String
-  stories: StoryUpdateManyWithoutAuthorInput
-  favoriteStories: StoryUpdateManyInput
   hashtags: HashtagUpdateManyInput
-  followers: UserUpdateManyWithoutFollowersInput
-}
-
-input UserUpdateWithoutStoriesDataInput {
-  userName: String
-  email: String
-  password: String
-  bio: String
+  stories: StoryUpdateManyInput
+  drafts: StoryUpdateManyInput
   favoriteStories: StoryUpdateManyInput
-  hashtags: HashtagUpdateManyInput
-  following: UserUpdateManyWithoutFollowingInput
   followers: UserUpdateManyWithoutFollowersInput
 }
 
@@ -936,9 +888,9 @@ input UserUpdateWithWhereUniqueWithoutFollowingInput {
   data: UserUpdateWithoutFollowingDataInput!
 }
 
-input UserUpsertWithoutStoriesInput {
-  update: UserUpdateWithoutStoriesDataInput!
-  create: UserCreateWithoutStoriesInput!
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
 }
 
 input UserUpsertWithWhereUniqueNestedInput {
@@ -1030,15 +982,18 @@ input UserWhereInput {
   bio_not_starts_with: String
   bio_ends_with: String
   bio_not_ends_with: String
-  stories_every: StoryWhereInput
-  stories_some: StoryWhereInput
-  stories_none: StoryWhereInput
-  favoriteStories_every: StoryWhereInput
-  favoriteStories_some: StoryWhereInput
-  favoriteStories_none: StoryWhereInput
   hashtags_every: HashtagWhereInput
   hashtags_some: HashtagWhereInput
   hashtags_none: HashtagWhereInput
+  stories_every: StoryWhereInput
+  stories_some: StoryWhereInput
+  stories_none: StoryWhereInput
+  drafts_every: StoryWhereInput
+  drafts_some: StoryWhereInput
+  drafts_none: StoryWhereInput
+  favoriteStories_every: StoryWhereInput
+  favoriteStories_some: StoryWhereInput
+  favoriteStories_none: StoryWhereInput
   following_every: UserWhereInput
   following_some: UserWhereInput
   following_none: UserWhereInput

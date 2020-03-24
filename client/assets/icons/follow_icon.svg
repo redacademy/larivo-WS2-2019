@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="78px" height="28px" viewBox="0 0 78 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+    <title>994D1613-3F0B-45C5-97F6-F373E65C9074@3x</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="72" height="22" rx="11"></rect>
+        <filter x="-5.6%" y="-18.2%" width="113.9%" height="145.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Other-User's-Profile" transform="translate(-274.000000, -79.000000)">
+            <g id="Other-User-Profile-Info">
+                <g id="Follow-Icon" transform="translate(276.000000, 81.000000)">
+                    <g id="Rectangle">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#F1FFFE" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <text id="Follow" font-family="SFProText-Regular, SF Pro Text" font-size="13" font-weight="normal" letter-spacing="-0.66" fill="#1E6A62">
+                        <tspan x="18.3974805" y="15">Follow</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

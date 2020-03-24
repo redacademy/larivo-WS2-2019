@@ -98,7 +98,11 @@ const StoryForm = ({navigation}) => {
             onSubmitEditing={handleTags}
           />
           <View style={styles.buttonContainer}>
-            <Button onPress={handlePublish} theme="dark">
+            <Button
+              disabled={!title || !content || tags.length < 0}
+              onPress={handlePublish}
+              theme="dark"
+            >
               PUBLISH
             </Button>
             <Button onPress={handleDraft}>Save As Draft</Button>
