@@ -18,6 +18,12 @@ const SIGN_UP = gql`
         userName
         email
         bio
+        following {
+          id
+        }
+        followers {
+          id
+        }
       }
       token
     }
@@ -31,6 +37,12 @@ const LOG_IN = gql`
         userName
         email
         bio
+        following {
+          id
+        }
+        followers {
+          id
+        }
       }
       token
     }
@@ -138,6 +150,14 @@ const DELETE_USER = gql`
   }
 `
 
+const FOLLOW_USER = gql`
+  mutation followUser($id: String!) {
+    followUser(id: $id) {
+      id
+    }
+  }
+`
+
 // const UPDATE_PASSWORD = gql`
 //   mutation updatePassword($email: String!) {
 //     updateBio(email: $email) {
@@ -157,5 +177,6 @@ export {
   UPDATE_BIO,
   UPDATE_USERNAME,
   UPDATE_EMAIL,
+  FOLLOW_USER,
   DELETE_USER,
 }
