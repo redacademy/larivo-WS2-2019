@@ -13,12 +13,14 @@ const Query = {
   },
 
   async userFeed(parent, args, context) {
-    const id = getUserId(context)
-    const stories = await context.prisma.user({ id }).stories()
+    const userId = getUserId(context)
     const where = {
       published: true,
-      id_not_in: stories.map(story => story.id)
+      author: {
+        id_not_in: userId
+      }
     }
+
     return context.prisma.stories({
       where,
       orderBy: 'createdAt_DESC',
@@ -56,8 +58,10 @@ const Query = {
   },
 
   searchedUsers(parent, { query }, context) {
+    const userId = getUserId(context)
     return context.prisma.users({
       where: {
+        id_not_in: userId,
         userName_contains: query
       }
     })
