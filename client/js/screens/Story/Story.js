@@ -1,21 +1,29 @@
 import React from 'react'
-import {Text, SafeAreaView, Button, FlatList, ScrollView, View} from 'react-native'
-import {getStoryById} from '../../hooks'
-import {useFavoriteStory} from '../../hooks'
+import { Text, SafeAreaView, Button, FlatList, ScrollView, View } from 'react-native'
+import { getStoryById } from '../../hooks'
+import { useFavoriteStory } from '../../hooks'
 import styles from './styles'
-import {Spinner} from '../../components/Spinner'
-import {NetWorkError} from '../../components/FourOhFour'
-import {Card} from '../../components/Card'
+import { Spinner } from '../../components/Spinner'
+import { NetWorkError } from '../../components/FourOhFour'
+import { Card } from '../../components/Card'
 import Hashtag from '../../components/Hashtag'
+import BookmarkIcon from '../../../assets/icons/login/icon-bookmark-active.svg'
+import Like from '../../../assets/icons/reactions/icon-reactions-thumbs_up-inactive.svg'
+import Heart from '../../../assets/icons/reactions/icon-reactions-heart-inactive.svg'
+import Sad from '../../../assets/icons/reactions/icon-reactions-sad-inactive.svg'
+import Speechless from '../../../assets/icons/reactions/icon-reactions-speechless-inactive.svg'
+import Clap from '../../../assets/icons/reactions/icon-reactions-high_five-inactive.svg'
+import FormattedDate from '../../components/FormattedDate'
+import CardHashtag from '../../components/CardHashtag'
 
-const Story = ({route, navigation}) => {
-  const {id: storyId} = route.params
+const Story = ({ route, navigation }) => {
+  const { id: storyId } = route.params
   const [favoriteStory] = useFavoriteStory()
-  const {error, loading, story} = getStoryById(storyId)
+  const { error, loading, story } = getStoryById(storyId)
   console.log(story)
 
   const handleFavoriteStory = () =>
-    favoriteStory({variables: {id: storyId}})
+    favoriteStory({ variables: { id: storyId } })
 
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
@@ -23,63 +31,50 @@ const Story = ({route, navigation}) => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.backIcon} onPress={() => navigation.goBack()}>x</Text>
       <ScrollView>
-      <View style={styles.card}>
-      
-        <View style={styles.bookmarkIcon}>
-          <BookmarkIcon />
-        </View>
-        
-        <View style={styles.content}>
-          <Text style={styles.title}>{title}</Text> 
+        <View style={styles.card}>
 
-          <Text style={styles.createdAt}>
-          {formatDate(createdAt)}  |  {readTime}</Text>
-          <Text style={styles.body} numberOfLines={2}>{content}</Text>
-          
-          <View style={styles.hashtagContainer}>
-            {hashtags.map((hashtag, i)=>{
-              if (i < 2){
-                return(
-                  <CardHashtag key={i}>{hashtag.name}</CardHashtag>
-                )}})}
-            {hashtags.length > 2 ? 
-              // <TouchableOpacity>
-                <ContinueIcon fill={'#1E6A62'} 
-                style={styles.continueIcon}
-                />
-              // </TouchableOpacity> 
-              : null
-            }
+          <View style={styles.bookmarkIcon}>
+            <BookmarkIcon />
           </View>
 
-          <View style={styles.reactionsContainer}>
-            <Like style={styles.reactions}/>
-            <Heart style={styles.reactions}/>
-            <Sad style={styles.reactions}/>
-            <Speechless style={styles.reactions}/>
-            <Clap style={styles.reactions}/>
-            <Text style={styles.body}>{'9999'}</Text>
-          </View>
+          <View style={styles.content}>
+            <Text style={styles.title}>{story.title}</Text>
+            <Text style={styles.createdAt}>{story.author.userName.toUpperCase()}</Text>
+            <Text style={styles.createdAt}>
+              <FormattedDate createdAt={story.createdAt} />  |  {story.readTime}</Text>
+            <Text style={styles.body}>{story.content}</Text>
 
+            <View style={styles.hashtagContainer}>
+              {story.hashtags.map((tag) => {
+                return (
+                  <CardHashtag key={tag.id}>{tag.name}</CardHashtag>
+                )
+              })}
+            </View>
+          </View>
         </View>
-      </View>
-      {/* <View style={styles.card}>
-        <Text style={styles.text}>{story.title}</Text>
-        <Text style={styles.text}>{story.createdAt}</Text>
-        <Text style={styles.text}>{story.author.userName}</Text>
-        <Text style={styles.text}>{story.content}</Text>
-        <FlatList
-          data={story.hashtags}
-          numColumns="4"
-          renderItem={({item}) => (
-            <Hashtag key={item.id} disabled>
-              {item.name}
-            </Hashtag>
-          )}
-          keyExtractor={item => item}
-        />
-        <Button onPress={handleFavoriteStory} title="Bookmark" />
-      </View> */}
+        <View style={styles.reactionsContainer}>
+          <View style={styles.reactText} >
+            <Like style={styles.reactions} />
+            <Text style={styles.body}>{'99'}</Text>
+          </View>
+          <View style={styles.reactText} >
+            <Heart style={styles.reactions} />
+            <Text style={styles.body}>{'99'}</Text>
+          </View>
+          <View style={styles.reactText} >
+            <Sad style={styles.reactions} />
+            <Text style={styles.body}>{'99'}</Text>
+          </View>
+          <View style={styles.reactText} >
+            <Speechless style={styles.reactions} />
+            <Text style={styles.body}>{'99'}</Text>
+          </View>
+          <View style={styles.reactText} >
+            <Clap style={styles.reactions} />
+            <Text style={styles.body}>{'99'}</Text>
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   )

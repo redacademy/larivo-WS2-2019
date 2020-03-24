@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 20,
     marginTop: 40,
-    marginLeft: 20
+    marginLeft: 20,
+    zIndex: 100
   },
   text: {
     color: '#333',
@@ -72,10 +73,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#13443C",
     fontFamily: "SFProText-Bold",
-    marginTop: 20,
-    marginLeft: 45,
+    // marginTop: 20,
+    // marginLeft: 45,
     // marginBottom: 4,
-    marginBottom: 18,
+    marginBottom: 5,
   },
   createdAt: {
     fontSize: 15,
@@ -87,6 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: "#13443C",
     fontFamily: "SFProText-Regular",
+    marginTop: 5,
     marginBottom: 4
   },
   hashtagContainer: {
@@ -99,11 +101,13 @@ const styles = StyleSheet.create({
   },
   reactionsContainer: {
     flexDirection: 'row',
-    alignContent: 'flex-start',
-    justifyContent: 'flex-start',
+    alignContent: 'center',
+    justifyContent: 'space-between',
+    padding: 40
   },
   reactions: {
     marginRight: 7,
+    marginTop: 5,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -114,6 +118,11 @@ const styles = StyleSheet.create({
 
     //for android, shadows have problem
     // elevation: 2,
+  },
+  reactText: {
+    flexDirection: 'row',
+    alignContent: 'center',
+    justifyContent: 'center',
   }
 })
 

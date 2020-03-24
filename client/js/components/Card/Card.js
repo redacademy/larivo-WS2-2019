@@ -9,6 +9,7 @@ import Sad from '../../../assets/icons/reactions/icon-reactions-sad-inactive.svg
 import Speechless from '../../../assets/icons/reactions/icon-reactions-speechless-inactive.svg'
 import Clap from '../../../assets/icons/reactions/icon-reactions-high_five-inactive.svg'
 import BookmarkIcon from '../../../assets/icons/login/icon-bookmark-active.svg'
+import FormattedDate from '../../components/FormattedDate'
 
 import {
   TouchableOpacity,
@@ -63,7 +64,7 @@ const Card = ({
           <Text style={styles(theme).title}>{title}</Text> 
 
           <Text style={styles(theme).createdAt}>
-          {formatDate(createdAt)}  |  {readTime}</Text>
+          <FormattedDate createdAt={createdAt} />  |  {readTime}</Text>
           <Text style={styles(theme).body} numberOfLines={2}>{content}</Text>
           
           <View style={styles(theme).hashtagContainer}>
