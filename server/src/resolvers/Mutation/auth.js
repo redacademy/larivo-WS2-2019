@@ -91,7 +91,7 @@ const auth = {
   async followUser(parent, { id }, context) {
     const userId = getUserId(context)
 
-    context.prisma.updateUser({
+    await context.prisma.updateUser({
       where: { id: userId },
       data: {
         following: {
