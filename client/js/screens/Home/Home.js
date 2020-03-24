@@ -7,6 +7,7 @@ import {
   FlatList,
   TouchableOpacity,
   ScrollView,
+  View
 } from 'react-native'
 import {Card} from '../../components/Card'
 import {Header} from '../../components/Header'
@@ -51,11 +52,10 @@ const Home = ({navigation, route}) => {
           search={search}
         />
       ) : (
-        // <ScrollView>
         <FlatList
-          ListHeaderComponent={() => (
-            <Text style={styles.title}>Featured</Text>
-          )}
+          // ListHeaderComponent={() => (
+          //   <Text style={styles.title}>Featured</Text>
+          // )}
           // refreshing={networkStatus === 4}
           // onRefresh={() => refetch()}
           // onEndReached={() =>
@@ -78,26 +78,23 @@ const Home = ({navigation, route}) => {
             const {text: readTime} = readingTime(content)
             return (
               <TouchableOpacity
+              style={styles.cardContainer}
                 onPress={() => navigation.navigate('HomeStory', {id})}
               >
-                <Card key={id}>
-                  <Text>{author.userName}</Text>
-                  <Text>{createdAt}</Text>
-                  <Text>{readTime}</Text>
-                  <Text>{title}</Text>
-                  <Text>{content}</Text>
-                  {hashtags.map(tag => (
-                    <Hashtag key={tag.id} disabled>
-                      {tag.name}
-                    </Hashtag>
-                  ))}
-                </Card>
+                <Card
+                  userName={author.userName}
+                  createdAt={createdAt}
+                  readTime={readTime}
+                  title={title}
+                  content={content}
+                  hashtags={hashtags}
+                  bookmarked={null}
+                />
               </TouchableOpacity>
             )
           }}
           keyExtractor={item => item.id}
         />
-        // </ScrollView>
       )}
     </SafeAreaView>
   )
