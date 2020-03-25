@@ -21,10 +21,14 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   content: {
-    justifyContent: "center",
-    width: "90%",
+    textAlign: "left",
+    color: "#13443C",
+    width: "100%",
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
+    fontSize: 34,
+    fontFamily: "SFProText-Regular",
+    fontWeight: "bold"
   },
   cardImage: {
     alignSelf: "center",
@@ -37,6 +41,10 @@ const styles = StyleSheet.create({
     height: 1,
     width: "100%",
     backgroundColor: "#CED0CE"
+  },
+  item: {
+    paddingTop: 15,
+    paddingBottom: 0
   }
 });
 
