@@ -44,8 +44,9 @@ type Mutation {
   updateEmail(email: String!): User!
   updatePassword(password: String!): User!
   followUser(id: String!): User!
+  unFollowUser(id: String!): User!
   favoriteStory(id: String!): Story!
-  # like(id: String!): Story!
+  unFavoriteStory(id: String!): Story!
   deleteUser(email: String!): User!
 }
 

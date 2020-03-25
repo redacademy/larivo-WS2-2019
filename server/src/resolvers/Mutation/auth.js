@@ -107,6 +107,27 @@ const auth = {
         }
       }
     })
+  },
+
+  async unFollowUser(parent, { id }, context) {
+    const userId = getUserId(context)
+
+    await context.prisma.updateUser({
+      where: { id: userId },
+      data: {
+        following: {
+          disconnect: { id }
+        }
+      }
+    })
+    return context.prisma.updateUser({
+      where: { id },
+      data: {
+        followers: {
+          disconnect: { id: userId }
+        }
+      }
+    })
   }
 }
 

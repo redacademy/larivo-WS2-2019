@@ -5,14 +5,14 @@ import HomeTabIcon from '../../assets/icons/toolbar/icon-toolbar-home-active.svg
 import HomeTabInActiveIcon from '../../assets/icons/toolbar/icon-toolbar-home-inactive.svg'
 import ProfileInactiveIcon from '../../assets/icons/toolbar/icon-toolbar-profile-inactive.svg'
 import ProfileIcon from '../../assets/icons/toolbar/icon-toolbar-profile-active.svg'
-import {Guest, GuestAuth} from '../screens/Guest'
+import {Guest, GuestStory, GuestAuth} from '../screens/Guest'
 import {Story} from '../screens/Story'
 const GuestStack = createStackNavigator()
 
 const GuestStackScreen = () => (
   <GuestStack.Navigator mode="modal" headerMode="none">
     <GuestStack.Screen name="Guest" component={Guest} />
-    <GuestStack.Screen name="GuestStory" component={Story} />
+    <GuestStack.Screen name="GuestStory" component={GuestStory} />
   </GuestStack.Navigator>
 )
 

@@ -3,13 +3,13 @@ import readingTime from 'reading-time'
 import {View, Text, FlatList, TouchableOpacity} from 'react-native'
 import {USER_DRAFTS} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
-import {trimContent} from '../../utils'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 import StoryTitle from '../../components/StoryTitle'
 import StoryDate from '../../components/StoryDate'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import styles from './styles'
+import FormattedDate from '../../components/FormattedDate'
 
 const ProfileDraft = ({navigation}) => {
   const {loading, error, data} = useQuery(USER_DRAFTS)
@@ -31,9 +31,9 @@ const ProfileDraft = ({navigation}) => {
             <View style={styles.profile_lists}>
               <StoryTitle>{title}</StoryTitle>
               <StoryDate>
-                {createdAt} | {readTime}
+                <FormattedDate createdAt={createdAt} /> | {readTime}
               </StoryDate>
-              <Paragraph>{trimContent(content)}</Paragraph>
+              <Paragraph numberOfLines={3}>{content}</Paragraph>
             </View>
           </TouchableOpacity>
         )

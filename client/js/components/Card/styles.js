@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#f1fffe',
     width: '100%',
-    // padding: 14,
     marginTop: 14,
     borderRadius: 20,
     alignItems: 'center',

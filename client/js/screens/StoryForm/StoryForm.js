@@ -58,7 +58,6 @@ const StoryForm = ({navigation}) => {
         published: false,
       },
     })
-    console.log(title, content, tags)
     setTitle('')
     setContent('')
     setTags([])

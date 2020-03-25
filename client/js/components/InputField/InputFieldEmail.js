@@ -6,7 +6,6 @@ const InputFieldEmail = ({placeholder}) => {
   const [state, setState] = useState({})
 
   const validate = text => {
-    console.log(text)
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     if (reg.test(text) === false) {
       console.warn('Email is Not Correct')

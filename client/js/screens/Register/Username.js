@@ -16,7 +16,7 @@ const Username = ({route, navigation}) => {
   })
 
   const handleGenerate = () => {
-    fetch('https://randomuser.me/api/')
+    fetch('https://randomuser.me/api/?nat=us,dk,fr,gb')
       .then(response => response.json())
       .then(data =>
         data.results.map(item =>
@@ -34,7 +34,7 @@ const Username = ({route, navigation}) => {
   }
 
   useEffect(() => {
-    fetch('https://randomuser.me/api/')
+    fetch('https://randomuser.me/api/?nat=us,dk,fr,gb')
       .then(response => response.json())
       .then(data =>
         data.results.map(item =>

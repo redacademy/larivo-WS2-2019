@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 0,
     borderColor: '#13443C',
     paddingLeft: 30,
-    paddingRight: 30
+    paddingRight: 30,
   },
   settings_itemRow: {
     flexDirection: 'row',
@@ -22,14 +22,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   settings_itemText: {
-    // fontFamily: 'SFProText-Medium',
     fontSize: 16,
     color: '#1E6A62',
-    marginLeft: 20
+    marginLeft: 20,
   },
   settings_nextIcon: {
-    marginTop: 5
-  }
+    marginTop: 5,
+  },
 })
 
 export default styles

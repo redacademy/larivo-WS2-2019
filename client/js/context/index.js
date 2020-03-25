@@ -10,6 +10,7 @@ import client, {
   UPDATE_USERNAME,
   UPDATE_EMAIL,
   FOLLOW_USER,
+  UNFOLLOW_USER,
   DELETE_USER,
 } from './apollo'
 import AuthContext, {AuthContextProvider} from './auth'
@@ -27,6 +28,7 @@ export {
   UPDATE_USERNAME,
   UPDATE_EMAIL,
   FOLLOW_USER,
+  UNFOLLOW_USER,
   DELETE_USER,
   AuthContext,
   AuthContextProvider,

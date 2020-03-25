@@ -57,7 +57,7 @@ const Bio = ({navigation}) => {
           </View>
         </View>
       </ScrollView>
-      <Popup text="Bio updated!" show={show} />
+      <Popup text="Success!" show={show} />
     </SafeAreaView>
   )
 }

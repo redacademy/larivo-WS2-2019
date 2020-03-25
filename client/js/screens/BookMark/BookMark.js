@@ -6,13 +6,15 @@ import {
   View,
   FlatList,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native'
 import {StoryCard} from '../../components/StoryCard'
 import {Header} from '../../components/Header'
-import Hashtag from '../../components/Hashtag'
 import {useAuth} from '../../hooks'
-import {FILTERED_STORIES} from '../../context/apollo'
+import {
+  FILTERED_STORIES,
+  FOLLOWING_USER_STORIES,
+  USER_BOOKMARKS,
+} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
@@ -21,19 +23,44 @@ import {SearchTabs} from '../../navigation'
 const BookMark = ({navigation, route}) => {
   const [search, setSearch] = useState('')
   const {user} = useAuth()
+
   const {
-    loading,
-    error,
-    data,
-    refetch,
-    fetchMore,
-    networkStatus,
+    loading: loading_faves,
+    error: error_faves,
+    data: data_faves,
+  } = useQuery(USER_BOOKMARKS)
+
+  const {
+    loading: loading_filtered,
+    error: error_filtered,
+    data: data_filtered,
   } = useQuery(FILTERED_STORIES)
 
-  if (loading || typeof user === 'undefined') return <Spinner />
-  if (error) return <NetWorkError />
+  const {
+    loading: loading_following,
+    error: error_following,
+    data: data_following,
+  } = useQuery(FOLLOWING_USER_STORIES)
 
-  const {userName} = user.user
+  if (
+    loading_faves ||
+    loading_filtered ||
+    loading_following ||
+    typeof user === 'undefined'
+  )
+    return <Spinner />
+  if (error_faves || error_filtered || error_following)
+    return <NetWorkError />
+
+  const allData = [
+    ...data_faves.me.favoriteStories,
+    ...data_filtered.filteredStories,
+    ...data_following.me.following.reduce((acc, value) => {
+      return [...acc, ...value.stories]
+    }, []),
+  ]
+
+  const {userName, favoriteStories} = user.user
 
   return (
     <SafeAreaView style={styles.container}>
@@ -51,51 +78,37 @@ const BookMark = ({navigation, route}) => {
         />
       ) : (
         <View style={styles.listView}>
-        <FlatList
-          // ListHeaderComponent={() => (
-          //   <Text style={styles.title}>Featured</Text>
-          // )}
-          // refreshing={networkStatus === 4}
-          // onRefresh={() => refetch()}
-          // onEndReached={() =>
-          //   fetchMore({
-          //     updateQuery: (prev, {fetchMoreResult}) => {
-          //       if (!fetchMoreResult) return prev
-          //       return Object.assign({}, prev, {
-          //         userFeed: [
-          //           ...prev.userFeed,
-          //           ...fetchMoreResult.userFeed,
-          //         ],
-          //       })
-          //     },
-          //   })
-          // }
-          data={data.filteredStories}
-          renderItem={({
-            item: {id, author, title, createdAt, content, hashtags},
-          }) => {
-            const {text: readTime} = readingTime(content)
-            return (
-              <TouchableOpacity
-              style={styles.cardContainer}
-                onPress={() => navigation.navigate('HomeStory', {id})}
-              >
-                <StoryCard
-                  userName={author.userName}
-                  createdAt={createdAt}
-                  readTime={readTime}
-                  title={title}
-                  content={content}
-                  hashtags={hashtags}
-                  bookmarked={null}
-                />
-              </TouchableOpacity>
-
-            )
-          }}
-          keyExtractor={item => item.id}
-        />
-      </View>)}
+          <FlatList
+            data={allData}
+            renderItem={({
+              item: {id, author, title, createdAt, content, hashtags},
+            }) => {
+              const {text: readTime} = readingTime(content)
+              return (
+                <TouchableOpacity
+                  style={styles.cardContainer}
+                  onPress={() =>
+                    navigation.navigate('HomeStory', {id})
+                  }
+                >
+                  <StoryCard
+                    userName={author.userName}
+                    createdAt={createdAt}
+                    readTime={readTime}
+                    title={title}
+                    content={content}
+                    hashtags={hashtags}
+                    bookmarked={data_faves.me.favoriteStories.some(
+                      ({id: faveId}) => faveId === id,
+                    )}
+                  />
+                </TouchableOpacity>
+              )
+            }}
+            keyExtractor={item => item.id}
+          />
+        </View>
+      )}
     </SafeAreaView>
   )
 }

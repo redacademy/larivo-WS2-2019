@@ -6,15 +6,11 @@ import {
   View,
 } from 'react-native'
 import LeftArrow from '../../components/LeftArrow'
-import BellIcon from '../../../assets/icons/profile/icon-profile-bell.svg'
 import UserIcon from '../../../assets/icons/profile/icon-profile-user.svg'
-import DeleteIcon from '../../../assets/icons/profile/icon-profile-delete.svg'
-import PasswordIcon from '../../../assets/icons/profile/icon-profile-password.svg'
 import Button from '../../components/Button'
-
 import SettingItem from '../../components/SettingItem'
-
 import styles from './styles'
+import {useAuth} from '../../hooks'
 const items = [
   {
     id: 1,
@@ -22,15 +18,11 @@ const items = [
     text: 'Change Username',
     screen: 'ChangeUsername',
   },
-  {
-    id: 2,
-    icon: PasswordIcon,
-    text: 'Change Password',
-    screen: 'ChangePassword',
-  },
 ]
 
 const EditProfile = ({navigation}) => {
+  const {logout} = useAuth()
+
   return (
     <SafeAreaView>
       <View style={styles.settings_container}>
@@ -66,7 +58,9 @@ const EditProfile = ({navigation}) => {
 
         <View style={styles.setting_logout}>
           <View style={styles.setting_logoutBtn}>
-            <Button theme="dark">LOGOUT</Button>
+            <Button onPress={logout} theme="dark">
+              LOGOUT
+            </Button>
           </View>
         </View>
       </View>

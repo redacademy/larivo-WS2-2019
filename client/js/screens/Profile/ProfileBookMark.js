@@ -4,12 +4,12 @@ import readingTime from 'reading-time'
 import {USER_BOOKMARKS} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
-import {trimContent} from '../../utils'
 import {NetWorkError} from '../../components/FourOhFour'
 import StoryTitle from '../../components/StoryTitle'
 import StoryDate from '../../components/StoryDate'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import styles from './styles'
+import FormattedDate from '../../components/FormattedDate'
 
 const ProfileBookMark = ({navigation}) => {
   const {loading, error, data} = useQuery(USER_BOOKMARKS)
@@ -17,7 +17,6 @@ const ProfileBookMark = ({navigation}) => {
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
   const {favoriteStories} = data.me
-  console.log(favoriteStories)
 
   return favoriteStories && favoriteStories.length ? (
     <FlatList
@@ -34,9 +33,9 @@ const ProfileBookMark = ({navigation}) => {
             <View style={styles.profile_lists}>
               <StoryTitle>{title}</StoryTitle>
               <StoryDate>
-                {createdAt} | {readTime}
+                <FormattedDate createdAt={createdAt} /> | {readTime}
               </StoryDate>
-              <Paragraph>{trimContent(content)}</Paragraph>
+              <Paragraph numberOfLines={3}>{content}</Paragraph>
             </View>
           </TouchableOpacity>
         )

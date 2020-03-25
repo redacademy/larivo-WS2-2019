@@ -9,7 +9,6 @@ import {
 import readingTime from 'reading-time'
 import {getUserById} from '../../hooks'
 import {Spinner} from '../../components/Spinner'
-import {trimContent} from '../../utils'
 import {NetWorkError} from '../../components/FourOhFour'
 import styles from './styles'
 import NameInitials from '../../components/NameInitials/NameInitials'
@@ -17,30 +16,35 @@ import StoryTitle from '../../components/StoryTitle'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import StoryDate from '../../components/StoryDate/StoryDate'
 import LeftArrow from '../../components/LeftArrow/LeftArrow'
-import {useFollowUser} from '../../hooks'
+import {useFollowUser, useUnFollowUser} from '../../hooks'
+import {USER_HEADER_INFO} from '../../context/apollo'
+import {useQuery} from '@apollo/react-hooks'
 import {useAuth} from '../../hooks'
 import FollowIcon from '../../../assets/icons/follow_icon.svg'
 import FollowingIcon from '../../../assets/icons/following_icon.svg'
+import FormattedDate from '../../components/FormattedDate'
 
 const UserProfile = ({route, navigation}) => {
   const {id: userId} = route.params
   const {user: currentUser} = useAuth()
   const [followUser] = useFollowUser()
+  const [unFollowUser] = useUnFollowUser()
   const {error, loading, user} = getUserById(userId)
-  const [isFollowing, setIsFollowing] = useState(false)
+  const {
+    loading: loading_user,
+    error: error_user,
+    data: data_user,
+  } = useQuery(USER_HEADER_INFO)
 
   const handleFollowUser = () => {
-    followUser({variables: {id: userId}})
-    setIsFollowing(true)
+    data_user.me.following.some(({id}) => id === userId)
+      ? unFollowUser({variables: {id: userId}})
+      : followUser({variables: {id: userId}})
   }
 
-  // const handleUnFollowUser = () => {
-  //   unFollowUser({variables: {id: userId}})
-  //   setIsFollowing(false)
-  // }
-
-  if (loading) return <Spinner />
-  if (error) return <NetWorkError />
+  if (loading || loading_user || typeof user === 'undefined')
+    return <Spinner />
+  if (error || error_user) return <NetWorkError />
 
   return (
     <SafeAreaView style={styles.container}>
@@ -75,11 +79,17 @@ const UserProfile = ({route, navigation}) => {
             <View style={styles.profile_follow}>
               <StoryTitle>{user.userName}</StoryTitle>
               <TouchableOpacity onPress={handleFollowUser}>
-                {isFollowing ? <FollowingIcon /> : <FollowIcon />}
+                {data_user.me.following.some(
+                  ({id}) => id === userId,
+                ) ? (
+                  <FollowingIcon />
+                ) : (
+                  <FollowIcon />
+                )}
               </TouchableOpacity>
             </View>
           </View>
-          <Paragraph>{user.bio || 'lorem'}</Paragraph>
+          <Paragraph>{user.bio || 'Add your bio here'}</Paragraph>
         </View>
       </View>
 
@@ -103,9 +113,10 @@ const UserProfile = ({route, navigation}) => {
                 <View style={styles.profile_lists}>
                   <StoryTitle>{title}</StoryTitle>
                   <StoryDate>
-                    {createdAt} | {readTime}
+                    <FormattedDate createdAt={createdAt} /> |{' '}
+                    {readTime}
                   </StoryDate>
-                  <Paragraph>{trimContent(content)}</Paragraph>
+                  <Paragraph numberOfLines={3}>{content}</Paragraph>
                 </View>
               </TouchableOpacity>
             )

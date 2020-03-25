@@ -10,8 +10,7 @@ const GuestAuth = ({navigation}) => (
   <View style={styles.guestContainer}>
     <AuthIcon width={screenWidth} height={screenHeight / 2} />
     <Text style={styles.guestText}>
-      This page is only for users who have an account. Would you like
-      to sign up?
+      Sign up to access all features and content.
     </Text>
     <Button
       title="Sign Up"

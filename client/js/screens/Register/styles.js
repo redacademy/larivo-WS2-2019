@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Asap-SemiBold',
     color: '#13443C',
+    marginRight: 15,
   },
   userName: {
     paddingHorizontal: 20,
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     paddingBottom: 10,
+    paddingTop: 5,
     fontFamily: 'SFProText-Light',
     color: '#13443C',
     fontSize: 18,
@@ -40,7 +42,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Asap-SemiBold',
     color: '#13443C',
-    //   width: '80%',
     paddingHorizontal: 20,
     textAlign: 'center',
   },

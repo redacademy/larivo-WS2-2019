@@ -1,53 +1,80 @@
 import React from 'react'
-import { Text, SafeAreaView, Button, FlatList, ScrollView, View } from 'react-native'
-import { getStoryById } from '../../hooks'
-import { useFavoriteStory } from '../../hooks'
+import {
+  Text,
+  SafeAreaView,
+  ScrollView,
+  View,
+  TouchableOpacity,
+} from 'react-native'
+import {getStoryById} from '../../hooks'
+import {useFavoriteStory, useUnFavoriteStory} from '../../hooks'
 import styles from './styles'
-import { Spinner } from '../../components/Spinner'
-import { NetWorkError } from '../../components/FourOhFour'
-import BookmarkIcon from '../../../assets/icons/login/icon-bookmark-active.svg'
-import Like from '../../../assets/icons/reactions/icon-reactions-thumbs_up-inactive.svg'
-import Heart from '../../../assets/icons/reactions/icon-reactions-heart-inactive.svg'
-import Sad from '../../../assets/icons/reactions/icon-reactions-sad-inactive.svg'
-import Speechless from '../../../assets/icons/reactions/icon-reactions-speechless-inactive.svg'
-import Clap from '../../../assets/icons/reactions/icon-reactions-high_five-inactive.svg'
+import {Spinner} from '../../components/Spinner'
+import {NetWorkError} from '../../components/FourOhFour'
+import ActiveBookmarkIcon from '../../../assets/icons/login/icon-bookmark-active.svg'
+import InActiveBookmarkIcon from '../../../assets/icons/login/icon-bookmark-inactive.svg'
+import {USER_BOOKMARKS} from '../../context/apollo'
+import {useQuery} from '@apollo/react-hooks'
 import FormattedDate from '../../components/FormattedDate'
 import CardHashtag from '../../components/CardHashtag'
 import readingTime from 'reading-time'
+import LeftArrow from '../../components/LeftArrow/LeftArrow'
 
-const Story = ({ route, navigation }) => {
-  const { id: storyId } = route.params
+const Story = ({route, navigation}) => {
+  const {id: storyId} = route.params
   const [favoriteStory] = useFavoriteStory()
-  const { error, loading, story } = getStoryById(storyId)
-  console.log(story)
+  const [unFavoriteStory] = useUnFavoriteStory()
+  const {error, loading, story} = getStoryById(storyId)
+  const {
+    loading: loading_faves,
+    error: error_faves,
+    data: data_faves,
+  } = useQuery(USER_BOOKMARKS)
 
   const handleFavoriteStory = () =>
-    favoriteStory({ variables: { id: storyId } })
+    data_faves.me.favoriteStories.some(
+      ({id: faveId}) => faveId === storyId,
+    )
+      ? unFavoriteStory({variables: {id: storyId}})
+      : favoriteStory({variables: {id: storyId}})
 
-  if (loading) return <Spinner />
-  if (error) return <NetWorkError />
+  if (loading || loading_faves) return <Spinner />
+  if (error || error_faves) return <NetWorkError />
 
   const {text: readTime} = readingTime(story.content)
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.backIcon} onPress={() => navigation.goBack()}>x</Text>
+      <View style={styles.backIcon}>
+        <LeftArrow onPress={() => navigation.goBack()} />
+      </View>
       <ScrollView>
         <View style={styles.card}>
-
           <View style={styles.bookmarkIcon}>
-            <BookmarkIcon />
+            <TouchableOpacity onPress={handleFavoriteStory}>
+              {data_faves.me.favoriteStories.some(
+                ({id: faveId}) => faveId === storyId,
+              ) ? (
+                <ActiveBookmarkIcon />
+              ) : (
+                <InActiveBookmarkIcon />
+              )}
+            </TouchableOpacity>
           </View>
 
           <View style={styles.content}>
             <Text style={styles.title}>{story.title}</Text>
-            <Text style={styles.createdAt}>{story.author.userName.toUpperCase()}</Text>
             <Text style={styles.createdAt}>
-              <FormattedDate createdAt={story.createdAt} />  |  {readTime}</Text>
+              {story.author.userName.toUpperCase()}
+            </Text>
+            <Text style={styles.createdAt}>
+              <FormattedDate createdAt={story.createdAt} /> |{' '}
+              {readTime}
+            </Text>
             <Text style={styles.body}>{story.content}</Text>
 
             <View style={styles.hashtagContainer}>
-              {story.hashtags.map((tag) => {
+              {story.hashtags.map(tag => {
                 return (
                   <CardHashtag key={tag.id}>{tag.name}</CardHashtag>
                 )
@@ -55,30 +82,6 @@ const Story = ({ route, navigation }) => {
             </View>
           </View>
         </View>
-        
-        {/* <View style={styles.reactionsContainer}>
-          <View style={styles.reactText} >
-            <Like style={styles.reactions} />
-            <Text style={styles.body}>{'99'}</Text>
-          </View>
-          <View style={styles.reactText} >
-            <Heart style={styles.reactions} />
-            <Text style={styles.body}>{'99'}</Text>
-          </View>
-          <View style={styles.reactText} >
-            <Sad style={styles.reactions} />
-            <Text style={styles.body}>{'99'}</Text>
-          </View>
-          <View style={styles.reactText} >
-            <Speechless style={styles.reactions} />
-            <Text style={styles.body}>{'99'}</Text>
-          </View>
-          <View style={styles.reactText} >
-            <Clap style={styles.reactions} />
-            <Text style={styles.body}>{'99'}</Text>
-          </View>
-        </View> */}
-
       </ScrollView>
     </SafeAreaView>
   )

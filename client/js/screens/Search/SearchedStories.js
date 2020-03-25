@@ -4,13 +4,13 @@ import {getSearchedStories} from '../../hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 import readingTime from 'reading-time'
-import Hashtag from '../../components/Hashtag'
 import NameInitials from '../../components/NameInitials/index'
 import StoryTitle from '../../components/StoryTitle/index'
 import StoryDate from '../../components/StoryDate/StoryDate'
 import Paragraph from '../../components/Paragraph/Paragraph'
-import trimContent from '../../utils/trimContent'
 import styles from './styles'
+import FormattedDate from '../../components/FormattedDate'
+import CardHashtag from '../../components/CardHashtag'
 
 const SearchedStories = ({query, navigation, route}) => {
   const {error, loading, stories} = getSearchedStories(query)
@@ -47,18 +47,21 @@ const SearchedStories = ({query, navigation, route}) => {
                     </View>
                   </View>
                   <StoryDate>
-                    {createdAt} | {readTime}
+                    <FormattedDate createdAt={createdAt} /> |{' '}
+                    {readTime}
                   </StoryDate>
-                  <Paragraph>{trimContent(content)}</Paragraph>
+                  <Paragraph numberOfLines={3}>{content}</Paragraph>
                   <FlatList
                     style={styles.hashtags}
                     scrollEnabled={false}
                     data={hashtags}
                     numColumns={4}
                     renderItem={({item}) => (
-                      <Hashtag disabled key={item.id}>
-                        {item.name}
-                      </Hashtag>
+                      <View style={styles.p5}>
+                        <CardHashtag disabled key={item.id}>
+                          {item.name}
+                        </CardHashtag>
+                      </View>
                     )}
                     keyExtractor={item => item.id}
                   />

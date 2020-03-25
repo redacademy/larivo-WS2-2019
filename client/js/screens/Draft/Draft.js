@@ -22,12 +22,10 @@ import LeftArrow from '../../components/LeftArrow/LeftArrow'
 const Draft = ({route, navigation}) => {
   const {id: draftId} = route.params
   const {error, loading, story} = getStoryById(draftId)
-  console.log(story)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [tag, setTag] = useState('')
   const [tags, setTags] = useState([])
-  console.log(tags)
   const [show, setShow] = useState(false)
   const [publish] = usePublish()
 

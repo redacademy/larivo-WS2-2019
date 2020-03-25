@@ -34,10 +34,8 @@ import {
 import {
   Settings,
   Notifications,
-  DeleteAccount,
   EditProfile,
   ChangeUsername,
-  ChangePassword,
 } from '../screens/Settings'
 import {Spinner} from '../components/Spinner'
 import {Story} from '../screens/Story'
@@ -129,18 +127,10 @@ const ProfileStackScreen = () => (
       component={Notifications}
     />
     <ProfileStack.Screen name="EditProfile" component={EditProfile} />
-    <ProfileStack.Screen
-      name="DeleteAccount"
-      component={DeleteAccount}
-    />
     <ProfileStack.Screen name="Bio" component={Bio} />
     <ProfileStack.Screen
       name="ChangeUsername"
       component={ChangeUsername}
-    />
-    <ProfileStack.Screen
-      name="ChangePassword"
-      component={ChangePassword}
     />
   </ProfileStack.Navigator>
 )
