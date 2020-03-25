@@ -34,14 +34,16 @@ const DATA = [
     title: "Roaring Velvet"
   },
   {
+    id: "58694a0f-3da1-471f-bd96-145571e29d73",
+    title: "Conference 102",
+    content: "some details about the date and location of the conference",
+    time: "March 18th | 10:30 am"
+  },
+  {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
     title: "McLoving Fogell"
   },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d73",
-    title: "Conference 102",
-    content: "some details about the date and location of the conference"
-  },
+
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
     title: "Roaring Velvet"
@@ -57,12 +59,14 @@ const DATA = [
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d7d",
     title: "Conference 103",
-    content: "some details about the date and location of the conference"
+    content: "some details about the date and location of the conference",
+    time: "March 18th | 10:30 am"
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d70",
     title: "Conference 104",
-    content: "some details about the date and location of the conference"
+    content: "some details about the date and location of the conference",
+    time: "March 18th | 10:30 am"
   }
 ];
 
@@ -85,9 +89,13 @@ const Activity = ({ navigation, route }) => {
   function Item({ title, content, hashtags, time }) {
     return (
       <View style={styles.item}>
-        <StoryTitle>{title}</StoryTitle>
+        <View>
+          <StoryTitle>{title}</StoryTitle>
+        </View>
+
+        <StoryDate>{time}</StoryDate>
         <Paragraph>{content}</Paragraph>
-        <Text>{time}</Text>
+
         {/* <Hashtag>{hashtags}</Hashtag> */}
       </View>
     );
@@ -108,9 +116,13 @@ const Activity = ({ navigation, route }) => {
           <Text style={styles.content}>Resources</Text>
           <FlatList
             data={DATA}
-            renderItem={({ item, content, time }) => (
+            renderItem={({ item }) => (
               <TouchableOpacity>
-                <Item title={item.title} content={item.content} />
+                <Item
+                  title={item.title}
+                  time={item.time}
+                  content={item.content}
+                />
               </TouchableOpacity>
             )}
             keyExtractor={item => item.id}

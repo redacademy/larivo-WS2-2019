@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
   },
   item: {
     paddingTop: 15,
-    paddingBottom: 0
+    paddingBottom: 0,
+    height: "auto"
   }
 });
 
