@@ -14,9 +14,8 @@ const styles = StyleSheet.create({
   cardContainer: {
     flex: 1,
     backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 20,
+    justifyContent: "flex-start",
+    paddingHorizontal: 30,
     paddingVertical: 8,
     width: "100%",
     height: "100%"
@@ -33,6 +32,11 @@ const styles = StyleSheet.create({
     width: "100%",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20
+  },
+  separator: {
+    height: 1,
+    width: "100%",
+    backgroundColor: "#CED0CE"
   }
 });
 

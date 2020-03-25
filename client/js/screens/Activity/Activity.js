@@ -6,17 +6,39 @@ import {
   View,
   FlatList,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Text
 } from "react-native";
-import { StoryCard } from "../../components/StoryCard";
+import StoryTitle from "../../components/StoryTitle";
+import Paragraph from "../../components/Paragraph";
+
 import { Header } from "../../components/Header";
-import Hashtag from "../../components/Hashtag";
 import { useAuth } from "../../hooks";
 import { FILTERED_STORIES } from "../../context/apollo";
 import { useQuery } from "@apollo/react-hooks";
 import { Spinner } from "../../components/Spinner";
 import { NetWorkError } from "../../components/FourOhFour";
 import { SearchTabs } from "../../navigation";
+
+const DATA = [
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "Conference Room",
+    content: "some text"
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    title: "Roaring Velvet"
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "McLoving Fogell"
+  }
+];
+
+separator = () => {
+  return <View style={styles.separator} />;
+};
 
 const Activity = ({ navigation, route }) => {
   const [search, setSearch] = useState("");
@@ -30,6 +52,15 @@ const Activity = ({ navigation, route }) => {
 
   const { userName } = user.user;
 
+  function Item({ title, content }) {
+    return (
+      <View style={styles.item}>
+        <StoryTitle>{title}</StoryTitle>
+        <Paragraph>{content}</Paragraph>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Header
@@ -41,49 +72,17 @@ const Activity = ({ navigation, route }) => {
       {search.length ? (
         <SearchTabs route={route} navigation={navigation} search={search} />
       ) : (
-        <View style={styles.listView}>
+        <View style={styles.cardContainer}>
+          <StoryTitle>Resources</StoryTitle>
           <FlatList
-            // ListHeaderComponent={() => (
-            //   <Text style={styles.title}>Featured</Text>
-            // )}
-            // refreshing={networkStatus === 4}
-            // onRefresh={() => refetch()}
-            // onEndReached={() =>
-            //   fetchMore({
-            //     updateQuery: (prev, {fetchMoreResult}) => {
-            //       if (!fetchMoreResult) return prev
-            //       return Object.assign({}, prev, {
-            //         userFeed: [
-            //           ...prev.userFeed,
-            //           ...fetchMoreResult.userFeed,
-            //         ],
-            //       })
-            //     },
-            //   })
-            // }
-            data={data.filteredStories}
-            renderItem={({
-              item: { id, author, title, createdAt, content, hashtags }
-            }) => {
-              const { text: readTime } = readingTime(content);
-              return (
-                <TouchableOpacity
-                  style={styles.cardContainer}
-                  onPress={() => navigation.navigate("HomeStory", { id })}
-                >
-                  <StoryCard
-                    userName={author.userName}
-                    createdAt={createdAt}
-                    readTime={readTime}
-                    title={title}
-                    content={content}
-                    hashtags={hashtags}
-                    bookmarked={null}
-                  />
-                </TouchableOpacity>
-              );
-            }}
+            data={DATA}
+            renderItem={({ item, content }) => (
+              <TouchableOpacity>
+                <Item title={item.title} content={item.content} />
+              </TouchableOpacity>
+            )}
             keyExtractor={item => item.id}
+            ItemSeparatorComponent={separator}
           />
         </View>
       )}
