@@ -1,137 +1,100 @@
-import React, { useState, useEffect } from "react";
-import styles from "./styles";
-import readingTime from "reading-time";
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  TouchableOpacity,
-  ScrollView,
-  Text
-} from "react-native";
-import StoryTitle from "../../components/StoryTitle";
-import Paragraph from "../../components/Paragraph";
-import Hashtag from "../../components/Hashtag";
-import StoryDate from "../../components/StoryDate";
-import { Header } from "../../components/Header";
-import { useAuth } from "../../hooks";
-import { FILTERED_STORIES } from "../../context/apollo";
-import { useQuery } from "@apollo/react-hooks";
-import { Spinner } from "../../components/Spinner";
-import { NetWorkError } from "../../components/FourOhFour";
-import { SearchTabs } from "../../navigation";
+import React from 'react'
+import styles from './styles'
+import {SafeAreaView, View, FlatList, Text} from 'react-native'
+import StoryTitle from '../../components/StoryTitle'
+import Paragraph from '../../components/Paragraph'
+import Hashtag from '../../components/Hashtag'
+import StoryDate from '../../components/StoryDate'
 
 const DATA = [
   {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "Conference 101",
-    content: "some details about the date and location of the conference",
-    hashtags: "Anxiety",
-    time: "nov 12th | 10:00 am"
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'Conference Room 5 Minutes',
+    content:
+      "Who's the best regional manager in Dunder Mifflin history? Who has the…",
+    time: 'NOV. 12TH 2019 | DEC. 12TH 2019 | 3 PM',
   },
   {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f6n",
-    title: "Roaring Velvet"
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f6n',
+    title: 'Michael Scott',
+    time: 'March 11th | 6:30 am',
+    content:
+      "I'm heartless. And I'm back to my ways 'cause I'm heartless. All this…",
   },
   {
-    id: "58694a0f-3da1-471f-bd96-145571e29d73",
-    title: "Conference 102",
-    content: "some details about the date and location of the conference",
-    time: "March 18th | 10:30 am"
+    id: '58694a0f-3da1-471f-bd96-145571e29d73',
+    title: 'McLovin Fogell',
+    content:
+      'I felt as if I was going insane. I was dizzy, hot, my head felt light and my…',
+    time: 'March 18th | 10:30 am',
   },
   {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "McLoving Fogell"
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'McLoving Fogell',
+    time: 'March 18th | 12:30 am',
+    content:
+      "Who's the best regional manager in Dunder Mifflin history? Who has the…",
   },
 
   {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Roaring Velvet"
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Freddy Krueger',
+    time: 'March 10th | 9:30 am',
+    content:
+      "I'm heartless. And I'm back to my ways 'cause I'm heartless. All this…",
   },
   {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f64",
-    title: "Roaring Velvet"
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f64',
+    title: 'Do It! Just Do It!',
+    time: 'NOV. 12TH 2019 | 05:30 MIN. VIDEO',
+    content:
+      'There are two kinds of people in the world: those who’ve already seen the hilarious…',
   },
   {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f60",
-    title: "Roaring Velvet"
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f60',
+    title: 'ADHD Christmas Party',
+    time: 'NOV. 12TH 2019 | DEC. 25TH 2019 | 6:30 PM',
+    content:
+      'Have yourself a merry little holiday and invite all your friends to join you…',
   },
   {
-    id: "58694a0f-3da1-471f-bd96-145571e29d7d",
-    title: "Conference 103",
-    content: "some details about the date and location of the conference",
-    time: "March 18th | 10:30 am"
+    id: '58694a0f-3da1-471f-bd96-145571e29d7d',
+    title: 'Ken Jeong',
+    content:
+      'I felt as if I was going insane. I was dizzy, hot, my head felt light and my…',
+    time: 'March 18th | 10:30 am',
   },
   {
-    id: "58694a0f-3da1-471f-bd96-145571e29d70",
-    title: "Conference 104",
-    content: "some details about the date and location of the conference",
-    time: "March 18th | 10:30 am"
-  }
-];
+    id: '58694a0f-3da1-471f-bd96-145571e29d70',
+    title: 'Wade Wilson: Dealing With Psychosis ',
+    content:
+      "I'm heartless. And I'm back to my ways 'cause I'm heartless. All this…",
+    time: 'DEC. 3RD 2019 | 32:45 MIN. AUDIO | EXPLICIT',
+  },
+]
 
-separator = () => {
-  return <View style={styles.separator} />;
-};
-
-const Activity = ({ navigation, route }) => {
-  const [search, setSearch] = useState("");
-  const { user } = useAuth();
-  const { loading, error, data, refetch, fetchMore, networkStatus } = useQuery(
-    FILTERED_STORIES
-  );
-
-  if (loading || typeof user === "undefined") return <Spinner />;
-  if (error) return <NetWorkError />;
-
-  const { userName } = user.user;
-
-  function Item({ title, content, hashtags, time }) {
-    return (
-      <View style={styles.item}>
-        <View>
-          <StoryTitle>{title}</StoryTitle>
-        </View>
-
-        <StoryDate>{time}</StoryDate>
-        <Paragraph>{content}</Paragraph>
-
-        {/* <Hashtag>{hashtags}</Hashtag> */}
-      </View>
-    );
-  }
-
+const Activity = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Header
-        navigation={navigation}
-        userName={userName}
-        search={search}
-        setSearch={setSearch}
+      <FlatList
+        style={styles.list}
+        ListHeaderComponent={() => (
+          <Text style={styles.title}>Resources</Text>
+        )}
+        data={DATA}
+        renderItem={({item}) => (
+          <View style={styles.list_item}>
+            <StoryTitle>{item.title}</StoryTitle>
+            <StoryDate>{item.time}</StoryDate>
+            {item.content ? (
+              <Paragraph numberOfLines={3}>{item.content}</Paragraph>
+            ) : null}
+          </View>
+        )}
+        keyExtractor={item => item.id}
       />
-      {search.length ? (
-        <SearchTabs route={route} navigation={navigation} search={search} />
-      ) : (
-        <View style={styles.cardContainer}>
-          <Text style={styles.content}>Resources</Text>
-          <FlatList
-            data={DATA}
-            renderItem={({ item }) => (
-              <TouchableOpacity>
-                <Item
-                  title={item.title}
-                  time={item.time}
-                  content={item.content}
-                />
-              </TouchableOpacity>
-            )}
-            keyExtractor={item => item.id}
-            ItemSeparatorComponent={separator}
-          />
-        </View>
-      )}
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default Activity;
+export default Activity

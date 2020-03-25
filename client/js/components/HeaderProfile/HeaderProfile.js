@@ -49,7 +49,7 @@ const HeaderProfile = ({navigation}) => {
 
         <EditIcon onPress={() => navigation.navigate('Bio')} />
       </View>
-      <Paragraph>{data.me.bio || 'lorem'}</Paragraph>
+      <Paragraph>{data.me.bio || 'No bio yet...'}</Paragraph>
     </View>
   )
 }
