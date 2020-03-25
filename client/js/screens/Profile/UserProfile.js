@@ -89,7 +89,7 @@ const UserProfile = ({route, navigation}) => {
               </TouchableOpacity>
             </View>
           </View>
-          <Paragraph>{user.bio || 'Add your bio here'}</Paragraph>
+          <Paragraph>{user.bio || 'No bio yet...'}</Paragraph>
         </View>
       </View>
 
