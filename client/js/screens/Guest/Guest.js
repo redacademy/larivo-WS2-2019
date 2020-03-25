@@ -3,115 +3,54 @@ import styles from './styles'
 import readingTime from 'reading-time'
 import {
   SafeAreaView,
-  Text,
   FlatList,
   TouchableOpacity,
+  View,
 } from 'react-native'
-import {Card} from '../../components/Card'
-import Hashtag from '../../components/Hashtag'
+import {StoryCard} from '../../components/StoryCard'
 import {GUEST_FEED} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
 
 const Guest = ({navigation}) => {
-  const {
-    loading,
-    error,
-    data,
-    refetch,
-    fetchMore,
-    networkStatus,
-  } = useQuery(GUEST_FEED)
+  const {loading, error, data} = useQuery(GUEST_FEED)
+
   if (loading) return <Spinner />
   if (error) return <NetWorkError />
+  console.log(data.guestFeed)
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        refreshing={networkStatus === 4}
-        onRefresh={() => refetch()}
-        onEndReached={() =>
-          fetchMore({
-            updateQuery: (prev, {fetchMoreResult}) => {
-              if (!fetchMoreResult) return prev
-              return Object.assign({}, prev, {
-                guestFeed: [
-                  ...prev.guestFeed,
-                  ...fetchMoreResult.guestFeed,
-                ],
-              })
-            },
-          })
-        }
         data={data.guestFeed}
         renderItem={({
           item: {id, author, title, createdAt, content, hashtags},
         }) => {
           const {text: readTime} = readingTime(content)
           return (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('GuestStory', {id})}
-            >
-              <Card>
-                <Text>{author.userName}</Text>
-                <Text>{createdAt}</Text>
-                <Text>{readTime}</Text>
-                <Text>{title}</Text>
-                <Text>{content}</Text>
-                <Hashtag disabled>
-                  {hashtags.map(tag => tag.name)}
-                </Hashtag>
-              </Card>
-            </TouchableOpacity>
+            <View>
+              <TouchableOpacity
+                style={styles.cardContainer}
+                onPress={() =>
+                  navigation.navigate('GuestStory', {id})
+                }
+              >
+                <StoryCard
+                  userName={author.userName}
+                  createdAt={createdAt}
+                  readTime={readTime}
+                  title={title}
+                  content={content}
+                  hashtags={hashtags}
+                  bookmarked={false}
+                />
+              </TouchableOpacity>
+            </View>
           )
         }}
         keyExtractor={item => item.id}
       />
-      {/* <ScrollView>
-        <View style={{backgroundColor: '#03dac4'}}>
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          >
-            <View style={{marginLeft: 25}} />
-            <Hashtag>some hashtag</Hashtag>
-            <Hashtag>some hashtag2</Hashtag>
-            <Hashtag>some hashtag3</Hashtag>
-            <Hashtag>some hashtag4</Hashtag>
-          </ScrollView>
-
-          <Text style={styles.featuredText}>Featured</Text>
-
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={true}
-            // centerContent={true}
-            style={{height: 390}}
-          >
-            <View style={{marginLeft: 25}} />
-            {featuredStories.map(item => {
-              return (
-                <View style={styles.featuredCardContainer}>
-                  <FeaturedCard
-                    item={item}
-                    home={true}
-                    key={item.id}
-                  />
-                </View>
-              )
-            })}
-          </ScrollView>
-        </View>
-        <View style={styles.userCardContainer}>
-          {userStories.map(item => {
-            return (
-              <FeaturedCard item={item} home={true} key={item.id} />
-            )
-          })}
-          <View style={{marginBottom: 40}} />
-        </View>
-      </ScrollView> */}
     </SafeAreaView>
   )
 }

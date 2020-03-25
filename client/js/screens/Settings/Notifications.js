@@ -1,23 +1,19 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import {
   Switch,
   TouchableOpacity,
   Text,
   SafeAreaView,
   View,
-  Platform
 } from 'react-native'
 import LeftArrow from '../../components/LeftArrow'
 import Toggle from '../../components/Toggle'
 import Button from '../../components/Button'
-
 import styles from './styles'
-import SettingItem from '../../components/SettingItem'
-import NextIcon from '../../../assets/icons/profile/icon-profile-next.svg'
+import {useAuth} from '../../hooks'
 
-// to be changed to settings component
-const Notifications = ({ navigation, modal }) => {
-  const [toggle, setToggle] = useState(false)
+const Notifications = ({navigation, modal}) => {
+  const {logout} = useAuth()
 
   return (
     <SafeAreaView>
@@ -35,36 +31,37 @@ const Notifications = ({ navigation, modal }) => {
           <Text style={styles.settings_title}>Notifications</Text>
 
           <View style={styles.settings_itemsConstainer}>
-              <View style={styles.settings_itemRow}>
-                <View style={styles.settings_items_Text_Icon}>
-                  <Text style={styles.settings_itemText}>
-                    Notifications
-                  </Text>
-                </View>
-                <Toggle />
+            <View style={styles.settings_itemRow}>
+              <View style={styles.settings_items_Text_Icon}>
+                <Text style={styles.settings_itemText}>
+                  Notifications
+                </Text>
               </View>
+              <Toggle />
+            </View>
           </View>
 
           <View style={styles.settings_itemsConstainer}>
-              <View style={styles.settings_itemRow}>
-                <View style={styles.settings_items_Text_Icon}>
-                  <Text style={styles.settings_itemText}>
-                    App Notifications
-                  </Text>
-                </View>
-                <Toggle />
+            <View style={styles.settings_itemRow}>
+              <View style={styles.settings_items_Text_Icon}>
+                <Text style={styles.settings_itemText}>
+                  App Notifications
+                </Text>
               </View>
+              <Toggle />
+            </View>
           </View>
           <View style={styles.settings_itemsConstainer} />
         </View>
-       
-        <View style={styles.setting_logout}>
-            <View style={styles.setting_logoutBtn}>
-            <Button theme="dark" >LOGOUT</Button>
-            </View>
-          </View> 
 
+        <View style={styles.setting_logout}>
+          <View style={styles.setting_logoutBtn}>
+            <Button onPress={logout} theme="dark">
+              LOGOUT
+            </Button>
+          </View>
         </View>
+      </View>
     </SafeAreaView>
   )
 }

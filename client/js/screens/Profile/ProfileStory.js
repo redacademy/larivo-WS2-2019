@@ -5,11 +5,11 @@ import {USER_STORIES} from '../../context/apollo'
 import {useQuery} from '@apollo/react-hooks'
 import {Spinner} from '../../components/Spinner'
 import {NetWorkError} from '../../components/FourOhFour'
-import {trimContent} from '../../utils'
 import styles from './styles'
 import StoryTitle from '../../components/StoryTitle'
 import StoryDate from '../../components/StoryDate'
 import Paragraph from '../../components/Paragraph/Paragraph'
+import FormattedDate from '../../components/FormattedDate'
 
 const ProfileStory = ({navigation}) => {
   const {loading, error, data} = useQuery(USER_STORIES)
@@ -31,9 +31,9 @@ const ProfileStory = ({navigation}) => {
             <View style={styles.profile_lists}>
               <StoryTitle>{title}</StoryTitle>
               <StoryDate>
-                {createdAt} | {readTime}
+                <FormattedDate createdAt={createdAt} /> | {readTime}
               </StoryDate>
-              <Paragraph>{trimContent(content)}</Paragraph>
+              <Paragraph numberOfLines={3}>{content}</Paragraph>
             </View>
           </TouchableOpacity>
         )

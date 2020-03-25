@@ -4,10 +4,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#03dac4',
+    width: '100%',
+  },
+  cardContainer: {
+    flex: 1,
+    backgroundColor: '#03dac4',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 8,
+    width: '100%',
   },
   content: {
     justifyContent: 'center',
-    width: '90%',
+    width: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
@@ -34,9 +44,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingLeft: 30,
   },
-  ScrollView: {
-    // paddingBottom: 20
-  },
+  ScrollView: {},
   featuredCardContainer: {
     width: 350,
     marginBottom: 10,
@@ -44,7 +52,6 @@ const styles = StyleSheet.create({
   },
   userCardContainer: {
     width: '110%',
-    // marginBottom: 10,
     paddingHorizontal: 25,
     paddingTop: 10,
     alignItems: 'stretch',

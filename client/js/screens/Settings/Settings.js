@@ -8,7 +8,6 @@ import {
 import LeftArrow from '../../components/LeftArrow'
 import BellIcon from '../../../assets/icons/profile/icon-profile-bell.svg'
 import UserIcon from '../../../assets/icons/profile/icon-profile-user.svg'
-import DeleteIcon from '../../../assets/icons/profile/icon-profile-delete.svg'
 import SettingItem from '../../components/SettingItem'
 import Button from '../../components/Button'
 
@@ -27,18 +26,10 @@ const items = [
     text: 'Edit Profile',
     screen: 'EditProfile',
   },
-  {
-    id: 3,
-    icon: DeleteIcon,
-    text: 'Delete Account',
-    screen: 'DeleteAccount',
-  },
 ]
 
 const Settings = ({navigation}) => {
   const {logout} = useAuth()
-
-  const handleLogout = () => logout()
 
   return (
     <SafeAreaView>
@@ -56,7 +47,7 @@ const Settings = ({navigation}) => {
                 style={styles.settings_itemsConstainer}
               >
                 <TouchableOpacity
-                  style={{width: '100%'}}
+                  style={styles.w_100}
                   onPress={() => {
                     navigation.navigate(item.screen)
                   }}
@@ -71,7 +62,7 @@ const Settings = ({navigation}) => {
 
         <View style={styles.setting_logout}>
           <View style={styles.setting_logoutBtn}>
-            <Button onPress={handleLogout} theme="dark">
+            <Button onPress={logout} theme="dark">
               LOGOUT
             </Button>
           </View>

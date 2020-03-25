@@ -108,19 +108,6 @@ const story = {
     })
   },
 
-  // async like(parent, { id }, context) {
-  //   const userId = getUserId(context)
-
-  //   return context.prisma.updateStory({
-  //     where: { id },
-  //     data: {
-  //       likes: {
-  //         connect: [{ id: userId }]
-  //       }
-  //     }
-  //   })
-  // },
-
   async favoriteStory(parent, { id }, context) {
     const userId = getUserId(context)
 
@@ -129,6 +116,18 @@ const story = {
       data: {
         favoriteStories: {
           connect: { id }
+        }
+      }
+    })
+  },
+  async unFavoriteStory(parent, { id }, context) {
+    const userId = getUserId(context)
+
+    return context.prisma.updateUser({
+      where: { id: userId },
+      data: {
+        favoriteStories: {
+          disconnect: { id }
         }
       }
     })

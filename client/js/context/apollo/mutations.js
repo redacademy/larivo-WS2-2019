@@ -18,6 +18,9 @@ const SIGN_UP = gql`
         userName
         email
         bio
+        favoriteStories {
+          id
+        }
         following {
           id
         }
@@ -37,6 +40,9 @@ const LOG_IN = gql`
         userName
         email
         bio
+        favoriteStories {
+          id
+        }
         following {
           id
         }
@@ -158,13 +164,13 @@ const FOLLOW_USER = gql`
   }
 `
 
-// const UPDATE_PASSWORD = gql`
-//   mutation updatePassword($email: String!) {
-//     updateBio(email: $email) {
-//       id
-//     }
-//   }
-// `
+const UNFOLLOW_USER = gql`
+  mutation unFollowUser($id: String!) {
+    unFollowUser(id: $id) {
+      id
+    }
+  }
+`
 
 export {
   SIGN_UP,
@@ -178,5 +184,6 @@ export {
   UPDATE_USERNAME,
   UPDATE_EMAIL,
   FOLLOW_USER,
+  UNFOLLOW_USER,
   DELETE_USER,
 }

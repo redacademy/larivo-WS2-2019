@@ -2,8 +2,6 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   settings_container: {
-    // flex: 1,
-    // flexDirection: 'column',
     padding: 40,
     height: '100%',
     width: '100%',
@@ -42,6 +40,9 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     paddingRight: 30,
   },
+  w_100: {
+    width: '100%',
+  },
   settings_itemRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    marginBottom: 100
+    marginBottom: 100,
   },
   setting_logoutBtn: {
     width: '90%',
@@ -73,14 +74,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     color: '#1E6A62',
-    marginTop: 20
+    marginTop: 20,
   },
   setting_changeUserText: {
     fontFamily: 'SFProText-Light',
     marginBottom: 10,
-    // textAlign: 'center',
     fontSize: 20,
     color: '#1E6A62',
-  }
+  },
 })
 export default styles

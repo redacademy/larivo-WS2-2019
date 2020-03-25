@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     fontFamily: 'SFProText-Light',
   },
 
-  //bio Styles
   container: {
     flex: 1,
     backgroundColor: '#F1FFFE',

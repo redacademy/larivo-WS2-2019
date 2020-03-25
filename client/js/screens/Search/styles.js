@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   hashtags: {paddingVertical: 10},
+  p5: {
+    paddingHorizontal: 5,
+  },
   no_results_container: {
     flex: 1,
     backgroundColor: '#F1FFFE',

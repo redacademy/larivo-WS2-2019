@@ -7,8 +7,7 @@ const Query = {
     }
     return context.prisma.stories({
       where,
-      orderBy: 'createdAt_DESC',
-      first: 10
+      orderBy: 'createdAt_DESC'
     })
   },
 
@@ -23,8 +22,7 @@ const Query = {
 
     return context.prisma.stories({
       where,
-      orderBy: 'createdAt_DESC',
-      first: 10
+      orderBy: 'createdAt_DESC'
     })
   },
 
@@ -50,9 +48,14 @@ const Query = {
     const hashtags = await context.prisma.user({ id: userId }).hashtags()
     return context.prisma.stories({
       where: {
-        hashtags_some: {
-          name_in: hashtags.map(tag => tag.name)
-        }
+        AND: [
+          {
+            hashtags_some: {
+              name_in: hashtags.map(tag => tag.name)
+            }
+          },
+          {}
+        ]
       }
     })
   },
@@ -87,6 +90,6 @@ const Query = {
   },
 
   recommendedHashtags: (parent, args, context) =>
-    context.prisma.hashtags({ orderBy: 'id_DESC', first: 12 })
+    context.prisma.hashtags({ orderBy: 'createdAt_DESC', first: 12 })
 }
 module.exports = { Query }

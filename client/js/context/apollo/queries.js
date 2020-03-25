@@ -209,6 +209,28 @@ const FILTERED_STORIES = gql`
   }
 `
 
+const FOLLOWING_USER_STORIES = gql`
+  query me {
+    me {
+      following {
+        stories {
+          id
+          createdAt
+          author {
+            userName
+          }
+          title
+          content
+          hashtags {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`
+
 export {
   GUEST_FEED,
   USER_FEED,
@@ -222,4 +244,5 @@ export {
   SEARCHED_STORIES,
   RECOMMENDED_HASHTAGS,
   FILTERED_STORIES,
+  FOLLOWING_USER_STORIES,
 }
