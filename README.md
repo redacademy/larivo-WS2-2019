@@ -5,7 +5,17 @@
 
 ---
 
+![alt text](https://github.com/redacademy/larivo-WS2-2019/blob/master/client/assets/icons/login/icon-larivo_logo.svg "Logo Title Text 1")
+
+[logo]: https://github.com/redacademy/larivo-WS2-2019/blob/master/client/assets/icons/login/icon-larivo_logo.svg "Logo Title Text 2"
+
 <p align="justify">A safe platform to tell and listen to stories about mental health and incredible journeys to recovery.</p>
+
+### Technologies Used
+
+- React Native
+- GraphQL Apollo
+- Prisma
 
 <img width="201"  alt="Screen Shot 2020-03-26 at 11 59 57 PM" src="https://user-images.githubusercontent.com/49181465/77730376-e766d680-6fbd-11ea-8e9f-86ed9d6acc33.png">
 
