@@ -1,6 +1,6 @@
 <div align="center">
  <h1>Larivo </h1>
- <h2>Incredible Stories 💚 #Mental Health</h2>
+ <h2>Incredible Stories 💚 </h2>
 </div>
 
 ---
@@ -13,7 +13,7 @@
 - GraphQL Apollo
 - Prisma
 
-### Instation
+### Installation
 
 ---
 
